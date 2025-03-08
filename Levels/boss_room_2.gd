@@ -13,6 +13,7 @@ extends CenterContainer
 @onready var lightning_3_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Marker2D/Lightning3
 @onready var lightning_ember_0: AnimatedSprite2D = $Area2D/Marker2D6/LightningEmber0
 
+
 @onready var lightning_1_triangle_1: AnimatedSprite2D = $Area2D/Triangle1VFX/Lightning1
 @onready var lightning_2_triangle_1: AnimatedSprite2D = $Area2D/Triangle1VFX/Lightning2
 @onready var lightning_3_triangle_1: AnimatedSprite2D = $Area2D/Triangle1VFX/Marker2D/Lightning3
