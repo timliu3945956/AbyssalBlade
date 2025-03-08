@@ -10,21 +10,10 @@ func enter():
 	owner.direction = Vector2.ZERO
 	owner.position = owner.center_of_screen + Vector2(0, -91)
 	await get_tree().create_timer(1).timeout
-	lightning()
-	aoe_count += 1
-	await get_tree().create_timer(4).timeout
-	lightning()
-	aoe_count += 1
-	await get_tree().create_timer(4).timeout
-	lightning()
-	aoe_count += 1
-	await get_tree().create_timer(4).timeout
-	lightning()
-	aoe_count += 1
-	await get_tree().create_timer(4).timeout
-	lightning()
-	aoe_count += 1
-	await get_tree().create_timer(4).timeout
+	for i in range(5):
+		lightning()
+		aoe_count += 1
+		await get_tree().create_timer(4).timeout
 	if owner.boss_death == false:
 		can_transition = true
 	

@@ -159,14 +159,7 @@ func exit():
 	set_physics_process(false)
 
 func transition():
+	const states = ["ChainTiles", "Discharge", "ChainDestruction", "DischargeDouble"]
 	if can_transition:
 		can_transition = false
-		match owner.cleave_count:
-			1:
-				get_parent().change_state("ChainTiles")
-			2:
-				get_parent().change_state("Discharge") #boss main up until here finished
-			3:
-				get_parent().change_state("ChainDestruction")
-			4:
-				get_parent().change_state("DischargeDouble")
+		get_parent().change_state(states[owner.cleave_count + 1])

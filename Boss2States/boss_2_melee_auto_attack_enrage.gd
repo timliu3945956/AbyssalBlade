@@ -17,33 +17,13 @@ func enter():
 	animation_player.play("charge_auto_attack")
 	
 	await get_tree().create_timer(1.6667).timeout
+
+	play_and_move_boss_to_player()	
 	
-	owner.slam_telegraph_player.play("slam_telegraph")
-	jump_slam.global_position = player.global_position
-	store_player_position = owner.player.position
-	await get_tree().create_timer(1).timeout
-	move_boss_to_player(store_player_position, owner)
-	await get_tree().create_timer(0.3167).timeout
-	animation_player.play("auto_attack")
-	await get_tree().create_timer(0.6833).timeout
+	play_and_move_boss_to_player()	
 	
-	owner.slam_telegraph_player.play("slam_telegraph")
-	jump_slam.global_position = player.global_position
-	store_player_position = owner.player.position
-	await get_tree().create_timer(1).timeout
-	move_boss_to_player(store_player_position, owner)
-	await get_tree().create_timer(0.3167).timeout
-	animation_player.play("auto_attack")
-	await get_tree().create_timer(0.6833).timeout
-	
-	owner.slam_telegraph_player.play("slam_telegraph")
-	jump_slam.global_position = player.global_position
-	store_player_position = owner.player.position
-	await get_tree().create_timer(1).timeout
-	move_boss_to_player(store_player_position, owner)
-	await get_tree().create_timer(0.3167).timeout
-	animation_player.play("auto_attack")
-	await get_tree().create_timer(0.6833).timeout
+	play_and_move_boss_to_player()	
+
 	#animation_player.play("jump_away")
 	#await animation_player.animation_finished
 	#animation_player.play("jump_land")
@@ -51,10 +31,19 @@ func enter():
 	
 	attack_counter += 1
 	can_transition = true
-	
-func move_boss_to_player(player_position: Vector2, boss: Node2D):
+
+func play_and_move_boss_to_player():
+	owner.slam_telegraph_player.play("slam_telegraph")
+	jump_slam.global_position = player.global_position
+	store_player_position = owner.player.position
+	await get_tree().create_timer(1).timeout
+
 	var move_boss = get_tree().create_tween()
-	move_boss.tween_property(boss, "position", player_position, 0.4)
+	move_boss.tween_property(owner, "position", store_player_position, 0.4)
+
+	await get_tree().create_timer(0.3167).timeout
+	animation_player.play("auto_attack")
+	await get_tree().create_timer(0.6833).timeout
 
 func transition():
 	if can_transition:

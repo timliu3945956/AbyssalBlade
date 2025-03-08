@@ -32,27 +32,9 @@ func enter():
 	
 	
 	
-	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
-	animation_player.play("discharge")
-	await get_tree().create_timer(0.5).timeout
-	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
-	
-	#player.position
-	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
-	animation_player.play("discharge_repeat")
-	await get_tree().create_timer(0.5).timeout
-	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
-	
-	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
-	animation_player.play("discharge_last")
-	await get_tree().create_timer(0.5).timeout
-	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
+	spawn_line_attacks(owner.to_local(player.global_position), "discharge")
+	spawn_line_attacks(owner.to_local(player.global_position), "discharge_repeat")
+	spawn_line_attacks(owner.to_local(player.global_position), "discharge_last")
 	if center_of_screen.x - owner.position.x > 0:
 		animation_player.play("idle_right")
 	else:
@@ -63,7 +45,7 @@ func enter():
 	if owner.boss_death == false:
 		can_transition = true
 	
-func spawn_line_attacks(player_position: Vector2):
+func spawn_line_attacks(player_position: Vector2, play: String):
 	for i in range(num_attacks):
 		var attack_instance = LineAOE.instantiate()
 		var position_angle = randf() * TAU
@@ -77,6 +59,12 @@ func spawn_line_attacks(player_position: Vector2):
 		attack_instance.rotation = rotation_angle
 		
 		add_child(attack_instance)
+
+	await get_tree().create_timer(0.4996).timeout
+	animation_player.play(play)
+	await get_tree().create_timer(0.5).timeout
+	line_aoe_audio.play()
+	await get_tree().create_timer(0.5).timeout
 
 func transition():
 	if can_transition:
