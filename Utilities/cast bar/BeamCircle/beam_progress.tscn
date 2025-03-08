@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://pkolw0fltysl"]
+
+[ext_resource type="Script" path="res://Utilities/cast bar/BeamCircle/beam_progress.gd" id="1_3jhba"]
+[ext_resource type="Texture2D" uid="uid://bghyv11abuw5k" path="res://Utilities/cast bar/BeamCircle/circle_progress_background.png" id="2_7n45r"]
+[ext_resource type="Texture2D" uid="uid://cpygu0238xt2v" path="res://Utilities/cast bar/BeamCircle/circle_progress_white.png" id="3_v5wik"]
+
+[sub_resource type="Animation" id="Animation_o1ikv"]
+length = 0.001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureProgressBar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ua5wd"]
+resource_name = "change_color"
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureProgressBar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7jwdb"]
+_data = {
+"RESET": SubResource("Animation_o1ikv"),
+"change_color": SubResource("Animation_ua5wd")
+}
+
+[node name="BeamProgress" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_3jhba")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -105.0
+offset_right = 64.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.125, 0.125)
+pivot_offset = Vector2(64, 64)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 62.0
+fill_mode = 5
+texture_under = ExtResource("2_7n45r")
+texture_progress = ExtResource("3_v5wik")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7jwdb")
+}

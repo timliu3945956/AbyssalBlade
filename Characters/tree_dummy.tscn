@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://2odudghbircb"]
+
+[ext_resource type="Script" path="res://Characters/tree_dummy.gd" id="1_j608w"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_xa2pw"]
+[ext_resource type="Texture2D" uid="uid://ckb6k3q257qrk" path="res://sprites/tree.png" id="3_xusn2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84r41"]
+resource_local_to_scene = true
+shader = ExtResource("2_xa2pw")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc2ro"]
+size = Vector2(8, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og7m2"]
+size = Vector2(16, 36)
+
+[sub_resource type="Curve" id="Curve_kva8h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.425466, 0.991995), 0.0, 0.0, 0, 0, Vector2(0.990683, 0.00738919), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="TreeDummy" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_j608w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_84r41")
+position = Vector2(0, -6)
+texture = ExtResource("3_xusn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cc2ro")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -6)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_og7m2")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.105
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+position = Vector2(0, -18)
+emitting = false
+lifetime = 0.2
+one_shot = true
+preprocess = 0.03
+explosiveness = 0.86
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+spread = 39.73
+gravity = Vector2(0, 100)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_kva8h")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlasf3s4p7ees"]
+
+[ext_resource type="Script" path="res://Other/ray_cast_2d.gd" id="1_senno"]
+[ext_resource type="Texture2D" uid="uid://bte31khh3sgdv" path="res://Utilities/Effects/glowing_circle.png" id="2_hqoe2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1rb4"]
+size = Vector2(400, 20)
+
+[sub_resource type="Gradient" id="Gradient_831hg"]
+offsets = PackedFloat32Array(0, 0.81203, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0gpfy"]
+gradient = SubResource("Gradient_831hg")
+
+[sub_resource type="Curve" id="Curve_ujoqf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.62585, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3bh7t"]
+curve = SubResource("Curve_ujoqf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e6r5c"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 120.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_3bh7t")
+color_ramp = SubResource("GradientTexture1D_0gpfy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mf10b"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 98, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+
+[sub_resource type="Environment" id="Environment_uphwv"]
+background_mode = 3
+glow_enabled = true
+glow_levels/4 = 1.0
+glow_intensity = 0.5
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 2.0
+
+[node name="RayCast2D" type="RayCast2D"]
+position = Vector2(60, 121)
+target_position = Vector2(50, 0)
+script = ExtResource("1_senno")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 400, 0)
+default_color = Color(0.5, 3, 6, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(200, 0)
+shape = SubResource("RectangleShape2D_a1rb4")
+disabled = true
+
+[node name="CastingParticle" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_e6r5c")
+texture = ExtResource("2_hqoe2")
+lifetime = 0.3
+
+[node name="CollisionParticles" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_e6r5c")
+texture = ExtResource("2_hqoe2")
+lifetime = 0.3
+
+[node name="BeamParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_mf10b")
+texture = ExtResource("2_hqoe2")
+lifetime = 0.3
+draw_order = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uphwv")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://h3p0t0jee2ed"]
+
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="1_a75qc"]
+[ext_resource type="Script" path="res://Menu/LobbyScene/music_box.gd" id="1_pmqj3"]
+
+[sub_resource type="Gradient" id="Gradient_0m8ix"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4gnwv"]
+gradient = SubResource("Gradient_0m8ix")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04o8c"]
+radius = 38.0
+
+[node name="MusicBox" type="Node2D"]
+script = ExtResource("1_pmqj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.15256e-07, 0)
+scale = Vector2(0.140625, 38)
+texture = SubResource("GradientTexture1D_4gnwv")
+
+[node name="InteractionArea" parent="." instance=ExtResource("1_a75qc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_04o8c")
+disabled = true

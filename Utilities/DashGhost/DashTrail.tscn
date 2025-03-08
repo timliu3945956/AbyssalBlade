@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2nrf0cl4uvfi"]
+
+[ext_resource type="Script" path="res://Utilities/DashGhost/dash_trail.gd" id="1_cj2k6"]
+
+[sub_resource type="Curve" id="Curve_3hh8n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.248005), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_r83u3"]
+colors = PackedColorArray(0, 0.466667, 1, 1, 0, 0, 0, 0.141176)
+
+[node name="DashTrail" type="Line2D"]
+top_level = true
+width = 1.0
+width_curve = SubResource("Curve_3hh8n")
+gradient = SubResource("Gradient_r83u3")
+script = ExtResource("1_cj2k6")
+MAX_LENGTH = 80

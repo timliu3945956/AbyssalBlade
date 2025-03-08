@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://3dxesdecdsca"]
+
+[sub_resource type="Gradient" id="Gradient_3tukr"]
+offsets = PackedFloat32Array(0.139098, 0.37218, 0.639098)
+colors = PackedColorArray(1, 1, 1, 1, 0.438889, 0.438889, 0.438889, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_masyt"]
+gradient = SubResource("Gradient_3tukr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MiddleLight" type="PointLight2D" parent="."]
+range_z_max = 0
+texture = SubResource("GradientTexture2D_masyt")
+texture_scale = 4.73

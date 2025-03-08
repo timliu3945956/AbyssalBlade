@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://biqvdlth1wqsr"]
+
+[ext_resource type="Script" path="res://Singleton/check_input_device.gd" id="1_oxasg"]
+
+[node name="InputCheck" type="Node"]
+script = ExtResource("1_oxasg")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://65inpyb67feu"]
+
+[ext_resource type="Texture2D" uid="uid://u8a0rxxdj2ev" path="res://sprites/skill icons/slash.png" id="1_cfm3l"]
+[ext_resource type="Texture2D" uid="uid://wfgj50d0v446" path="res://sprites/skill icons/white.png" id="3_w5dtw"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="4_twe0k"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vdyb2"]
+
+[sub_resource type="Shortcut" id="Shortcut_6dwsq"]
+events = [SubResource("InputEventKey_vdyb2")]
+
+[node name="SkillButton" type="TextureButton"]
+custom_minimum_size = Vector2(22, 22)
+offset_right = 22.0
+offset_bottom = 22.0
+shortcut = SubResource("Shortcut_6dwsq")
+texture_normal = ExtResource("1_cfm3l")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Cooldown" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 22.0
+offset_bottom = 22.0
+step = 0.01
+value = 77.76
+fill_mode = 2
+texture_progress = ExtResource("3_w5dtw")
+tint_progress = Color(0.0784314, 0.0784314, 0.0784314, 0.85098)
+
+[node name="Key" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 17.0
+offset_bottom = 10.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_twe0k")
+theme_override_font_sizes/font_size = 7
+text = "K"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

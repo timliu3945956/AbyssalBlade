@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://rciuksj88nme"]
+
+[ext_resource type="Texture2D" uid="uid://b72b07g1bu8d0" path="res://Utilities/Effects/floaty_64.png" id="1_c1jwf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xcu4y"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_nqlpi"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0xrh7"]
+curve = SubResource("Curve_nqlpi")
+
+[sub_resource type="Gradient" id="Gradient_gf25l"]
+offsets = PackedFloat32Array(0, 0.423077)
+colors = PackedColorArray(1, 1, 1, 0.301961, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rsjnu"]
+gradient = SubResource("Gradient_gf25l")
+
+[sub_resource type="Curve" id="Curve_8i4m8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_77btf"]
+curve = SubResource("Curve_8i4m8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1efbj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_curve = SubResource("CurveTexture_0xrh7")
+gravity = Vector3(0, -80, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_77btf")
+color_ramp = SubResource("GradientTexture1D_rsjnu")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="DashCharge" type="GPUParticles2D"]
+modulate = Color(0.235294, 0.482353, 0.968627, 1)
+material = SubResource("CanvasItemMaterial_xcu4y")
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_1efbj")
+texture = ExtResource("1_c1jwf")

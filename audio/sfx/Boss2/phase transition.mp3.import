@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddr682acjo37g"
+path="res://.godot/imported/phase transition.mp3-1a341cf3c4d938becd06f09e5d5407ef.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss2/phase transition.mp3"
+dest_files=["res://.godot/imported/phase transition.mp3-1a341cf3c4d938becd06f09e5d5407ef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

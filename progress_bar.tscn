@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh1gbmf36mkbi"]
+
+[sub_resource type="GDScript" id="GDScript_fqlvk"]
+script/source = "extends ProgressBar
+
+@onready var progress_bar: ProgressBar = $\".\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	reduce_hp()
+
+func reduce_hp():
+	var tween = get_tree().create_tween()
+	tween.tween_property(progress_bar, \"value\", 0, 10).set_trans(Tween.TRANS_LINEAR)
+"
+
+[node name="ProgressBar" type="ProgressBar"]
+modulate = Color(0.427431, 0.670458, 0.996777, 1)
+custom_minimum_size = Vector2(116, 4)
+offset_left = 100.0
+offset_top = 68.0
+offset_right = 216.0
+offset_bottom = 95.0
+value = 100.0
+script = SubResource("GDScript_fqlvk")

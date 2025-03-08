@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx54kmtan5nlc"]
+
+[ext_resource type="Script" path="res://Utilities/DashGhost/dash_ghost.gd" id="1_ptxim"]
+
+[node name="DashGhost" type="Sprite2D"]
+script = ExtResource("1_ptxim")
+
+[node name="DurationTimer" type="Timer" parent="."]

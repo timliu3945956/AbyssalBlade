@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6i8e81glpvk2"
+path="res://.godot/imported/darkness balance.mp3-653041692d8a246ac420bc6d31ab6717.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss2/darkness balance.mp3"
+dest_files=["res://.godot/imported/darkness balance.mp3-653041692d8a246ac420bc6d31ab6717.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

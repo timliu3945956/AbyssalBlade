@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://daqkjmxufx8fq"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/trophy.gd" id="1_1ltka"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="2_frq7m"]
+
+[sub_resource type="Gradient" id="Gradient_ik31w"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0qtjc"]
+gradient = SubResource("Gradient_ik31w")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_si5cj"]
+radius = 14.0
+
+[node name="Trophy" type="Node2D"]
+script = ExtResource("1_1ltka")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-08, -5.06639e-07)
+scale = Vector2(0.046875, 12)
+texture = SubResource("GradientTexture1D_0qtjc")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_frq7m")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_si5cj")
+disabled = true

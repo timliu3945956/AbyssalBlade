@@ -1,0 +1,279 @@
+[gd_scene load_steps=37 format=3 uid="uid://b4bc0yh2repwy"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_scene.gd" id="1_qi8dg"]
+[ext_resource type="PackedScene" uid="uid://cubcpgdntlnmq" path="res://Characters/player.tscn" id="1_xk7iv"]
+[ext_resource type="PackedScene" uid="uid://h3p0t0jee2ed" path="res://Menu/LobbyScene/music_box.tscn" id="2_wq58a"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="3_kk8oq"]
+[ext_resource type="PackedScene" uid="uid://blefnmy7vmx1i" path="res://Menu/LobbyScene/replay_story.tscn" id="3_pwodm"]
+[ext_resource type="PackedScene" uid="uid://daqkjmxufx8fq" path="res://Menu/LobbyScene/trophy.tscn" id="4_itb2h"]
+[ext_resource type="PackedScene" uid="uid://d110gpw0lpuj8" path="res://Menu/LobbyScene/tutorial.tscn" id="5_bp6w6"]
+[ext_resource type="Texture2D" uid="uid://cwai0q1dw0cjr" path="res://sprites/Props/campfire-sheet.png" id="7_ebban"]
+[ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="8_0iy28"]
+[ext_resource type="PackedScene" uid="uid://qmd2y2dbyx4q" path="res://Menu/LobbyScene/mirror.tscn" id="8_1ifei"]
+
+[sub_resource type="Gradient" id="Gradient_225bx"]
+colors = PackedColorArray(0, 0, 0, 0.509804, 0, 0, 0, 0.509804)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_utqpb"]
+gradient = SubResource("Gradient_225bx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ty7qj"]
+resource_local_to_scene = true
+shader = ExtResource("3_kk8oq")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_yw3kp"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yhqsf"]
+gradient = SubResource("Gradient_yw3kp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26b73"]
+size = Vector2(256, 0.191304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg65s"]
+atlas = ExtResource("7_ebban")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krnrw"]
+atlas = ExtResource("7_ebban")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q34q"]
+atlas = ExtResource("7_ebban")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jilfx"]
+atlas = ExtResource("7_ebban")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6nlo"]
+atlas = ExtResource("7_ebban")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scxks"]
+atlas = ExtResource("7_ebban")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drm1w"]
+atlas = ExtResource("7_ebban")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gauql"]
+atlas = ExtResource("7_ebban")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iqavm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg65s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krnrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q34q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jilfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6nlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scxks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drm1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gauql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dithu"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_kkmli"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pbgek"]
+curve = SubResource("Curve_kkmli")
+
+[sub_resource type="Gradient" id="Gradient_05c30"]
+offsets = PackedFloat32Array(0, 0.333333, 0.626667, 0.862222, 1)
+colors = PackedColorArray(1, 1, 0.258824, 1, 1, 0.870588, 0.121569, 1, 1, 0.490196, 0.0784314, 1, 0.933333, 0.321569, 0.0705882, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eay6m"]
+gradient = SubResource("Gradient_05c30")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gd8cj"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+inherit_velocity_ratio = 50.0
+direction = Vector3(0, -1, 0)
+angular_velocity_curve = SubResource("CurveTexture_pbgek")
+gravity = Vector3(0, -50, 0)
+scale_min = 0.2
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_eay6m")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_teuyt"]
+offsets = PackedFloat32Array(0, 0.249027, 0.412451, 0.634241, 1)
+colors = PackedColorArray(1, 1, 0.25098, 0.537255, 1, 0.623529, 0.0823529, 0.278431, 1, 0.368627, 0.0705882, 0.133333, 0.478431, 0.176471, 0.0352941, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1nu0d"]
+gradient = SubResource("Gradient_teuyt")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_nmxcl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campfire/PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wuqes"]
+resource_name = "new_animation"
+length = 2.00001
+loop_mode = 2
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Campfire/PointLight2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.666667)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0l4yd"]
+_data = {
+"RESET": SubResource("Animation_nmxcl"),
+"new_animation": SubResource("Animation_wuqes")
+}
+
+[node name="LobbyScene" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_qi8dg")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1.875, 270.5)
+texture = SubResource("GradientTexture1D_utqpb")
+
+[node name="Player" parent="." instance=ExtResource("1_xk7iv")]
+position = Vector2(-2, 85.5)
+
+[node name="Sprite2D" parent="Player/Smoothing2D" index="1"]
+material = SubResource("ShaderMaterial_ty7qj")
+
+[node name="MusicBox" parent="." instance=ExtResource("2_wq58a")]
+visible = false
+position = Vector2(-118, -3.5)
+
+[node name="ReplayStory" parent="." instance=ExtResource("3_pwodm")]
+visible = false
+position = Vector2(-65, 62.5)
+
+[node name="Trophy" parent="." instance=ExtResource("4_itb2h")]
+visible = false
+position = Vector2(116, 1.5)
+
+[node name="Tutorial" parent="." instance=ExtResource("5_bp6w6")]
+visible = false
+position = Vector2(66, 58.5)
+
+[node name="StageSelectDoor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-6.10352e-05, -70.5)
+scale = Vector2(0.242187, 57.5)
+texture = SubResource("GradientTexture1D_yhqsf")
+
+[node name="Area2D" type="Area2D" parent="StageSelectDoor"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StageSelectDoor/Area2D"]
+position = Vector2(6.10352e-05, 0.408696)
+shape = SubResource("RectangleShape2D_26b73")
+
+[node name="Mirror" parent="." instance=ExtResource("8_1ifei")]
+position = Vector2(0, -39)
+
+[node name="Campfire" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_iqavm")
+autoplay = "default"
+frame_progress = 0.592144
+
+[node name="CampfireParticle" type="GPUParticles2D" parent="Campfire"]
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_dithu")
+position = Vector2(0, 11)
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_gd8cj")
+texture = ExtResource("8_0iy28")
+lifetime = 1.2
+
+[node name="PointLight2D" type="PointLight2D" parent="Campfire"]
+position = Vector2(0, 13)
+texture = SubResource("GradientTexture2D_1nu0d")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0l4yd")
+}
+autoplay = "new_animation"
+
+[connection signal="body_entered" from="StageSelectDoor/Area2D" to="." method="_on_area_2d_body_entered"]
+
+[editable path="Player"]
+[editable path="Player/HurtboxSlash"]
+[editable path="Player/Hurtbox"]
+[editable path="Player/Marker2D/HitBox"]
+[editable path="Player/Marker2D/HeavyHitBox"]
+[editable path="Player/CanvasLayer/Healthbar"]
+[editable path="Player/CanvasLayer/Manabar"]

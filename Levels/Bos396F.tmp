@@ -1,0 +1,3180 @@
+[gd_scene load_steps=134 format=3 uid="uid://d0o155qrrrqer"]
+
+[ext_resource type="Script" path="res://Levels/boss_room_0.gd" id="1_nl3hu"]
+[ext_resource type="Shader" uid="uid://brpjtuahwxqa" path="res://Utilities/parallax shaders/layer_2_trees.tres" id="1_x3d5r"]
+[ext_resource type="Texture2D" uid="uid://ptf2ussgrta" path="res://sprites/tilesets/BG_1.png" id="2_haouh"]
+[ext_resource type="Texture2D" uid="uid://dcbj3gbbgglei" path="res://sprites/tilesets/layer2.png" id="3_pipgi"]
+[ext_resource type="Texture2D" uid="uid://db6ek8n7accsv" path="res://sprites/tilesets/layer3.png" id="4_3bsvy"]
+[ext_resource type="Texture2D" uid="uid://d342bd6uglm2p" path="res://sprites/tilesets/layer4.png" id="4_ydepb"]
+[ext_resource type="Texture2D" uid="uid://b61hlw3knnqfn" path="res://sprites/tilesets/layer5.png" id="5_cvqnb"]
+[ext_resource type="Texture2D" uid="uid://iomc57p8cjxn" path="res://sprites/tilesets/BG_5_ambience.png" id="6_ohq05"]
+[ext_resource type="Texture2D" uid="uid://c78u26oecwmeh" path="res://sprites/tilesets/layer6.png" id="6_q56pk"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="7_urlax"]
+[ext_resource type="PackedScene" uid="uid://c74hqb8uiat7a" path="res://Characters/boss_0.tscn" id="9_0auax"]
+[ext_resource type="Shader" path="res://Levels/disable.gdshader" id="9_en4v4"]
+[ext_resource type="PackedScene" uid="uid://cubcpgdntlnmq" path="res://Characters/player.tscn" id="10_fqm5q"]
+[ext_resource type="Texture2D" uid="uid://cyqpln7q8iagq" path="res://sprites/tilesets/arena_v04.png" id="10_nl47u"]
+[ext_resource type="Texture2D" uid="uid://c5oqhsovh2epb" path="res://Utilities/Effects/Wind_Shout_Burst_White_v6_spritesheet.png" id="11_ggm5k"]
+[ext_resource type="Texture2D" uid="uid://c78qt3tcxae43" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/ns_sides.png" id="12_mkhn4"]
+[ext_resource type="Texture2D" uid="uid://d0yh0824alk1q" path="res://Utilities/Effects/particlefx/Impact_Wind_White_v6_spritesheet.png" id="12_oii5s"]
+[ext_resource type="Texture2D" uid="uid://r6254bxosgu0" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/middle_side.png" id="13_05xqt"]
+[ext_resource type="Texture2D" uid="uid://bd5153718fo41" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/ew_sides.png" id="13_tyr6w"]
+[ext_resource type="Texture2D" uid="uid://cjnremj7sj82s" path="res://sprites/DenialBoss/boss_animations/idle.png" id="23_2yvol"]
+[ext_resource type="Shader" path="res://Levels/distortion.gdshader" id="25_blkk8"]
+[ext_resource type="Texture2D" uid="uid://cgcw0i0kj51m0" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 4.png" id="26_himf1"]
+[ext_resource type="Texture2D" uid="uid://bu8pl6m4ma530" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 5.png" id="27_qnfbu"]
+[ext_resource type="Texture2D" uid="uid://b7y8w0j0k6u2c" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 6.png" id="28_puy1c"]
+[ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="29_8x0w5"]
+[ext_resource type="Texture2D" uid="uid://bfegkeyrta2na" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 7.png" id="29_gi4v0"]
+[ext_resource type="Texture2D" uid="uid://cbuagayfw7ecl" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/whole circle.png" id="29_mq8ku"]
+[ext_resource type="Texture2D" uid="uid://dtv0wsuw05iu7" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 8.png" id="30_nyp3c"]
+[ext_resource type="Texture2D" uid="uid://cap0tv73j08et" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 1.png" id="31_gsvav"]
+[ext_resource type="Texture2D" uid="uid://uhx2brh54g27" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 2.png" id="32_0fnqw"]
+[ext_resource type="Texture2D" uid="uid://spanto2odac7" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 3.png" id="33_0lm4w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3m84i"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 2.3
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n76gv"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 1.9
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo7f4"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 1.6
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qn4ky"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 1.3
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73r1f"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jucx6"]
+shader = ExtResource("1_x3d5r")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqsbl"]
+shader = ExtResource("7_urlax")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28e3s"]
+shader = ExtResource("9_en4v4")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jjwxl"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10p3g"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1742"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6dpv"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3uv"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b57p"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkheo"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_livhe"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtj7s"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5px4n"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ainkh"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vvnm"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ui7"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8v5b"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isq6"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_namaf"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsfjf"]
+atlas = ExtResource("11_ggm5k")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g58v"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmo5l"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07byj"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7jfn"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2xyp"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqgyb"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n40oa"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpg1m"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc7v1"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvgam"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smvx1"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70wn1"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w7qp"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckadr"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j8n0"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ces1r"]
+atlas = ExtResource("12_oii5s")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64ayb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6dpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b57p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkheo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_livhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtj7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5px4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vvnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsfjf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g58v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmo5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07byj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7jfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqgyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n40oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpg1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvgam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smvx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70wn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckadr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ces1r")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 25.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qooa1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1t30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6dpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b57p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkheo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_livhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtj7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5px4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vvnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsfjf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g58v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmo5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07byj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7jfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqgyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n40oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpg1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvgam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smvx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70wn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckadr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ces1r")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 25.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2ebmb"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wj37s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfd0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6dpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b57p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkheo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_livhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtj7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5px4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vvnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsfjf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 25.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g58v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmo5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07byj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7jfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqgyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n40oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpg1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvgam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smvx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70wn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckadr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ces1r")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 25.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lleyv"]
+shader = ExtResource("9_en4v4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mgamo"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_28s52"]
+seamless = true
+noise = SubResource("FastNoiseLite_mgamo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21ck1"]
+shader = ExtResource("25_blkk8")
+shader_parameter/speed = 0.117
+shader_parameter/strength = 0.0
+shader_parameter/alpha = 0.0
+shader_parameter/noise = SubResource("NoiseTexture2D_28s52")
+
+[sub_resource type="Animation" id="Animation_o35rb"]
+length = 0.001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/NSCleave:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/NSCleave:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/EWCleave:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/EWCleave:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AreaAttacks/NorthCleaveCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AreaAttacks/SouthCleaveCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AreaAttacks/EastCleaveCollision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AreaAttacks/WestCleaveCollision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.208337, 0, 0.208337, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ForegroundArena/Marker2D/TopBottomAttack:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ForegroundArena/Marker2D/NSEWAttack:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AreaAttacks/Slice0Collision:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("AreaAttacks/Slice1Collision:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AreaAttacks/Slice2Collision:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("AreaAttacks/Slice3Collision:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("AreaAttacks/Slice4Collision:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("AreaAttacks/Slice5Collision:disabled")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("AreaAttacks/Slice6Collision:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("AreaAttacks/Slice7Collision:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("AreaAttacks/VerticalCleave:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("AreaAttacks/VerticalCleave:self_modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("AreaAttacks/HorizontalCleave:self_modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("AreaAttacks/HorizontalCleave:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("AreaAttacks/HorizontalCleaveCollision:disabled")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("AreaAttacks/VerticalCleaveCollision:disabled")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("AreaAttacks/JumpSlam:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("AreaAttacks/JumpSlam:self_modulate")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("AreaAttacks/JumpSlamCollision:disabled")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bt6qw"]
+resource_name = "cleave_ew_attack"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/EastCleaveCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/WestCleaveCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ForegroundArena/Marker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ForegroundArena/Marker2D/NSEWAttack:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ns_ew_cleave"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0obih"]
+resource_name = "cleave_ew_telegraph"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/EWCleave:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/EWCleave:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667, 2.58333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v6o66"]
+resource_name = "cleave_horizontal_attack"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForegroundArena/Marker2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ForegroundArena/Marker2D/TopBottomAttack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_bottom_cleave"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/HorizontalCleaveCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_i2lxd"]
+resource_name = "cleave_horizontal_telegraph"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/HorizontalCleave:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.416667, 2.58333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/HorizontalCleave:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qvf1k"]
+resource_name = "cleave_ns_attack"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/NorthCleaveCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/SouthCleaveCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ForegroundArena/Marker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ForegroundArena/Marker2D/NSEWAttack:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ns_ew_cleave"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ykvyt"]
+resource_name = "cleave_ns_telegraph"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/NSCleave:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/NSCleave:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667, 2.58333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0t3d7"]
+resource_name = "cleave_vertical_attack"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForegroundArena/Marker2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ForegroundArena/Marker2D/TopBottomAttack:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_bottom_cleave"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/VerticalCleaveCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_w7jb1"]
+resource_name = "cleave_vertical_telegraph"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/VerticalCleave:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/VerticalCleave:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667, 2.58333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lefr0"]
+resource_name = "jump_slam"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/JumpSlam:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/JumpSlam:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/JumpSlamCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.25, 2.33333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_avjlm"]
+resource_name = "safe_slice_0"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice0Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1ikyq"]
+resource_name = "safe_slice_1"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice1Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3uot3"]
+resource_name = "safe_slice_2"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice2Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xpw5v"]
+resource_name = "safe_slice_3"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice3Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nn21i"]
+resource_name = "safe_slice_4"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice4Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_k2go3"]
+resource_name = "safe_slice_5"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice5Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yfnc7"]
+resource_name = "safe_slice_6"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice6Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vrijb"]
+resource_name = "safe_slice_7"
+length = 0.583341
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AreaAttacks/INVISIBLEATTACK:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.05, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AreaAttacks/Slice7Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AreaAttacks/INVISIBLEATTACK:material:shader_parameter/alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_on22x"]
+_data = {
+"RESET": SubResource("Animation_o35rb"),
+"cleave_ew_attack": SubResource("Animation_bt6qw"),
+"cleave_ew_telegraph": SubResource("Animation_0obih"),
+"cleave_horizontal_attack": SubResource("Animation_v6o66"),
+"cleave_horizontal_telegraph": SubResource("Animation_i2lxd"),
+"cleave_ns_attack": SubResource("Animation_qvf1k"),
+"cleave_ns_telegraph": SubResource("Animation_ykvyt"),
+"cleave_vertical_attack": SubResource("Animation_0t3d7"),
+"cleave_vertical_telegraph": SubResource("Animation_w7jb1"),
+"jump_slam": SubResource("Animation_lefr0"),
+"safe_slice_0": SubResource("Animation_avjlm"),
+"safe_slice_1": SubResource("Animation_1ikyq"),
+"safe_slice_2": SubResource("Animation_3uot3"),
+"safe_slice_3": SubResource("Animation_xpw5v"),
+"safe_slice_4": SubResource("Animation_nn21i"),
+"safe_slice_5": SubResource("Animation_k2go3"),
+"safe_slice_6": SubResource("Animation_yfnc7"),
+"safe_slice_7": SubResource("Animation_vrijb")
+}
+
+[sub_resource type="Animation" id="Animation_ruf2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Shockwave"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qdxox"]
+resource_name = "charge_cleave"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Generate"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_qvugy"]
+resource_name = "charge_cleave_2"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Generate"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_0ohgw"]
+resource_name = "clone_attack"
+length = 2.99881
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Unleash"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.99875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.99875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wbbgd"]
+resource_name = "clone_spawn"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Visions of the Past"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3neqg"]
+resource_name = "dodge_shadow"
+length = 12.0
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Phantom Cleaves"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_ufqpw"]
+resource_name = "sac_mechanic"
+length = 10.0
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Umbral Purge"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="Animation" id="Animation_yrb5l"]
+resource_name = "dodge_shadow_combo"
+length = 6.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Phantom Cleaves"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g0pbk"]
+_data = {
+"RESET": SubResource("Animation_ruf2a"),
+"charge_cleave": SubResource("Animation_qdxox"),
+"charge_cleave_2": SubResource("Animation_qvugy"),
+"clone_attack": SubResource("Animation_0ohgw"),
+"clone_spawn": SubResource("Animation_wbbgd"),
+"dodge_shadow": SubResource("Animation_3neqg"),
+"dodge_shadow_combo": SubResource("Animation_yrb5l"),
+"sac_mechanic": SubResource("Animation_ufqpw")
+}
+
+[sub_resource type="Animation" id="Animation_rmj2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForegroundArena:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jkwx3"]
+resource_name = "flash_arena"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ForegroundArena:material:shader_parameter/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sv60f"]
+_data = {
+"RESET": SubResource("Animation_rmj2f"),
+"flash_arena": SubResource("Animation_jkwx3")
+}
+
+[sub_resource type="Animation" id="Animation_3wtgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveLeftClone:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveRightClone:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleaveLeftClone:material:shader_parameter/fade_alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CleaveRightClone:material:shader_parameter/fade_alpha")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CleaveLeftClone:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CleaveRightClone:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_p770d"]
+resource_name = "clone_left"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveLeftClone:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveLeftClone:material:shader_parameter/fade_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7]
+}
+
+[sub_resource type="Animation" id="Animation_5i20u"]
+resource_name = "clone_left_end"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveLeftClone:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveLeftClone:material:shader_parameter/fade_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3mafd"]
+resource_name = "clone_right"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveRightClone:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveRightClone:material:shader_parameter/fade_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleaveRightClone:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b1xsl"]
+resource_name = "clone_right_end"
+length = 3.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveRightClone:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveRightClone:material:shader_parameter/fade_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d6i5a"]
+resource_name = "idle"
+length = 1.25001
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaveLeftClone:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_2yvol")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleaveLeftClone:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleaveLeftClone:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CleaveRightClone:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_2yvol")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CleaveRightClone:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CleaveRightClone:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_juwxo"]
+_data = {
+"RESET": SubResource("Animation_3wtgj"),
+"clone_left": SubResource("Animation_p770d"),
+"clone_left_end": SubResource("Animation_5i20u"),
+"clone_right": SubResource("Animation_3mafd"),
+"clone_right_end": SubResource("Animation_b1xsl"),
+"idle": SubResource("Animation_d6i5a")
+}
+
+[sub_resource type="Animation" id="Animation_4wbbc"]
+resource_name = "CircleFlash"
+length = 1.5
+loop_mode = 2
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle4Light:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle7Light:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle6Light:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle5Light:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Circle3Light:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Circle2Light:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Circle1Light:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Circle0Light:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_7ttsk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Circle4Light:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Circle7Light:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.156863)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Circle6Light:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.153298)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Circle5Light:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.196078)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Circle3Light:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.17884)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Circle2Light:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.184116)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Circle1Light:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.167115)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Circle0Light:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.00680095)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hypje"]
+_data = {
+"CircleFlash": SubResource("Animation_4wbbc"),
+"RESET": SubResource("Animation_7ttsk")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4u72"]
+shader = ExtResource("29_8x0w5")
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yvnb"]
+shader = ExtResource("29_8x0w5")
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_fqhkt"]
+offsets = PackedFloat32Array(0.385214, 0.692607, 0.719844, 0.731517)
+colors = PackedColorArray(0, 0, 0, 1, 0.49543, 0.49543, 0.49543, 1, 0.85214, 0.85214, 0.85214, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wxml7"]
+gradient = SubResource("Gradient_fqhkt")
+width = 67
+height = 67
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_akrg3"]
+offsets = PackedFloat32Array(0.311284, 0.377432, 0.40856, 0.451362)
+colors = PackedColorArray(0.000113828, 0.000113828, 0.000113828, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fjrgi"]
+gradient = SubResource("Gradient_akrg3")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_m2v1r"]
+offsets = PackedFloat32Array(0.396887, 0.583658, 0.700389, 0.719844)
+colors = PackedColorArray(0.000113828, 0.000113828, 0.000113828, 0, 0.444508, 0.444508, 0.444508, 0.444444, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ud6d"]
+gradient = SubResource("Gradient_m2v1r")
+width = 300
+height = 300
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ocdsq"]
+offsets = PackedFloat32Array(0, 0.845865)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tf2ry"]
+gradient = SubResource("Gradient_ocdsq")
+width = 1200
+height = 800
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="BossRoom0" type="CenterContainer"]
+z_index = 1
+y_sort_enabled = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nl3hu")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -100
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_3m84i")
+position = Vector2(240, 135)
+texture = ExtResource("2_haouh")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_index = -2
+material = SubResource("ShaderMaterial_3m84i")
+position = Vector2(240, 135)
+texture = ExtResource("3_pipgi")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = -2
+material = SubResource("ShaderMaterial_n76gv")
+position = Vector2(240, 135)
+texture = ExtResource("4_3bsvy")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+z_index = -2
+material = SubResource("ShaderMaterial_qo7f4")
+position = Vector2(240, 135)
+texture = ExtResource("4_ydepb")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.65, 0.65)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+z_index = -2
+material = SubResource("ShaderMaterial_qn4ky")
+position = Vector2(240, 135)
+texture = ExtResource("5_cvqnb")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+z_index = -2
+material = SubResource("ShaderMaterial_73r1f")
+position = Vector2(240, 135)
+texture = ExtResource("6_q56pk")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -2
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+z_index = -2
+material = SubResource("ShaderMaterial_jucx6")
+position = Vector2(240, 135)
+texture = ExtResource("6_ohq05")
+
+[node name="ForegroundArena" type="Sprite2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_uqsbl")
+texture = ExtResource("10_nl47u")
+
+[node name="Marker2D" type="Marker2D" parent="ForegroundArena"]
+
+[node name="TopBottomAttack" type="Sprite2D" parent="ForegroundArena/Marker2D"]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_28e3s")
+texture = ExtResource("13_05xqt")
+
+[node name="TopBottomAttack" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/TopBottomAttack"]
+material = SubResource("CanvasItemMaterial_jjwxl")
+rotation = -1.57079
+sprite_frames = SubResource("SpriteFrames_64ayb")
+animation = &"new_animation"
+frame = 15
+frame_progress = 1.0
+
+[node name="TopBottomAttack2" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/TopBottomAttack"]
+modulate = Color(0.840705, 0.155577, 0.184382, 1)
+material = SubResource("CanvasItemMaterial_qooa1")
+rotation = -0.785397
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_d1t30")
+frame = 15
+frame_progress = 1.0
+
+[node name="NSEWAttack" type="Sprite2D" parent="ForegroundArena/Marker2D"]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_28e3s")
+texture = ExtResource("12_mkhn4")
+
+[node name="NSEWAttack" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/NSEWAttack"]
+material = SubResource("CanvasItemMaterial_2ebmb")
+sprite_frames = SubResource("SpriteFrames_64ayb")
+animation = &"new_animation"
+frame = 15
+frame_progress = 1.0
+
+[node name="NSEWAttack2" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/NSEWAttack"]
+modulate = Color(0.839216, 0.156863, 0.184314, 1)
+material = SubResource("CanvasItemMaterial_wj37s")
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_gfd0f")
+frame = 15
+frame_progress = 1.0
+
+[node name="JumpSlamAttack" type="Sprite2D" parent="ForegroundArena/Marker2D"]
+clip_children = 2
+material = SubResource("ShaderMaterial_lleyv")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("29_mq8ku")
+
+[node name="SlamAttack" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/JumpSlamAttack"]
+material = SubResource("CanvasItemMaterial_2ebmb")
+rotation = -1.0472
+sprite_frames = SubResource("SpriteFrames_64ayb")
+animation = &"new_animation"
+frame = 15
+frame_progress = 1.0
+
+[node name="SlamAttack2" type="AnimatedSprite2D" parent="ForegroundArena/Marker2D/JumpSlamAttack"]
+modulate = Color(0.839216, 0.156863, 0.184314, 1)
+material = SubResource("CanvasItemMaterial_wj37s")
+scale = Vector2(1.1, 1.1)
+sprite_frames = SubResource("SpriteFrames_gfd0f")
+frame = 15
+frame_progress = 1.0
+
+[node name="OutsideArenaDeath" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutsideArenaDeath"]
+visible = false
+polygon = PackedVector2Array(-152, 5, -151, -21, -143, -51, -130, -80, -114, -101, -89, -123, -66, -136, -34, -147, -13, -151, 14, -151, 47, -144, 66, -136, 88, -124, 111, -102, 125, -85, 140, -59, 146, -40, 150, -23, 151, -12, 151, 15, 146, 43, 133, 74, 116, 97, 97, 116, 82, 127, 68, 135, 46, 145, 12, 151, -12, 151, -31, 149, -56, 141, -77, 131, -95, 117, -112, 103, -126, 85, -137, 65, -144, 47, -148, 33, -151, 20, -151, 13, -152, 12, -152, 5, -215, 5, -213, 192, 241, 188, 235, -190, -207, -179, -215, 5)
+
+[node name="Boss0" parent="." instance=ExtResource("9_0auax")]
+
+[node name="Label" parent="Boss0/AttackMeter" index="0"]
+text = "Shockwave"
+
+[node name="Label" parent="Boss0/CanvasLayer" index="1"]
+text = "DENIAL"
+
+[node name="Player" parent="." instance=ExtResource("10_fqm5q")]
+position = Vector2(0, 99)
+
+[node name="AreaAttacks" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="HorizontalCleave" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("13_05xqt")
+
+[node name="VerticalCleave" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+rotation = 1.57079
+texture = ExtResource("13_05xqt")
+
+[node name="NSCleave" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("12_mkhn4")
+
+[node name="EWCleave" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("13_tyr6w")
+
+[node name="VerticalCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+rotation = 1.57079
+polygon = PackedVector2Array(-130, -74, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 74, 130, 74, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -74)
+disabled = true
+
+[node name="HorizontalCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-130, -74, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 74, 130, 74, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -74)
+disabled = true
+
+[node name="NorthCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -105, -104, -105, -104, -104, -103, -104, -103, -103, -102, -103, -102, -102, -101, -102, -101, -101, -100, -101, -100, -100, -99, -100, -99, -99, -98, -99, -98, -98, -97, -98, -97, -97, -96, -97, -96, -96, -95, -96, -95, -95, -94, -95, -94, -94, -93, -94, -93, -93, -92, -93, -92, -92, -91, -92, -91, -91, -90, -91, -90, -90, -89, -90, -89, -89, -88, -89, -88, -88, -87, -88, -87, -87, -86, -87, -86, -86, -85, -86, -85, -85, -84, -85, -84, -84, -83, -84, -83, -83, -82, -83, -82, -82, -81, -82, -81, -81, -80, -81, -80, -80, -79, -80, -79, -79, -78, -79, -78, -78, -77, -78, -77, -77, -76, -77, -76, -76, -75, -76, -75, -75, -74, -75, -74, -74, -73, -74, -73, -73, -72, -73, -72, -72, -71, -72, -71, -71, -70, -71, -70, -70, -69, -70, -69, -69, -68, -69, -68, -68, -67, -68, -67, -67, -66, -67, -66, -66, -65, -66, -65, -65, -64, -65, -64, -64, -63, -64, -63, -63, -62, -63, -62, -62, -61, -62, -61, -61, -60, -61, -60, -60, -59, -60, -59, -59, -58, -59, -58, -58, -57, -58, -57, -57, -56, -57, -56, -56, -55, -56, -55, -55, -54, -55, -54, -54, -53, -54, -53, -53, -52, -53, -52, -52, -51, -52, -51, -51, -50, -51, -50, -50, -49, -50, -49, -49, -48, -49, -48, -48, -47, -48, -47, -47, -46, -47, -46, -46, -45, -46, -45, -45, -44, -45, -44, -44, -43, -44, -43, -43, -42, -43, -42, -42, -41, -42, -41, -41, -40, -41, -40, -40, -39, -40, -39, -39, -38, -39, -38, -38, -37, -38, -37, -37, -36, -37, -36, -36, -35, -36, -35, -35, -34, -35, -34, -34, -33, -34, -33, -33, -32, -33, -32, -32, -31, -32, -31, -31, -30, -31, -30, -30, -29, -30, -29, -29, -28, -29, -28, -28, -27, -28, -27, -27, -26, -27, -26, -26, -25, -26, -25, -25, -24, -25, -24, -24, -23, -24, -23, -23, -22, -23, -22, -22, -21, -22, -21, -21, -20, -21, -20, -20, -19, -20, -19, -19, -18, -19, -18, -18, -17, -18, -17, -17, -16, -17, -16, -16, -15, -16, -15, -15, -14, -15, -14, -14, -13, -14, -13, -13, -12, -13, -12, -12, -11, -12, -11, -11, -10, -11, -10, -10, -9, -10, -9, -9, -8, -9, -8, -8, -7, -8, -7, -7, -6, -7, -6, -6, -5, -6, -5, -5, -4, -5, -4, -4, -3, -4, -3, -3, -2, -3, -2, -2, -1, -2, -1, -1, 1, -1, 1, -2, 2, -2, 2, -3, 3, -3, 3, -4, 4, -4, 4, -5, 5, -5, 5, -6, 6, -6, 6, -7, 7, -7, 7, -8, 8, -8, 8, -9, 9, -9, 9, -10, 10, -10, 10, -11, 11, -11, 11, -12, 12, -12, 12, -13, 13, -13, 13, -14, 14, -14, 14, -15, 15, -15, 15, -16, 16, -16, 16, -17, 17, -17, 17, -18, 18, -18, 18, -19, 19, -19, 19, -20, 20, -20, 20, -21, 21, -21, 21, -22, 22, -22, 22, -23, 23, -23, 23, -24, 24, -24, 24, -25, 25, -25, 25, -26, 26, -26, 26, -27, 27, -27, 27, -28, 28, -28, 28, -29, 29, -29, 29, -30, 30, -30, 30, -31, 31, -31, 31, -32, 32, -32, 32, -33, 33, -33, 33, -34, 34, -34, 34, -35, 35, -35, 35, -36, 36, -36, 36, -37, 37, -37, 37, -38, 38, -38, 38, -39, 39, -39, 39, -40, 40, -40, 40, -41, 41, -41, 41, -42, 42, -42, 42, -43, 43, -43, 43, -44, 44, -44, 44, -45, 45, -45, 45, -46, 46, -46, 46, -47, 47, -47, 47, -48, 48, -48, 48, -49, 49, -49, 49, -50, 50, -50, 50, -51, 51, -51, 51, -52, 52, -52, 52, -53, 53, -53, 53, -54, 54, -54, 54, -55, 55, -55, 55, -56, 56, -56, 56, -57, 57, -57, 57, -58, 58, -58, 58, -59, 59, -59, 59, -60, 60, -60, 60, -61, 61, -61, 61, -62, 62, -62, 62, -63, 63, -63, 63, -64, 64, -64, 64, -65, 65, -65, 65, -66, 66, -66, 66, -67, 67, -67, 67, -68, 68, -68, 68, -69, 69, -69, 69, -70, 70, -70, 70, -71, 71, -71, 71, -72, 72, -72, 72, -73, 73, -73, 73, -74, 74, -74, 74, -75, 75, -75, 75, -76, 76, -76, 76, -77, 77, -77, 77, -78, 78, -78, 78, -79, 79, -79, 79, -80, 80, -80, 80, -81, 81, -81, 81, -82, 82, -82, 82, -83, 83, -83, 83, -84, 84, -84, 84, -85, 85, -85, 85, -86, 86, -86, 86, -87, 87, -87, 87, -88, 88, -88, 88, -89, 89, -89, 89, -90, 90, -90, 90, -91, 91, -91, 91, -92, 92, -92, 92, -93, 93, -93, 93, -94, 94, -94, 94, -95, 95, -95, 95, -96, 96, -96, 96, -97, 97, -97, 97, -98, 98, -98, 98, -99, 99, -99, 99, -100, 100, -100, 100, -101, 101, -101, 101, -102, 102, -102, 102, -103, 103, -103, 103, -104, 104, -104, 104, -105, 105, -105, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="SouthCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-1, 1, -1, 2, -2, 2, -2, 3, -3, 3, -3, 4, -4, 4, -4, 5, -5, 5, -5, 6, -6, 6, -6, 7, -7, 7, -7, 8, -8, 8, -8, 9, -9, 9, -9, 10, -10, 10, -10, 11, -11, 11, -11, 12, -12, 12, -12, 13, -13, 13, -13, 14, -14, 14, -14, 15, -15, 15, -15, 16, -16, 16, -16, 17, -17, 17, -17, 18, -18, 18, -18, 19, -19, 19, -19, 20, -20, 20, -20, 21, -21, 21, -21, 22, -22, 22, -22, 23, -23, 23, -23, 24, -24, 24, -24, 25, -25, 25, -25, 26, -26, 26, -26, 27, -27, 27, -27, 28, -28, 28, -28, 29, -29, 29, -29, 30, -30, 30, -30, 31, -31, 31, -31, 32, -32, 32, -32, 33, -33, 33, -33, 34, -34, 34, -34, 35, -35, 35, -35, 36, -36, 36, -36, 37, -37, 37, -37, 38, -38, 38, -38, 39, -39, 39, -39, 40, -40, 40, -40, 41, -41, 41, -41, 42, -42, 42, -42, 43, -43, 43, -43, 44, -44, 44, -44, 45, -45, 45, -45, 46, -46, 46, -46, 47, -47, 47, -47, 48, -48, 48, -48, 49, -49, 49, -49, 50, -50, 50, -50, 51, -51, 51, -51, 52, -52, 52, -52, 53, -53, 53, -53, 54, -54, 54, -54, 55, -55, 55, -55, 56, -56, 56, -56, 57, -57, 57, -57, 58, -58, 58, -58, 59, -59, 59, -59, 60, -60, 60, -60, 61, -61, 61, -61, 62, -62, 62, -62, 63, -63, 63, -63, 64, -64, 64, -64, 65, -65, 65, -65, 66, -66, 66, -66, 67, -67, 67, -67, 68, -68, 68, -68, 69, -69, 69, -69, 70, -70, 70, -70, 71, -71, 71, -71, 72, -72, 72, -72, 73, -73, 73, -73, 74, -74, 74, -74, 75, -75, 75, -75, 76, -76, 76, -76, 77, -77, 77, -77, 78, -78, 78, -78, 79, -79, 79, -79, 80, -80, 80, -80, 81, -81, 81, -81, 82, -82, 82, -82, 83, -83, 83, -83, 84, -84, 84, -84, 85, -85, 85, -85, 86, -86, 86, -86, 87, -87, 87, -87, 88, -88, 88, -88, 89, -89, 89, -89, 90, -90, 90, -90, 91, -91, 91, -91, 92, -92, 92, -92, 93, -93, 93, -93, 94, -94, 94, -94, 95, -95, 95, -95, 96, -96, 96, -96, 97, -97, 97, -97, 98, -98, 98, -98, 99, -99, 99, -99, 100, -100, 100, -100, 101, -101, 101, -101, 102, -102, 102, -102, 103, -103, 103, -103, 104, -104, 104, -104, 105, -105, 105, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 105, 104, 105, 104, 104, 103, 104, 103, 103, 102, 103, 102, 102, 101, 102, 101, 101, 100, 101, 100, 100, 99, 100, 99, 99, 98, 99, 98, 98, 97, 98, 97, 97, 96, 97, 96, 96, 95, 96, 95, 95, 94, 95, 94, 94, 93, 94, 93, 93, 92, 93, 92, 92, 91, 92, 91, 91, 90, 91, 90, 90, 89, 90, 89, 89, 88, 89, 88, 88, 87, 88, 87, 87, 86, 87, 86, 86, 85, 86, 85, 85, 84, 85, 84, 84, 83, 84, 83, 83, 82, 83, 82, 82, 81, 82, 81, 81, 80, 81, 80, 80, 79, 80, 79, 79, 78, 79, 78, 78, 77, 78, 77, 77, 76, 77, 76, 76, 75, 76, 75, 75, 74, 75, 74, 74, 73, 74, 73, 73, 72, 73, 72, 72, 71, 72, 71, 71, 70, 71, 70, 70, 69, 70, 69, 69, 68, 69, 68, 68, 67, 68, 67, 67, 66, 67, 66, 66, 65, 66, 65, 65, 64, 65, 64, 64, 63, 64, 63, 63, 62, 63, 62, 62, 61, 62, 61, 61, 60, 61, 60, 60, 59, 60, 59, 59, 58, 59, 58, 58, 57, 58, 57, 57, 56, 57, 56, 56, 55, 56, 55, 55, 54, 55, 54, 54, 53, 54, 53, 53, 52, 53, 52, 52, 51, 52, 51, 51, 50, 51, 50, 50, 49, 50, 49, 49, 48, 49, 48, 48, 47, 48, 47, 47, 46, 47, 46, 46, 45, 46, 45, 45, 44, 45, 44, 44, 43, 44, 43, 43, 42, 43, 42, 42, 41, 42, 41, 41, 40, 41, 40, 40, 39, 40, 39, 39, 38, 39, 38, 38, 37, 38, 37, 37, 36, 37, 36, 36, 35, 36, 35, 35, 34, 35, 34, 34, 33, 34, 33, 33, 32, 33, 32, 32, 31, 32, 31, 31, 30, 31, 30, 30, 29, 30, 29, 29, 28, 29, 28, 28, 27, 28, 27, 27, 26, 27, 26, 26, 25, 26, 25, 25, 24, 25, 24, 24, 23, 24, 23, 23, 22, 23, 22, 22, 21, 22, 21, 21, 20, 21, 20, 20, 19, 20, 19, 19, 18, 19, 18, 18, 17, 18, 17, 17, 16, 17, 16, 16, 15, 16, 15, 15, 14, 15, 14, 14, 13, 14, 13, 13, 12, 13, 12, 12, 11, 12, 11, 11, 10, 11, 10, 10, 9, 10, 9, 9, 8, 9, 8, 8, 7, 8, 7, 7, 6, 7, 6, 6, 5, 6, 5, 5, 4, 5, 4, 4, 3, 4, 3, 3, 2, 3, 2, 2, 1, 2, 1, 1)
+disabled = true
+
+[node name="EastCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -105, 105, -105, 104, -104, 104, -104, 103, -103, 103, -103, 102, -102, 102, -102, 101, -101, 101, -101, 100, -100, 100, -100, 99, -99, 99, -99, 98, -98, 98, -98, 97, -97, 97, -97, 96, -96, 96, -96, 95, -95, 95, -95, 94, -94, 94, -94, 93, -93, 93, -93, 92, -92, 92, -92, 91, -91, 91, -91, 90, -90, 90, -90, 89, -89, 89, -89, 88, -88, 88, -88, 87, -87, 87, -87, 86, -86, 86, -86, 85, -85, 85, -85, 84, -84, 84, -84, 83, -83, 83, -83, 82, -82, 82, -82, 81, -81, 81, -81, 80, -80, 80, -80, 79, -79, 79, -79, 78, -78, 78, -78, 77, -77, 77, -77, 76, -76, 76, -76, 75, -75, 75, -75, 74, -74, 74, -74, 73, -73, 73, -73, 72, -72, 72, -72, 71, -71, 71, -71, 70, -70, 70, -70, 69, -69, 69, -69, 68, -68, 68, -68, 67, -67, 67, -67, 66, -66, 66, -66, 65, -65, 65, -65, 64, -64, 64, -64, 63, -63, 63, -63, 62, -62, 62, -62, 61, -61, 61, -61, 60, -60, 60, -60, 59, -59, 59, -59, 58, -58, 58, -58, 57, -57, 57, -57, 56, -56, 56, -56, 55, -55, 55, -55, 54, -54, 54, -54, 53, -53, 53, -53, 52, -52, 52, -52, 51, -51, 51, -51, 50, -50, 50, -50, 49, -49, 49, -49, 48, -48, 48, -48, 47, -47, 47, -47, 46, -46, 46, -46, 45, -45, 45, -45, 44, -44, 44, -44, 43, -43, 43, -43, 42, -42, 42, -42, 41, -41, 41, -41, 40, -40, 40, -40, 39, -39, 39, -39, 38, -38, 38, -38, 37, -37, 37, -37, 36, -36, 36, -36, 35, -35, 35, -35, 34, -34, 34, -34, 33, -33, 33, -33, 32, -32, 32, -32, 31, -31, 31, -31, 30, -30, 30, -30, 29, -29, 29, -29, 28, -28, 28, -28, 27, -27, 27, -27, 26, -26, 26, -26, 25, -25, 25, -25, 24, -24, 24, -24, 23, -23, 23, -23, 22, -22, 22, -22, 21, -21, 21, -21, 20, -20, 20, -20, 19, -19, 19, -19, 18, -18, 18, -18, 17, -17, 17, -17, 16, -16, 16, -16, 15, -15, 15, -15, 14, -14, 14, -14, 13, -13, 13, -13, 12, -12, 12, -12, 11, -11, 11, -11, 10, -10, 10, -10, 9, -9, 9, -9, 8, -8, 8, -8, 7, -7, 7, -7, 6, -6, 6, -6, 5, -5, 5, -5, 4, -4, 4, -4, 3, -3, 3, -3, 2, -2, 2, -2, 1, -1, 1, -1, -1, -2, -1, -2, -2, -3, -2, -3, -3, -4, -3, -4, -4, -5, -4, -5, -5, -6, -5, -6, -6, -7, -6, -7, -7, -8, -7, -8, -8, -9, -8, -9, -9, -10, -9, -10, -10, -11, -10, -11, -11, -12, -11, -12, -12, -13, -12, -13, -13, -14, -13, -14, -14, -15, -14, -15, -15, -16, -15, -16, -16, -17, -16, -17, -17, -18, -17, -18, -18, -19, -18, -19, -19, -20, -19, -20, -20, -21, -20, -21, -21, -22, -21, -22, -22, -23, -22, -23, -23, -24, -23, -24, -24, -25, -24, -25, -25, -26, -25, -26, -26, -27, -26, -27, -27, -28, -27, -28, -28, -29, -28, -29, -29, -30, -29, -30, -30, -31, -30, -31, -31, -32, -31, -32, -32, -33, -32, -33, -33, -34, -33, -34, -34, -35, -34, -35, -35, -36, -35, -36, -36, -37, -36, -37, -37, -38, -37, -38, -38, -39, -38, -39, -39, -40, -39, -40, -40, -41, -40, -41, -41, -42, -41, -42, -42, -43, -42, -43, -43, -44, -43, -44, -44, -45, -44, -45, -45, -46, -45, -46, -46, -47, -46, -47, -47, -48, -47, -48, -48, -49, -48, -49, -49, -50, -49, -50, -50, -51, -50, -51, -51, -52, -51, -52, -52, -53, -52, -53, -53, -54, -53, -54, -54, -55, -54, -55, -55, -56, -55, -56, -56, -57, -56, -57, -57, -58, -57, -58, -58, -59, -58, -59, -59, -60, -59, -60, -60, -61, -60, -61, -61, -62, -61, -62, -62, -63, -62, -63, -63, -64, -63, -64, -64, -65, -64, -65, -65, -66, -65, -66, -66, -67, -66, -67, -67, -68, -67, -68, -68, -69, -68, -69, -69, -70, -69, -70, -70, -71, -70, -71, -71, -72, -71, -72, -72, -73, -72, -73, -73, -74, -73, -74, -74, -75, -74, -75, -75, -76, -75, -76, -76, -77, -76, -77, -77, -78, -77, -78, -78, -79, -78, -79, -79, -80, -79, -80, -80, -81, -80, -81, -81, -82, -81, -82, -82, -83, -82, -83, -83, -84, -83, -84, -84, -85, -84, -85, -85, -86, -85, -86, -86, -87, -86, -87, -87, -88, -87, -88, -88, -89, -88, -89, -89, -90, -89, -90, -90, -91, -90, -91, -91, -92, -91, -92, -92, -93, -92, -93, -93, -94, -93, -94, -94, -95, -94, -95, -95, -96, -95, -96, -96, -97, -96, -97, -97, -98, -97, -98, -98, -99, -98, -99, -99, -100, -99, -100, -100, -101, -100, -101, -101, -102, -101, -102, -102, -103, -102, -103, -103, -104, -103, -104, -104, -105, -104, -105, -105)
+disabled = true
+
+[node name="WestCleaveCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(105, -105, 105, -104, 104, -104, 104, -103, 103, -103, 103, -102, 102, -102, 102, -101, 101, -101, 101, -100, 100, -100, 100, -99, 99, -99, 99, -98, 98, -98, 98, -97, 97, -97, 97, -96, 96, -96, 96, -95, 95, -95, 95, -94, 94, -94, 94, -93, 93, -93, 93, -92, 92, -92, 92, -91, 91, -91, 91, -90, 90, -90, 90, -89, 89, -89, 89, -88, 88, -88, 88, -87, 87, -87, 87, -86, 86, -86, 86, -85, 85, -85, 85, -84, 84, -84, 84, -83, 83, -83, 83, -82, 82, -82, 82, -81, 81, -81, 81, -80, 80, -80, 80, -79, 79, -79, 79, -78, 78, -78, 78, -77, 77, -77, 77, -76, 76, -76, 76, -75, 75, -75, 75, -74, 74, -74, 74, -73, 73, -73, 73, -72, 72, -72, 72, -71, 71, -71, 71, -70, 70, -70, 70, -69, 69, -69, 69, -68, 68, -68, 68, -67, 67, -67, 67, -66, 66, -66, 66, -65, 65, -65, 65, -64, 64, -64, 64, -63, 63, -63, 63, -62, 62, -62, 62, -61, 61, -61, 61, -60, 60, -60, 60, -59, 59, -59, 59, -58, 58, -58, 58, -57, 57, -57, 57, -56, 56, -56, 56, -55, 55, -55, 55, -54, 54, -54, 54, -53, 53, -53, 53, -52, 52, -52, 52, -51, 51, -51, 51, -50, 50, -50, 50, -49, 49, -49, 49, -48, 48, -48, 48, -47, 47, -47, 47, -46, 46, -46, 46, -45, 45, -45, 45, -44, 44, -44, 44, -43, 43, -43, 43, -42, 42, -42, 42, -41, 41, -41, 41, -40, 40, -40, 40, -39, 39, -39, 39, -38, 38, -38, 38, -37, 37, -37, 37, -36, 36, -36, 36, -35, 35, -35, 35, -34, 34, -34, 34, -33, 33, -33, 33, -32, 32, -32, 32, -31, 31, -31, 31, -30, 30, -30, 30, -29, 29, -29, 29, -28, 28, -28, 28, -27, 27, -27, 27, -26, 26, -26, 26, -25, 25, -25, 25, -24, 24, -24, 24, -23, 23, -23, 23, -22, 22, -22, 22, -21, 21, -21, 21, -20, 20, -20, 20, -19, 19, -19, 19, -18, 18, -18, 18, -17, 17, -17, 17, -16, 16, -16, 16, -15, 15, -15, 15, -14, 14, -14, 14, -13, 13, -13, 13, -12, 12, -12, 12, -11, 11, -11, 11, -10, 10, -10, 10, -9, 9, -9, 9, -8, 8, -8, 8, -7, 7, -7, 7, -6, 6, -6, 6, -5, 5, -5, 5, -4, 4, -4, 4, -3, 3, -3, 3, -2, 2, -2, 2, -1, 1, -1, 1, 1, 2, 1, 2, 2, 3, 2, 3, 3, 4, 3, 4, 4, 5, 4, 5, 5, 6, 5, 6, 6, 7, 6, 7, 7, 8, 7, 8, 8, 9, 8, 9, 9, 10, 9, 10, 10, 11, 10, 11, 11, 12, 11, 12, 12, 13, 12, 13, 13, 14, 13, 14, 14, 15, 14, 15, 15, 16, 15, 16, 16, 17, 16, 17, 17, 18, 17, 18, 18, 19, 18, 19, 19, 20, 19, 20, 20, 21, 20, 21, 21, 22, 21, 22, 22, 23, 22, 23, 23, 24, 23, 24, 24, 25, 24, 25, 25, 26, 25, 26, 26, 27, 26, 27, 27, 28, 27, 28, 28, 29, 28, 29, 29, 30, 29, 30, 30, 31, 30, 31, 31, 32, 31, 32, 32, 33, 32, 33, 33, 34, 33, 34, 34, 35, 34, 35, 35, 36, 35, 36, 36, 37, 36, 37, 37, 38, 37, 38, 38, 39, 38, 39, 39, 40, 39, 40, 40, 41, 40, 41, 41, 42, 41, 42, 42, 43, 42, 43, 43, 44, 43, 44, 44, 45, 44, 45, 45, 46, 45, 46, 46, 47, 46, 47, 47, 48, 47, 48, 48, 49, 48, 49, 49, 50, 49, 50, 50, 51, 50, 51, 51, 52, 51, 52, 52, 53, 52, 53, 53, 54, 53, 54, 54, 55, 54, 55, 55, 56, 55, 56, 56, 57, 56, 57, 57, 58, 57, 58, 58, 59, 58, 59, 59, 60, 59, 60, 60, 61, 60, 61, 61, 62, 61, 62, 62, 63, 62, 63, 63, 64, 63, 64, 64, 65, 64, 65, 65, 66, 65, 66, 66, 67, 66, 67, 67, 68, 67, 68, 68, 69, 68, 69, 69, 70, 69, 70, 70, 71, 70, 71, 71, 72, 71, 72, 72, 73, 72, 73, 73, 74, 73, 74, 74, 75, 74, 75, 75, 76, 75, 76, 76, 77, 76, 77, 77, 78, 77, 78, 78, 79, 78, 79, 79, 80, 79, 80, 80, 81, 80, 81, 81, 82, 81, 82, 82, 83, 82, 83, 83, 84, 83, 84, 84, 85, 84, 85, 85, 86, 85, 86, 86, 87, 86, 87, 87, 88, 87, 88, 88, 89, 88, 89, 89, 90, 89, 90, 90, 91, 90, 91, 91, 92, 91, 92, 92, 93, 92, 93, 93, 94, 93, 94, 94, 95, 94, 95, 95, 96, 95, 96, 96, 97, 96, 97, 97, 98, 97, 98, 98, 99, 98, 99, 99, 100, 99, 100, 100, 101, 100, 101, 101, 102, 101, 102, 102, 103, 102, 103, 103, 104, 103, 104, 104, 105, 104, 105, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105)
+disabled = true
+
+[node name="Slice0Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("26_himf1")
+
+[node name="Slice1Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("27_qnfbu")
+
+[node name="Slice2Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("28_puy1c")
+
+[node name="Slice3Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("29_gi4v0")
+
+[node name="Slice4Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("30_nyp3c")
+
+[node name="Slice5Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("31_gsvav")
+
+[node name="Slice6Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("32_0fnqw")
+
+[node name="Slice7Circle" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+texture = ExtResource("33_0lm4w")
+
+[node name="INVISIBLEATTACK" type="Sprite2D" parent="AreaAttacks"]
+z_index = -1
+material = SubResource("ShaderMaterial_21ck1")
+position = Vector2(0, 0.5)
+texture = ExtResource("10_nl47u")
+
+[node name="Slice0Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 58, 137, 58, 139, 57, 135, 57, 135, 56, 133, 55, 131, 55, 131, 56, 130, 56, 130, 57, 130, 58, 129, 58, 129, 60, 128, 60, 128, 61, 127, 61, 127, 62, 126, 62, 126, 64, 125, 64, 125, 65, 124, 65, 124, 66, 123, 66, 123, 67, 121, 67, 121, 68, 120, 68, 120, 69, 119, 69, 119, 70, 117, 70, 117, 71, 115, 71, 115, 72, 113, 72, 113, 73, 110, 73, 110, 74, 106, 74, 106, 75, 95, 75, 95, 74, 91, 74, 91, 73, 88, 73, 88, 72, 86, 72, 86, 71, 84, 71, 84, 70, 82, 70, 82, 69, 81, 69, 81, 68, 80, 68, 80, 67, 78, 67, 78, 66, 77, 66, 77, 65, 76, 65, 76, 64, 75, 64, 75, 62, 74, 62, 74, 61, 73, 61, 73, 60, 72, 60, 72, 58, 71, 58, 71, 56, 70, 56, 70, 54, 69, 54, 69, 51, 68, 51, 68, 47, 67, 47, 67, 36, 68, 36, 68, 32, 69, 32, 69, 29, 70, 29, 70, 27, 71, 27, 71, 25, 72, 25, 72, 23, 73, 23, 73, 22, 74, 22, 74, 21, 75, 21, 75, 19, 76, 19, 76, 18, 77, 18, 77, 17, 78, 17, 78, 16, 80, 16, 80, 15, 81, 15, 81, 14, 82, 14, 82, 13, 84, 13, 84, 12, 86, 12, 86, 11, 88, 11, 88, 10, 91, 10, 91, 9, 95, 9, 95, 8, 106, 8, 106, 9, 110, 9, 110, 10, 113, 10, 113, 11, 115, 11, 115, 12, 117, 12, 117, 13, 119, 13, 119, 14, 120, 14, 120, 15, 121, 15, 121, 16, 123, 16, 123, 17, 124, 17, 124, 18, 125, 18, 125, 19, 126, 19, 126, 21, 127, 21, 127, 22, 128, 22, 128, 23, 129, 23, 129, 25, 130, 25, 130, 27, 131, 27, 131, 29, 132, 29, 132, 32, 133, 32, 133, 36, 134, 36, 134, 47, 133, 47, 133, 51, 132, 51, 132, 54, 131, 54, 131, 55, 133, 55, 133, 56, 135, 56, 135, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice1Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 60, 137, 61, 137, 61, 136, 60, 136, 60, 132, 59, 131, 58, 131, 58, 132, 57, 132, 56, 132, 56, 133, 53, 133, 53, 134, 49, 134, 49, 135, 38, 135, 38, 134, 34, 134, 34, 133, 31, 133, 31, 132, 29, 132, 29, 131, 27, 131, 27, 130, 25, 130, 25, 129, 24, 129, 24, 128, 23, 128, 23, 127, 21, 127, 21, 126, 20, 126, 20, 125, 19, 125, 19, 124, 18, 124, 18, 122, 17, 122, 17, 121, 16, 121, 16, 120, 15, 120, 15, 118, 14, 118, 14, 116, 13, 116, 13, 114, 12, 114, 12, 111, 11, 111, 11, 107, 10, 107, 10, 96, 11, 96, 11, 92, 12, 92, 12, 89, 13, 89, 13, 87, 14, 87, 14, 85, 15, 85, 15, 83, 16, 83, 16, 82, 17, 82, 17, 81, 18, 81, 18, 79, 19, 79, 19, 78, 20, 78, 20, 77, 21, 77, 21, 76, 23, 76, 23, 75, 24, 75, 24, 74, 25, 74, 25, 73, 27, 73, 27, 72, 29, 72, 29, 71, 31, 71, 31, 70, 34, 70, 34, 69, 38, 69, 38, 68, 49, 68, 49, 69, 53, 69, 53, 70, 56, 70, 56, 71, 58, 71, 58, 72, 60, 72, 60, 73, 62, 73, 62, 74, 63, 74, 63, 75, 64, 75, 64, 76, 66, 76, 66, 77, 67, 77, 67, 78, 68, 78, 68, 79, 69, 79, 69, 81, 70, 81, 70, 82, 71, 82, 71, 83, 72, 83, 72, 85, 73, 85, 73, 87, 74, 87, 74, 89, 75, 89, 75, 92, 76, 92, 76, 96, 77, 96, 77, 107, 76, 107, 76, 111, 75, 111, 75, 114, 74, 114, 74, 116, 73, 116, 73, 118, 72, 118, 72, 120, 71, 120, 71, 121, 70, 121, 70, 122, 69, 122, 69, 124, 68, 124, 68, 125, 67, 125, 67, 126, 66, 126, 66, 127, 64, 127, 64, 128, 63, 128, 63, 129, 62, 129, 62, 130, 60, 130, 60, 131, 59, 131, 59, 132, 60, 132, 60, 136, 61, 136, 61, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice2Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -63, 136, -62, 136, -61, 136, -61, 135, -60, 135, -60, 134, -59, 134, -59, 133, -58, 133, -57, 132, -57, 131, -58, 131, -58, 130, -60, 130, -60, 129, -61, 129, -61, 128, -62, 128, -62, 127, -64, 127, -64, 126, -65, 126, -65, 125, -66, 125, -66, 124, -67, 124, -67, 122, -68, 122, -68, 121, -69, 121, -69, 120, -70, 120, -70, 118, -71, 118, -71, 116, -72, 116, -72, 114, -73, 114, -73, 111, -74, 111, -74, 107, -75, 107, -75, 96, -74, 96, -74, 92, -73, 92, -73, 89, -72, 89, -72, 87, -71, 87, -71, 85, -70, 85, -70, 83, -69, 83, -69, 82, -68, 82, -68, 81, -67, 81, -67, 79, -66, 79, -66, 78, -65, 78, -65, 77, -64, 77, -64, 76, -62, 76, -62, 75, -61, 75, -61, 74, -60, 74, -60, 73, -58, 73, -58, 72, -56, 72, -56, 71, -54, 71, -54, 70, -51, 70, -51, 69, -47, 69, -47, 68, -36, 68, -36, 69, -32, 69, -32, 70, -29, 70, -29, 71, -27, 71, -27, 72, -25, 72, -25, 73, -23, 73, -23, 74, -22, 74, -22, 75, -21, 75, -21, 76, -19, 76, -19, 77, -18, 77, -18, 78, -17, 78, -17, 79, -16, 79, -16, 81, -15, 81, -15, 82, -14, 82, -14, 83, -13, 83, -13, 85, -12, 85, -12, 87, -11, 87, -11, 89, -10, 89, -10, 92, -9, 92, -9, 96, -8, 96, -8, 107, -9, 107, -9, 111, -10, 111, -10, 114, -11, 114, -11, 116, -12, 116, -12, 118, -13, 118, -13, 120, -14, 120, -14, 121, -15, 121, -15, 122, -16, 122, -16, 124, -17, 124, -17, 125, -18, 125, -18, 126, -19, 126, -19, 127, -21, 127, -21, 128, -22, 128, -22, 129, -23, 129, -23, 130, -25, 130, -25, 131, -27, 131, -27, 132, -29, 132, -29, 133, -32, 133, -32, 134, -36, 134, -36, 135, -47, 135, -47, 134, -51, 134, -51, 133, -54, 133, -54, 132, -56, 132, -56, 131, -57, 131, -57, 132, -58, 132, -58, 133, -59, 133, -59, 134, -60, 134, -60, 135, -61, 135, -61, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice3Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 56, -137, 56, -136, 56, -135, 56, -135, 55, -133, 55, -133, 54, -132, 54, -132, 53, -132, 52, -132, 51, -133, 51, -133, 47, -134, 47, -134, 36, -133, 36, -133, 32, -132, 32, -132, 29, -131, 29, -131, 27, -130, 27, -130, 25, -129, 25, -129, 23, -128, 23, -128, 22, -127, 22, -127, 21, -126, 21, -126, 19, -125, 19, -125, 18, -124, 18, -124, 17, -123, 17, -123, 16, -121, 16, -121, 15, -120, 15, -120, 14, -119, 14, -119, 13, -117, 13, -117, 12, -115, 12, -115, 11, -113, 11, -113, 10, -110, 10, -110, 9, -106, 9, -106, 8, -95, 8, -95, 9, -91, 9, -91, 10, -88, 10, -88, 11, -86, 11, -86, 12, -84, 12, -84, 13, -82, 13, -82, 14, -81, 14, -81, 15, -80, 15, -80, 16, -78, 16, -78, 17, -77, 17, -77, 18, -76, 18, -76, 19, -75, 19, -75, 21, -74, 21, -74, 22, -73, 22, -73, 23, -72, 23, -72, 25, -71, 25, -71, 27, -70, 27, -70, 29, -69, 29, -69, 32, -68, 32, -68, 36, -67, 36, -67, 47, -68, 47, -68, 51, -69, 51, -69, 54, -70, 54, -70, 56, -71, 56, -71, 58, -72, 58, -72, 60, -73, 60, -73, 61, -74, 61, -74, 62, -75, 62, -75, 64, -76, 64, -76, 65, -77, 65, -77, 66, -78, 66, -78, 67, -80, 67, -80, 68, -81, 68, -81, 69, -82, 69, -82, 70, -84, 70, -84, 71, -86, 71, -86, 72, -88, 72, -88, 73, -91, 73, -91, 74, -95, 74, -95, 75, -106, 75, -106, 74, -110, 74, -110, 73, -113, 73, -113, 72, -115, 72, -115, 71, -117, 71, -117, 70, -119, 70, -119, 69, -120, 69, -120, 68, -121, 68, -121, 67, -123, 67, -123, 66, -124, 66, -124, 65, -125, 65, -125, 64, -126, 64, -126, 62, -127, 62, -127, 61, -128, 61, -128, 60, -129, 60, -129, 58, -130, 58, -130, 56, -131, 56, -131, 54, -132, 54, -133, 54, -133, 55, -135, 55, -135, 56, -138, 56, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice4Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -60, -135, -60, -135, -59, -132, -59, -132, -58, -130, -58, -130, -57, -129, -57, -129, -59, -128, -59, -128, -60, -127, -60, -127, -61, -126, -61, -126, -63, -125, -63, -125, -64, -124, -64, -124, -65, -123, -65, -123, -66, -121, -66, -121, -67, -120, -67, -120, -68, -119, -68, -119, -69, -117, -69, -117, -70, -115, -70, -115, -71, -113, -71, -113, -72, -110, -72, -110, -73, -106, -73, -106, -74, -95, -74, -95, -73, -91, -73, -91, -72, -88, -72, -88, -71, -86, -71, -86, -70, -84, -70, -84, -69, -82, -69, -82, -68, -81, -68, -81, -67, -80, -67, -80, -66, -78, -66, -78, -65, -77, -65, -77, -64, -76, -64, -76, -63, -75, -63, -75, -61, -74, -61, -74, -60, -73, -60, -73, -59, -72, -59, -72, -57, -71, -57, -71, -55, -70, -55, -70, -53, -69, -53, -69, -50, -68, -50, -68, -46, -67, -46, -67, -35, -68, -35, -68, -31, -69, -31, -69, -28, -70, -28, -70, -26, -71, -26, -71, -24, -72, -24, -72, -22, -73, -22, -73, -21, -74, -21, -74, -20, -75, -20, -75, -18, -76, -18, -76, -17, -77, -17, -77, -16, -78, -16, -78, -15, -80, -15, -80, -14, -81, -14, -81, -13, -82, -13, -82, -12, -84, -12, -84, -11, -86, -11, -86, -10, -88, -10, -88, -9, -91, -9, -91, -8, -95, -8, -95, -7, -106, -7, -106, -8, -110, -8, -110, -9, -113, -9, -113, -10, -115, -10, -115, -11, -117, -11, -117, -12, -119, -12, -119, -13, -120, -13, -120, -14, -121, -14, -121, -15, -123, -15, -123, -16, -124, -16, -124, -17, -125, -17, -125, -18, -126, -18, -126, -20, -127, -20, -127, -21, -128, -21, -128, -22, -129, -22, -129, -24, -130, -24, -130, -26, -131, -26, -131, -28, -132, -28, -132, -31, -133, -31, -133, -35, -134, -35, -134, -46, -133, -46, -133, -50, -132, -50, -132, -53, -131, -53, -131, -55, -130, -55, -130, -57, -130, -58, -132, -58, -132, -59, -135, -59, -135, -60, -137, -60, -136.961, -59, -138, -59, -138, -58, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice5Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -135, -58, -135, -60, -133, -57, -133, -57, -131, -56, -131, -56, -132, -54, -132, -54, -133, -51, -133, -51, -134, -47, -134, -47, -135, -36, -135, -36, -134, -32, -134, -32, -133, -29, -133, -29, -132, -27, -132, -27, -131, -25, -131, -25, -130, -23, -130, -23, -129, -22, -129, -22, -128, -21, -128, -21, -127, -19, -127, -19, -126, -18, -126, -18, -125, -17, -125, -17, -124, -16, -124, -16, -122, -15, -122, -15, -121, -14, -121, -14, -120, -13, -120, -13, -118, -12, -118, -12, -116, -11, -116, -11, -114, -10, -114, -10, -111, -9, -111, -9, -107, -8, -107, -8, -96, -9, -96, -9, -92, -10, -92, -10, -89, -11, -89, -11, -87, -12, -87, -12, -85, -13, -85, -13, -83, -14, -83, -14, -82, -15, -82, -15, -81, -16, -81, -16, -79, -17, -79, -17, -78, -18, -78, -18, -77, -19, -77, -19, -76, -21, -76, -21, -75, -22, -75, -22, -74, -23, -74, -23, -73, -25, -73, -25, -72, -27, -72, -27, -71, -29, -71, -29, -70, -32, -70, -32, -69, -36, -69, -36, -68, -47, -68, -47, -69, -51, -69, -51, -70, -54, -70, -54, -71, -56, -71, -56, -72, -58, -72, -58, -73, -60, -73, -60, -74, -61, -74, -61, -75, -62, -75, -62, -76, -64, -76, -64, -77, -65, -77, -65, -78, -66, -78, -66, -79, -67, -79, -67, -81, -68, -81, -68, -82, -69, -82, -69, -83, -70, -83, -70, -85, -71, -85, -71, -87, -72, -87, -72, -89, -73, -89, -73, -92, -74, -92, -74, -96, -75, -96, -75, -107, -74, -107, -74, -111, -73, -111, -73, -114, -72, -114, -72, -116, -71, -116, -71, -118, -70, -118, -70, -120, -69, -120, -69, -121, -68, -121, -68, -122, -67, -122, -67, -124, -66, -124, -66, -125, -65, -125, -65, -126, -64, -126, -64, -127, -62, -127, -62, -128, -61, -128, -61, -129, -60, -129, -60, -130, -58, -130, -58, -131, -57, -131, -57, -133, -60, -133, -58, -135, -59, -135, -59, -136, -60, -136, -60, -137, -61, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice6Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 63, -136, 62, -136, 61, -136, 61, -134, 60, -134, 60, -132, 60, -130, 62, -130, 62, -129, 63, -129, 63, -128, 64, -128, 64, -127, 66, -127, 66, -126, 67, -126, 67, -125, 68, -125, 68, -124, 69, -124, 69, -122, 70, -122, 70, -121, 71, -121, 71, -120, 72, -120, 72, -118, 73, -118, 73, -116, 74, -116, 74, -114, 75, -114, 75, -111, 76, -111, 76, -107, 77, -107, 77, -96, 76, -96, 76, -92, 75, -92, 75, -89, 74, -89, 74, -87, 73, -87, 73, -85, 72, -85, 72, -83, 71, -83, 71, -82, 70, -82, 70, -81, 69, -81, 69, -79, 68, -79, 68, -78, 67, -78, 67, -77, 66, -77, 66, -76, 64, -76, 64, -75, 63, -75, 63, -74, 62, -74, 62, -73, 60, -73, 60, -72, 58, -72, 58, -71, 56, -71, 56, -70, 53, -70, 53, -69, 49, -69, 49, -68, 38, -68, 38, -69, 34, -69, 34, -70, 31, -70, 31, -71, 29, -71, 29, -72, 27, -72, 27, -73, 25, -73, 25, -74, 24, -74, 24, -75, 23, -75, 23, -76, 21, -76, 21, -77, 20, -77, 20, -78, 19, -78, 19, -79, 18, -79, 18, -81, 17, -81, 17, -82, 16, -82, 16, -83, 15, -83, 15, -85, 14, -85, 14, -87, 13, -87, 13, -89, 12, -89, 12, -92, 11, -92, 11, -96, 10, -96, 10, -107, 11, -107, 11, -111, 12, -111, 12, -114, 13, -114, 13, -116, 14, -116, 14, -118, 15, -118, 15, -120, 16, -120, 16, -121, 17, -121, 17, -122, 18, -122, 18, -124, 19, -124, 19, -125, 20, -125, 20, -126, 21, -126, 21, -127, 23, -127, 23, -128, 24, -128, 24, -129, 25, -129, 25, -130, 27, -130, 27, -131, 29, -131, 29, -132, 31, -132, 31, -133, 34, -133, 34, -134, 38, -134, 38, -135, 49, -135, 49, -134, 53, -134, 53, -133, 56, -133, 56, -132, 58, -132, 58, -131, 59, -131, 60, -131, 60, -132, 60, -134, 61, -134, 61, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="Slice7Collision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 137.99, -57, 138, -59, 137, -59, 136, -59, 136, -58, 134, -58, 134, -57, 132, -57, 132, -55, 131, -55, 131, -54, 131, -53, 132, -53, 132, -50, 133, -50, 133, -46, 134, -46, 134, -35, 133, -35, 133, -31, 132, -31, 132, -28, 131, -28, 131, -26, 130, -26, 130, -24, 129, -24, 129, -22, 128, -22, 128, -21, 127, -21, 127, -20, 126, -20, 126, -18, 125, -18, 125, -17, 124, -17, 124, -16, 123, -16, 123, -15, 121, -15, 121, -14, 120, -14, 120, -13, 119, -13, 119, -12, 117, -12, 117, -11, 115, -11, 115, -10, 113, -10, 113, -9, 110, -9, 110, -8, 106, -8, 106, -7, 95, -7, 95, -8, 91, -8, 91, -9, 88, -9, 88, -10, 86, -10, 86, -11, 84, -11, 84, -12, 82, -12, 82, -13, 81, -13, 81, -14, 80, -14, 80, -15, 78, -15, 78, -16, 77, -16, 77, -17, 76, -17, 76, -18, 75, -18, 75, -20, 74, -20, 74, -21, 73, -21, 73, -22, 72, -22, 72, -24, 71, -24, 71, -26, 70, -26, 70, -28, 69, -28, 69, -31, 68, -31, 68, -35, 67, -35, 67, -46, 68, -46, 68, -50, 69, -50, 69, -53, 70, -53, 70, -55, 71, -55, 71, -57, 72, -57, 72, -59, 73, -59, 73, -60, 74, -60, 74, -61, 75, -61, 75, -63, 76, -63, 76, -64, 77, -64, 77, -65, 78, -65, 78, -66, 80, -66, 80, -67, 81, -67, 81, -68, 82, -68, 82, -69, 84, -69, 84, -70, 86, -70, 86, -71, 88, -71, 88, -72, 91, -72, 91, -73, 95, -73, 95, -74, 106, -74, 106, -73, 110, -73, 110, -72, 113, -72, 113, -71, 115, -71, 115, -70, 117, -70, 117, -69, 119, -69, 119, -68, 120, -68, 120, -67, 121, -67, 121, -66, 123, -66, 123, -65, 124, -65, 124, -64, 125, -64, 125, -63, 126, -63, 126, -61, 127, -61, 127, -60, 128, -60, 128, -59, 129, -59, 129, -57, 130, -57, 130, -55, 132, -55, 132, -57, 134, -57, 134, -58, 136, -58, 136, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="JumpSlam" type="Sprite2D" parent="AreaAttacks"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("29_mq8ku")
+
+[node name="JumpSlamCollision" type="CollisionPolygon2D" parent="AreaAttacks"]
+visible = false
+scale = Vector2(0.7, 0.7)
+polygon = PackedVector2Array(-12, -150, -12, -149, -21, -149, -21, -148, -27, -148, -27, -147, -32, -147, -32, -146, -36, -146, -36, -145, -40, -145, -40, -144, -43, -144, -43, -143, -46, -143, -46, -142, -49, -142, -49, -141, -52, -141, -52, -140, -55, -140, -55, -139, -57, -139, -57, -138, -59, -138, -59, -137, -62, -137, -62, -136, -64, -136, -64, -135, -66, -135, -66, -134, -68, -134, -68, -133, -70, -133, -70, -132, -72, -132, -72, -131, -73, -131, -73, -130, -75, -130, -75, -129, -77, -129, -77, -128, -79, -128, -79, -127, -80, -127, -80, -126, -82, -126, -82, -125, -83, -125, -83, -124, -85, -124, -85, -123, -86, -123, -86, -122, -87, -122, -87, -121, -89, -121, -89, -120, -90, -120, -90, -119, -91, -119, -91, -118, -93, -118, -93, -117, -94, -117, -94, -116, -95, -116, -95, -115, -96, -115, -96, -114, -98, -114, -98, -113, -99, -113, -99, -112, -100, -112, -100, -111, -101, -111, -101, -110, -102, -110, -102, -109, -103, -109, -103, -108, -104, -108, -104, -107, -105, -107, -105, -106, -106, -106, -106, -105, -107, -105, -107, -104, -108, -104, -108, -103, -109, -103, -109, -102, -110, -102, -110, -101, -111, -101, -111, -100, -112, -100, -112, -99, -113, -99, -113, -98, -114, -98, -114, -96, -115, -96, -115, -95, -116, -95, -116, -94, -117, -94, -117, -93, -118, -93, -118, -91, -119, -91, -119, -90, -120, -90, -120, -89, -121, -89, -121, -87, -122, -87, -122, -86, -123, -86, -123, -85, -124, -85, -124, -83, -125, -83, -125, -82, -126, -82, -126, -80, -127, -80, -127, -79, -128, -79, -128, -77, -129, -77, -129, -75, -130, -75, -130, -73, -131, -73, -131, -72, -132, -72, -132, -70, -133, -70, -133, -68, -134, -68, -134, -66, -135, -66, -135, -64, -136, -64, -136, -62, -137, -62, -137, -59, -138, -59, -138, -57, -139, -57, -139, -55, -140, -55, -140, -52, -141, -52, -141, -49, -142, -49, -142, -46, -143, -46, -143, -43, -144, -43, -144, -40, -145, -40, -145, -36, -146, -36, -146, -32, -147, -32, -147, -27, -148, -27, -148, -21, -149, -21, -149, -12, -150, -12, -150, 12, -149, 12, -149, 21, -148, 21, -148, 27, -147, 27, -147, 32, -146, 32, -146, 36, -145, 36, -145, 40, -144, 40, -144, 43, -143, 43, -143, 46, -142, 46, -142, 49, -141, 49, -141, 52, -140, 52, -140, 55, -139, 55, -139, 57, -138, 57, -138, 59, -137, 59, -137, 62, -136, 62, -136, 64, -135, 64, -135, 66, -134, 66, -134, 68, -133, 68, -133, 70, -132, 70, -132, 72, -131, 72, -131, 73, -130, 73, -130, 75, -129, 75, -129, 77, -128, 77, -128, 79, -127, 79, -127, 80, -126, 80, -126, 82, -125, 82, -125, 83, -124, 83, -124, 85, -123, 85, -123, 86, -122, 86, -122, 87, -121, 87, -121, 89, -120, 89, -120, 90, -119, 90, -119, 91, -118, 91, -118, 93, -117, 93, -117, 94, -116, 94, -116, 95, -115, 95, -115, 96, -114, 96, -114, 98, -113, 98, -113, 99, -112, 99, -112, 100, -111, 100, -111, 101, -110, 101, -110, 102, -109, 102, -109, 103, -108, 103, -108, 104, -107, 104, -107, 105, -106, 105, -106, 106, -105, 106, -105, 107, -104, 107, -104, 108, -103, 108, -103, 109, -102, 109, -102, 110, -101, 110, -101, 111, -100, 111, -100, 112, -99, 112, -99, 113, -98, 113, -98, 114, -96, 114, -96, 115, -95, 115, -95, 116, -94, 116, -94, 117, -93, 117, -93, 118, -91, 118, -91, 119, -90, 119, -90, 120, -89, 120, -89, 121, -87, 121, -87, 122, -86, 122, -86, 123, -85, 123, -85, 124, -83, 124, -83, 125, -82, 125, -82, 126, -80, 126, -80, 127, -79, 127, -79, 128, -77, 128, -77, 129, -75, 129, -75, 130, -73, 130, -73, 131, -72, 131, -72, 132, -70, 132, -70, 133, -68, 133, -68, 134, -66, 134, -66, 135, -64, 135, -64, 136, -62, 136, -62, 137, -59, 137, -59, 138, -57, 138, -57, 139, -55, 139, -55, 140, -52, 140, -52, 141, -49, 141, -49, 142, -46, 142, -46, 143, -43, 143, -43, 144, -40, 144, -40, 145, -36, 145, -36, 146, -32, 146, -32, 147, -27, 147, -27, 148, -21, 148, -21, 149, -12, 149, -12, 150, 12, 150, 12, 149, 21, 149, 21, 148, 27, 148, 27, 147, 32, 147, 32, 146, 36, 146, 36, 145, 40, 145, 40, 144, 43, 144, 43, 143, 46, 143, 46, 142, 49, 142, 49, 141, 52, 141, 52, 140, 55, 140, 55, 139, 57, 139, 57, 138, 59, 138, 59, 137, 62, 137, 62, 136, 64, 136, 64, 135, 66, 135, 66, 134, 68, 134, 68, 133, 70, 133, 70, 132, 72, 132, 72, 131, 73, 131, 73, 130, 75, 130, 75, 129, 77, 129, 77, 128, 79, 128, 79, 127, 80, 127, 80, 126, 82, 126, 82, 125, 83, 125, 83, 124, 85, 124, 85, 123, 86, 123, 86, 122, 87, 122, 87, 121, 89, 121, 89, 120, 90, 120, 90, 119, 91, 119, 91, 118, 93, 118, 93, 117, 94, 117, 94, 116, 95, 116, 95, 115, 96, 115, 96, 114, 98, 114, 98, 113, 99, 113, 99, 112, 100, 112, 100, 111, 101, 111, 101, 110, 102, 110, 102, 109, 103, 109, 103, 108, 104, 108, 104, 107, 105, 107, 105, 106, 106, 106, 106, 105, 107, 105, 107, 104, 108, 104, 108, 103, 109, 103, 109, 102, 110, 102, 110, 101, 111, 101, 111, 100, 112, 100, 112, 99, 113, 99, 113, 98, 114, 98, 114, 96, 115, 96, 115, 95, 116, 95, 116, 94, 117, 94, 117, 93, 118, 93, 118, 91, 119, 91, 119, 90, 120, 90, 120, 89, 121, 89, 121, 87, 122, 87, 122, 86, 123, 86, 123, 85, 124, 85, 124, 83, 125, 83, 125, 82, 126, 82, 126, 80, 127, 80, 127, 79, 128, 79, 128, 77, 129, 77, 129, 75, 130, 75, 130, 73, 131, 73, 131, 72, 132, 72, 132, 70, 133, 70, 133, 68, 134, 68, 134, 66, 135, 66, 135, 64, 136, 64, 136, 62, 137, 62, 137, 59, 138, 59, 138, 57, 139, 57, 139, 55, 140, 55, 140, 52, 141, 52, 141, 49, 142, 49, 142, 46, 143, 46, 143, 43, 144, 43, 144, 40, 145, 40, 145, 36, 146, 36, 146, 32, 147, 32, 147, 27, 148, 27, 148, 21, 149, 21, 149, 12, 150, 12, 150, -12, 149, -12, 149, -21, 148, -21, 148, -27, 147, -27, 147, -32, 146, -32, 146, -36, 145, -36, 145, -40, 144, -40, 144, -43, 143, -43, 143, -46, 142, -46, 142, -49, 141, -49, 141, -52, 140, -52, 140, -55, 139, -55, 139, -57, 138, -57, 138, -59, 137, -59, 137, -62, 136, -62, 136, -64, 135, -64, 135, -66, 134, -66, 134, -68, 133, -68, 133, -70, 132, -70, 132, -72, 131, -72, 131, -73, 130, -73, 130, -75, 129, -75, 129, -77, 128, -77, 128, -79, 127, -79, 127, -80, 126, -80, 126, -82, 125, -82, 125, -83, 124, -83, 124, -85, 123, -85, 123, -86, 122, -86, 122, -87, 121, -87, 121, -89, 120, -89, 120, -90, 119, -90, 119, -91, 118, -91, 118, -93, 117, -93, 117, -94, 116, -94, 116, -95, 115, -95, 115, -96, 114, -96, 114, -98, 113, -98, 113, -99, 112, -99, 112, -100, 111, -100, 111, -101, 110, -101, 110, -102, 109, -102, 109, -103, 108, -103, 108, -104, 107, -104, 107, -105, 106, -105, 106, -106, 105, -106, 105, -107, 104, -107, 104, -108, 103, -108, 103, -109, 102, -109, 102, -110, 101, -110, 101, -111, 100, -111, 100, -112, 99, -112, 99, -113, 98, -113, 98, -114, 96, -114, 96, -115, 95, -115, 95, -116, 94, -116, 94, -117, 93, -117, 93, -118, 91, -118, 91, -119, 90, -119, 90, -120, 89, -120, 89, -121, 87, -121, 87, -122, 86, -122, 86, -123, 85, -123, 85, -124, 83, -124, 83, -125, 82, -125, 82, -126, 80, -126, 80, -127, 79, -127, 79, -128, 77, -128, 77, -129, 75, -129, 75, -130, 73, -130, 73, -131, 72, -131, 72, -132, 70, -132, 70, -133, 68, -133, 68, -134, 66, -134, 66, -135, 64, -135, 64, -136, 62, -136, 62, -137, 59, -137, 59, -138, 57, -138, 57, -139, 55, -139, 55, -140, 52, -140, 52, -141, 49, -141, 49, -142, 46, -142, 46, -143, 43, -143, 43, -144, 40, -144, 40, -145, 36, -145, 36, -146, 32, -146, 32, -147, 27, -147, 27, -148, 21, -148, 21, -149, 12, -149, 12, -150)
+disabled = true
+
+[node name="BossRoomAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_on22x")
+}
+autoplay = "RESET"
+
+[node name="BossRoomAnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_on22x")
+}
+autoplay = "RESET"
+
+[node name="BossChargeAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g0pbk")
+}
+
+[node name="FlashArenaAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sv60f")
+}
+autoplay = "RESET"
+
+[node name="BossCloneAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_juwxo")
+}
+autoplay = "RESET"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hypje")
+}
+autoplay = "CircleFlash"
+
+[node name="CleaveLeftClone" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_x4u72")
+position = Vector2(-96, -22)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("23_2yvol")
+hframes = 10
+frame = 1
+
+[node name="CleaveRightClone" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 2
+material = SubResource("ShaderMaterial_4yvnb")
+position = Vector2(96, -22)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("23_2yvol")
+flip_h = true
+hframes = 10
+frame = 1
+
+[node name="Circle0Light" type="PointLight2D" parent="."]
+position = Vector2(100.5, 41.5)
+color = Color(1, 1, 1, 0.00680095)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle1Light" type="PointLight2D" parent="."]
+position = Vector2(43.5, 101.5)
+color = Color(1, 1, 1, 0.167115)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle2Light" type="PointLight2D" parent="."]
+position = Vector2(-41.5, 101.5)
+color = Color(1, 1, 1, 0.184116)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle3Light" type="PointLight2D" parent="."]
+position = Vector2(-100.5, 41.5)
+color = Color(1, 1, 1, 0.17884)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle4Light" type="PointLight2D" parent="."]
+position = Vector2(-100.5, -40.5)
+color = Color(1, 1, 1, 0)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle5Light" type="PointLight2D" parent="."]
+position = Vector2(-41.5, -101.5)
+color = Color(1, 1, 1, 0.196078)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle6Light" type="PointLight2D" parent="."]
+position = Vector2(43.5, -101.5)
+color = Color(1, 1, 1, 0.153298)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="Circle7Light" type="PointLight2D" parent="."]
+position = Vector2(100.5, -40.5)
+color = Color(1, 1, 1, 0.156863)
+energy = 1.33
+texture = SubResource("GradientTexture2D_wxml7")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 1, 0.392157)
+energy = 0.2
+texture = SubResource("GradientTexture2D_fjrgi")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(1, 1, 1, 0.392157)
+energy = 0.2
+texture = SubResource("GradientTexture2D_8ud6d")
+
+[node name="DarkShade" type="PointLight2D" parent="."]
+blend_mode = 1
+range_z_max = 0
+range_layer_min = -100
+range_layer_max = -1
+texture = SubResource("GradientTexture2D_tf2ry")
+texture_scale = 0.5
+
+[editable path="Boss0"]
+[editable path="Boss0/SpitAim/HitboxSpit"]
+[editable path="Boss0/Hurtbox"]
+[editable path="Boss0/CanvasLayer/Healthbar"]

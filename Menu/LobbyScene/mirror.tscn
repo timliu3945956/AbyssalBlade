@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://qmd2y2dbyx4q"]
+
+[ext_resource type="Texture2D" uid="uid://c386cqc1fthjf" path="res://sprites/Props/Mirror.png" id="1_njb2s"]
+[ext_resource type="Script" path="res://Menu/LobbyScene/mirror.gd" id="1_vb6h1"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="2_yy2vn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2tyu"]
+size = Vector2(68, 37)
+
+[node name="Mirror" type="Node2D"]
+script = ExtResource("1_vb6h1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+texture = ExtResource("1_njb2s")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_yy2vn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_i2tyu")
