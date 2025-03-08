@@ -18,45 +18,9 @@ func exit():
 	owner.set_physics_process(false)
 
 func transition():
+	const states = ["CleaveCharge1", "CleaveCharge2", "DodgeShadowClone", "Cleave1", "ShadowClone", "Cleave2", "CleaveCharge1", "CleaveCharge2",
+		"DodgeShadowCloneCombo", "Cleave1", "ShadowCloneCombo", "Cleave2", "Enrage"]
 	# timeline in boss0 is based off of how many times 2 slashes goes out and follows to center
 	if (owner.center_of_screen - owner.position).length() <= 2:
-		match owner.timeline:
-			0:
-				owner.timeline += 1
-				get_parent().change_state("CleaveCharge1")
-			1:
-				owner.timeline += 1
-				get_parent().change_state("CleaveCharge2")
-			2:
-				owner.timeline += 1
-				get_parent().change_state("DodgeShadowClone")
-			3:
-				owner.timeline += 1
-				get_parent().change_state("Cleave1")
-			4:
-				owner.timeline += 1
-				get_parent().change_state("ShadowClone")
-			5:
-				owner.timeline += 1
-				get_parent().change_state("Cleave2")
-			6:
-				owner.timeline += 1
-				get_parent().change_state("CleaveCharge1")
-			7:
-				owner.timeline += 1
-				get_parent().change_state("CleaveCharge2")
-			8:
-				owner.timeline += 1
-				get_parent().change_state("DodgeShadowCloneCombo")
-			9:
-				owner.timeline += 1
-				get_parent().change_state("Cleave1")
-			10:
-				owner.timeline += 1
-				get_parent().change_state("ShadowCloneCombo")
-			11:
-				owner.timeline += 1
-				get_parent().change_state("Cleave2")
-			12:
-				owner.timeline += 1
-				get_parent().change_state("Enrage")
+		owner.timeline += 1
+		get_parent().change_state(states[owner.timeline])
