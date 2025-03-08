@@ -8,6 +8,7 @@ extends CenterContainer
 @onready var boss_2: CharacterBody2D = $Boss2
 
 
+
 @onready var lightning_1_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Lightning1
 @onready var lightning_2_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Lightning2
 @onready var lightning_3_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Marker2D/Lightning3
