@@ -66,35 +66,11 @@ func enter():
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
-	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
-	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
-	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
-	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
-	
-	await get_tree().create_timer(1.52).timeout
-	animation_player.play("discharge_repeat") # 1.5 seconds
-	#await get_tree().create_timer(1).timeout
-	lightning() # 2 seconds
+	for i in range(6):
+		await get_tree().create_timer(1.52).timeout
+		animation_player.play("discharge_repeat") # 1.5 seconds
+		#await get_tree().create_timer(1).timeout
+		lightning() # 2 seconds
 	
 	await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_last") # 1.5 seconds

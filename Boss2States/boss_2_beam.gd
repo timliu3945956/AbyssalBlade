@@ -57,24 +57,26 @@ func enter():
 		owner.sprite.flip_h = true
 		owner.sprite_shadow.flip_h = false
 	#await get_tree().create_timer(0.5).timeout
-	animation_player.play("beam")
-	await get_tree().create_timer(0.25).timeout
-	beam_audio.play()
-	await get_tree().create_timer(0.25).timeout
-	beam()
-	await get_tree().create_timer(0.5).timeout
+	do_beam()
 	
 	owner.beam_count += 1
 	if owner.boss_death == false:
 		can_transition = true
 	
-func beam():
+func do_beam():
+	animation_player.play("beam")
+	await get_tree().create_timer(0.25).timeout
+	beam_audio.play()
+	await get_tree().create_timer(0.25).timeout
+
 	var beam = LaserBeam.instantiate()
 	beam.position = Vector2(0, -6)
 	beam.rotation = (owner.beam_rotation).angle()
 	add_child(beam)
 	print("beam being instantiated")
-	
+
+	await get_tree().create_timer(0.5).timeout
+
 func beam_circle():
 	owner.circle_ref = owner.beam_bar.instantiate()
 	#owner.beam_circle_timer.start()
