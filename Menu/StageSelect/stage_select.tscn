@@ -2812,6 +2812,7 @@ theme_override_font_sizes/font_size = 7
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="PanelContainer2"]
+visible = false
 layout_mode = 2
 offset_left = -3.0
 offset_top = 16.0
@@ -2822,45 +2823,88 @@ theme_override_font_sizes/font_size = 7
 text = "Null"
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="PanelContainer2"]
-layout_mode = 2
-offset_left = 2.0
-offset_top = 33.0
-offset_right = 42.0
-offset_bottom = 41.0
-theme_override_fonts/font = ExtResource("6_2ynpa")
-theme_override_font_sizes/font_size = 7
-text = "Null"
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="PanelContainer2"]
-layout_mode = 2
-offset_left = 26.0
-offset_top = 66.0
-offset_right = 66.0
-offset_bottom = 74.0
-theme_override_fonts/font = ExtResource("6_2ynpa")
-theme_override_font_sizes/font_size = 7
-text = "Null"
-vertical_alignment = 1
-
-[node name="Label5" type="Label" parent="PanelContainer2"]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 83.0
-offset_right = 44.0
-offset_bottom = 91.0
-theme_override_fonts/font = ExtResource("6_2ynpa")
-theme_override_font_sizes/font_size = 7
-text = "Null"
-vertical_alignment = 1
-
-[node name="DeathsContainer" type="Control" parent="."]
+[node name="ClearCount" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Deaths1" type="Label" parent="DeathsContainer"]
+[node name="ClearCount1" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="ClearCount2" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="ClearCount3" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstTimeToClear" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FirstClearTime1" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstClearTime2" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstClearTime3" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="AttemptsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attempts1" type="Label" parent="AttemptsContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 192.0
@@ -2871,7 +2915,7 @@ theme_override_fonts/font = ExtResource("6_2ynpa")
 theme_override_font_sizes/font_size = 8
 vertical_alignment = 1
 
-[node name="Deaths2" type="Label" parent="DeathsContainer"]
+[node name="Attempts2" type="Label" parent="AttemptsContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 192.0
@@ -2882,7 +2926,7 @@ theme_override_fonts/font = ExtResource("6_2ynpa")
 theme_override_font_sizes/font_size = 8
 vertical_alignment = 1
 
-[node name="Deaths3" type="Label" parent="DeathsContainer"]
+[node name="Attempts3" type="Label" parent="AttemptsContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 192.0

@@ -17,7 +17,10 @@ var deadzone = 0.5
 var event_rest: bool = true
 
 func _ready() -> void:
-	#Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
+	#Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME) #Reset Player Data
+	print("boss_0 attempts: ", Global.player_data.attempt_count_1)
+	print("boss_1 attempts: ", Global.player_data.attempt_count_2)
+	print("boss_2 attempts: ", Global.player_data.attempt_count_3)
 	
 	var audio_settings = ConfigFileHandler.load_audio_settings()
 	if audio_settings.master_volume == 0.1:

@@ -22,8 +22,8 @@ func _set_health(new_health):
 	health_percent.text = "%.1f%%" % ((health / max_value) * 100)
 	#str(int((new_health / max_value) * 100)) + "%"
 	
-	if health <= 0:
-		queue_free()
+	#if health <= 0:
+		#queue_free()
 		
 	if health < prev_health:
 		health_timer.start()

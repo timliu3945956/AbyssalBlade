@@ -28,21 +28,35 @@ func save_data(path: String):
 			"boss_3": player_data.best_time_boss_3,
 			"boss_4": player_data.best_time_boss_4,
 			"boss_5": player_data.best_time_boss_5,
-			"cutscene_boss_1": player_data.cutscene_viewed_boss_1,
-			"cutscene_boss_2": player_data.cutscene_viewed_boss_2,
-			"cutscene_boss_3": player_data.cutscene_viewed_boss_3,
-			"cutscene_boss_4": player_data.cutscene_viewed_boss_4,
-			"cutscene_boss_5": player_data.cutscene_viewed_boss_5,
-			"deaths_1": player_data.deaths_boss_1,
-			"deaths_2": player_data.deaths_boss_2,
-			"deaths_3": player_data.deaths_boss_3,
-			"deaths_4": player_data.deaths_boss_4,
-			"deaths_5": player_data.deaths_boss_5,
+			#"cutscene_boss_1": player_data.cutscene_viewed_boss_1,
+			#"cutscene_boss_2": player_data.cutscene_viewed_boss_2,
+			#"cutscene_boss_3": player_data.cutscene_viewed_boss_3,
+			#"cutscene_boss_4": player_data.cutscene_viewed_boss_4,
+			#"cutscene_boss_5": player_data.cutscene_viewed_boss_5,
+			"clear_count_1": player_data.clear_count_1,
+			"clear_count_2": player_data.clear_count_2,
+			"clear_count_3": player_data.clear_count_3,
+			"clear_count_4": player_data.clear_count_4,
+			"clear_count_5": player_data.clear_count_5,
+			
+			#first clear data
 			"first_time_boss_1": player_data.first_play_1,
 			"first_time_boss_2": player_data.first_play_2,
 			"first_time_boss_3": player_data.first_play_3,
 			"first_time_boss_4": player_data.first_play_4,
-			"first_time_boss_5": player_data.first_play_5
+			"first_time_boss_5": player_data.first_play_5,
+			
+			"first_clear_time_1": player_data.first_clear_time_1,
+			"first_clear_time_2": player_data.first_clear_time_2,
+			"first_clear_time_3": player_data.first_clear_time_3,
+			"first_clear_time_4": player_data.first_clear_time_4,
+			"first_clear_time_5": player_data.first_clear_time_5,
+			
+			"attempt_count_1": player_data.attempt_count_1,
+			"attempt_count_2": player_data.attempt_count_2,
+			"attempt_count_3": player_data.attempt_count_3,
+			"attempt_count_4": player_data.attempt_count_4,
+			"attempt_count_5": player_data.attempt_count_5,
 		}
 	}
 	print(data)
@@ -73,24 +87,35 @@ func load_data(path: String):
 		player_data.best_time_boss_4 = data.player_data.boss_4
 		player_data.best_time_boss_5 = data.player_data.boss_5
 		
-		player_data.cutscene_viewed_boss_1 = data.player_data.cutscene_boss_1
-		player_data.cutscene_viewed_boss_2 = data.player_data.cutscene_boss_2
-		player_data.cutscene_viewed_boss_3 = data.player_data.cutscene_boss_3
-		player_data.cutscene_viewed_boss_4 = data.player_data.cutscene_boss_4
-		player_data.cutscene_viewed_boss_5 = data.player_data.cutscene_boss_5
+		#player_data.cutscene_viewed_boss_1 = data.player_data.cutscene_boss_1
+		#player_data.cutscene_viewed_boss_2 = data.player_data.cutscene_boss_2
+		#player_data.cutscene_viewed_boss_3 = data.player_data.cutscene_boss_3
+		#player_data.cutscene_viewed_boss_4 = data.player_data.cutscene_boss_4
+		#player_data.cutscene_viewed_boss_5 = data.player_data.cutscene_boss_5
 		
-		player_data.deaths_boss_1 = data.player_data.deaths_1
-		player_data.deaths_boss_2 = data.player_data.deaths_2
-		player_data.deaths_boss_3 = data.player_data.deaths_3
-		player_data.deaths_boss_4 = data.player_data.deaths_4
-		player_data.deaths_boss_5 = data.player_data.deaths_5
+		player_data.clear_count_1 = data.player_data.clear_count_1
+		player_data.clear_count_2 = data.player_data.clear_count_2
+		player_data.clear_count_3 = data.player_data.clear_count_3
+		player_data.clear_count_4 = data.player_data.clear_count_4
+		player_data.clear_count_5 = data.player_data.clear_count_5
 		
 		player_data.first_play_1 = data.player_data.first_time_boss_1
 		player_data.first_play_2 = data.player_data.first_time_boss_2
 		player_data.first_play_3 = data.player_data.first_time_boss_3
 		player_data.first_play_4 = data.player_data.first_time_boss_4
 		player_data.first_play_5 = data.player_data.first_time_boss_5
-	
+		
+		player_data.first_clear_time_1 = data.player_data.first_clear_time_1
+		player_data.first_clear_time_2 = data.player_data.first_clear_time_2
+		player_data.first_clear_time_3 = data.player_data.first_clear_time_3
+		player_data.first_clear_time_4 = data.player_data.first_clear_time_4
+		player_data.first_clear_time_5 = data.player_data.first_clear_time_5
+		
+		player_data.attempt_count_1 = data.player_data.attempt_count_1
+		player_data.attempt_count_2 = data.player_data.attempt_count_2
+		player_data.attempt_count_3 = data.player_data.attempt_count_3
+		player_data.attempt_count_4 = data.player_data.attempt_count_4
+		player_data.attempt_count_5 = data.player_data.attempt_count_5
 	else:
 		printerr("Cannot open non_existent file at %s!" % [path])
 	

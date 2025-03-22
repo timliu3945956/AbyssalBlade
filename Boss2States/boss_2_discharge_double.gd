@@ -182,16 +182,86 @@ func lightning():
 	for angle in used_angles:
 		var aoe = LightningDodge.instantiate()
 		aoe.position = Vector2(0, -110)
-		aoe.rotation = deg_to_rad(angle)
 		add_child(aoe)
-	
-	for angle in used_angles:
-		var mirrored_angle = 360.0 - angle
-		var aoe_bottom = LightningDodge.instantiate()
-		aoe_bottom.position = Vector2(0, 110)
-		aoe_bottom.rotation = deg_to_rad(mirrored_angle)
-		add_child(aoe_bottom)
 		
+		aoe.rotation = deg_to_rad(angle)
+#func lightning():
+	#var aoe_count = 10
+	#var min_spacing = 10.0
+	#var middle_min = 70.0
+	#var middle_max = 110.0
+	##
+	##var guaranteed_middle_count = 4
+	#var forced_middle_angles = [70.0, 80.0, 90.0, 100.0, 110.0] #removed 70 and 110
+	#
+	#var index1 = randi() % forced_middle_angles.size()
+	#var angle1 = forced_middle_angles[index1]
+	#
+	#while angle1 == last_removed_angle_1 or angle1 == last_removed_angle_2:
+		#index1 = randi() % forced_middle_angles.size()
+		#angle1 = forced_middle_angles[index1]
+	#index1 = forced_middle_angles.find(angle1)
+	#print("it can get here before crashing")
+	#var adjacent_indices = []
+	#if index1 > 0:
+		#adjacent_indices.append(index1 - 1)
+	#if index1 < forced_middle_angles.size() - 1:
+		#adjacent_indices.append(index1 + 1)
+		#
+	#var index2 = adjacent_indices[randi() % adjacent_indices.size()]
+	#var angle2 = forced_middle_angles[index2]
+	#
+	##while angle2 == last_removed_angle_1 or angle2 == last_removed_angle_2:
+		##index2 = adjacent_indices[randi() % adjacent_indices.size()]
+		##angle2 = forced_middle_angles[index2]
+		#
+	#if index2 > index1:
+		#forced_middle_angles.remove_at(index2)
+		#forced_middle_angles.remove_at(index1)
+	#else:
+		#forced_middle_angles.remove_at(index1)
+		#forced_middle_angles.remove_at(index2)
+	#
+	#last_removed_angle_1 = angle1
+	#last_removed_angle_2 = angle2
+	#
+	#var used_angles = []
+	#
+	#for angle in forced_middle_angles:
+		#used_angles.append(angle)
+	#print("it can get here before crashing")
+	#var remaining_count = aoe_count - forced_middle_angles.size()
+	#if remaining_count > 0:
+		#for angle in range(remaining_count):
+			#while true:
+				#var candidate = randf_range(0.0, 180.0)
+				#
+				#if candidate >= middle_min and candidate <= middle_max:
+					#continue
+					#
+				#var valid = true
+				#for used in used_angles:
+					#if abs(candidate - used) < min_spacing:
+						#valid = false
+						#break
+						#
+				#if valid:
+					#used_angles.append(candidate)
+					#break
+					#
+	#for angle in used_angles:
+		#var aoe = LightningDodge.instantiate()
+		#aoe.position = Vector2(0, -110)
+		#aoe.rotation = deg_to_rad(angle)
+		#add_child(aoe)
+	#
+	#for angle in used_angles:
+		#var mirrored_angle = 360.0 - angle
+		#var aoe_bottom = LightningDodge.instantiate()
+		#aoe_bottom.position = Vector2(0, 110)
+		#aoe_bottom.rotation = deg_to_rad(mirrored_angle)
+		#add_child(aoe_bottom)
+		#
 	
 	#
 func transition():

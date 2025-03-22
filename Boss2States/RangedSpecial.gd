@@ -6,6 +6,7 @@ var LineAOE = preload("res://Boss2States/line_aoe.tscn")
 
 @onready var spawn_radius: float = 120
 @onready var num_attacks = 7
+var direction = randi_range(1, 2)
 var can_transition = false
 
 func enter():
@@ -21,8 +22,13 @@ func enter():
 	owner.boss_room_animation.play("ranged_lines")
 	await get_tree().create_timer(8).timeout
 	await get_tree().create_timer(2).timeout
-	owner.boss_room.spawn_special_part_2(true, 450.0, 22.5)
-	await get_tree().create_timer(15).timeout #1 second added
+	if direction == 1:
+		owner.boss_room.spawn_special_counterclockwise()
+	else:
+		owner.boss_room.spawn_special_clockwise()
+	await get_tree().create_timer(5.25).timeout
+	owner.boss_2_melee.find_child("FiniteStateMachine").change_state("Foretold")
+	await get_tree().create_timer(8.75).timeout #1 second added
 	owner.ranged_special_finish()
 	##animation_player.play("jump_away")
 	##await animation_player.animation_finished

@@ -61,7 +61,7 @@ var jump_position_count: int = 0
 var auto_attack_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 60000 : set = _set_health
+var health_amount = 57000 : set = _set_health
 var center_of_screen = get_viewport_rect().size / 2 
 
 var timeline: int = 0
@@ -172,20 +172,21 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 				player.mana_bar_fire.process_material.color.a = 1.0
 				player.mana_bar_fire.emitting = true
 		
-	if health_amount <= 0:
-		player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
-		player.hurtbox_collision.call_deferred("set", "disabled", true)
-		
-		hurtbox.call_deferred("set", "disabled", true)
-		
-		boss_room_animation.queue_free()
-		#top_bottom_animation_player.queue_free()
-		#in_out_animation_player.queue_free()
-		animation_player.stop()
-		
-		attack_meter.queue_free()
-		boss_death = true
-		find_child("FiniteStateMachine").change_state("Death")
+	if health_amount <= 1:
+		#player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
+		#player.hurtbox_collision.call_deferred("set", "disabled", true)
+		#
+		#hurtbox.call_deferred("set", "disabled", true)
+		#
+		#boss_room_animation.queue_free()
+		##top_bottom_animation_player.queue_free()
+		##in_out_animation_player.queue_free()
+		#animation_player.stop()
+		#
+		#attack_meter.queue_free()
+		#boss_death = true
+		#find_child("FiniteStateMachine").change_state("Death")
+		health_amount = 1
 
 func camera_shake():
 	GlobalCount.camera.apply_shake(1.5, 15.0)

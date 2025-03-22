@@ -43,6 +43,27 @@ extends CharacterBody2D
 @onready var spit_attack_red_enrage: AnimatedSprite2D = $SpitAim/HitboxSpit/SpitAttackEnraged/SpitAttackRedEnrage
 @onready var spit_attack_follow_timer: Timer = $SpitAttackFollowTimer
 
+@onready var idle: Node2D = $FiniteStateMachine/Idle
+@onready var follow: Node2D = $FiniteStateMachine/Follow
+@onready var spit_attack: Node2D = $FiniteStateMachine/SpitAttack
+@onready var move_to_center: Node2D = $FiniteStateMachine/MoveToCenter
+@onready var cleave_charge_1: Node2D = $FiniteStateMachine/CleaveCharge1
+@onready var walk_left: Node2D = $FiniteStateMachine/WalkLeft
+@onready var tether_left: Node2D = $FiniteStateMachine/TetherLeft
+@onready var cleave_charge_2: Node2D = $FiniteStateMachine/CleaveCharge2
+@onready var walk_right: Node2D = $FiniteStateMachine/WalkRight
+@onready var tether_right: Node2D = $FiniteStateMachine/TetherRight
+@onready var dodge_shadow_clone: Node2D = $FiniteStateMachine/DodgeShadowClone
+@onready var dodge_shadow_clone_combo: Node2D = $FiniteStateMachine/DodgeShadowCloneCombo
+@onready var cleave_1: Node2D = $FiniteStateMachine/Cleave1
+@onready var shadow_clone: Node2D = $FiniteStateMachine/ShadowClone
+@onready var shadow_clone_combo: Node2D = $FiniteStateMachine/ShadowCloneCombo
+@onready var cleave_2: Node2D = $FiniteStateMachine/Cleave2
+@onready var enrage: Node2D = $FiniteStateMachine/Enrage
+@onready var mini_enrage: Node2D = $FiniteStateMachine/MiniEnrage
+@onready var cleave_attacks: Node2D = $FiniteStateMachine/CleaveAttacks
+
+
 @onready var boss_jump_timer: Timer = $BossJumpTimer
 
 @onready var boss_killed = get_node("../BossKilled")
@@ -75,7 +96,7 @@ extends CharacterBody2D
 @onready var healthbar = $CanvasLayer/Healthbar
 
 var direction : Vector2
-var move_speed = 120
+var move_speed = 60 #120
 var spit_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
@@ -106,8 +127,9 @@ func _process(_delta):
 		#enrage_fire.global_position = global_position + Vector2(0, -23)
 		position = player.position
 		jump_slam_attack.global_position = player.global_position
-func _physics_process(_delta):
+func _physics_process(delta):
 	velocity = direction.normalized() * move_speed
+	position += velocity * delta
 	move_and_slide()
 
 func _set_health(value):
@@ -205,6 +227,29 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		attack_meter.queue_free()
 		boss_death = true
 		find_child("FiniteStateMachine").change_state("Death")
+		remove_state()
+		
+func remove_state():
+	idle.queue_free()
+	follow.queue_free()
+	spit_attack.queue_free()
+	move_to_center.queue_free()
+	cleave_charge_1.queue_free()
+	walk_left.queue_free()
+	tether_left.queue_free()
+	cleave_charge_2.queue_free()
+	walk_right.queue_free()
+	tether_right.queue_free()
+	dodge_shadow_clone.queue_free()
+	dodge_shadow_clone_combo.queue_free()
+	cleave_1.queue_free()
+	shadow_clone.queue_free()
+	shadow_clone_combo.queue_free()
+	cleave_2.queue_free()
+	enrage.queue_free()
+	mini_enrage.queue_free()
+	cleave_attacks.queue_free()
+	healthbar.queue_free()
 	
 func spit_attack_visual():
 	spit_attack_white.play("default")

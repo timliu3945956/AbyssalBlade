@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ciajll3xtsyct" path="res://Utilities/Effects/firevfx/Fire_Pillar_v1_spritesheet.png" id="2_17p6g"]
 [ext_resource type="Texture2D" uid="uid://58qgsax27gdp" path="res://Utilities/Effects/lightningvfx/Blue_Lightning_Wall_v3_BLACK.png" id="3_cc1g5"]
 [ext_resource type="Shader" path="res://Other/lightning.gdshader" id="4_wb0fc"]
-[ext_resource type="AudioStream" uid="uid://butthmvk48uva" path="res://audio/sfx/Boss2/beam.wav" id="6_yuobc"]
+[ext_resource type="AudioStream" uid="uid://bp6tq1dnfv2vn" path="res://audio/sfx/Boss2/follow line.wav" id="6_v6nlc"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ojwma"]
 load_path = "res://.godot/imported/range lines_one.png-3872b3f1e50a8fefcdca7a161f84ac3e.ctex"
@@ -477,7 +477,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s43n1")
 }],
-"loop": false,
+"loop": true,
 "name": &"default",
 "speed": 120.0
 }]
@@ -1177,7 +1177,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1191,58 +1191,106 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.57079]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker2D/Sprite2D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("LaserLineAudio:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tbuku"]
 resource_name = "attack_anim"
-length = 0.500008
+length = 10.0
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/Sprite2D2/AnimatedSprite2D4:self_modulate")
+tracks/0/path = NodePath("Marker2D/Sprite2D2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.416667, 0.499868),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/Sprite2D2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Marker2D/Sprite2D2:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.416667, 0.5),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 9.75, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Marker2D/Area2D2/RangedLineCollision:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Area2D2/RangedLineCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.57079, -6.28319]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LaserLineAudio:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_uq6v1"]
@@ -1256,10 +1304,10 @@ tracks/0/path = NodePath("Marker2D/RangedLine:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.999466, 1.00058, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1268,22 +1316,34 @@ tracks/1/path = NodePath("Marker2D/RangedLine:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BeamAudio:playing")
+tracks/2/path = NodePath("LaserLineAudio:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.75),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.999492, 1.00055, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.5708, 0.785398, 1.5708, 0.785398]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4sj6"]
@@ -1302,12 +1362,14 @@ script = ExtResource("1_h5wpt")
 rotation = 1.57079
 
 [node name="RangedLine" type="Sprite2D" parent="Marker2D"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.321567)
 rotation = 1.57079
 scale = Vector2(1.5, 1)
 texture = SubResource("CompressedTexture2D_ojwma")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Marker2D"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 clip_children = 2
 material = SubResource("ShaderMaterial_v4gd8")
@@ -1315,15 +1377,22 @@ rotation = 1.57079
 scale = Vector2(1.43465, 0.815862)
 texture = SubResource("GradientTexture2D_3o38s")
 
+[node name="ColorRect2" type="ColorRect" parent="Marker2D/Sprite2D2"]
+offset_left = -176.0
+offset_top = -40.0
+offset_right = 172.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.623529)
+
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Marker2D/Sprite2D2"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_v54hm")
 position = Vector2(3.5, 0)
 rotation = -1.5708
-scale = Vector2(0.885, 2.114)
+scale = Vector2(0.445, 1.063)
 sprite_frames = SubResource("SpriteFrames_6n8uf")
-frame = 63
-frame_progress = 1.0
+frame_progress = 0.852758
 
 [node name="ColorRect" type="ColorRect" parent="Marker2D/Sprite2D2"]
 material = SubResource("ShaderMaterial_oisec")
@@ -1370,9 +1439,9 @@ scale = Vector2(1.5, 1)
 polygon = PackedVector2Array(-162, -26, -162, 26, 162, 26, 162, -26)
 disabled = true
 
-[node name="BeamAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_yuobc")
-volume_db = -20.0
+[node name="LaserLineAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_v6nlc")
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

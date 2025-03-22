@@ -3,6 +3,24 @@ extends CharacterBody2D
 @onready var player = get_parent().find_child("Player")
 @onready var meteor = get_parent().find_child("MeteorDrops")
 
+@onready var idle: Node2D = $FiniteStateMachine/Idle
+@onready var follow: Node2D = $FiniteStateMachine/Follow
+@onready var move_to_center: Node2D = $FiniteStateMachine/MoveToCenter
+@onready var teleport_to_center: Node2D = $FiniteStateMachine/TeleportToCenter
+@onready var slash_attack: Node2D = $FiniteStateMachine/SlashAttack
+@onready var in_out_attack: Node2D = $FiniteStateMachine/InOutAttack
+@onready var knockback_in_out_attack: Node2D = $FiniteStateMachine/KnockbackInOutAttack
+@onready var alternate_attack: Node2D = $FiniteStateMachine/AlternateAttack
+@onready var top_down_charge: Node2D = $FiniteStateMachine/TopDownCharge
+@onready var mini_enrage: Node2D = $FiniteStateMachine/MiniEnrage
+@onready var combo_in_out: Node2D = $FiniteStateMachine/ComboInOut
+@onready var combo_knockback: Node2D = $FiniteStateMachine/ComboKnockback
+@onready var alternate_combo_attack: Node2D = $FiniteStateMachine/AlternateComboAttack
+@onready var explosions: Node2D = $FiniteStateMachine/Explosions
+@onready var enrage: Node2D = $FiniteStateMachine/Enrage
+@onready var transition: Node2D = $FiniteStateMachine/Transition
+
+
 @onready var collision: CollisionShape2D = $SlashHitBox/CollisionShape2D
 #@onready var collision: CollisionPolygon2D = $SlashHitBox/CollisionPolygon2D
 @onready var timer: Timer = $SlashHitBox/Timer
@@ -93,13 +111,13 @@ var circle_ref: Node2D
 var enraged: bool = false
 
 var direction : Vector2
-var move_speed = 120
+var move_speed = 60 #120
 var slash_count: int = 0
 var explosion_count: int = 0
 var top_down_charge_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 75000 : set = _set_health
+var health_amount = 75000 : set = _set_health #75000
 var center_of_screen = get_viewport_rect().size / 2 
 
 var choose_top_down = randi_range(1, 2)
@@ -176,8 +194,9 @@ func _process(_delta):
 			## Enrage (20 seconds)
 			#direction = center_of_screen - position
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	velocity = direction.normalized() * move_speed
+	position += velocity * delta
 	move_and_slide()
 
 func _set_health(value):
@@ -305,6 +324,26 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		attack_meter.queue_free()
 		boss_death = true
 		find_child("FiniteStateMachine").change_state("Death")
+		remove_state()
+		
+func remove_state():
+	idle.queue_free()
+	follow.queue_free()
+	move_to_center.queue_free()
+	teleport_to_center.queue_free()
+	slash_attack.queue_free()
+	in_out_attack.queue_free()
+	knockback_in_out_attack.queue_free()
+	alternate_attack.queue_free()
+	top_down_charge.queue_free()
+	mini_enrage.queue_free()
+	combo_in_out.queue_free()
+	combo_knockback.queue_free()
+	alternate_combo_attack.queue_free()
+	explosions.queue_free()
+	enrage.queue_free()
+	transition.queue_free()
+	healthbar.queue_free()
 
 func camera_shake():
 	GlobalCount.camera.apply_shake(1.5, 15.0)

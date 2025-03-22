@@ -50,7 +50,7 @@ func enter():
 		animation_player.play("idle_right")
 	await get_tree().create_timer(0.4167).timeout # extra await for attack animation
 	if owner.foretold_count == 2:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 	#if (owner.center_of_screen + Vector2(-50, 0)).x - owner.position.x > 0:
 		#animation_player.play("walk_right")
 	#else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=544 format=3 uid="uid://bpcqh4yv4fjpy"]
+[gd_scene load_steps=550 format=3 uid="uid://bpcqh4yv4fjpy"]
 
 [ext_resource type="Script" path="res://BossStates/boss_1.gd" id="1_kdpf2"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_5ev8d"]
@@ -1980,28 +1980,28 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = true
 
-[sub_resource type="Curve" id="Curve_4huov"]
+[sub_resource type="Curve" id="Curve_wnpy6"]
 min_value = -360.0
 max_value = 360.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_5iihf"]
-curve = SubResource("Curve_4huov")
+[sub_resource type="CurveTexture" id="CurveTexture_mwudu"]
+curve = SubResource("Curve_wnpy6")
 
-[sub_resource type="Gradient" id="Gradient_jv4yc"]
+[sub_resource type="Gradient" id="Gradient_2v6kk"]
 offsets = PackedFloat32Array(0, 0.525641, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dh7e0"]
-gradient = SubResource("Gradient_jv4yc")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1y7eg"]
+gradient = SubResource("Gradient_2v6kk")
 
-[sub_resource type="Curve" id="Curve_yqxo0"]
+[sub_resource type="Curve" id="Curve_12wgb"]
 _data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.249209), -1.04308, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tc028"]
-curve = SubResource("Curve_yqxo0")
+[sub_resource type="CurveTexture" id="CurveTexture_xg7ie"]
+curve = SubResource("Curve_12wgb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pbmvu"]
 particle_flag_disable_z = true
@@ -2009,15 +2009,15 @@ emission_shape = 1
 emission_sphere_radius = 8.0
 angle_min = 1.07288e-05
 angle_max = 360.0
-angle_curve = SubResource("CurveTexture_5iihf")
+angle_curve = SubResource("CurveTexture_mwudu")
 inherit_velocity_ratio = 50.0
 angular_velocity_min = -1.60933e-05
 angular_velocity_max = 100.0
 gravity = Vector3(0, -130, 0)
 scale_min = 0.5
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_tc028")
-color_ramp = SubResource("GradientTexture1D_dh7e0")
+scale_curve = SubResource("CurveTexture_xg7ie")
+color_ramp = SubResource("GradientTexture1D_1y7eg")
 turbulence_enabled = true
 turbulence_noise_speed_random = 4.0
 
@@ -2039,6 +2039,29 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
+[sub_resource type="Curve" id="Curve_4huov"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hay80"]
+curve = SubResource("Curve_4huov")
+
+[sub_resource type="Gradient" id="Gradient_jv4yc"]
+offsets = PackedFloat32Array(0, 0.525641, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4voir"]
+gradient = SubResource("Gradient_jv4yc")
+
+[sub_resource type="Curve" id="Curve_yqxo0"]
+_data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.249209), -1.04308, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mkxft"]
+curve = SubResource("Curve_yqxo0")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aoyny"]
 lifetime_randomness = 0.2
 particle_flag_disable_z = true
@@ -2046,7 +2069,7 @@ emission_shape = 1
 emission_sphere_radius = 10.0
 angle_min = -360.0
 angle_max = 360.0
-angle_curve = SubResource("CurveTexture_5iihf")
+angle_curve = SubResource("CurveTexture_hay80")
 inherit_velocity_ratio = 50.0
 spread = 180.0
 initial_velocity_max = 90.0
@@ -2055,8 +2078,8 @@ linear_accel_min = -2.23517e-06
 linear_accel_max = -2.23517e-06
 scale_min = 0.5
 scale_max = 0.5
-scale_curve = SubResource("CurveTexture_tc028")
-color_ramp = SubResource("GradientTexture1D_dh7e0")
+scale_curve = SubResource("CurveTexture_mkxft")
+color_ramp = SubResource("GradientTexture1D_4voir")
 turbulence_enabled = true
 turbulence_noise_speed_random = 4.0
 
@@ -6869,11 +6892,11 @@ particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Gradient" id="Gradient_b0i5v"]
+[sub_resource type="Gradient" id="Gradient_1mhwd"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_71okh"]
-gradient = SubResource("Gradient_b0i5v")
+gradient = SubResource("Gradient_1mhwd")
 width = 180
 height = 10
 
@@ -7124,7 +7147,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, -8)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_lbhew")
 
 [node name="SlashDetection" type="Area2D" parent="."]
