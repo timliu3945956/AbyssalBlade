@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 85
-@export var dash_speed = 230 # Increase value for faster dash
+@export var move_speed : float = 42.5 #85 #42.5
+@export var dash_speed: float = 115 #230 # Increase value for faster dash #115
 var dash_duration = 0.2
 var dash_time_left = 0.0
 var can_dash: bool = true
@@ -14,7 +14,7 @@ var controller_aim_direction = Vector2.ZERO
 var knockback_velocity = Vector2.ZERO
 var knockback_duration = 0.25 #0.15
 var knockback_time_left = 0.0
-var knockback_damping = 350 #400
+var knockback_damping = 175 #350
 
 enum {
 	MOVE,
@@ -52,6 +52,9 @@ var can_left_click = false
 var can_right_click = false
 
 var last_input_was_mouse: bool = true
+
+@onready var boss_3: CharacterBody2D
+@onready var boss_room
 
 @onready var sprite: Sprite2D = $Smoothing2D/Sprite2D
 @onready var transform_sprite: Sprite2D = $Smoothing2D/Transform
@@ -147,6 +150,19 @@ var dash_gauge = 3
 var max_dash_gauge = 3
 var input_direction: Vector2 = Vector2.ZERO
 var last_direction_input: Vector2
+var orb_buff: bool = false
+var devour_color: String
+
+var oppressive_color: String # = "white" for testing purposes
+var color_updated_this_frame = false
+#@onready var oppressive_debuff_animation: AnimationPlayer = $Node2D/OppressiveDebuffAnimation
+@onready var oppressive_debuff_animation: AnimationPlayer = $OppressiveDebuff/OppressiveDebuffAnimation
+@onready var first_gold_vfx: AnimatedSprite2D = $GoldOrbDebuff/FirstGoldVFX
+@onready var second_gold_vfx: AnimatedSprite2D = $GoldOrbDebuff/SecondGoldVFX
+@onready var gold_orb_vfx_timer: Timer = $GoldOrbDebuff/GoldOrbVFXTimer
+@onready var white_debuff_2: AnimatedSprite2D = $OppressiveDebuff/WhiteDebuff2
+@onready var black_debuff_2: AnimatedSprite2D = $OppressiveDebuff/BlackDebuff2
+@onready var debuff_vfx_timer: Timer = $OppressiveDebuff/DebuffVFXTimer
 
 @onready var testing_area = get_parent().get_node("../Panel2")
 
@@ -193,7 +209,19 @@ func _ready():
 	
 	if get_tree().get_current_scene().name == "Settings":
 		skill_bar.visible = false
-
+		
+	if get_tree().get_current_scene().name == "BossRoom2":
+		camera.limit_top = -75
+		camera.limit_bottom = 345
+	
+	if get_tree().get_current_scene().name == "BossRoom3":
+		boss_3 = get_parent().find_child("Boss3")
+		boss_room = get_node("..")
+		debuff_vfx_timer.start()
+	GlobalEvents.connect("orb_collected", _on_orb_collected)
+	GlobalEvents.connect("devour_gold_collected", _on_devour_gold_collected)
+	GlobalEvents.connect("devour_red_collected", _on_devour_red_collected)
+	
 func _process(delta):
 	var elapsed_time = GlobalCount.elapsed_time
 	
@@ -206,6 +234,7 @@ func _process(delta):
 		time.text = time_string
 
 func _physics_process(delta):
+	
 	if InputCheck.is_mouse:
 		input_direction = Vector2(
 			Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -271,7 +300,7 @@ func _physics_process(delta):
 		#else:
 		#added code for transformation bug
 		else:
-			move_speed = 85
+			move_speed = 42.5
 			if is_transforming:
 				state = TRANSFORM
 				transform_timer()
@@ -306,6 +335,7 @@ func _physics_process(delta):
 		
 	if dash_meter.value >= 100:
 		can_dash = true
+	position += velocity * delta
 	
 #func _set_health(value):
 	#print(health)
@@ -445,7 +475,7 @@ func dash_state(delta):
 		move()
 	else:
 		if knockback_time_left <= 0:
-			velocity = Vector2.ZERO
+			velocity = Vector2.ZERO * delta
 		dash_particles.emitting = false
 		dash_trail.visible = false
 		state = MOVE
@@ -518,11 +548,11 @@ func heavy_attack_state(delta):
 		#)
 	input_direction = input_direction.normalized()
 	velocity = input_direction * move_speed
-	move_speed = max(move_speed - (40.48 * delta), 0) #45.53
+	move_speed = max(move_speed - (20.24 * delta), 0) #40.48
 
 	if Input.is_action_pressed("dash") and can_dash:
 	#and dash_meter.value >= 100:
-		move_speed = 85
+		move_speed = 42.5
 		input_direction = input_direction.normalized()
 		
 		if input_direction == Vector2.ZERO:
@@ -552,7 +582,7 @@ func heavy_attack_hit():
 	swing.play()
 	#GlobalCount.camera.apply_shake(3.0, 20.0)
 func heavy_attack_finish():
-	move_speed = 85
+	move_speed = 42.5
 	
 func charge_state(delta):
 	velocity = Vector2.ZERO
@@ -605,7 +635,7 @@ func transform_state(delta):
 	#transform_time_left.visible = true
 	transform_fire_ball.emitting = true
 	is_transforming = true
-	move_speed = 85
+	move_speed = 42.5
 	
 func process_input_buffer():
 	if buffered_transform_input:
@@ -645,59 +675,12 @@ func dash_animation_start():
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "transform":
 		transform_timer()
-		#is_transforming = false
-		#sprite.hide()
-		#transform_sprite.show()
-		#transform_time.start()
-		#damage_amount *= 1.6
-		#
-		#
-		#laser_line_left.emitting = true
-		#laser_line_right.emitting = true
-		#ghost_effect_left.emitting = true
-		#ghostly_effect_right.emitting = true
-		#
-		#print(transform_fire_bar.position)
-		##print(manabar.position.x)
-		#transform_fire_bar.position = Vector2(manabar.position.x + 144.945, manabar.position.y + 2)
-		#print(transform_fire_bar.position)
-		#var fire_bar_tween = get_tree().create_tween()
-		#var end_position = transform_fire_bar.get_position() - Vector2(manabar.get_rect().size.x+3, 0)
-		#fire_bar_tween.tween_property(transform_fire_bar, "position", end_position, 5).set_trans(Tween.TRANS_LINEAR)
-		#
-		#var manabar_tween = get_tree().create_tween()
-		#manabar_tween.tween_property(manabar, "value", 0, 5).set_trans(Tween.TRANS_LINEAR)
-		#
-		#var mana_damage_bar_tween = get_tree().create_tween()
-		#mana_damage_bar_tween.tween_property(mana_damage_bar, "value", 0, 5).set_trans(Tween.TRANS_LINEAR)
-		#
-		#var mana_bar_fire_tween = get_tree().create_tween()
-		#mana_bar_fire_tween.tween_property(mana_bar_fire.process_material, "color:a", 0, 5).set_trans(Tween.TRANS_LINEAR)
-		#
-		#GlobalCount.surge_count += 1
-		#state = MOVE
-	#elif anim_name == "attack_left" or anim_name == "attack_right" or anim_name == "attack_up" or anim_name == "attack_down" or anim_name == "attack_down_right" or anim_name == "attack_down_left" or anim_name == "attack_up_right" or anim_name == "attack_up_left":
-		#if transformed and Input.is_action_pressed("attack"):
-			#print("here going back to attack")
-			#state_machine.stop()
-			#animation_player.seek(0, true)
-			#animation_tree.set("parameters/Attack/Attack/blend_position", get_global_mouse_position() - global_position)
-			#animation_tree.set("parameters/Idle/blend_position", get_global_mouse_position() - global_position)
-			#swing.play()
-			#state = ATTACK
-		#else:
-			#state = MOVE
 		
 	if anim_name == "heavy_left" or anim_name == "heavy_right" or anim_name == "heavy_down" or anim_name == "heavy_up":
-		move_speed = 85
+		move_speed = 42.5
 		state = MOVE
-	#else:
 	
-	#if Input.is_action_pressed("attack") and transformed:
-		#state = ATTACK
-	#else:
 	state = MOVE
-	#process_input_buffer()
 
 func transform_timer():
 	is_transforming = false
@@ -713,7 +696,6 @@ func transform_timer():
 	ghostly_effect_right.emitting = true
 	
 	print(transform_fire_bar.position)
-	#print(manabar.position.x)
 	transform_fire_bar.position = Vector2(manabar.position.x + 144.945, manabar.position.y + 2)
 	print(transform_fire_bar.position)
 	var fire_bar_tween = get_tree().create_tween()
@@ -757,9 +739,9 @@ func flash():
 		transform_sprite.material.set_shader_parameter("flash_modifier", 1)
 		flash_timer.start()
 
-func _on_hurtbox_area_entered(_area: Area2D) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
 	health -= 1
-	
+	print("player die in this: ", area)
 	if health <= 0:
 		death = true
 		flash()
@@ -768,19 +750,6 @@ func _on_hurtbox_area_entered(_area: Area2D) -> void:
 		state_machine.travel("death")
 		var animation_length = animation_player.get_animation("death").length
 		
-		match get_tree().get_current_scene().name:
-			"BossRoom0":
-				if Global.player_data.first_play_1 == true:
-					Global.player_data.deaths_boss_1 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom1":
-				if Global.player_data.first_play_2 == true:
-					Global.player_data.deaths_boss_2 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom2":
-				if Global.player_data.first_play_3 == true:
-					Global.player_data.deaths_boss_3 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
 		
 		await get_tree().create_timer(animation_length).timeout
 		if is_instance_valid(sprite):
@@ -795,29 +764,15 @@ func _on_hurtbox_area_entered(_area: Area2D) -> void:
 			GlobalCount.death_count += 1
 		#GlobalCount.reset_count()
 
-func _on_hurtbox_slash_area_entered(_area: Area2D) -> void:
+func _on_hurtbox_slash_area_entered(area: Area2D) -> void:
 	health -= 1
-	
+	print("player die in this: ", area)
 	if health <= 0:
 		death = true
 		flash()
 		HitStopManager.hit_stop_short()
 		GlobalCount.camera.apply_shake(5, 20.0)
 		var animation_length = animation_player.get_animation("death").length
-		
-		match get_tree().get_current_scene().name:
-			"BossRoom0":
-				if Global.player_data.first_play_1 == true:
-					Global.player_data.deaths_boss_1 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom1":
-				if Global.player_data.first_play_2 == true:
-					Global.player_data.deaths_boss_2 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom2":
-				if Global.player_data.first_play_3 == true:
-					Global.player_data.deaths_boss_3 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
 		
 		await get_tree().create_timer(animation_length).timeout
 		if is_instance_valid(sprite):
@@ -835,7 +790,7 @@ func _on_hurtbox_slash_area_entered(_area: Area2D) -> void:
 		
 func kill_player():
 	health -= 1
-	
+	print("player dieing to kill function call")
 	if health <= 0:
 		death = true
 		flash()
@@ -844,20 +799,6 @@ func kill_player():
 		state_machine.travel("death")
 		var animation_length = animation_player.get_animation("death").length
 		await get_tree().create_timer(animation_length).timeout
-		
-		match get_tree().get_current_scene().name:
-			"BossRoom0":
-				if Global.player_data.first_play_1 == true:
-					Global.player_data.deaths_boss_1 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom1":
-				if Global.player_data.first_play_2 == true:
-					Global.player_data.deaths_boss_2 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-			"BossRoom2":
-				if Global.player_data.first_play_3 == true:
-					Global.player_data.deaths_boss_3 += 1
-					Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
 		
 		if is_instance_valid(sprite):
 			sprite.queue_free()
@@ -963,19 +904,104 @@ func transform_icon_disable():
 	
 func charge_icon_disable():
 	charge_icon.value = 100
+
+
+# ----------------------------------------------------------// FOR BOSS3 MECHANICS
+func _on_left_oppressive_area_entered(area: Area2D) -> void:
+	boss_3.oppressive_debuff_count += 1
 	
-##
-#func _on_beam_timer_timeout() -> void:
-	#var old_position = position
-	#remove_child(circle_ref)
-	##boss_2.add_child(circle_ref)
-	##circle_ref.global_position = old_global_pos
-	#
-	##get_tree().get_root().add_child(circle_ref)
-	#var boss_room = get_node("../Boss2")
-	#boss_room.add_child(circle_ref)
-	#print(circle_ref.position)
-	#circle_ref.position = old_position
+	if boss_3.left_color == "white":
+		if oppressive_color == "white":
+			kill_player()
+			print("player_killed")
+		elif oppressive_color == "black":
+			oppressive_debuff_animation.play("black_transition_white")
+			print("blk transition into white")
+		else:
+			oppressive_debuff_animation.play("white_start")
+	elif boss_3.left_color == "black":
+		if oppressive_color == "black":
+			kill_player()
+			print("player_killed")
+		elif oppressive_color == "white":
+			oppressive_debuff_animation.play("white_transition_black")
+		else:
+			oppressive_debuff_animation.play("black_start")
+	oppressive_color = boss_3.left_color
+
+func _on_right_oppressive_area_entered(area: Area2D) -> void:
+	boss_3.oppressive_debuff_count += 1
+	print("getting hit by right side: ", boss_3.right_color)
 	
+	if boss_3.right_color == "white":
+		if oppressive_color == "white":
+			kill_player()
+		elif oppressive_color == "black":
+			oppressive_debuff_animation.play("black_transition_white")
+		else:
+			oppressive_debuff_animation.play("white_start")
+	if boss_3.right_color == "black":
+		if oppressive_color == "black":
+			kill_player()
+		elif oppressive_color == "white":
+			oppressive_debuff_animation.play("white_transition_black")
+		else:
+			oppressive_debuff_animation.play("black_start")
+	oppressive_color = boss_3.right_color
+
+func _on_orb_collected():
+	orb_buff = true
+	orb_buff_vfx()
 	
+func orb_buff_vfx():
+	gold_orb_vfx_timer.start()
+	var first_vfx = get_tree().create_tween()
+	first_vfx.tween_property(first_gold_vfx, "modulate:a", 1, 0.3)
+	var second_vfx = get_tree().create_tween()
+	second_vfx.tween_property(second_gold_vfx, "modulate:a", 1, 0.3)
+	first_gold_vfx.play("default")
+
+func orb_buff_vfx_off():
+	var first_vfx = get_tree().create_tween()
+	first_vfx.tween_property(first_gold_vfx, "modulate:a", 0, 0.3)
+	var second_vfx = get_tree().create_tween()
+	second_vfx.tween_property(second_gold_vfx, "modulate:a", 0, 0.3)
 	
+func _on_gold_orb_vfx_timer_timeout() -> void:
+	second_gold_vfx.play("default")
+	
+func _on_devour_gold_collected():
+	if devour_color == "gold":
+		devour_color == "gold"
+	elif devour_color == "red":
+		devour_color = "gold"
+	else:
+		devour_color = "gold"
+	
+func _on_devour_red_collected():
+	if devour_color == "red":
+		kill_player()
+	elif devour_color == "gold":
+		devour_color = "red"
+	else:
+		kill_player()
+
+func _on_barrage_black_hurtbox_area_entered(area: Area2D) -> void:
+	print("going into this function instantly?")
+	if oppressive_color == "white":
+		oppressive_debuff_animation.play("white_transition_black")
+	else:
+		kill_player()
+	oppressive_color = "black"
+
+func _on_barrage_white_hurtbox_area_entered(area: Area2D) -> void:
+	print("going into this function instantly?")
+	if oppressive_color == "black":
+		oppressive_debuff_animation.play("black_transition_white")
+	else:
+		kill_player()
+	oppressive_color = "white"
+
+func _on_debuff_vfx_timer_timeout() -> void:
+	white_debuff_2.play("default")
+	black_debuff_2.play("default")

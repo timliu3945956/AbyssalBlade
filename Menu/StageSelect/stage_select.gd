@@ -12,9 +12,21 @@ extends Control
 @onready var stage_1_clear_time: Label = $PanelContainer2/ClearTime
 @onready var stage_2_clear_time: Label = $PanelContainer2/ClearTime2
 @onready var stage_3_clear_time: Label = $PanelContainer2/ClearTime3
-@onready var deaths_1: Label = $DeathsContainer/Deaths1
-@onready var deaths_2: Label = $DeathsContainer/Deaths2
-@onready var deaths_3: Label = $DeathsContainer/Deaths3
+
+@onready var clear_count_1: Label = $ClearCount/ClearCount1
+@onready var clear_count_2: Label = $ClearCount/ClearCount2
+@onready var clear_count_3: Label = $ClearCount/ClearCount3
+
+#@onready var deaths_1: Label = $DeathsContainer/Deaths1
+#@onready var deaths_2: Label = $DeathsContainer/Deaths2
+#@onready var deaths_3: Label = $DeathsContainer/Deaths3
+@onready var first_clear_time_1: Label = $FirstTimeToClear/FirstClearTime1
+@onready var first_clear_time_2: Label = $FirstTimeToClear/FirstClearTime2
+@onready var first_clear_time_3: Label = $FirstTimeToClear/FirstClearTime3
+
+@onready var attempts_1: Label = $AttemptsContainer/Attempts1
+@onready var attempts_2: Label = $AttemptsContainer/Attempts2
+@onready var attempts_3: Label = $AttemptsContainer/Attempts3
 
 
 #@onready var stage_1_clear_time: Label = $PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer/HBoxContainer2/ClearTime
@@ -27,12 +39,22 @@ extends Control
 var last_entered_button = ""
 var which_load = 1
 var begin_background: Tween
+
 var tween_clear_time_1: Tween
 var tween_clear_time_2: Tween
 var tween_clear_time_3: Tween
+
 var tween_deaths_1: Tween
 var tween_deaths_2: Tween
 var tween_deaths_3: Tween
+
+var tween_first_clear_1: Tween
+var tween_first_clear_2: Tween
+var tween_first_clear_3: Tween
+
+var tween_clear_count_1: Tween
+var tween_clear_count_2: Tween
+var tween_clear_count_3: Tween
 #var player_data = PlayerData.new()
 
 func _ready() -> void:
@@ -50,9 +72,9 @@ func _ready() -> void:
 	stage_1_clear_time.modulate.a = 0.0
 	stage_2_clear_time.modulate.a = 0.0
 	stage_3_clear_time.modulate.a = 0.0
-	deaths_1.modulate.a = 0.0
-	deaths_2.modulate.a = 0.0
-	deaths_3.modulate.a = 0.0
+	attempts_1.modulate.a = 0.0
+	attempts_2.modulate.a = 0.0
+	attempts_3.modulate.a = 0.0
 	
 	AudioPlayer.play_music(menu_music.stream, -10)
 	
@@ -60,9 +82,17 @@ func _ready() -> void:
 	stage_2_clear_time.text = format_time(Global.player_data.best_time_boss_2)
 	stage_3_clear_time.text = format_time(Global.player_data.best_time_boss_3)
 	
-	deaths_1.text = str(Global.player_data.deaths_boss_1)
-	deaths_2.text = str(Global.player_data.deaths_boss_2)
-	deaths_3.text = str(Global.player_data.deaths_boss_3)
+	clear_count_1.text = str(Global.player_data.clear_count_1)
+	clear_count_2.text = str(Global.player_data.clear_count_2)
+	clear_count_3.text = str(Global.player_data.clear_count_3)
+	
+	first_clear_time_1.text = format_time(Global.player_data.first_clear_time_1)
+	first_clear_time_2.text = format_time(Global.player_data.first_clear_time_2)
+	first_clear_time_3.text = format_time(Global.player_data.first_clear_time_3)
+	
+	attempts_1.text = str(Global.player_data.attempt_count_1)
+	attempts_2.text = str(Global.player_data.attempt_count_2)
+	attempts_3.text = str(Global.player_data.attempt_count_3)
 
 func _input(event):
 	if TransitionScreen.is_transitioning:
@@ -109,26 +139,58 @@ func _on_stage_1_button_pressed() -> void:
 		tween_clear_time_3 = create_tween()
 		tween_clear_time_3.tween_property(stage_3_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
-	if deaths_1.modulate.a == 0:
+	if attempts_1.modulate.a == 0:
 		if tween_deaths_1:
 			tween_deaths_1.kill()
 		tween_deaths_1 = create_tween()
-		tween_deaths_1.tween_property(deaths_1, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_2.modulate.a == 1:
+		tween_deaths_1.tween_property(attempts_1, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_2.modulate.a == 1:
 		if tween_deaths_2:
 			tween_deaths_2.kill()
 		tween_deaths_2 = create_tween()
-		tween_deaths_2.tween_property(deaths_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_3.modulate.a == 1:
+		tween_deaths_2.tween_property(attempts_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_3.modulate.a == 1:
 		if tween_deaths_3:
 			tween_deaths_3.kill()
 		tween_deaths_3 = create_tween()
-		tween_deaths_3.tween_property(deaths_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		tween_deaths_3.tween_property(attempts_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 	if background.modulate.a == 1:
 		if begin_background:
 			begin_background.kill()
 		begin_background = create_tween()
 		begin_background.tween_property(background, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if first_clear_time_1.modulate.a == 0:
+		if tween_first_clear_1:
+			tween_first_clear_1.kill()
+		tween_first_clear_1 = create_tween()
+		tween_first_clear_1.tween_property(first_clear_time_1, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_2.modulate.a == 1:
+		if tween_first_clear_2:
+			tween_first_clear_2.kill()
+		tween_first_clear_2 = create_tween()
+		tween_first_clear_2.tween_property(first_clear_time_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_3.modulate.a == 1:
+		if tween_first_clear_3:
+			tween_first_clear_3.kill()
+		tween_first_clear_3 = create_tween()
+		tween_first_clear_3.tween_property(first_clear_time_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	
+	if clear_count_1.modulate.a == 0:
+		if tween_clear_count_1:
+			tween_clear_count_1.kill()
+		tween_clear_count_1 = create_tween()
+		tween_clear_count_1.tween_property(clear_count_1, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_2.modulate.a == 1:
+		if tween_clear_count_2:
+			tween_clear_count_2.kill()
+		tween_clear_count_2 = create_tween()
+		tween_clear_count_2.tween_property(clear_count_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_3.modulate.a == 1:
+		if tween_clear_count_3:
+			tween_clear_count_3.kill()
+		tween_clear_count_3 = create_tween()
+		tween_clear_count_3.tween_property(clear_count_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
 	var reenable_timer: Timer = Timer.new()
 	reenable_timer.wait_time = 0.5
@@ -159,21 +221,53 @@ func _on_stage_2_pressed() -> void:
 		tween_clear_time_3 = create_tween()
 		tween_clear_time_3.tween_property(stage_3_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
-	if deaths_1.modulate.a == 1:
+	if attempts_1.modulate.a == 1:
 		if tween_deaths_1:
 			tween_deaths_1.kill()
 		tween_deaths_1 = create_tween()
-		tween_deaths_1.tween_property(deaths_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_2.modulate.a == 0:
+		tween_deaths_1.tween_property(attempts_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_2.modulate.a == 0:
 		if tween_deaths_2:
 			tween_deaths_2.kill()
 		tween_deaths_2 = create_tween()
-		tween_deaths_2.tween_property(deaths_2, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_3.modulate.a == 1:
+		tween_deaths_2.tween_property(attempts_2, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_3.modulate.a == 1:
 		if tween_deaths_3:
 			tween_deaths_3.kill()
 		tween_deaths_3 = create_tween()
-		tween_deaths_3.tween_property(deaths_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		tween_deaths_3.tween_property(attempts_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if first_clear_time_1.modulate.a == 1:
+		if tween_first_clear_1:
+			tween_first_clear_1.kill()
+		tween_first_clear_1 = create_tween()
+		tween_first_clear_1.tween_property(first_clear_time_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_2.modulate.a == 0:
+		if tween_first_clear_2:
+			tween_first_clear_2.kill()
+		tween_first_clear_2 = create_tween()
+		tween_first_clear_2.tween_property(first_clear_time_2, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_3.modulate.a == 1:
+		if tween_first_clear_3:
+			tween_first_clear_3.kill()
+		tween_first_clear_3 = create_tween()
+		tween_first_clear_3.tween_property(first_clear_time_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if clear_count_1.modulate.a == 1:
+		if tween_clear_count_1:
+			tween_clear_count_1.kill()
+		tween_clear_count_1 = create_tween()
+		tween_clear_count_1.tween_property(clear_count_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_2.modulate.a == 0:
+		if tween_clear_count_2:
+			tween_clear_count_2.kill()
+		tween_clear_count_2 = create_tween()
+		tween_clear_count_2.tween_property(clear_count_2, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_3.modulate.a == 1:
+		if tween_clear_count_3:
+			tween_clear_count_3.kill()
+		tween_clear_count_3 = create_tween()
+		tween_clear_count_3.tween_property(clear_count_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 	
 	if background.modulate.a == 1:
 		if begin_background:
@@ -209,21 +303,53 @@ func _on_stage_3_button_pressed() -> void:
 		tween_clear_time_3 = create_tween()
 		tween_clear_time_3.tween_property(stage_3_clear_time, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
-	if deaths_1.modulate.a == 1:
+	if attempts_1.modulate.a == 1:
 		if tween_deaths_1:
 			tween_deaths_1.kill()
 		tween_deaths_1 = create_tween()
-		tween_deaths_1.tween_property(deaths_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_2.modulate.a == 1:
+		tween_deaths_1.tween_property(attempts_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_2.modulate.a == 1:
 		if tween_deaths_2:
 			tween_deaths_2.kill()
 		tween_deaths_2 = create_tween()
-		tween_deaths_2.tween_property(deaths_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
-	if deaths_3.modulate.a == 0:
+		tween_deaths_2.tween_property(attempts_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_3.modulate.a == 0:
 		if tween_deaths_3:
 			tween_deaths_3.kill()
 		tween_deaths_3 = create_tween()
-		tween_deaths_3.tween_property(deaths_3, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		tween_deaths_3.tween_property(attempts_3, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if first_clear_time_1.modulate.a == 1:
+		if tween_first_clear_1:
+			tween_first_clear_1.kill()
+		tween_first_clear_1 = create_tween()
+		tween_first_clear_1.tween_property(first_clear_time_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_2.modulate.a == 1:
+		if tween_first_clear_2:
+			tween_first_clear_2.kill()
+		tween_first_clear_2 = create_tween()
+		tween_first_clear_2.tween_property(first_clear_time_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_3.modulate.a == 0:
+		if tween_first_clear_3:
+			tween_first_clear_3.kill()
+		tween_first_clear_3 = create_tween()
+		tween_first_clear_3.tween_property(first_clear_time_3, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if clear_count_1.modulate.a == 1:
+		if tween_clear_count_1:
+			tween_clear_count_1.kill()
+		tween_clear_count_1 = create_tween()
+		tween_clear_count_1.tween_property(clear_count_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_2.modulate.a == 1:
+		if tween_clear_count_2:
+			tween_clear_count_2.kill()
+		tween_clear_count_2 = create_tween()
+		tween_clear_count_2.tween_property(clear_count_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_3.modulate.a == 0:
+		if tween_clear_count_3:
+			tween_clear_count_3.kill()
+		tween_clear_count_3 = create_tween()
+		tween_clear_count_3.tween_property(clear_count_3, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
 	
 	if background.modulate.a == 1:
 		if begin_background:

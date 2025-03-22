@@ -40,6 +40,8 @@ extends CharacterBody2D
 @onready var attack_vfx_animation = get_node("../AttackVFXAnimation")
 @onready var smoke: AnimatedSprite2D = $smoke
 
+@onready var healthbar: ProgressBar = $CanvasLayer/Healthbar
+
 @onready var lightning_1_triangle_0 = get_node("../Area2D/Triangle0VFX/Lightning1")
 @onready var lightning_2_triangle_0 = get_node("../Area2D/Triangle0VFX/Lightning2")
 @onready var lightning_3_triangle_0 = get_node("../Area2D/Triangle0VFX/Marker2D/Lightning3")
@@ -72,10 +74,31 @@ extends CharacterBody2D
 @onready var beam_timer: Timer = $BeamTimer
 @onready var beam_progress: Node2D = $BeamProgress
 
-@onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
-@onready var dash_audio: AudioStreamPlayer2D = $DashAudio
+@onready var chain_tiles_audio: AudioStreamPlayer2D = $ChainTilesAudio
+@onready var cleave_audio: AudioStreamPlayer2D = $CleaveAudio
+@onready var line_aoe_audio: AudioStreamPlayer2D = $LineAOEAudio
+@onready var beam_audio: AudioStreamPlayer2D = $BeamAudio
 @onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
+@onready var dash_audio: AudioStreamPlayer2D = $DashAudio
+@onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
 
+@onready var idle: Node2D = $FiniteStateMachine/Idle
+@onready var beam: Node2D = $FiniteStateMachine/Beam
+@onready var forward_cleave: Node2D = $FiniteStateMachine/ForwardCleave
+@onready var teleport_to_center: Node2D = $FiniteStateMachine/TeleportToCenter
+@onready var chain_tiles: Node2D = $FiniteStateMachine/ChainTiles
+@onready var chain_destruction: Node2D = $FiniteStateMachine/ChainDestruction
+@onready var discharge: Node2D = $FiniteStateMachine/Discharge
+@onready var discharge_double: Node2D = $FiniteStateMachine/DischargeDouble
+@onready var line_aoe: Node2D = $FiniteStateMachine/LineAOE
+@onready var walk_to_center: Node2D = $FiniteStateMachine/WalkToCenter
+@onready var morph_out: Node2D = $FiniteStateMachine/MorphOut
+@onready var morph_in: Node2D = $FiniteStateMachine/MorphIn
+@onready var heartmind: Node2D = $FiniteStateMachine/Heartmind
+@onready var follow: Node2D = $FiniteStateMachine/Follow
+@onready var combo_surge: Node2D = $FiniteStateMachine/ComboSurge
+@onready var enrage: Node2D = $FiniteStateMachine/Enrage
+@onready var final_discharge: Node2D = $FiniteStateMachine/FinalDischarge
 
 
 @onready var boss_killed = get_node("../BossKilled")
@@ -99,8 +122,6 @@ extends CharacterBody2D
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var slash_glow: CPUParticles2D = $Marker2D/SlashGlow
 
-@onready var healthbar = $CanvasLayer/Healthbar
-
 @onready var beam_circle_timer: Timer = $BeamCircleTimer
 #var circle_ref: Node2D
 var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_fade.tscn")
@@ -109,10 +130,10 @@ var MeleeAuto = preload("res://Utilities/Effects/lightningvfx/MeleeSlamVFX.tscn"
 var circle_ref: Node2D
 
 var direction : Vector2
-var move_speed = 120
+var move_speed = 60 #120
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 60000 : set = _set_health #52000
+var health_amount = 57000 : set = _set_health #57000
 var center_of_screen = get_viewport_rect().size / 2
 
 var timeline: int = 0
@@ -156,6 +177,7 @@ func _ready():
 		
 func _physics_process(delta):
 	velocity = direction.normalized() * move_speed
+	position += velocity * delta
 	move_and_slide()
 	
 
@@ -260,6 +282,28 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		player.hurtbox_collision.disabled = true
 		boss_death = true
 		find_child("FiniteStateMachine").change_state("Death")
+		remove_states()
+		
+func remove_states():
+	idle.queue_free()
+	beam.queue_free()
+	forward_cleave.queue_free()
+	teleport_to_center.queue_free()
+	chain_tiles.queue_free()
+	chain_destruction.queue_free()
+	discharge.queue_free()
+	discharge_double.queue_free()
+	line_aoe.queue_free()
+	walk_to_center.queue_free()
+	morph_out.queue_free()
+	morph_in.queue_free()
+	heartmind.queue_free()
+	follow.queue_free()
+	combo_surge.queue_free()
+	enrage.queue_free()
+	final_discharge.queue_free()
+	dash_particles.queue_free()
+	healthbar.queue_free()
 
 func camera_shake():
 	GlobalCount.camera.apply_shake(1.5, 15.0)

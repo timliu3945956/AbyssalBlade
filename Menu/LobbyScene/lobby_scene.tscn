@@ -250,6 +250,7 @@ autoplay = "default"
 frame_progress = 0.592144
 
 [node name="CampfireParticle" type="GPUParticles2D" parent="Campfire"]
+physics_interpolation_mode = 2
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_dithu")
 position = Vector2(0, 11)
@@ -273,6 +274,8 @@ autoplay = "new_animation"
 [editable path="Player"]
 [editable path="Player/HurtboxSlash"]
 [editable path="Player/Hurtbox"]
+[editable path="Player/LeftOppressive"]
+[editable path="Player/RightOppressive"]
 [editable path="Player/Marker2D/HitBox"]
 [editable path="Player/Marker2D/HeavyHitBox"]
 [editable path="Player/CanvasLayer/Healthbar"]

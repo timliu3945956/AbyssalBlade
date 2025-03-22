@@ -921,11 +921,11 @@ size = Vector2(58, 34.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tsfs"]
 radius = 66.0681
 
-[sub_resource type="Gradient" id="Gradient_rmo3c"]
+[sub_resource type="Gradient" id="Gradient_f4ri2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yp4fg"]
-gradient = SubResource("Gradient_rmo3c")
+gradient = SubResource("Gradient_f4ri2")
 width = 180
 height = 10
 
@@ -4122,11 +4122,11 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0v7d"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Gradient" id="Gradient_e2ryu"]
+[sub_resource type="Gradient" id="Gradient_26hx5"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yb5vj"]
-gradient = SubResource("Gradient_e2ryu")
+gradient = SubResource("Gradient_26hx5")
 width = 180
 height = 10
 
@@ -4348,7 +4348,7 @@ explosiveness = 0.02
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-6, -3)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_g8jtn")
 
 [node name="Hurtbox" parent="." instance=ExtResource("1_7ohg1")]

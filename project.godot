@@ -27,6 +27,7 @@ HitStopManager="*res://Singleton/hit_stop_manager.gd"
 LoadManager="*res://Singleton/load_manager.gd"
 InteractionManager="*res://Singleton/InteractionManager.tscn"
 InputCheck="*res://Singleton/input_check.tscn"
+GlobalEvents="*res://Singleton/GlobalEvents.gd"
 
 [display]
 
@@ -47,6 +48,7 @@ enabled=PackedStringArray("res://addons/smoothing/plugin.cfg")
 folder_colors={
 "res://Boss0States/": "red",
 "res://Boss2States/": "red",
+"res://Boss3States/": "red",
 "res://BossStates/": "red",
 "res://Characters/": "blue",
 "res://Singleton/": "gray",
@@ -151,12 +153,17 @@ interact={
 2d_physics/layer_5="ENEMY HURTBOX"
 2d_physics/layer_6="DETECTION"
 2d_physics/layer_7="SLASH HITBOX"
+2d_physics/layer_8="LEFTOPPRESSIVEHURTBOX"
+2d_physics/layer_9="RIGHTOPPRESSIVEHURTBOX"
+2d_physics/layer_10="ORBHURTBOX"
+2d_physics/layer_11="DEVOURORBHITBOX"
+2d_physics/layer_12="DEVOURPLAYERORBHITBOX"
+2d_physics/layer_13="BARRAGEBLACK"
+2d_physics/layer_14="BARRAGEWHITE"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/vram_compression/import_s3tc_bptc=true
-textures/vram_compression/import_etc2_astc=true
 
 [shader_globals]
 

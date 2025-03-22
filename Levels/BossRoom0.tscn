@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=3 uid="uid://d0o155qrrrqer"]
+[gd_scene load_steps=213 format=3 uid="uid://d0o155qrrrqer"]
 
 [ext_resource type="Script" path="res://Levels/boss_room_0.gd" id="1_nl3hu"]
 [ext_resource type="Shader" uid="uid://brpjtuahwxqa" path="res://Utilities/parallax shaders/layer_2_trees.tres" id="1_x3d5r"]
@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://cap0tv73j08et" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 1.png" id="31_gsvav"]
 [ext_resource type="Texture2D" uid="uid://uhx2brh54g27" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 2.png" id="32_0fnqw"]
 [ext_resource type="Texture2D" uid="uid://spanto2odac7" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/blast 3.png" id="33_0lm4w"]
-[ext_resource type="Script" path="res://Levels/boss_slain_0.gd" id="33_7r312"]
 [ext_resource type="Shader" path="res://Characters/boss_distortion.gdshader" id="33_tv3yt"]
 [ext_resource type="Texture2D" uid="uid://d37ri863tjwkl" path="res://Utilities/menu/death_screen_blue.png" id="34_aapdb"]
 [ext_resource type="AudioStream" uid="uid://t3kenf2jm8q4" path="res://audio/sfx/Boss0/cleave.wav" id="34_p1eyj"]
@@ -45,10 +44,10 @@
 [ext_resource type="AudioStream" uid="uid://dnlerhs5t4pk6" path="res://audio/sfx/Boss0/sac mech fail.wav" id="36_vaugv"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="36_vaxsg"]
 [ext_resource type="AudioStream" uid="uid://bd8rwhmnl4bhs" path="res://audio/sfx/Boss0/invisible.wav" id="37_b3283"]
-[ext_resource type="AudioStream" uid="uid://ddwttqco6mea1" path="res://audio/music/boss 1 music (loop-ready).wav" id="38_3trt5"]
 [ext_resource type="AudioStream" uid="uid://bufm6aeml5xb3" path="res://audio/music/boss 2 music (loop-ready).wav" id="38_afs4m"]
 [ext_resource type="Shader" path="res://Levels/chromatic_abberation.gdshader" id="42_2avee"]
 [ext_resource type="AudioStream" uid="uid://ddr682acjo37g" path="res://audio/sfx/Boss2/phase transition.mp3" id="44_wtn8u"]
+[ext_resource type="Script" path="res://Levels/boss_slain.gd" id="45_0am3y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3m84i"]
 shader = ExtResource("1_x3d5r")
@@ -516,7 +515,7 @@ particles_anim_loop = true
 offsets = PackedFloat32Array(0.133333, 0.368889, 0.524444)
 colors = PackedColorArray(0, 0, 0, 1, 0.807632, 0.150959, 0.177377, 1, 0.839216, 0.156863, 0.184314, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dl81c"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ghmih"]
 gradient = SubResource("Gradient_dl783")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tratr"]
@@ -529,7 +528,7 @@ radial_velocity_min = 400.0
 radial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 color = Color(1, 1, 1, 0.396078)
-color_ramp = SubResource("GradientTexture1D_dl81c")
+color_ramp = SubResource("GradientTexture1D_ghmih")
 anim_speed_min = 0.2
 anim_speed_max = 0.2
 
@@ -5331,6 +5330,8 @@ script = ExtResource("1_nl3hu")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -100
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.9, 0.9)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
@@ -5341,6 +5342,8 @@ texture = ExtResource("2_haouh")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.8, 0.8)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
@@ -5351,6 +5354,8 @@ texture = ExtResource("3_pipgi")
 
 [node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.75, 0.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer7"]
@@ -5361,6 +5366,8 @@ texture = ExtResource("4_3bsvy")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
@@ -5371,6 +5378,8 @@ texture = ExtResource("4_ydepb")
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.65, 0.65)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
@@ -5381,6 +5390,8 @@ texture = ExtResource("5_cvqnb")
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.6, 0.6)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
@@ -5391,6 +5402,8 @@ texture = ExtResource("6_q56pk")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
 motion_scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
@@ -5465,6 +5478,7 @@ modulate = Color(0.839216, 0.156863, 0.184314, 1)
 material = SubResource("CanvasItemMaterial_wj37s")
 scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_gfd0f")
+animation = &"new_animation"
 frame = 15
 frame_progress = 1.0
 
@@ -5527,7 +5541,6 @@ visible = false
 polygon = PackedVector2Array(-152, 5, -151, -21, -143, -51, -130, -80, -114, -101, -89, -123, -66, -136, -34, -147, -13, -151, 14, -151, 47, -144, 66, -136, 88, -124, 111, -102, 125, -85, 140, -59, 146, -40, 150, -23, 151, -12, 151, 15, 146, 43, 133, 74, 116, 97, 97, 116, 82, 127, 68, 135, 46, 145, 12, 151, -12, 151, -31, 149, -56, 141, -77, 131, -95, 117, -112, 103, -126, 85, -137, 65, -144, 47, -148, 33, -151, 20, -151, 13, -152, 12, -152, 5, -215, 5, -213, 192, 241, 188, 235, -190, -207, -179, -215, 5)
 
 [node name="Boss0" parent="." instance=ExtResource("9_0auax")]
-position = Vector2(0, -33)
 
 [node name="AttackMeter" parent="Boss0" index="11"]
 visible = false
@@ -5913,6 +5926,7 @@ energy = 0.2
 texture = SubResource("GradientTexture2D_8ud6d")
 
 [node name="DarkShade" type="PointLight2D" parent="."]
+scale = Vector2(1.05, 1.05)
 blend_mode = 1
 range_z_max = 0
 range_layer_min = -100
@@ -5930,11 +5944,6 @@ texture = SubResource("GradientTexture2D_o312j")
 energy = 0.5
 range_z_max = 0
 texture = SubResource("GradientTexture2D_npne8")
-
-[node name="BackgroundMusic2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("38_3trt5")
-volume_db = -30.0
-bus = &"Music"
 
 [node name="cleave_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_p1eyj")
@@ -5966,7 +5975,7 @@ bus = &"SFX"
 [node name="BossKilled" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
-script = ExtResource("33_7r312")
+script = ExtResource("45_0am3y")
 
 [node name="Panel" type="Panel" parent="BossKilled"]
 modulate = Color(0.0627451, 0, 0.486275, 0.764706)
@@ -6008,7 +6017,7 @@ theme_override_constants/separation = 15
 [node name="HBoxContainer1" type="HBoxContainer" parent="BossKilled/Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DPSLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer1"]
+[node name="TimeLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer1"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("36_vaxsg")
 theme_override_font_sizes/font_size = 8
@@ -6030,7 +6039,7 @@ vertical_alignment = 1
 [node name="HBoxContainer3" type="HBoxContainer" parent="BossKilled/Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DPSLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="BestTimeLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("36_vaxsg")
 theme_override_font_sizes/font_size = 8
@@ -6040,7 +6049,7 @@ text = "Best Record"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Time" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="BestTime" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("36_vaxsg")
@@ -6052,17 +6061,39 @@ vertical_alignment = 1
 [node name="HBoxContainer2" type="HBoxContainer" parent="BossKilled/Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="DPSLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="AttemptsLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("36_vaxsg")
 theme_override_font_sizes/font_size = 8
-text = "Deaths"
+text = "Attempts"
 
 [node name="Control" type="Control" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DPS" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Attempts" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("36_vaxsg")
+theme_override_font_sizes/font_size = 8
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="BossKilled/Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClearCountLabel" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("36_vaxsg")
+theme_override_font_sizes/font_size = 8
+text = "Total Clears"
+
+[node name="Control" type="Control" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClearCount" type="Label" parent="BossKilled/Panel2/MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("36_vaxsg")
@@ -6131,6 +6162,12 @@ texture = SubResource("GradientTexture2D_xy01k")
 [editable path="Player"]
 [editable path="Player/HurtboxSlash"]
 [editable path="Player/Hurtbox"]
+[editable path="Player/LeftOppressive"]
+[editable path="Player/RightOppressive"]
+[editable path="Player/OrbAbsorbHurtbox"]
+[editable path="Player/DevourOrbHurtbox"]
+[editable path="Player/BarrageBlackHurtbox"]
+[editable path="Player/BarrageWhiteHurtbox"]
 [editable path="Player/Marker2D/HitBox"]
 [editable path="Player/Marker2D/HeavyHitBox"]
 [editable path="Player/CanvasLayer/Healthbar"]

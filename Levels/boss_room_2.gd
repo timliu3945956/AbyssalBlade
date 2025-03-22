@@ -326,76 +326,34 @@ func enrage_attack():
 	#red_lightning_5.play("default")
 	#red_lightning_6.play("default")
 
-func spawn_special_part_2(second_await: bool = false, end_degrees: float = 450.0, step: float = 22.5, timeout: float = 0.5, timeout_first: float = 1.5) -> void:
-	var deg: float = 0.0
+func spawn_special_counterclockwise() -> void:
+	var range_line_first = ranged_special_initial_2.instantiate()
+	add_child(range_line_first)
 	
-	if end_degrees == 450.0:
-		if second_await:
-			await get_tree().create_timer(1).timeout
-		while (deg < end_degrees):
-			if deg == 0.0:
-				var range_line_first = ranged_special_initial_2.instantiate()
-				range_line_first.rotation_degrees = -deg
-				add_child(range_line_first)
-				if timeout_first > 0:
-					await get_tree().create_timer(timeout_first).timeout
-			else:
-				var range_line = ranged_special_2.instantiate()
-				range_line.rotation_degrees = -deg
-				add_child(range_line)
-				if timeout > 0:
-					await get_tree().create_timer(timeout).timeout
-			deg += step
-			if deg == 180.0 and second_await:
-				boss_2_melee.find_child("FiniteStateMachine").change_state("Foretold")
-			if deg == 157.5 and !second_await:
-				boss_2.melee_slam_special(boss_2.target_position)
-				boss_2.melee_slam_special(boss_2.opposite_position)
-			if deg == 337.5 and !second_await:
-				boss_2.melee_slam_special(boss_2.target_position)
-				boss_2.melee_slam_special(boss_2.opposite_position)
-	#else:
-		#while (deg > end_degrees):
+func spawn_special_clockwise() -> void:
+	var range_line = ranged_special_2.instantiate()
+	add_child(range_line)
+	
+	#if end_degrees == 450.0:
+		#if second_await:
+			#await get_tree().create_timer(1).timeout
+		#while (deg < end_degrees):
 			#if deg == 0.0:
 				#var range_line_first = ranged_special_initial_2.instantiate()
-				#range_line_first.rotation_degrees = deg
+				#range_line_first.rotation_degrees = -deg
 				#add_child(range_line_first)
 				#if timeout_first > 0:
 					#await get_tree().create_timer(timeout_first).timeout
 			#else:
 				#var range_line = ranged_special_2.instantiate()
-				#range_line.rotation_degrees = deg
+				#range_line.rotation_degrees = -deg
 				#add_child(range_line)
 				#if timeout > 0:
 					#await get_tree().create_timer(timeout).timeout
 			#deg += step
-			#if deg == -180.0:
-				#boss_2.melee_slam_special(boss_2.target_position)
-				#boss_2.melee_slam_special(boss_2.opposite_position)
-			#if deg == -405.0:
-				#boss_2.melee_slam_special(boss_2.target_position)
-				#boss_2.melee_slam_special(boss_2.opposite_position)
-	
-	#for float(deg in range(0.0, -450.0, -22.5):
-		#if deg == 0.0:
-			#var range_line_first = ranged_special_initial_2.instantiate()
-			#range_line_first.rotation_degrees = deg
-			#add_child(range_line_first)
-			#if timeout > 0:
-				#await get_tree().create_timer(timeout_first).timeout
-		#else:
-			#var range_line = ranged_special_2.instantiate()
-			#range_line.rotation_degrees = deg
-			#add_child(range_line)
-			#if timeout > 0:
-				#await get_tree().create_timer(timeout).timeout
-		#print("deg print: ", float(deg))
-	await get_tree().create_timer(2).timeout
-	#await get_tree().create_timer(3).timeout
-		#if timeout > 0:
-			##if 
-			#await get_tree().create_timer(timeout).timeout
-			
+			#if deg == 180.0 and second_await:
+				#boss_2_melee.find_child("FiniteStateMachine").change_state("Foretold")
+	#await get_tree().create_timer(2).timeout
 
 func _on_triangle_telegraph_long_animation_player_animation_finished(anim_name: StringName) -> void:
 	print("triangle: ", anim_name)

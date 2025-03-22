@@ -730,7 +730,7 @@ particles_anim_loop = true
 offsets = PackedFloat32Array(0.133333, 0.368889, 0.524444)
 colors = PackedColorArray(0, 0, 0, 1, 0.807632, 0.150959, 0.177377, 1, 0.839216, 0.156863, 0.184314, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jn2dx"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5y53d"]
 gradient = SubResource("Gradient_01x1i")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kfh06"]
@@ -743,11 +743,12 @@ radial_velocity_min = 400.0
 radial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
 color = Color(1, 1, 1, 0.396078)
-color_ramp = SubResource("GradientTexture1D_jn2dx")
+color_ramp = SubResource("GradientTexture1D_5y53d")
 anim_speed_min = 0.2
 anim_speed_max = 0.2
 
 [node name="BossClone" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 4
 script = ExtResource("1_8r2rs")
 
@@ -766,7 +767,6 @@ texture = ExtResource("3_oqhmi")
 lifetime = 1.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_yvqft")
 

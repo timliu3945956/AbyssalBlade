@@ -75,7 +75,7 @@ func spawn_bosses():
 		var boss_clone = BossCloneScene.instantiate()
 		boss_clone.position = get_boss_position(index)
 		boss_clone.boss_index = index
-		add_child(boss_clone)
+		get_parent().get_parent().get_parent().add_child(boss_clone)
 		boss_clones.append(boss_clone)
 		boss_clone.connect("boss_hit", self._on_boss_clone_hit)
 		

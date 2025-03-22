@@ -42,7 +42,7 @@ func enter():
 	owner.boss_2_main.melee_slam_special(track_opposite)
 	print(track_position)
 	print(track_opposite)
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(7).timeout #removed one second
 	owner.finish_wicked_heart()
 	# Jump to opposite side
 	

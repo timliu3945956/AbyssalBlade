@@ -1177,7 +1177,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1191,62 +1191,87 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D/Sprite2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
 
-[sub_resource type="Animation" id="Animation_ouole"]
+[sub_resource type="Animation" id="Animation_wkbm0"]
 resource_name = "attack_anim"
-length = 0.500008
+length = 10.0
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Marker2D/Sprite2D2/AnimatedSprite2D4:self_modulate")
+tracks/0/path = NodePath("Marker2D/Sprite2D2:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.416667, 0.499868),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Marker2D/Sprite2D2:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Marker2D/Sprite2D2:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.416667, 0.5),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 9.75, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Marker2D/Area2D2/RangedLineCollision:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/Area2D2/RangedLineCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.57079, 9.42478]
+}
 
-[sub_resource type="Animation" id="Animation_lk5dx"]
+[sub_resource type="Animation" id="Animation_4lii7"]
 resource_name = "ranged_line"
+length = 2.00001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1255,10 +1280,10 @@ tracks/0/path = NodePath("Marker2D/RangedLine:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.999466, 1.00058, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1267,10 +1292,10 @@ tracks/1/path = NodePath("Marker2D/RangedLine:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1279,17 +1304,29 @@ tracks/2/path = NodePath("BeamAudio:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.75),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.999492, 1.00055, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.5708, 2.35619, 1.5708, 2.35619]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_huog8"]
 _data = {
 "RESET": SubResource("Animation_ynnio"),
-"attack_anim": SubResource("Animation_ouole"),
-"ranged_line": SubResource("Animation_lk5dx")
+"attack_anim": SubResource("Animation_wkbm0"),
+"ranged_line": SubResource("Animation_4lii7")
 }
 
 [node name="RangedSpecialPart2" type="Node2D"]
@@ -1298,9 +1335,10 @@ z_as_relative = false
 script = ExtResource("1_051ph")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-rotation = 1.57079
+rotation = 1.5708
 
 [node name="RangedLine" type="Sprite2D" parent="Marker2D"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.321567)
 rotation = 1.57079
 scale = Vector2(1.5, 1)
@@ -1314,6 +1352,13 @@ material = SubResource("ShaderMaterial_l5c5x")
 rotation = 1.57079
 scale = Vector2(1.43465, 0.815862)
 texture = SubResource("GradientTexture2D_kx6c0")
+
+[node name="ColorRect2" type="ColorRect" parent="Marker2D/Sprite2D2"]
+offset_left = -176.0
+offset_top = -40.0
+offset_right = 172.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.623529)
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Marker2D/Sprite2D2"]
 self_modulate = Color(1, 1, 1, 0)

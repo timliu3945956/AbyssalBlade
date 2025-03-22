@@ -95,7 +95,7 @@ func enter():
 	
 func apply_knockback():
 	if player:
-		player.apply_knockback(center_of_screen + Vector2(240, 135), 350) #400) #400
+		player.apply_knockback(center_of_screen + Vector2(240, 135), 175) #350
 	
 func transition():
 	if can_transition:

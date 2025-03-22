@@ -6589,6 +6589,7 @@ process_material = SubResource("ParticleProcessMaterial_fam6a")
 texture = SubResource("CompressedTexture2D_c33cy")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
+physics_interpolation_mode = 2
 material = SubResource("ShaderMaterial_fg5nl")
 position = Vector2(1, -29)
 emitting = false
@@ -6883,6 +6884,7 @@ bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("53_548h5")
+volume_db = -20.0
 bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -6899,7 +6901,7 @@ grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme_override_styles/background = SubResource("StyleBoxTexture_04pr6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bwuw2")
-max_value = 60000.0
+max_value = 57000.0
 value = 500.0
 script = ExtResource("11_28k1y")
 shake_fade = 0.0
