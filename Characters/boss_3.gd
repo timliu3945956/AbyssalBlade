@@ -35,6 +35,9 @@ extends CharacterBody2D
 @onready var phase_2: Node2D = $FiniteStateMachine/Phase2
 @onready var enrage: Node2D = $FiniteStateMachine/Enrage
 
+@onready var sword_anim: Node2D = $SwordAnim
+
+
 
 @onready var boss_killed = get_node("../BossKilled")
 @onready var boss_death: bool = false
@@ -81,6 +84,10 @@ extends CharacterBody2D
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var slash_glow: CPUParticles2D = $Marker2D/SlashGlow
 
+@onready var barrage_audio: AudioStreamPlayer2D = $BarrageAudio
+@onready var oppressive_audio: AudioStreamPlayer2D = $OppressiveAudio
+@onready var create_crown_audio: AudioStreamPlayer2D = $CreateCrownAudio
+@onready var unleash_crown_audio: AudioStreamPlayer2D = $UnleashCrownAudio
 @onready var phase_2_audio: AudioStreamPlayer2D = $phase_2_audio
 
 @onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
@@ -105,7 +112,7 @@ var oppressive_current_count: int
 var crown_color: String
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 90000 : set = _set_health
+var health_amount = 85000 : set = _set_health
 var center_of_screen = get_viewport_rect().size / 2 
 
 var timeline: int = 0
@@ -259,6 +266,14 @@ func remove_state():
 	phase_2.queue_free()
 	enrage.queue_free()
 	healthbar.queue_free()
+	white_crown.queue_free()
+	black_crown.queue_free()
+	red_crown.queue_free()
+	white_crown_expand.queue_free()
+	black_crown_expand.queue_free()
+	red_crown_expand.queue_free()
+	sword_anim.queue_free()
+	dust_anim.queue_free()
 	
 func camera_shake():
 	GlobalCount.camera.apply_shake(1.5, 15.0)
@@ -282,10 +297,9 @@ func barrage_pattern_2(): #out -> in -> X
 	attack_meter_animation.play("barrage_2")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "barrage" or anim_name == "depressive":
+	if anim_name == "barrage" or anim_name == "depressive" or anim_name == "imbuement":
 		animation_player.play("idle")
 	
-		
 func protean_hit_vfx():
 	spit_attack_white.play("default")
 	spit_attack_red.play("default")

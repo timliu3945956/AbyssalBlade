@@ -11,6 +11,7 @@ func enter():
 	await get_tree().create_timer(2.5).timeout
 	animation_player.play("barrage")
 	await owner.attack_meter_animation.animation_finished
+	owner.camera_shake()
 	owner.enrage_background.play("background_change")
 	#phase2 anim
 	await get_tree().create_timer(0.5).timeout

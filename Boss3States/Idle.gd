@@ -44,7 +44,7 @@ func transition():
 		
 		#var boss_music = preload("res://audio/music/boss 2 music (loop-ready).wav")
 		AudioPlayer.play_music(owner.boss_music.stream, -30)
-		get_parent().change_state("Barrage") #Barrage
+		get_parent().change_state("Phase2") #Barrage
 
 func _on_player_detection_body_entered(_body: Node2D) -> void:
 	#animation_player.play("wake")

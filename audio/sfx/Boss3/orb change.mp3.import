@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcj7uxhqm5n6s"
+path="res://.godot/imported/orb change.mp3-0ab24e6cd9e952efc4888e86c6fdb094.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/orb change.mp3"
+dest_files=["res://.godot/imported/orb change.mp3-0ab24e6cd9e952efc4888e86c6fdb094.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -39,6 +39,7 @@ func enter():
 	await owner.attack_meter_animation.animation_finished
 	
 	animation_player.play("oppressive")
+	owner.oppressive_audio.play()
 	if owner.left_color == "white": #1 means white is left, blk is right,,, 2 means blk is left, white is right
 		owner.boss_room_animation.play("oppressive_left_white")
 		owner.boss_room_animation2.play("oppressive_right_black")

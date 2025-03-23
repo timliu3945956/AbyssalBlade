@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bmyojo2yhs74y"
+path="res://.godot/imported/unleash crown.mp3-7af9c21c3d536ce6c33f46b0d2e92d80.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/unleash crown.mp3"
+dest_files=["res://.godot/imported/unleash crown.mp3-7af9c21c3d536ce6c33f46b0d2e92d80.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

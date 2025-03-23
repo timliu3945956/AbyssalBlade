@@ -17,9 +17,6 @@ extends Control
 @onready var clear_count_2: Label = $ClearCount/ClearCount2
 @onready var clear_count_3: Label = $ClearCount/ClearCount3
 
-#@onready var deaths_1: Label = $DeathsContainer/Deaths1
-#@onready var deaths_2: Label = $DeathsContainer/Deaths2
-#@onready var deaths_3: Label = $DeathsContainer/Deaths3
 @onready var first_clear_time_1: Label = $FirstTimeToClear/FirstClearTime1
 @onready var first_clear_time_2: Label = $FirstTimeToClear/FirstClearTime2
 @onready var first_clear_time_3: Label = $FirstTimeToClear/FirstClearTime3
@@ -28,10 +25,6 @@ extends Control
 @onready var attempts_2: Label = $AttemptsContainer/Attempts2
 @onready var attempts_3: Label = $AttemptsContainer/Attempts3
 
-
-#@onready var stage_1_clear_time: Label = $PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer/HBoxContainer2/ClearTime
-#@onready var stage_2_clear_time: Label = $PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer/HBoxContainer2/ClearTime
-#@onready var stage_3_clear_time: Label = $PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer/HBoxContainer2/ClearTime
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var campfire_particle: GPUParticles2D = $PanelContainer/MarginContainer/VBoxContainer/Stage1Button/CampfireParticle
 @onready var background: Panel = $Background
@@ -43,18 +36,22 @@ var begin_background: Tween
 var tween_clear_time_1: Tween
 var tween_clear_time_2: Tween
 var tween_clear_time_3: Tween
+var tween_clear_time_4: Tween
 
 var tween_deaths_1: Tween
 var tween_deaths_2: Tween
 var tween_deaths_3: Tween
+var tween_deaths_4: Tween
 
 var tween_first_clear_1: Tween
 var tween_first_clear_2: Tween
 var tween_first_clear_3: Tween
+var tween_first_clear_4: Tween
 
 var tween_clear_count_1: Tween
 var tween_clear_count_2: Tween
 var tween_clear_count_3: Tween
+var tween_clear_count_4: Tween
 #var player_data = PlayerData.new()
 
 func _ready() -> void:
@@ -66,7 +63,7 @@ func _ready() -> void:
 	stage_1_button.disabled = false
 	stage_2_button.disabled = false
 	stage_3_button.disabled = false
-	stage_4_button.disabled = true
+	stage_4_button.disabled = false
 	stage_5_button.disabled = true
 	
 	stage_1_clear_time.modulate.a = 0.0
@@ -138,6 +135,11 @@ func _on_stage_1_button_pressed() -> void:
 			tween_clear_time_3.kill()
 		tween_clear_time_3 = create_tween()
 		tween_clear_time_3.tween_property(stage_3_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	#if stage_4_clear_time.modulate.a == 1:
+		#if tween_clear_time_4:
+			#tween_clear_time_4.kill()
+		#tween_clear_time_4 = create_tween()
+		#tween_clear_time_4.tween_property(stage_4_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
 	if attempts_1.modulate.a == 0:
 		if tween_deaths_1:
@@ -159,6 +161,7 @@ func _on_stage_1_button_pressed() -> void:
 			begin_background.kill()
 		begin_background = create_tween()
 		begin_background.tween_property(background, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	
 		
 	if first_clear_time_1.modulate.a == 0:
 		if tween_first_clear_1:
@@ -364,6 +367,113 @@ func _on_stage_3_button_pressed() -> void:
 	
 	reenable_timer.timeout.connect(_on_buttons_reenable)
 	reenable_timer.start()
+	
+func _on_stage_4_button_pressed() -> void:
+	_disable_stage_buttons(true)
+	which_load = 4
+	animation_player.play("boss_idle_3")
+	
+	if stage_1_clear_time.modulate.a == 1:
+		if tween_clear_time_1:
+			tween_clear_time_1.kill()
+		tween_clear_time_1 = create_tween()
+		tween_clear_time_1.tween_property(stage_1_clear_time, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if stage_2_clear_time.modulate.a == 1:
+		if tween_clear_time_2:
+			tween_clear_time_2.kill()
+		tween_clear_time_2 = create_tween()
+		tween_clear_time_2.tween_property(stage_2_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if stage_3_clear_time.modulate.a == 1:
+		if tween_clear_time_3:
+			tween_clear_time_3.kill()
+		tween_clear_time_3 = create_tween()
+		tween_clear_time_3.tween_property(stage_3_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	#if stage_4_clear_time.modulate.a == 1:
+		#if tween_clear_time_4:
+			#tween_clear_time_4.kill()
+		#tween_clear_time_4 = create_tween()
+		#tween_clear_time_4.tween_property(stage_4_clear_time, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if attempts_1.modulate.a == 1:
+		if tween_deaths_1:
+			tween_deaths_1.kill()
+		tween_deaths_1 = create_tween()
+		tween_deaths_1.tween_property(attempts_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_2.modulate.a == 1:
+		if tween_deaths_2:
+			tween_deaths_2.kill()
+		tween_deaths_2 = create_tween()
+		tween_deaths_2.tween_property(attempts_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if attempts_3.modulate.a == 1:
+		if tween_deaths_3:
+			tween_deaths_3.kill()
+		tween_deaths_3 = create_tween()
+		tween_deaths_3.tween_property(attempts_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	#if attempts_4.modulate.a == 0:
+		#if tween_deaths_4:
+			#tween_deaths_4.kill()
+		#tween_deaths_4 = create_tween()
+		#tween_deaths_4.tween_property(attempts_4, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	
+	
+	
+		
+	if first_clear_time_1.modulate.a == 1:
+		if tween_first_clear_1:
+			tween_first_clear_1.kill()
+		tween_first_clear_1 = create_tween()
+		tween_first_clear_1.tween_property(first_clear_time_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_2.modulate.a == 1:
+		if tween_first_clear_2:
+			tween_first_clear_2.kill()
+		tween_first_clear_2 = create_tween()
+		tween_first_clear_2.tween_property(first_clear_time_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if first_clear_time_3.modulate.a == 1:
+		if tween_first_clear_3:
+			tween_first_clear_3.kill()
+		tween_first_clear_3 = create_tween()
+		tween_first_clear_3.tween_property(first_clear_time_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	#if first_clear_time_4.modulate.a == 0:
+		#if tween_first_clear_4:
+			#tween_first_clear_4.kill()
+		#tween_first_clear_4 = create_tween()
+		#tween_first_clear_4.tween_property(first_clear_time_4, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	
+	if clear_count_1.modulate.a == 1:
+		if tween_clear_count_1:
+			tween_clear_count_1.kill()
+		tween_clear_count_1 = create_tween()
+		tween_clear_count_1.tween_property(clear_count_1, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_2.modulate.a == 1:
+		if tween_clear_count_2:
+			tween_clear_count_2.kill()
+		tween_clear_count_2 = create_tween()
+		tween_clear_count_2.tween_property(clear_count_2, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if clear_count_3.modulate.a == 1:
+		if tween_clear_count_3:
+			tween_clear_count_3.kill()
+		tween_clear_count_3 = create_tween()
+		tween_clear_count_3.tween_property(clear_count_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	#if clear_count_4.modulate.a == 0:
+		#if tween_clear_count_4:
+			#tween_clear_count_4.kill()
+		#tween_clear_count_4 = create_tween()
+		#tween_clear_count_4.tween_property(clear_count_4, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	if background.modulate.a == 1:
+		if begin_background:
+			begin_background.kill()
+		begin_background = create_tween()
+		begin_background.tween_property(background, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		
+	var reenable_timer: Timer = Timer.new()
+	reenable_timer.wait_time = 0.5
+	reenable_timer.one_shot = true
+	add_child(reenable_timer)
+	
+	reenable_timer.timeout.connect(_on_buttons_reenable)
+	reenable_timer.start()
 
 func _on_back_pressed() -> void:
 	AudioPlayer.play_FX(back_button, -15)
@@ -386,11 +496,15 @@ func _on_play_pressed() -> void:
 		3:
 			AudioPlayer.play_FX(game_start_fx, -15)
 			LoadManager.load_scene("res://Levels/BossRoom2.tscn")
+		4:
+			AudioPlayer.play_FX(game_start_fx, -15)
+			LoadManager.load_scene("res://Levels/BossRoom3.tscn")
 			
 func _disable_stage_buttons(disabled: bool) -> void:
 	stage_1_button.disabled = disabled
 	stage_2_button.disabled = disabled
 	stage_3_button.disabled = disabled
+	stage_4_button.disabled = disabled
 
 func _on_buttons_reenable() -> void:
 	_disable_stage_buttons(false)

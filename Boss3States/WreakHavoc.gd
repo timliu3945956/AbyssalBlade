@@ -9,6 +9,8 @@ func enter():
 	set_process_input(true)
 	animation_player.play("idle")
 	owner.attack_meter_animation.play("wreak_havoc")
+	await get_tree().create_timer(2.5).timeout
+	owner.unleash_crown_audio.play()
 	await owner.attack_meter_animation.animation_finished
 	
 	animation_player.play("oppressive")

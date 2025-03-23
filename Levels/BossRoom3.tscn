@@ -1,4 +1,4 @@
-[gd_scene load_steps=482 format=3 uid="uid://bwne8paly25sq"]
+[gd_scene load_steps=484 format=3 uid="uid://bwne8paly25sq"]
 
 [ext_resource type="PackedScene" uid="uid://cubcpgdntlnmq" path="res://Characters/player.tscn" id="1_81if0"]
 [ext_resource type="Shader" path="res://Levels/combustible_voronoi.gdshader" id="1_cwakg"]
@@ -33,7 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://dm4yat7en0w6l" path="res://Utilities/Effects/particlefx/floaty_128.png" id="26_xh7jp"]
 [ext_resource type="Shader" path="res://Characters/boss_distortion.gdshader" id="29_d6v3g"]
 [ext_resource type="Texture2D" uid="uid://dvut5xsgjlt1q" path="res://Utilities/Effects/firevfx/Aura_Fire_v3_Loop_spritesheet_WHITE.png" id="30_ggrij"]
+[ext_resource type="AudioStream" uid="uid://c78dtugkj1e7t" path="res://audio/sfx/Boss3/barrage.mp3" id="30_i7tub"]
 [ext_resource type="AudioStream" uid="uid://ddr682acjo37g" path="res://audio/sfx/Boss2/phase transition.mp3" id="30_w81ij"]
+[ext_resource type="AudioStream" uid="uid://c6ft08ik2xipd" path="res://audio/sfx/Boss3/create crown.mp3" id="31_61keq"]
 
 [sub_resource type="Environment" id="Environment_hh4pg"]
 background_mode = 3
@@ -4422,6 +4424,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CreateCrownAudio:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_itlge"]
 resource_name = "barrage"
@@ -4781,7 +4795,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Engulfing Curse"]
+"values": ["Blade Imbuement"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -4817,7 +4831,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["Engulfing Curse"]
+"values": ["Blade Imbuement"]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -5086,6 +5100,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CreateCrownAudio:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pikip"]
 resource_name = "looming_havoc"
@@ -5186,6 +5212,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CreateCrownAudio:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.75),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_4jsj1"]
@@ -6796,6 +6834,66 @@ tracks/110/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/111/type = "value"
+tracks/111/imported = false
+tracks/111/enabled = true
+tracks/111/path = NodePath("OppressiveVFX/BlackParticles2:rotation")
+tracks/111/interp = 1
+tracks/111/loop_wrap = true
+tracks/111/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/112/type = "value"
+tracks/112/imported = false
+tracks/112/enabled = true
+tracks/112/path = NodePath("OppressiveVFX/BlackParticles2:emitting")
+tracks/112/interp = 1
+tracks/112/loop_wrap = true
+tracks/112/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/113/type = "value"
+tracks/113/imported = false
+tracks/113/enabled = true
+tracks/113/path = NodePath("OppressiveVFX/WhiteParticles2:rotation")
+tracks/113/interp = 1
+tracks/113/loop_wrap = true
+tracks/113/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/114/type = "value"
+tracks/114/imported = false
+tracks/114/enabled = true
+tracks/114/path = NodePath("OppressiveVFX/WhiteParticles2:emitting")
+tracks/114/interp = 1
+tracks/114/loop_wrap = true
+tracks/114/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/115/type = "value"
+tracks/115/imported = false
+tracks/115/enabled = true
+tracks/115/path = NodePath("OppressiveVFX/OppressiveRight/WhiteParticles:emitting")
+tracks/115/interp = 1
+tracks/115/loop_wrap = true
+tracks/115/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ixwaa"]
 resource_name = "barrage"
@@ -7327,6 +7425,26 @@ tracks/40/keys = {
 "method": &"bottom_vfx"
 }]
 }
+tracks/41/type = "method"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath(".")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_drfgn"]
 resource_name = "barrage_2"
@@ -7820,6 +7938,26 @@ tracks/37/keys = {
 "values": [{
 "args": [],
 "method": &"bottom_vfx"
+}]
+}
+tracks/38/type = "method"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath(".")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
 }]
 }
 
@@ -8353,6 +8491,26 @@ tracks/40/keys = {
 "method": &"bottom_black_vfx"
 }]
 }
+tracks/41/type = "method"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath(".")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pdi2x"]
 resource_name = "barrage_black_2"
@@ -8846,6 +9004,26 @@ tracks/37/keys = {
 "values": [{
 "args": [],
 "method": &"bottom_black_vfx"
+}]
+}
+tracks/38/type = "method"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath(".")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
 }]
 }
 
@@ -9379,6 +9557,26 @@ tracks/40/keys = {
 "method": &"bottom_white_vfx"
 }]
 }
+tracks/41/type = "method"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath(".")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_kt1fk"]
 resource_name = "barrage_white_2"
@@ -9874,6 +10072,26 @@ tracks/37/keys = {
 "method": &"bottom_white_vfx"
 }]
 }
+tracks/38/type = "method"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath(".")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}, {
+"args": [],
+"method": &"camera_shake"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_mk0vk"]
 resource_name = "oppressive_left_black"
@@ -10153,473 +10371,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_j4s67"]
-resource_name = "wreak_havoc_black"
-length = 0.750008
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BarrageOppositeBlackVFX/TopLeft/TopLeftLight:enabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BarrageOppositeBlackVFX/TopLeft/TopLeftLight:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BarrageOppositeBlackVFX/TopLeft/TopLeftTexture:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BarrageOppositeBlackVFX/TopRight/TopRightLight:enabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BarrageOppositeBlackVFX/TopRight/TopRightLight:energy")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BarrageOppositeBlackVFX/TopRight/TopRightTexture:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BarrageOppositeBlackVFX/BottomLeft/BottomLeftLight:enabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BarrageOppositeBlackVFX/BottomLeft/BottomLeftLight:energy")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("BarrageOppositeBlackVFX/BottomLeft/BottomLeftTexture:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("BarrageOppositeBlackVFX/BottomRight/BottomRightLight:enabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("BarrageOppositeBlackVFX/BottomRight/BottomRightLight:energy")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("BarrageOppositeBlackVFX/BottomRight/BottomRightTexture:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:enabled")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(-4.17233e-07, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:energy")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(-4.17233e-07, 0.16667, 0.499999, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleTexture:self_modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(-4.17233e-07, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:enabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:energy")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopTexture:self_modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:enabled")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:energy")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftTexture:self_modulate")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:enabled")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:energy")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightTexture:self_modulate")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:enabled")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:energy")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomTexture:self_modulate")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/27/type = "method"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath(".")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_left_black_vfx"
-}]
-}
-tracks/28/type = "method"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath(".")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_right_black_vfx"
-}]
-}
-tracks/29/type = "method"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath(".")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_left_black_vfx"
-}]
-}
-tracks/30/type = "method"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath(".")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_right_black_vfx"
-}]
-}
-tracks/31/type = "method"
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/path = NodePath(".")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_black_vfx"
-}]
-}
-tracks/32/type = "method"
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/path = NodePath(".")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"left_black_vfx"
-}]
-}
-tracks/33/type = "method"
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/path = NodePath(".")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"right_black_vfx"
-}]
-}
-tracks/34/type = "method"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath(".")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bottom_black_vfx"
-}]
-}
-tracks/35/type = "method"
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/path = NodePath(".")
-tracks/35/interp = 1
-tracks/35/loop_wrap = true
-tracks/35/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"middle_black_vfx"
-}]
-}
-tracks/36/type = "value"
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/path = NodePath("BarrageBlack/CollisionShape2D:disabled")
-tracks/36/interp = 1
-tracks/36/loop_wrap = true
-tracks/36/keys = {
-"times": PackedFloat32Array(0, 0.0833333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_n7ic8"]
@@ -11089,471 +10840,238 @@ tracks/36/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_mj6sl"]
-resource_name = "wreak_havoc_white"
-length = 1.00001
+[sub_resource type="Animation" id="Animation_cwncg"]
+resource_name = "wreak_havoc_black"
+length = 0.500008
 step = 0.0833333
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BarrageOppositeWhiteVFX/TopLeft/TopLeftLight:enabled")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"black_left_vfx"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BarrageOppositeWhiteVFX/TopLeft/TopLeftLight:energy")
+tracks/1/path = NodePath("OppressiveVFX/BlackParticles:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
+"values": [3.14159]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BarrageOppositeWhiteVFX/TopLeft/TopLeftTexture:self_modulate")
+tracks/2/path = NodePath("OppressiveVFX/BlackParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BarrageOppositeWhiteVFX/TopRight/TopRightLight:enabled")
+tracks/3/path = NodePath("OppressiveVFX/OppressiveLeft/BlackParticles:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BarrageOppositeWhiteVFX/TopRight/TopRightLight:energy")
+tracks/4/path = NodePath("OppressiveVFX/BlackParticles2:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
+"values": [0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BarrageOppositeWhiteVFX/TopRight/TopRightTexture:self_modulate")
+tracks/5/path = NodePath("OppressiveVFX/OppressiveRight/BlackParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BarrageOppositeWhiteVFX/BottomLeft/BottomLeftLight:enabled")
+tracks/6/path = NodePath("OppressiveVFX/BlackParticles2:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
-tracks/7/type = "value"
+tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("BarrageOppositeWhiteVFX/BottomLeft/BottomLeftLight:energy")
+tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"black_right_vfx"
+}]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("BarrageOppositeWhiteVFX/BottomLeft/BottomLeftTexture:self_modulate")
+tracks/8/path = NodePath("BarrageBlack/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("BarrageOppositeWhiteVFX/BottomRight/BottomRightLight:enabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("BarrageOppositeWhiteVFX/BottomRight/BottomRightLight:energy")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("BarrageOppositeWhiteVFX/BottomRight/BottomRightTexture:self_modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/MiddleLight:enabled")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/MiddleLight:energy")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/MiddleTexture:self_modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.500001, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/TopLight:enabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/TopLight:energy")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/TopTexture:self_modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/LeftLight:enabled")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/LeftLight:energy")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/LeftTexture:self_modulate")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/RightLight:enabled")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/RightLight:energy")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/RightTexture:self_modulate")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/BottomLight:enabled")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.666666),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/BottomLight:energy")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("BarrageOppositeWhiteVFX/Barrage+/BottomTexture:self_modulate")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(-3.51667e-06, 0.166667, 0.499996, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/27/type = "method"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath(".")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"middle_white_vfx"
-}]
-}
-tracks/28/type = "method"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath(".")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_left_white_vfx"
-}]
-}
-tracks/29/type = "method"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath(".")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_right_white_vfx"
-}]
-}
-tracks/30/type = "method"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath(".")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_left_white_vfx"
-}]
-}
-tracks/31/type = "method"
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/path = NodePath(".")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_right_white_vfx"
-}]
-}
-tracks/32/type = "method"
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/path = NodePath(".")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_white_vfx"
-}]
-}
-tracks/33/type = "method"
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/path = NodePath(".")
-tracks/33/interp = 1
-tracks/33/loop_wrap = true
-tracks/33/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"left_white_vfx"
-}]
-}
-tracks/34/type = "method"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath(".")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"right_white_vfx"
-}]
-}
-tracks/35/type = "method"
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/path = NodePath(".")
-tracks/35/interp = 1
-tracks/35/loop_wrap = true
-tracks/35/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bottom_white_vfx"
-}]
-}
-tracks/36/type = "value"
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/path = NodePath("BarrageWhite/CollisionShape2D:disabled")
-tracks/36/interp = 1
-tracks/36/loop_wrap = true
-tracks/36/keys = {
 "times": PackedFloat32Array(0, 0.0833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_naj3o"]
+resource_name = "wreak_havoc_white"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"white_left_vfx"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OppressiveVFX/WhiteParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OppressiveVFX/WhiteParticles:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OppressiveVFX/OppressiveLeft/WhiteParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OppressiveVFX/WhiteParticles2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OppressiveVFX/WhiteParticles2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OppressiveVFX/OppressiveRight/WhiteParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BarrageWhite/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"white_right_vfx"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c4fer"]
@@ -11569,9 +11087,9 @@ _data = {
 "oppressive_left_white": SubResource("Animation_u8374"),
 "oppressive_right_black": SubResource("Animation_eyw0h"),
 "oppressive_right_white": SubResource("Animation_k42iq"),
-"wreak_havoc_black": SubResource("Animation_j4s67"),
+"wreak_havoc_black": SubResource("Animation_cwncg"),
 "wreak_havoc_red": SubResource("Animation_n7ic8"),
-"wreak_havoc_white": SubResource("Animation_mj6sl")
+"wreak_havoc_white": SubResource("Animation_naj3o")
 }
 
 [sub_resource type="Animation" id="Animation_wntrp"]
@@ -12809,7 +12327,26 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 
+[node name="WhiteParticles2" type="GPUParticles2D" parent="OppressiveVFX"]
+modulate = Color(4, 1, 1, 1)
+material = SubResource("CanvasItemMaterial_0pr4u")
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_4emvb")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+
 [node name="BlackParticles" type="GPUParticles2D" parent="OppressiveVFX"]
+material = SubResource("CanvasItemMaterial_djqts")
+emitting = false
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_i1yrs")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+
+[node name="BlackParticles2" type="GPUParticles2D" parent="OppressiveVFX"]
 material = SubResource("CanvasItemMaterial_djqts")
 emitting = false
 amount = 400
@@ -13351,6 +12888,16 @@ range_layer_min = -100
 range_layer_max = -1
 texture = SubResource("GradientTexture2D_smdt4")
 texture_scale = 0.5
+
+[node name="BarrageAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_i7tub")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="CreateCrownAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_61keq")
+volume_db = -17.0
+bus = &"SFX"
 
 [node name="PhaseTransitionAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1.52588e-05, 0)

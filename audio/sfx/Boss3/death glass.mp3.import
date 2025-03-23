@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b665cl476eq34"
+path="res://.godot/imported/death glass.mp3-12d64113044c9166c4a114d3c3495d53.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/death glass.mp3"
+dest_files=["res://.godot/imported/death glass.mp3-12d64113044c9166c4a114d3c3495d53.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

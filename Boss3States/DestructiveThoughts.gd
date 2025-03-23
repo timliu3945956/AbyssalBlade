@@ -26,6 +26,7 @@ func enter():
 	await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
+	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
 	await get_tree().create_timer(1).timeout
 	
@@ -34,6 +35,7 @@ func enter():
 	await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
+	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
 	await get_tree().create_timer(1).timeout
 	
@@ -42,6 +44,7 @@ func enter():
 	await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
+	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
 	await get_tree().create_timer(1).timeout
 	
@@ -50,6 +53,7 @@ func enter():
 	await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
+	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
 	await get_tree().create_timer(1).timeout
 	
@@ -95,5 +99,4 @@ func pillar_spawn_4(pillar_position: Vector2):
 func transition():
 	if can_transition:
 		can_transition = false
-		
 		get_parent().change_state("Phase2")

@@ -7521,6 +7521,7 @@ bus = &"SFX"
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("65_ts6be")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("76_f0vmo")

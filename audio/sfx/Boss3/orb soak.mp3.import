@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt4l8j2r23a2s"
+path="res://.godot/imported/orb soak.mp3-6d12e614fe158d6f13cf59b25fa8bf1d.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/orb soak.mp3"
+dest_files=["res://.godot/imported/orb soak.mp3-6d12e614fe158d6f13cf59b25fa8bf1d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

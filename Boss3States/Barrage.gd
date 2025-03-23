@@ -33,15 +33,19 @@ func enter():
 	red_sword_tween.tween_property(owner.red_swords, "modulate:a", 0, 0.5)
 	animation_player.play("barrage")
 	await owner.attack_meter_animation.animation_finished
-	
+	owner.barrage_audio.play()
 	if owner.barrage_count % 2 == 0: #In -> out -> plus
 		owner.boss_room_animation.play("barrage_1")
 	else:
 		owner.boss_room_animation.play("barrage_2")
 	await get_tree().create_timer(1.5).timeout
 	animation_player.play("barrage")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.5).timeout
+	owner.barrage_audio.play()
+	await get_tree().create_timer(1.5).timeout
 	animation_player.play("barrage")
+	await get_tree().create_timer(0.5).timeout
+	owner.barrage_audio.play()
 	await owner.boss_room_animation.animation_finished
 			
 	#red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)

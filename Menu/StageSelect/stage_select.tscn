@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=3 uid="uid://ibpjmyob8k7h"]
+[gd_scene load_steps=175 format=3 uid="uid://ibpjmyob8k7h"]
 
 [ext_resource type="Script" path="res://Menu/StageSelect/stage_select.gd" id="1_0j2ci"]
 [ext_resource type="Texture2D" uid="uid://ry76fr40bh1x" path="res://Utilities/menu/mainmenu_background.png" id="1_pcga7"]
@@ -27,19 +27,30 @@
 [ext_resource type="Texture2D" uid="uid://dmklcm41riquu" path="res://sprites/tilesets/bargaining parallax/bargaining_layer5.png" id="19_2vkub"]
 [ext_resource type="Texture2D" uid="uid://domdcdojktp74" path="res://sprites/tilesets/bargaining parallax/bargaining_layer6.png" id="20_weyt6"]
 [ext_resource type="Texture2D" uid="uid://bofdqo11abprj" path="res://sprites/tilesets/bargaining parallax/bargaining_layer7 (fog).png" id="21_ea85y"]
+[ext_resource type="Texture2D" uid="uid://d0nvg5ec7rums" path="res://sprites/tilesets/depression parallax/rockparallax_layer7(fade bg).png" id="22_v4to6"]
+[ext_resource type="Texture2D" uid="uid://c6s66t2ahusy1" path="res://sprites/tilesets/depression parallax/rockparallax_layer6(moon).png" id="23_7pnh0"]
 [ext_resource type="Texture2D" uid="uid://db85qb4u0qn4q" path="res://Utilities/menu/stage select/new assets/STAGE 1 BUTTON.png" id="23_svtyp"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="23_upnow"]
 [ext_resource type="Texture2D" uid="uid://c4blm2drsb21k" path="res://Utilities/menu/stage select/new assets/Stage 2 Description.png" id="24_86cgg"]
 [ext_resource type="Texture2D" uid="uid://cjnremj7sj82s" path="res://sprites/DenialBoss/boss_animations/idle.png" id="24_eqys3"]
+[ext_resource type="Texture2D" uid="uid://drym4gk0dci85" path="res://sprites/tilesets/depression parallax/rockparallax_layer5.png" id="24_tttdg"]
 [ext_resource type="Texture2D" uid="uid://na6qxsy6oqne" path="res://Utilities/menu/stage select/new assets/Stage 3 Description.png" id="25_7a2tw"]
 [ext_resource type="Texture2D" uid="uid://dqnrr8o050ttn" path="res://sprites/AngerBoss/Idle/boss_idle.png" id="25_64sus"]
+[ext_resource type="Texture2D" uid="uid://ckixv7nrjw35m" path="res://sprites/tilesets/depression parallax/rockparallax_layer4.png" id="25_e3we7"]
 [ext_resource type="Texture2D" uid="uid://crxm8dobq2dl6" path="res://sprites/BargainingBoss/MainBoss/bargaining_idle.png" id="26_f8q1t"]
 [ext_resource type="Texture2D" uid="uid://qjwtvvrgl2pb" path="res://Utilities/menu/stage select/new assets/Score_Display.png" id="26_fko8w"]
+[ext_resource type="Texture2D" uid="uid://bv3clg08ry78f" path="res://sprites/tilesets/depression parallax/rockparallax_layer3.png" id="26_x8uws"]
+[ext_resource type="Texture2D" uid="uid://bo8rk544mkipq" path="res://sprites/DepressionBoss/third iteration/depression_idle.png" id="27_j2mbs"]
+[ext_resource type="Texture2D" uid="uid://q0qeblcimpr6" path="res://sprites/tilesets/depression parallax/rockparallax_layer2.png" id="27_jcrx4"]
 [ext_resource type="Texture2D" uid="uid://blkmwv0i26kwx" path="res://Utilities/menu/stage select/new assets/STAGE 2 BUTTON.png" id="28_kmpsn"]
+[ext_resource type="Texture2D" uid="uid://cyo5k2l4puf7k" path="res://sprites/tilesets/depression parallax/rockparallax_layer1.png" id="28_l77xc"]
 [ext_resource type="Texture2D" uid="uid://blqwb61asqjxu" path="res://Utilities/menu/stage select/new assets/STAGE 3 BUTTON.png" id="30_3lxsd"]
+[ext_resource type="Texture2D" uid="uid://3gcijlssqoc7" path="res://Utilities/menu/stage select/new assets/Stage_4_Description.png" id="30_qx1kw"]
 [ext_resource type="Texture2D" uid="uid://gckaog6tq2rx" path="res://Utilities/menu/stage select/new assets/Stage 1 Description.png" id="31_xs4dx"]
+[ext_resource type="Texture2D" uid="uid://n6l4xkahjysf" path="res://Utilities/menu/stage select/new assets/STAGE_4_BUTTON.png" id="33_n5cns"]
 [ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="35_2xgyo"]
 [ext_resource type="Script" path="res://Menu/fade_button_3.gd" id="35_ywoew"]
+[ext_resource type="Script" path="res://Menu/fade_button_4.gd" id="48_lae7t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g27ie"]
 texture = ExtResource("1_pcga7")
@@ -464,6 +475,18 @@ shader_parameter/bness = 0.25
 shader_parameter/fall_off_scale = 5.575
 shader_parameter/b_offset = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8usq"]
+shader = ExtResource("11_m8x4x")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
 [sub_resource type="Gradient" id="Gradient_ocdsq"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dvhst"]
@@ -501,14 +524,17 @@ shader_parameter/fade_alpha = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eyh60"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h01kv"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pma5i"]
 texture = ExtResource("31_xs4dx")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqeq3"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0agkg"]
 texture = ExtResource("24_86cgg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdnr8"]
 texture = ExtResource("25_7a2tw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ym2tt"]
+texture = ExtResource("30_qx1kw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbu5b"]
 texture = ExtResource("26_fko8w")
@@ -612,22 +638,33 @@ modulate_color = Color(1, 1, 1, 0.627451)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7i06a"]
 texture = ExtResource("30_3lxsd")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2ann"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0li28"]
+texture = ExtResource("33_n5cns")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cb471"]
 texture = ExtResource("30_3lxsd")
 modulate_color = Color(1, 1, 1, 0.627451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urm73"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_evamm"]
+texture = ExtResource("33_n5cns")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ao3y2"]
-texture = ExtResource("3_k34o3")
-modulate_color = Color(1, 1, 1, 0.498039)
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2tbx"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5ryn"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u8adq"]
+texture = ExtResource("33_n5cns")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6hj8"]
+texture = ExtResource("33_n5cns")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgirl"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjn0d"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -830,12 +867,95 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_cfl1u"]
+resource_name = "boss_idle_3"
+length = 1.12501
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss3:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_j2mbs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss3:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_a8fse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss3:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_j2mbs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss3:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0hso"]
 _data = {
+"RESET": SubResource("Animation_a8fse"),
 "asdf": SubResource("Animation_l7qgn"),
 "boss_idle_0": SubResource("Animation_iald2"),
 "boss_idle_1": SubResource("Animation_7kh40"),
-"boss_idle_2": SubResource("Animation_xn7j7")
+"boss_idle_2": SubResource("Animation_xn7j7"),
+"boss_idle_3": SubResource("Animation_cfl1u")
 }
 
 [sub_resource type="Animation" id="Animation_ijhd3"]
@@ -2398,6 +2518,97 @@ z_index = -2
 position = Vector2(240, 135)
 texture = ExtResource("21_ea85y")
 
+[node name="Background4" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Background4"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(44, 33)
+scale = Vector2(0.82, 0.82)
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer7"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("22_v4to6")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer6"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("23_7pnh0")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("24_tttdg")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer2"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("25_e3we7")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer3"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("26_x8uws")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer4"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("27_jcrx4")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer5"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("28_l77xc")
+
 [node name="DarkShade" type="PointLight2D" parent="."]
 position = Vector2(-29, 144)
 energy = 1.2
@@ -2445,6 +2656,14 @@ position = Vector2(104, 106)
 texture = ExtResource("26_f8q1t")
 hframes = 9
 
+[node name="Boss3" type="Sprite2D" parent="."]
+z_index = 7
+material = SubResource("ShaderMaterial_8qt2s")
+position = Vector2(104, 158.5)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("27_j2mbs")
+hframes = 9
+
 [node name="DescriptionContainer" type="PanelContainer" parent="."]
 z_index = -2
 layout_mode = 1
@@ -2461,14 +2680,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_eyh60")
 z_index = -2
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_styles/normal = SubResource("StyleBoxTexture_h01kv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pma5i")
 
 [node name="Description2" type="Label" parent="DescriptionContainer"]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_styles/normal = SubResource("StyleBoxTexture_kqeq3")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0agkg")
 
 [node name="Description3" type="Label" parent="DescriptionContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -2476,6 +2695,13 @@ z_index = -2
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_kdnr8")
+
+[node name="Description4" type="Label" parent="DescriptionContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_ym2tt")
 
 [node name="Label" type="Label" parent="DescriptionContainer"]
 layout_mode = 2
@@ -2683,7 +2909,7 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_v6qgw")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_fjmin")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_a73jy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7i06a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_i2ann")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0li28")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cb471")
 script = ExtResource("35_ywoew")
 
@@ -2752,14 +2978,80 @@ vertical_alignment = 2
 layout_mode = 2
 
 [node name="Stage4Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/focus = SubResource("StyleBoxFlat_urm73")
+theme_override_styles/focus = SubResource("StyleBoxTexture_evamm")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ao3y2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_c2tbx")
-theme_override_styles/normal = SubResource("StyleBoxTexture_o7u8m")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_q5ryn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_u8adq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w6hj8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kgirl")
+script = ExtResource("48_lae7t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+text = "Stage 2"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 4
+text = "Clear Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer"]
+layout_mode = 2
 
 [node name="Stage5Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
@@ -3003,5 +3295,7 @@ autoplay = "light_repeat"
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="." method="_on_stage_3_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage4Button" to="." method="_on_stage_4_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage4Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage4Button" method="_on_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

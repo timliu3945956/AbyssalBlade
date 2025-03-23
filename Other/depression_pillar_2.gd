@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var hit_particles: AnimatedSprite2D = $HitParticles2
 @onready var label: Label = $Label
+@onready var spawn_shadow_audio: AudioStreamPlayer2D = $SpawnShadowAudio
 
 @onready var hurtbox: CollisionShape2D = $Hurtbox/CollisionShape2D
 
@@ -31,6 +32,7 @@ func _ready():
 	tween.tween_property(sprite.material, "shader_parameter/fade_alpha", 1, 0.5)
 	tween.tween_property(sprite_shadow.material, "shader_parameter/fade_alpha", 1, 0.5)
 	animation_player.play("pillar_idle")
+	spawn_shadow_audio.play()
 	pillar_timer.start(timer_set)
 	hurtbox.disabled = collision_set
 	

@@ -11,13 +11,15 @@ func enter():
 	animation_player.play("idle")
 	if owner.looming_count != 2:
 		owner.attack_meter_animation.play("looming_havoc")
-		red_sword_tween = get_tree().create_tween()
-		red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)
+		#red_sword_tween = get_tree().create_tween()
+		#red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)
 	else:
 		owner.attack_meter_animation.play("looming_desolation")
 	await get_tree().create_timer(3.5).timeout
-	owner.crown_appear_vfx.play_backwards("default")
+	
+	
 	await owner.attack_meter_animation.animation_finished
+	owner.crown_appear_vfx.play_backwards("default")
 	if owner.looming_count != 2:
 		if player.oppressive_color == "white":
 			var red_crown_tween = get_tree().create_tween()
@@ -46,8 +48,8 @@ func enter():
 		var red_crown_expand_tween = get_tree().create_tween()
 		red_crown_expand_tween.tween_property(owner.red_crown_expand, "modulate:a", 1, 0.5)
 		
-		red_sword_tween = get_tree().create_tween()
-		red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)
+		#red_sword_tween = get_tree().create_tween()
+		#red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)
 		owner.crown_color = "red"
 	await get_tree().create_timer(0.5).timeout
 	owner.looming_count += 1

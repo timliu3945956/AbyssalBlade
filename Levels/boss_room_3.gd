@@ -159,6 +159,12 @@ func _process(delta: float) -> void:
 	if GlobalCount.timer_active:
 		GlobalCount.elapsed_time += delta
 
+func camera_shake():
+	GlobalCount.camera.apply_shake(1.5, 15.0)
+	
+func camera_shake_phase_2():
+	GlobalCount.camera.apply_shake(5, 25.0)
+
 func top_left_vfx():
 	top_left_blood.play("default")
 

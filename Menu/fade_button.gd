@@ -3,9 +3,11 @@ extends Button
 @onready var background1: Node2D = $"../../../../Background1/Node2D"
 @onready var background2: Node2D = $"../../../../Background2/Node2D"
 @onready var background3: Node2D = $"../../../../Background3/Node2D"
+@onready var background4: Node2D = $"../../../../Background4/Node2D"
 @onready var description_1: Label = $"../../../../DescriptionContainer/Description1"
 @onready var description_2: Label = $"../../../../DescriptionContainer/Description2"
 @onready var description_3: Label = $"../../../../DescriptionContainer/Description3"
+@onready var description_4: Label = $"../../../../DescriptionContainer/Description4"
 
 
 var fade_tween : Tween
@@ -13,9 +15,11 @@ var focused: bool = false
 var background_tween1: Tween
 var background_tween2: Tween
 var background_tween3: Tween
+var background_tween4: Tween
 var description_tween1: Tween
 var description_tween2: Tween
 var description_tween3: Tween
+var description_tween4: Tween
 
 
 func _ready():
@@ -88,6 +92,9 @@ func _on_pressed() -> void:
 	if background3.modulate.a == 1:
 		background_tween3 = create_tween()
 		background_tween3.tween_property(background3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if background4.modulate.a == 1:
+		background_tween4 = create_tween()
+		background_tween4.tween_property(background4, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 		
 	if description_1.modulate.a == 0:
 		description_tween1 = create_tween()
@@ -98,4 +105,7 @@ func _on_pressed() -> void:
 	if description_3.modulate.a == 1:
 		description_tween3 = create_tween()
 		description_tween3.tween_property(description_3, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
+	if description_4.modulate.a == 1:
+		description_tween4 = create_tween()
+		description_tween4.tween_property(description_4, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_LINEAR)
 	

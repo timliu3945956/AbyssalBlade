@@ -11,13 +11,15 @@ func enter():
 	animation_player.play("idle")
 	owner.attack_meter_animation.play("devour")
 	await owner.attack_meter_animation.animation_finished
+	animation_player.play("devour_start")
 	owner.boss_room.ground_aura()
 	await get_tree().create_timer(1).timeout
 	
 	spawn_orbs()
 	await get_tree().create_timer(12).timeout
 	owner.boss_room.ground_aura_end()
-	await get_tree().create_timer(0.5).timeout
+	animation_player.play("devour_finish")
+	await animation_player.animation_finished
 	can_transition = true
 	
 func spawn_orbs():
@@ -36,7 +38,6 @@ func spawn_orbs():
 			get_parent().get_parent().get_parent().add_child(red_orb)
 		amount_spawned += 1
 		await get_tree().create_timer(1).timeout
-		
 		
 func get_boss_position(index):
 	var offset_distance = 140

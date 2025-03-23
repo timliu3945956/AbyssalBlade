@@ -91,6 +91,13 @@ var last_input_was_mouse: bool = true
 @onready var surge_ready: AudioStreamPlayer2D = $"surge ready"
 @onready var charge: AudioStreamPlayer2D = $charge
 
+@onready var sac_aoe_1: AnimatedSprite2D = $SacAOE1
+@onready var sac_aoe_2: AnimatedSprite2D = $SacAOE2
+@onready var aoe_particles: GPUParticles2D = $AOEParticles
+
+@onready var orb_soak_audio: AudioStreamPlayer2D = $OrbSoakAudio
+@onready var orb_explode_audio: AudioStreamPlayer2D = $OrbExplodeAudio
+
 @onready var footsteps: AudioStreamPlayer2D = $footsteps
 @onready var footstep_timer: Timer = $FootstepTimer
 
@@ -978,13 +985,22 @@ func _on_devour_gold_collected():
 	else:
 		devour_color = "gold"
 	
+	
 func _on_devour_red_collected():
 	if devour_color == "red":
 		kill_player()
+		orb_explode_audio.play()
+		sac_aoe_1.play("default")
+		sac_aoe_2.play("default")
+		aoe_particles.emitting = true
 	elif devour_color == "gold":
 		devour_color = "red"
 	else:
 		kill_player()
+		orb_explode_audio.play()
+		sac_aoe_1.play("default")
+		sac_aoe_2.play("default")
+		aoe_particles.emitting = true
 
 func _on_barrage_black_hurtbox_area_entered(area: Area2D) -> void:
 	print("going into this function instantly?")
