@@ -19,7 +19,7 @@ extends CharacterBody2D
 @onready var morph_animation: AnimationPlayer = $MorphAnimationPlayer
 
 @onready var darkness_balance: AudioStreamPlayer2D = $DarknessBalance
-@onready var darkness_fail: AudioStreamPlayer2D = $DarknessFail
+#@onready var darkness_fail: AudioStreamPlayer2D = $DarknessFail
 
 
 #@onready var tether_animation_player: AnimationPlayer = $TetherAnimationPlayer
@@ -35,10 +35,12 @@ extends CharacterBody2D
 @onready var slam_attack_2: AnimatedSprite2D = $JumpSlamAttack/SlamAttack2
 @onready var slam_particles: GPUParticles2D = $JumpSlamAttack/SlamParticles
 
-@onready var laser_line = get_node("../LaserMiddle")
+@onready var laser_red = get_node("../LaserRed")
+@onready var laser_white = get_node("../LaserWhite")
 @onready var pain_line: Timer = $PainLine
 
 @onready var jump_timer: Timer = $JumpTimer
+@onready var vfx_timer: Timer = $VFXTimer
 
 @onready var boss_killed = get_node("../BossKilled")
 @onready var boss_death: bool = false
@@ -47,7 +49,6 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var flash_timer: Timer = $FlashTimer
-@onready var hit_particles: AnimatedSprite2D = $HitParticles2
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var jump_wind: AnimatedSprite2D = $JumpWind
 
@@ -56,14 +57,13 @@ extends CharacterBody2D
 
 #@onready var spit_aim: Marker2D = $SpitAim
 
-@onready var slash_particles: CPUParticles2D = $Marker2D/SlashParticles
-@onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
-@onready var slash_glow: CPUParticles2D = $Marker2D/SlashGlow
+@onready var boss_healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar
 
-@onready var healthbar = $CanvasLayer/Healthbar
 
 @onready var smoke: AnimatedSprite2D = $smoke
 
+var hit_particle = preload("res://Other/hit_particles.tscn")
+var darkness_balance_vfx = preload("res://Other/darkness_balance_vfx.tscn")
 
 var direction : Vector2
 var move_speed = 100
@@ -71,10 +71,10 @@ var spit_count: int = 0
 var auto_attack_count: int = 0
 var jump_position_count: int = 0
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 57000 : set = _set_health
+var health_amount = 35000 : set = _set_health
 
 var center_of_screen = get_viewport_rect().size / 2 
-var max_health = 57000
+var max_health = 35000
 var allowed_diff = max_health * 0.05
 var foretold_count: int = 0
 var timeline: int = 0
@@ -93,12 +93,12 @@ signal mini_bosses_finished
 func _ready():
 	randomize()
 	set_physics_process(false)
-	healthbar.init_health(health_amount)
+	boss_healthbar.init_health(health_amount)
 	GlobalCount.can_pause = true
 	connect("mini_bosses_finished", _mini_bosses_finished)
-	hit_particles.frame = 0
 	enraged = false
-	laser_line.emitting = false
+	laser_white.emitting = false
+	laser_red.emitting = false
 	print(pick_mini_special)
 	
 	#spit_enrage = false
@@ -110,9 +110,11 @@ func _process(_delta):
 		#print(laser_line.emitting)
 		#print("difference: ", difference > allowed_diff)
 		if difference > allowed_diff:
-			laser_line.emitting = false
+			laser_white.emitting = false
+			laser_red.emitting = true
 		else:
-			laser_line.emitting = true
+			laser_white.emitting = true
+			laser_red.emitting = false
 	#if spit_attack_follow_timer.time_left > 0:
 		#spit_aim.rotation = spit_aim.global_position.angle_to_point(player.global_position)
 
@@ -125,12 +127,12 @@ func _physics_process(_delta):
 
 func _set_health(value):
 	health_amount = value
-	healthbar.health = health_amount
+	boss_healthbar.health = health_amount
 	
 func flash():
 	sprite.material.set_shader_parameter("flash_modifier", 1)
 	flash_timer.start()
-
+	
 func _on_flash_timer_timeout() -> void:
 	sprite.material.set_shader_parameter("flash_modifier", 0)
 
@@ -141,15 +143,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health_amount -= player.damage_amount #additional *4
 		GlobalCount.dps_count += player.damage_amount #additional *4
 		flash()
-		hit_particles.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
 		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles.play("hit_particles")
+		if player.transformed:
+			spawn_attack_vfx("surge")
+		else:
+			spawn_attack_vfx("normal")
 		
 		player.attack_count += 1
 		if player.dash_gauge >= 3 and not player.transformed:
@@ -162,49 +160,46 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if player.swing.playing:
 			player.swing.stop()
 		if player.transformed:
-			player.abyssal_surge_hit.play()
+			player.play_with_random_pitch(player.abyssal_surge_hit, 0.9, 1.15)
+			#player.abyssal_surge_hit.play()
 		else:
-			player.hit.play()
+			player.play_with_random_pitch(player.hit, 0.9, 1.15)
+			#player.hit.play()
 		
-		if player.mana < 20:
-			player.mana += 1
-			if player.mana >= 20:
-				player.charge_icon_disable()
-				player.transform_icon_disable()
-				player.surge_ready.play()
-				
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 3
+				if player.mana >= 100:
+					player.charge_icon_disable()
+					player.transform_icon_disable()
+					player.surge_ready.play()
+					
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 		
 	elif area.name == "HeavyHitBox":
-		health_amount -= (player.damage_amount * 4) #4
-		GlobalCount.dps_count += (player.damage_amount * 4) #4
+		health_amount -= (player.damage_amount * 8) #4
+		GlobalCount.dps_count += (player.damage_amount * 8) #4
 		flash()
 		
-		hit_particles.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
-		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles.play("hit_particles")
+		spawn_attack_vfx("heavy")
 		
 		if player.swing.playing:
 			player.swing.stop()
 		
-		player.heavy_hit.play()
+		player.play_with_random_pitch(player.heavy_hit, 0.9, 1.15)
+		#player.heavy_hit.play()
 		
-		if player.mana < 20:
-			player.mana += 4 #4
-			if player.mana >= 20:
-				player.charge_icon_disable()
-				player.transform_icon_disable()
-				player.surge_ready.play()
-				
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 20 #4
+				if player.mana >= 100:
+					player.charge_icon_disable()
+					player.transform_icon_disable()
+					player.surge_ready.play()
+					
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 1:
 		#player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
@@ -221,9 +216,15 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		#boss_death = true
 		#find_child("FiniteStateMachine").change_state("Death")
 		health_amount = 1
+		
+func spawn_attack_vfx(attack_type: String):
+	var particle_vfx = hit_particle.instantiate()
+	particle_vfx.rotation = position.angle_to_point(player.position) + PI
+	particle_vfx.hit_type = attack_type
+	add_child(particle_vfx)
 
 func camera_shake():
-	GlobalCount.camera.apply_shake(1.5, 15.0)
+	GlobalCount.camera.apply_shake(8.0, 15.0)
 	
 #func slam_attack_animation():
 	#slam_attack.play("new_animation")
@@ -252,13 +253,14 @@ func hands_of_pain():
 	else:
 		boss_room_animation.play("balance_correct")
 		darkness_balance.play()
-		darkness_fail.play()
+		#darkness_fail.play()
 		
 func pain_line_timer():
 	pain_line.start()
 	
 func _on_pain_line_timeout() -> void:
-	laser_line.emitting = false
+	laser_white.emitting = false
+	laser_red.emitting = false
 	
 func morph_together_health():
 	if self.health_amount < boss_2_ranged.health_amount:
@@ -277,6 +279,14 @@ func finish_wicked_heart():
 	#if pick_mini_special == 1:
 	boss_2_ranged.find_child("FiniteStateMachine").change_state("JumpPosition")
 	find_child("FiniteStateMachine").change_state("JumpPosition")
+	
+func auto_attack_restart():
+	boss_2_ranged.find_child("FiniteStateMachine").change_state("AutoAttack")
+	find_child("FiniteStateMachine").change_state("AutoAttack")
+	
+func fortold_start():
+	boss_2_ranged.find_child("FiniteStateMachine").change_state("Foretold")
+	find_child("FiniteStateMachine").change_state("Foretold")
 	#else:
 		#boss_2_ranged.position = owner.center_of_screen + Vector2(50, 0)
 		#boss_2_ranged.animation_player.play("jump_land")
@@ -294,3 +304,11 @@ func arena_death_vfx():
 	
 func smoke_vfx():
 	smoke.play("smoke")
+	
+func darkness_balance_vfx_spawn():
+	var spawn_vfx = darkness_balance_vfx.instantiate()
+	spawn_vfx.position = Vector2(0, -11)
+	add_child(spawn_vfx)
+
+func _on_vfx_timer_timeout() -> void:
+	darkness_balance_vfx_spawn()

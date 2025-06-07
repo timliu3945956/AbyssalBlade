@@ -1,0 +1,124 @@
+[gd_scene load_steps=20 format=3 uid="uid://b47ajf8g50pym"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_anger.gd" id="1_gi7wp"]
+[ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="1_luapd"]
+[ext_resource type="Texture2D" uid="uid://dqnrr8o050ttn" path="res://sprites/AngerBoss/Idle/boss_idle.png" id="2_ijepd"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="3_tnukc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfs7t"]
+shader = ExtResource("1_luapd")
+shader_parameter/fade_alpha = 0.7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1h2y"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nedg1"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfndg"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igrtk"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwfkg"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj326"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kctbk"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyctr"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsvnd"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ftyq"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00w4e"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbi2y"]
+atlas = ExtResource("2_ijepd")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuwe0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1h2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nedg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfndg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igrtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwfkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj326")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kctbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyctr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsvnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ftyq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00w4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbi2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2nvx5"]
+radius = 28.0
+
+[node name="LobbyAnger" type="Node2D"]
+z_index = 1
+script = ExtResource("1_gi7wp")
+
+[node name="AngerShadow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_xfs7t")
+position = Vector2(-4, -15)
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_iuwe0")
+autoplay = "default"
+frame_progress = 0.258152
+flip_h = true
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_tnukc")]
+prompt_offset_y = 55.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_2nvx5")

@@ -11,8 +11,8 @@ extends Node2D
 
 func _ready():
 	animation_player.play("slam_telegraph")
-	await get_tree().create_timer(1).timeout
-	randomize()
+	await animation_player.animation_finished
+	#randomize()
 	jump_slam_collision.disabled = false
 	collision_timer.start()
 	jump_slam_attack.rotation = randf() * TAU

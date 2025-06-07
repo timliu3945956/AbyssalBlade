@@ -51,7 +51,7 @@ func init_health(_health):
 func init_mana(_mana):
 	mana = _mana
 	self.min_value = 0
-	self.max_value = 20
+	self.max_value = 100
 	self.value = mana
 	mana_damage_bar.min_value = 0
 	mana_damage_bar.max_value = max_value

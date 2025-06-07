@@ -28,7 +28,7 @@ func enter():
 		tween.tween_property(owner, "position", move_position, 0.5)
 		animation_player.play("dash_stop")
 		owner.dash_audio.play()
-		owner.jump_audio.play()
+		#owner.jump_audio.play()
 		await get_tree().create_timer(0.5).timeout
 		owner.dash_particles.emitting = false
 	#await get_tree().create_timer(0.25).timeout

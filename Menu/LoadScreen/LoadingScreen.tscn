@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxrb72flmwcaa"]
+[gd_scene load_steps=15 format=3 uid="uid://dxrb72flmwcaa"]
 
 [ext_resource type="Script" path="res://Menu/LoadScreen/loading_screen.gd" id="1_fw436"]
-[ext_resource type="Texture2D" uid="uid://cgpn6huhjdrkf" path="res://sprites/character/Walk/walk_right.png" id="2_ywk1n"]
 [ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="3_ytsm0"]
 
 [sub_resource type="Animation" id="Animation_pqn5x"]
@@ -9,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/AnimatedSprite2D:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,22 +20,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/path = NodePath("ColorRect/GPUParticles2D:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect/GPUParticles2D:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -49,14 +36,44 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/AnimatedSprite2D:modulate")
+tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/GPUParticles2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s531f"]
+resource_name = "start_load"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"loading_screen_has_full_coverage"],
+"method": &"emit_signal"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -68,7 +85,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -77,60 +94,6 @@ tracks/2/path = NodePath("ColorRect/GPUParticles2D:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_s531f"]
-resource_name = "start_load"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/AnimatedSprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.466667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"loading_screen_has_full_coverage"],
-"method": &"emit_signal"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect/GPUParticles2D:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -143,70 +106,6 @@ _data = {
 "end_load": SubResource("Animation_t6axs"),
 "start_load": SubResource("Animation_s531f")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_buyfl"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(0, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yh53s"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(82, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8w8u6"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(164, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vc4xo"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(246, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6t8c"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(328, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i22gc"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(410, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugwaf"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(492, 0, 82, 82)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nh1ox"]
-atlas = ExtResource("2_ywk1n")
-region = Rect2(574, 0, 82, 82)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i0ke7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_buyfl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yh53s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8w8u6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vc4xo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6t8c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i22gc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ugwaf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nh1ox")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0nlkr"]
 blend_mode = 1
@@ -256,6 +155,9 @@ color_ramp = SubResource("GradientTexture1D_fopwy")
 
 [node name="LoadingScreen" type="CanvasLayer"]
 process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
 layer = 10
 script = ExtResource("1_fw436")
 
@@ -273,13 +175,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
-position = Vector2(453, 246)
-sprite_frames = SubResource("SpriteFrames_i0ke7")
-autoplay = "default"
-frame_progress = 0.771121
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="ColorRect"]
+process_mode = 3
 modulate = Color(0.23371, 0.482232, 0.96847, 1)
 material = SubResource("CanvasItemMaterial_0nlkr")
 position = Vector2(454, 247)

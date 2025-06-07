@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dgfjtbt2xwv6m"]
+[gd_scene load_steps=111 format=3 uid="uid://dgfjtbt2xwv6m"]
 
 [ext_resource type="Script" path="res://Other/depression_pillar.gd" id="1_3yh6x"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_qxy0d"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c5oqhsovh2epb" path="res://Utilities/Effects/Wind_Shout_Burst_White_v6_spritesheet.png" id="15_vtpk7"]
 [ext_resource type="Texture2D" uid="uid://dom30vo3b8a05" path="res://sprites/DenialBoss/boss_animations/jump away.png" id="16_obewa"]
 [ext_resource type="Texture2D" uid="uid://dm4yat7en0w6l" path="res://Utilities/Effects/particlefx/floaty_128.png" id="17_kwlri"]
+[ext_resource type="AudioStream" uid="uid://bdb5vgdlynh08" path="res://audio/sfx/Boss3/4_break pillar_01.wav" id="18_j7ppp"]
+[ext_resource type="AudioStream" uid="uid://ckpbcn4ih0yiy" path="res://audio/sfx/Boss0/spawn_shadow.wav" id="19_1vfr0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_auh32"]
 shader = ExtResource("2_qxy0d")
@@ -162,10 +164,10 @@ animations = [{
 radius = 478.038
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgd6m"]
-size = Vector2(16, 49)
+size = Vector2(12, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kbr6j"]
-size = Vector2(17, 34)
+size = Vector2(2, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4w6js"]
 blend_mode = 1
@@ -424,6 +426,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StructureBreakAudio:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_gt2cr"]
 resource_name = "pillar_break"
@@ -501,17 +515,114 @@ tracks/5/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StructureBreakAudio:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_6vysg"]
+[sub_resource type="Animation" id="Animation_td3pw"]
 resource_name = "pillar_explode"
+length = 1.50001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ExplodeHitbox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_nuf45")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666, 0.75, 0.833333, 0.916666, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpriteShadow:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpriteShadow:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_r83ju")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpriteShadow:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666, 0.75, 0.833333, 0.916666, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StructureBreakAudio:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ExplodeHitbox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.0833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -600,7 +711,7 @@ tracks/5/keys = {
 _data = {
 "RESET": SubResource("Animation_jm6ex"),
 "pillar_break": SubResource("Animation_gt2cr"),
-"pillar_explode": SubResource("Animation_6vysg"),
+"pillar_explode": SubResource("Animation_td3pw"),
 "pillar_idle": SubResource("Animation_t22yb")
 }
 
@@ -999,15 +1110,15 @@ script = ExtResource("1_3yh6x")
 
 [node name="SpriteShadow" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_auh32")
-position = Vector2(0, -34.4)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -25.8)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_dbdr0")
 hframes = 12
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_a0giy")
-position = Vector2(0, -34.4)
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -26)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_6f2x7")
 hframes = 12
 
@@ -1026,13 +1137,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -7.0
-offset_top = -68.0
+offset_top = -54.0
 offset_right = 9.0
-offset_bottom = -60.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_0l3n8")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 9
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -1042,11 +1154,17 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" parent="ExplodeHitbox" index="0"]
+visible = false
 shape = SubResource("CircleShape2D_6h5q1")
 disabled = true
 
 [node name="CollisionPolygon2D" parent="ExplodeHitbox" index="1"]
 visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExplodeHitbox"]
+visible = false
+shape = SubResource("CircleShape2D_6h5q1")
+disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_eppd5")]
 collision_layer = 0
@@ -1054,20 +1172,20 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 visible = false
-position = Vector2(0, -24.5)
+position = Vector2(0, -18.5)
 shape = SubResource("RectangleShape2D_dgd6m")
 
 [node name="FlashTimer" type="Timer" parent="."]
-wait_time = 0.105
+wait_time = 0.05
 one_shot = true
 
 [node name="HurtboxForBoss" parent="." instance=ExtResource("4_eppd5")]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 16384
 
 [node name="CollisionShape2D" parent="HurtboxForBoss" index="0"]
 visible = false
-position = Vector2(0.5, -16)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_kbr6j")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -1156,6 +1274,16 @@ process_material = SubResource("ParticleProcessMaterial_obng2")
 texture = ExtResource("17_kwlri")
 one_shot = true
 explosiveness = 0.71
+
+[node name="StructureBreakAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_j7ppp")
+volume_db = -11.0
+bus = &"SFX"
+
+[node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_1vfr0")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

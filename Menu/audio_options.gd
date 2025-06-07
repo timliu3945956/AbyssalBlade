@@ -10,8 +10,6 @@ func _ready() -> void:
 	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(1))
 	music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(2))
 
-
-
 func _on_master_slider_mouse_exited() -> void:
 	release_focus()
 	

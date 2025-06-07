@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://b4cy04twqlqx3"]
+
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="1_aoiqa"]
+[ext_resource type="Script" path="res://Other/boss_4_pick_choice.gd" id="1_k5pws"]
+[ext_resource type="Texture2D" uid="uid://mvorcfvs5qsa" path="res://Utilities/Font/take_blade.png" id="3_c46q8"]
+[ext_resource type="Texture2D" uid="uid://g26p54eiub6c" path="res://Utilities/Font/destroy_blade.png" id="4_ab8kh"]
+[ext_resource type="AudioStream" uid="uid://bar5m6de8qlud" path="res://audio/sfx/Menu/ui_back.wav" id="5_8xqg1"]
+
+[sub_resource type="Gradient" id="Gradient_oal6p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yatha"]
+gradient = SubResource("Gradient_oal6p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u4c5u"]
+texture = SubResource("GradientTexture2D_yatha")
+
+[sub_resource type="Gradient" id="Gradient_6nok4"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0jar7"]
+gradient = SubResource("Gradient_6nok4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0y4un"]
+texture = SubResource("GradientTexture2D_0jar7")
+
+[sub_resource type="Gradient" id="Gradient_f5xbe"]
+colors = PackedColorArray(0.969137, 0.969137, 0.969137, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgmtl"]
+gradient = SubResource("Gradient_f5xbe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlvya"]
+content_margin_right = 20.0
+texture = SubResource("GradientTexture2D_wgmtl")
+
+[sub_resource type="Gradient" id="Gradient_ueyy7"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pu8ra"]
+gradient = SubResource("Gradient_ueyy7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rhw3m"]
+content_margin_right = 20.0
+texture = SubResource("GradientTexture2D_pu8ra")
+
+[node name="Boss4PickChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5pws")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TakeButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_aoiqa")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxTexture_u4c5u")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_u4c5u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_u4c5u")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u4c5u")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0y4un")
+
+[node name="TakeBladeLabel" type="Sprite2D" parent="MarginContainer/HBoxContainer/TakeButton"]
+position = Vector2(85, 135)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_c46q8")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+
+[node name="DestroyButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_aoiqa")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxTexture_tlvya")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_tlvya")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tlvya")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tlvya")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rhw3m")
+alignment = 2
+
+[node name="DestroyBladeLabel" type="Sprite2D" parent="MarginContainer/HBoxContainer/DestroyButton"]
+position = Vector2(85, 135)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_ab8kh")
+
+[node name="BackAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8xqg1")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TakeButton" to="." method="_on_take_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/TakeButton" to="." method="_on_take_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/TakeButton" to="." method="_on_take_button_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/DestroyButton" to="." method="_on_destroy_button_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/DestroyButton" to="." method="_on_destroy_button_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/DestroyButton" to="." method="_on_destroy_button_pressed"]

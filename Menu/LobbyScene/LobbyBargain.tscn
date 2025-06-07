@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://8gb0e5vpq4uk"]
+
+[ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="1_3ntis"]
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_bargain.gd" id="1_vx4r2"]
+[ext_resource type="Texture2D" uid="uid://crxm8dobq2dl6" path="res://sprites/BargainingBoss/MainBoss/bargaining_idle.png" id="2_ch6gi"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="3_px34e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yqkk3"]
+shader = ExtResource("1_3ntis")
+shader_parameter/fade_alpha = 0.7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw50i"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2bfn"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqbvl"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kp7q"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qtms"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1wqs"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(400, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqoe4"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwfla"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thgni"]
+atlas = ExtResource("2_ch6gi")
+region = Rect2(640, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4x50i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aw50i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2bfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqbvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kp7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qtms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1wqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqoe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwfla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thgni")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d8uvd"]
+radius = 28.0
+
+[node name="LobbyBargain" type="Node2D"]
+z_index = 1
+script = ExtResource("1_vx4r2")
+
+[node name="BargainShadow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_yqkk3")
+position = Vector2(1, -25)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_4x50i")
+autoplay = "default"
+frame_progress = 0.246057
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_px34e")]
+position = Vector2(5, 0)
+prompt_offset_y = 47.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-5, 0)
+shape = SubResource("CircleShape2D_d8uvd")

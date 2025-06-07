@@ -26,47 +26,45 @@ func boss_slain():
 	time.show()
 	match get_tree().get_current_scene().name:
 		"BossRoom0":
-			Global.player_data.clear_count_1 += 1
-			if Global.player_data.clear_count_1 == 1:
-				Global.player_data.first_clear_time_1 = GlobalCount.elapsed_time
+			Global.player_data_slots[Global.current_slot_index].clear_count_1 += 1
+			if Global.player_data_slots[Global.current_slot_index].clear_count_1 == 1:
+				Global.player_data_slots[Global.current_slot_index].first_clear_time_1 = GlobalCount.elapsed_time
 				
-			if Global.player_data.best_time_boss_1 == 0.0 or Global.player_data.best_time_boss_1 > GlobalCount.elapsed_time:
-				Global.player_data.best_time_boss_1 = GlobalCount.elapsed_time
-				Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-				print(Global.player_data.best_time_boss_1)
-				best_record = Global.player_data.best_time_boss_1
+			if Global.player_data_slots[Global.current_slot_index].best_time_boss_1 == 0.0 or Global.player_data_slots[Global.current_slot_index].best_time_boss_1 > GlobalCount.elapsed_time:
+				Global.player_data_slots[Global.current_slot_index].best_time_boss_1 = GlobalCount.elapsed_time
+				Global.save_data(Global.current_slot_index)
+				print(Global.player_data_slots[Global.current_slot_index].best_time_boss_1)
+				best_record = Global.player_data_slots[Global.current_slot_index].best_time_boss_1
 		"BossRoom1":
-			Global.player_data.clear_count_2 += 1
-			if Global.player_data.clear_count_2 == 1:
-				Global.player_data.first_clear_time_2 = GlobalCount.elapsed_time
+			Global.player_data_slots[Global.current_slot_index].clear_count_2 += 1
+			if Global.player_data_slots[Global.current_slot_index].clear_count_2 == 1:
+				Global.player_data_slots[Global.current_slot_index].first_clear_time_2 = GlobalCount.elapsed_time
 				
-			if Global.player_data.best_time_boss_2 == 0.0 or Global.player_data.best_time_boss_2 > GlobalCount.elapsed_time:
-				Global.player_data.best_time_boss_2 = GlobalCount.elapsed_time
-				Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-				print(Global.player_data.best_time_boss_2)
-				best_record = Global.player_data.best_time_boss_2
+			if Global.player_data_slots[Global.current_slot_index].best_time_boss_2 == 0.0 or Global.player_data_slots[Global.current_slot_index].best_time_boss_2 > GlobalCount.elapsed_time:
+				Global.player_data_slots[Global.current_slot_index].best_time_boss_2 = GlobalCount.elapsed_time
+				Global.save_data(Global.current_slot_index)
+				print(Global.player_data_slots[Global.current_slot_index].best_time_boss_2)
+				best_record = Global.player_data_slots[Global.current_slot_index].best_time_boss_2
 		"BossRoom2":
-			Global.player_data.clear_count_3 += 1
-			if Global.player_data.clear_count_3 == 1:
-				Global.player_data.first_clear_time_3 = GlobalCount.elapsed_time
+			Global.player_data_slots[Global.current_slot_index].clear_count_3 += 1
+			if Global.player_data_slots[Global.current_slot_index].clear_count_3 == 1:
+				Global.player_data_slots[Global.current_slot_index].first_clear_time_3 = GlobalCount.elapsed_time
 				
-			if Global.player_data.best_time_boss_3 == 0.0 or Global.player_data.best_time_boss_3 > GlobalCount.elapsed_time:
-				Global.player_data.best_time_boss_3 = GlobalCount.elapsed_time
-				Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-				print(Global.player_data.best_time_boss_3)
-				best_record = Global.player_data.best_time_boss_3
+			if Global.player_data_slots[Global.current_slot_index].best_time_boss_3 == 0.0 or Global.player_data_slots[Global.current_slot_index].best_time_boss_3 > GlobalCount.elapsed_time:
+				Global.player_data_slots[Global.current_slot_index].best_time_boss_3 = GlobalCount.elapsed_time
+				Global.save_data(Global.current_slot_index)
+				print(Global.player_data_slots[Global.current_slot_index].best_time_boss_3)
+				best_record = Global.player_data_slots[Global.current_slot_index].best_time_boss_3
 		"BossRoom3":
-			Global.player_data.clear_count_4 += 1
-			if Global.player_data.clear_count_4 == 1:
-				Global.player_data.first_clear_time_4 = GlobalCount.elapsed_time
+			Global.player_data_slots[Global.current_slot_index].clear_count_4 += 1
+			if Global.player_data_slots[Global.current_slot_index].clear_count_4 == 1:
+				Global.player_data_slots[Global.current_slot_index].first_clear_time_4 = GlobalCount.elapsed_time
 				
-			if Global.player_data.best_time_boss_4 == 0.0 or Global.player_data.best_time_boss_4 > GlobalCount.elapsed_time:
-				Global.player_data.best_time_boss_4 = GlobalCount.elapsed_time
-				Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-				print(Global.player_data.best_time_boss_4)
-				best_record = Global.player_data.best_time_boss_4
-	#Global.change_best_time(2, GlobalCount.elapsed_time)
-	#best_record = Global.player_data.best_time_boss_1
+			if Global.player_data_slots[Global.current_slot_index].best_time_boss_4 == 0.0 or Global.player_data_slots[Global.current_slot_index].best_time_boss_4 > GlobalCount.elapsed_time:
+				Global.player_data_slots[Global.current_slot_index].best_time_boss_4 = GlobalCount.elapsed_time
+				Global.save_data(Global.current_slot_index)
+				print(Global.player_data_slots[Global.current_slot_index].best_time_boss_4)
+				best_record = Global.player_data_slots[Global.current_slot_index].best_time_boss_4
 	await _label_animation(time, 0, 0.025)
 	dps.show()
 	await _label_animation(best_time, 0, 0.025)
@@ -74,7 +72,6 @@ func boss_slain():
 	var dps_to_int = GlobalCount.dps_count / GlobalCount.elapsed_time
 	# GlobalCount.dps_count
 	await _label_animation(dps, dps_to_int, 0.010)
-	#await _label_animation(surge, GlobalCount.surge_count, 0.099)
 	
 
 func _label_animation(label: Label, value: float, duration: float):
@@ -84,28 +81,28 @@ func _label_animation(label: Label, value: float, duration: float):
 	if label == best_time:
 		match get_tree().get_current_scene().name:
 			"BossRoom0":
-				label.text = format_time(Global.player_data.best_time_boss_1)
-				#label.text = str(Global.player_data.deaths_boss_1)
+				label.text = format_time(Global.player_data_slots[Global.current_slot_index].best_time_boss_1)
+				#label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_1)
 			"BossRoom1":
-				label.text = format_time(Global.player_data.best_time_boss_2)
-				#label.text = str(Global.player_data.deaths_boss_2)
+				label.text = format_time(Global.player_data_slots[Global.current_slot_index].best_time_boss_2)
+				#label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_2)
 			"BossRoom2":
-				label.text = format_time(Global.player_data.best_time_boss_3)
-				#label.text = str(Global.player_data.deaths_boss_3)
+				label.text = format_time(Global.player_data_slots[Global.current_slot_index].best_time_boss_3)
+				#label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_3)
 			"BossRoom3":
-				label.text = format_time(Global.player_data.best_time_boss_4)
+				label.text = format_time(Global.player_data_slots[Global.current_slot_index].best_time_boss_4)
 		
 		await get_tree().create_timer(0.5).timeout
 	elif label == dps:
 		match get_tree().get_current_scene().name:
 			"BossRoom0":
-				label.text = str(Global.player_data.deaths_boss_1)
+				label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_1)
 			"BossRoom1":
-				label.text = str(Global.player_data.deaths_boss_2)
+				label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_2)
 			"BossRoom2":
-				label.text = str(Global.player_data.deaths_boss_3)
+				label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_3)
 			"BossRoom3":
-				label.text = str(Global.player_data.deaths_boss_4)
+				label.text = str(Global.player_data_slots[Global.current_slot_index].deaths_boss_4)
 		#"%0.1f" % (GlobalCount.dps_count / GlobalCount.elapsed_time)
 		await get_tree().create_timer(1).timeout
 	#else:

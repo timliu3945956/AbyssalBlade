@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c5oqhsovh2epb" path="res://Utilities/Effects/Wind_Shout_Burst_White_v6_spritesheet.png" id="6_es7r0"]
 [ext_resource type="Texture2D" uid="uid://dom30vo3b8a05" path="res://sprites/DenialBoss/boss_animations/jump away.png" id="7_6djud"]
 [ext_resource type="Texture2D" uid="uid://dm4yat7en0w6l" path="res://Utilities/Effects/particlefx/floaty_128.png" id="7_ujqf7"]
-[ext_resource type="AudioStream" uid="uid://b6mrdeuppcymp" path="res://audio/sfx/Boss0/sac pop.wav" id="9_37m5v"]
 [ext_resource type="AudioStream" uid="uid://ckpbcn4ih0yiy" path="res://audio/sfx/Boss0/spawn_shadow.wav" id="10_egbdh"]
+[ext_resource type="AudioStream" uid="uid://c752x05ldj0lw" path="res://audio/sfx/Boss0/1_sac pop.wav" id="10_ymheb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ojjx1"]
 
@@ -819,8 +819,8 @@ one_shot = true
 explosiveness = 0.71
 
 [node name="sac_pop_audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_37m5v")
-volume_db = -15.0
+stream = ExtResource("10_ymheb")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]

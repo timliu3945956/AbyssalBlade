@@ -30,14 +30,19 @@ func enter():
 			owner.boss_room_animation.play("alternate_opposite")
 			
 	#animation_player.play("alternate_slam_disappear")
+	player.beam_circle_meteor()
 	await get_tree().create_timer(2.6656).timeout
 	while circle_count < 8 and owner.boss_death == false:
 		animation_player.play("alternate_slam")
 		
 		await get_tree().create_timer(0.3332).timeout
+		owner.beam_circle()
 		#await get_tree().create_timer(0.8336).timeout #1.5 seconds in between circle hit
 		circle()
 		circle_count += 1
+		if circle_count < 8:
+			player.beam_circle_meteor()
+			
 		await get_tree().create_timer(0.6664).timeout
 		animation_player.play("idle_right")
 		await get_tree().create_timer(1.9992).timeout

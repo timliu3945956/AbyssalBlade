@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtel22fxgekpe"
+path="res://.godot/imported/5_swords clashing.wav-e8ced7707edcb4902e62215bf7ea26ad.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/5_swords clashing.wav"
+dest_files=["res://.godot/imported/5_swords clashing.wav-e8ced7707edcb4902e62215bf7ea26ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

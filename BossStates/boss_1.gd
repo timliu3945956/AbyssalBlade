@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_parent().find_child("Player")
 @onready var meteor = get_parent().find_child("MeteorDrops")
-
+@onready var boss_room = get_node("..")
 @onready var idle: Node2D = $FiniteStateMachine/Idle
 @onready var follow: Node2D = $FiniteStateMachine/Follow
 @onready var move_to_center: Node2D = $FiniteStateMachine/MoveToCenter
@@ -19,6 +19,8 @@ extends CharacterBody2D
 @onready var explosions: Node2D = $FiniteStateMachine/Explosions
 @onready var enrage: Node2D = $FiniteStateMachine/Enrage
 @onready var transition: Node2D = $FiniteStateMachine/Transition
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+
 
 
 @onready var collision: CollisionShape2D = $SlashHitBox/CollisionShape2D
@@ -46,7 +48,8 @@ extends CharacterBody2D
 @onready var in_out_animation_player: AnimationPlayer = get_node("../InOutAnimationPlayer")
 @onready var top_bottom_animation_player: AnimationPlayer = get_node("../TopBottomAnimationPlayer")
 @onready var light_animation_player: AnimationPlayer = get_node("../LightAnimationPlayer")
-@onready var boss_killed = get_node("../BossKilled")
+@onready var boss_death_anim = get_node("../BossDeathAnimation")
+@onready var boss_killed = get_node("../Portal")
 @onready var enrage_background: AnimationPlayer = get_node("../EnrageBackground")
 @onready var boss_death: bool = false
 
@@ -95,18 +98,17 @@ extends CharacterBody2D
 
 # flash particles
 @onready var sprite = $Sprite2D
-@onready var flash_timer: Timer = $flashTimer
-@onready var hit_particles: CPUParticles2D = $HitParticles
-@onready var hit_particles_2: AnimatedSprite2D = $HitParticles2
-
+@onready var flash_timer: Timer = $FlashTimer
+@onready var surge_hit_particles: AnimatedSprite2D = $Marker2D/SurgeHitParticles
 
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var slash_particles: CPUParticles2D = $Marker2D/SlashParticles
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var slash_glow: CPUParticles2D = $Marker2D/SlashGlow
 
-@onready var healthbar = $CanvasLayer/Healthbar
+@onready var boss_healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar
 var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_fade.tscn")
+var hit_particle = preload("res://Other/hit_particles.tscn")
 var circle_ref: Node2D
 var enraged: bool = false
 
@@ -117,24 +119,32 @@ var explosion_count: int = 0
 var top_down_charge_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 75000 : set = _set_health #75000
+var health_amount = 47000 : set = _set_health #47000
 var center_of_screen = get_viewport_rect().size / 2 
 
 var choose_top_down = randi_range(1, 2)
 var timeline: int = 0
 
+var _last_t : int
+
 func _ready():
 	set_physics_process(false)
-	healthbar.init_health(health_amount)
+	boss_healthbar.init_health(health_amount)
 	GlobalCount.can_pause = true
+	GlobalCount.can_charge = false
 	#player.charge_icon_disable()
 	attack_fire.visible = false
 	normal_attack.visible = false
-	hit_particles_2.frame = 0
 	alternate_smoke.modulate.a = 0
 	alternate_smoke.play("new_animation_1")
+	_last_t = Time.get_ticks_usec()
 
 func _process(_delta):
+	var now := Time.get_ticks_usec()
+	var dt := float(now - _last_t) * 1e-6
+	_last_t = now
+	boss_death_anim.advance(dt)
+	
 	if chain_attack_follow_timer.time_left > 0:
 		chain_aim.rotation = chain_aim.global_position.angle_to_point(player.global_position)
 		
@@ -201,45 +211,14 @@ func _physics_process(delta):
 
 func _set_health(value):
 	health_amount = value
-	healthbar.health = health_amount
+	boss_healthbar.health = health_amount
 	
-func _on_timer_timeout() -> void:
-	collision.call_deferred("set", "disabled", false)
-	attack_fire.visible = true
-	timer_2.start()
-	
-func _on_timer_2_timeout() -> void:
-	collision.call_deferred("set", "disabled", true)
-	
-func _on_chain_attack_collision_timer_timeout() -> void:
-	collision_shape_2d.call_deferred("set", "disabled", false)
-	chain_attack_collision_off_timer.start()
-
-func _on_chain_attack_collision_off_timer_timeout() -> void:
-	collision_shape_2d.call_deferred("set", "disabled", true)
-
 func flash():
 	sprite.material.set_shader_parameter("flash_modifier", 1)
 	flash_timer.start()
 
 func _on_flash_timer_timeout() -> void:
 	sprite.material.set_shader_parameter("flash_modifier", 0)
-	
-func slashing_audio():
-	slash_audio.play()
-	
-func knockback_audio():
-	knockback_slam_audio.play()
-	
-func sword_appearing_audio():
-	sword_appear_audio.play()
-
-func sword_disappearing_audio():
-	sword_disappear_audio.play()
-	
-func chain_slashing_audio():
-	chain_slash_audio.play()
-
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	GlobalCount.healthbar.apply_shake(1, 10.0)
@@ -247,15 +226,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health_amount -= player.damage_amount
 		GlobalCount.dps_count += player.damage_amount
 		flash()
-		hit_particles_2.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
 		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles_2.play("hit_particles")
+		if player.transformed:
+			spawn_attack_vfx("surge")
+		else:
+			spawn_attack_vfx("normal")
 		
 		player.attack_count += 1
 		if player.dash_gauge >= 3 and not player.transformed:
@@ -268,63 +243,62 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if player.swing.playing:
 			player.swing.stop()
 		if player.transformed:
-			player.abyssal_surge_hit.play()
+			player.play_with_random_pitch(player.abyssal_surge_hit, 0.9, 1.15)
+			#player.abyssal_surge_hit.play()
 		else:
-			player.hit.play()
+			player.play_with_random_pitch(player.hit, 0.9, 1.15)
+			#player.hit.play()
 		
-		if player.mana < 20:
-			player.mana += 1
-			if player.mana >= 20:
-				player.charge_icon_disable()
-				player.transform_icon_disable()
-				player.surge_ready.play()
-				
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 3
+				if player.mana >= 100:
+					player.charge_icon_disable()
+					player.transform_icon_disable()
+					player.surge_ready.play()
+					
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 	elif area.name == "HeavyHitBox":
-		health_amount -= (player.damage_amount * 4) #4
-		GlobalCount.dps_count += (player.damage_amount * 4) #4
+		health_amount -= (player.damage_amount * 8) #4
+		GlobalCount.dps_count += (player.damage_amount * 8) #4
 		flash()
 		
-		hit_particles_2.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
-		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles_2.play("hit_particles")
+		spawn_attack_vfx("heavy")
 		
 		if player.swing.playing:
 			player.swing.stop()
 		
-		player.heavy_hit.play()
+		player.play_with_random_pitch(player.heavy_hit, 0.9, 1.15)
 		
-		if player.mana < 20:
-			player.mana += 4 #4
-			if player.mana >= 20:
-				player.surge_ready.play()
-				player.transform_icon_disable()
-				player.charge_icon_disable()
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 20 #4
+				if player.mana >= 100:
+					player.surge_ready.play()
+					player.transform_icon_disable()
+					player.charge_icon_disable()
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
-		player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
-		player.hurtbox_collision.call_deferred("set", "disabled", true)
+		sprite.start_shake(1.8, 0.2)
+		player.high_pitch_slice_audio.play()
+		boss_death_anim.play("death")
+		#GlobalCount.timer_active = false
+		HitStopManager.hit_stop_boss_death()
 		
 		hurtbox.call_deferred("set", "disabled", true)
-		
-		boss_room_animation.queue_free()
-		top_bottom_animation_player.queue_free()
-		in_out_animation_player.queue_free()
 		animation_player.stop()
-		
-		attack_meter.queue_free()
 		boss_death = true
 		find_child("FiniteStateMachine").change_state("Death")
 		remove_state()
+
+func spawn_attack_vfx(attack_type: String):
+	var particle_vfx = hit_particle.instantiate()
+	particle_vfx.rotation = position.angle_to_point(player.position) + PI
+	particle_vfx.hit_type = attack_type
+	add_child(particle_vfx)
 		
 func remove_state():
 	idle.queue_free()
@@ -343,16 +317,55 @@ func remove_state():
 	explosions.queue_free()
 	enrage.queue_free()
 	transition.queue_free()
-	healthbar.queue_free()
+	canvas_layer.queue_free()
+	attack_meter.queue_free()
+	meteor.queue_free()
+	boss_room_animation.queue_free()
+	top_bottom_animation_player.queue_free()
+	in_out_animation_player.queue_free()
+	
 
 func camera_shake():
-	GlobalCount.camera.apply_shake(1.5, 15.0)
+	GlobalCount.camera.apply_shake(8.0, 15.0)
 
 func camera_shake_phase_2():
-	GlobalCount.camera.apply_shake(5, 25.0)
+	GlobalCount.camera.apply_shake(12.0, 20.0)
 	
 func beam_circle():
 	circle_ref = beam_bar.instantiate()
 	#owner.beam_circle_timer.start()
-	circle_ref.position = to_local(player.global_position)
+	circle_ref.position = to_local(player.global_position) + Vector2(0, 10)
 	add_child(circle_ref)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "alternate_slam" or anim_name == "combination_alternate":
+		animation_player.play("idle_right")
+	
+
+
+func _on_attack_fire_animation_finished() -> void:
+	attack_fire.rotation = randf() * TAU
+	
+func _on_timer_timeout() -> void:
+	collision.call_deferred("set", "disabled", false)
+	attack_fire.visible = true
+	timer_2.start()
+	
+func _on_timer_2_timeout() -> void:
+	collision.call_deferred("set", "disabled", true)
+	
+func _on_chain_attack_collision_timer_timeout() -> void:
+	collision_shape_2d.call_deferred("set", "disabled", false)
+	chain_attack_collision_off_timer.start()
+
+func _on_chain_attack_collision_off_timer_timeout() -> void:
+	collision_shape_2d.call_deferred("set", "disabled", true)
+func slashing_audio():
+	slash_audio.play()
+	
+func knockback_audio():
+	knockback_slam_audio.play()
+	
+func chain_slashing_audio():
+	chain_slash_audio.play()

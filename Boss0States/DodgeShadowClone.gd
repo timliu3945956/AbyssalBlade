@@ -18,8 +18,20 @@ func enter():
 	await owner.boss_charge_animation.animation_finished
 	owner.circle_animation.play("circle_appear")
 	
-	owner.boss_charge_animation.play("dodge_shadow")
+	#owner.boss_charge_animation.play("dodge_shadow")
 	spawn_shadow()
+	owner.boss_charge_animation.play("phantom_cleave_telegraph_1")
+	await owner.boss_charge_animation.animation_finished
+	owner.boss_room_animation.play("phantom_cleave_telegraph")
+	owner.boss_charge_animation.play("phantom_cleave_telegraph_2")
+	await owner.boss_charge_animation.animation_finished
+	owner.boss_room_animation.play("phantom_cleave_telegraph")
+	owner.boss_charge_animation.play("phantom_cleave_telegraph_3")
+	await owner.boss_charge_animation.animation_finished
+	owner.boss_room_animation.play("phantom_cleave_telegraph")
+	owner.boss_charge_animation.play("phantom_cleave_telegraph_4")
+	await owner.boss_charge_animation.animation_finished
+	owner.boss_room_animation.play("phantom_cleave_telegraph")
 	
 	#await owner.circle_animation.animation_finished
 	#owner.circle_animation.play("circle_flash")
@@ -38,8 +50,13 @@ func _on_shadow_clone_completed(slice_indices):
 	await play_animations(slice_indices)
 	
 func play_animations(slice_indices):
+	var idx = 1
 	for index in slice_indices:
-		await get_tree().create_timer(2.9988).timeout
+		var anim_name = "invis_attack_%d" % [idx]
+		owner.boss_charge_animation.play(anim_name)
+		await owner.boss_charge_animation.animation_finished
+		idx += 1
+		#await get_tree().create_timer(2.9988).timeout
 		var animation_name = "safe_slice_" + str(index)
 		owner.boss_room_animation.play(animation_name)
 		owner.flash_room_animation.play("flash_arena")

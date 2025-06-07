@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yv7hbvxawfda"
+path="res://.godot/imported/sword clash.mp3-48aa8a5f0a205164d6df99be3c70bc5a.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/sword clash.mp3"
+dest_files=["res://.godot/imported/sword clash.mp3-48aa8a5f0a205164d6df99be3c70bc5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

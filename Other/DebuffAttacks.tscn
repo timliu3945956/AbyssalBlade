@@ -1,0 +1,1348 @@
+[gd_scene load_steps=56 format=3 uid="uid://lv387qxr1cpd"]
+
+[ext_resource type="Script" path="res://Other/debuff_attacks.gd" id="1_lruy0"]
+[ext_resource type="Texture2D" uid="uid://ddhbx1pr6ifgw" path="res://sprites/GriefBoss/telegraphs/quake_in.png" id="2_ssau0"]
+[ext_resource type="Texture2D" uid="uid://wlrraakwnfwt" path="res://sprites/GriefBoss/telegraphs/quake_donut.png" id="3_4ib35"]
+[ext_resource type="Texture2D" uid="uid://dabawyd64m2fm" path="res://sprites/GriefBoss/telegraphs/debuff_plus.png" id="4_rdl7m"]
+[ext_resource type="Texture2D" uid="uid://drtmdtllf0lam" path="res://sprites/GriefBoss/telegraphs/debuff_x.png" id="5_5hc5g"]
+[ext_resource type="Shader" path="res://Levels/disable.gdshader" id="6_4srmu"]
+[ext_resource type="Texture2D" uid="uid://byqvp4splv8yi" path="res://Utilities/Effects/ground_crack.png" id="7_e3y5r"]
+[ext_resource type="Texture2D" uid="uid://c5oqhsovh2epb" path="res://Utilities/Effects/Wind_Shout_Burst_White_v6_spritesheet.png" id="9_j0xos"]
+[ext_resource type="AudioStream" uid="uid://k5la8bt21oyo" path="res://audio/sfx/Boss/2_quake_v1.wav" id="10_7u6lo"]
+[ext_resource type="Texture2D" uid="uid://d0yh0824alk1q" path="res://Utilities/Effects/particlefx/Impact_Wind_White_v6_spritesheet.png" id="10_mi2my"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4hfm"]
+shader = ExtResource("6_4srmu")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_41ss8"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10p3g"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1742"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6dpv"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc3uv"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b57p"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkheo"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_livhe"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtj7s"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5px4n"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ainkh"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vvnm"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7ui7"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8v5b"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isq6"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_namaf"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsfjf"]
+atlas = ExtResource("9_j0xos")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g58v"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmo5l"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07byj"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7jfn"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2xyp"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqgyb"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n40oa"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpg1m"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qc7v1"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvgam"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smvx1"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70wn1"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w7qp"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckadr"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j8n0"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ces1r"]
+atlas = ExtResource("10_mi2my")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_epguy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10p3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1742")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6dpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc3uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b57p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkheo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_livhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtj7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5px4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vvnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7ui7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8v5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_namaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsfjf")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 27.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g58v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmo5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07byj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7jfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2xyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqgyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n40oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpg1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qc7v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvgam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smvx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70wn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w7qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckadr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j8n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ces1r")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 25.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aq484"]
+shader = ExtResource("6_4srmu")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dk0qe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afpv8"]
+shader = ExtResource("6_4srmu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lyd4"]
+shader = ExtResource("6_4srmu")
+
+[sub_resource type="Animation" id="Animation_ed8ky"]
+resource_name = "+_attack"
+length = 2.50001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("+AttackTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("+AttackTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"plus_fire"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("+AttackVFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("+AttackVFX:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.08333, 2.25, 2.49861),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("+AttackVFX/Marker2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.93, 0.93)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DebuffHitAudio:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.95559),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Area2D/+AttackCollision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2, 2.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_qxpfr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("+AttackTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("+AttackTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InAttackTelegraph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InAttackTelegraph:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/InAttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OutAttackTelegraph:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("OutAttackTelegraph:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("xAttackTelegraph:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("xAttackTelegraph:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("InAttackVFX/GroundCrackVFX:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("InAttackVFX/GroundCrackVFX:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.07, 0.07)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("InAttackVFX:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("OutAttackVFX:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("OutAttackVFX:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("OutAttackVFX/Marker2D:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.93, 0.93)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("+AttackVFX:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("+AttackVFX:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("+AttackVFX/Marker2D:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("xAttackVFX:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("xAttackVFX:self_modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("xAttackVFX/Marker2D:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.45, 0.45)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("DebuffHitAudio:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Area2D/OutAttackCollision:disabled")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Area2D/xAttackCollision:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Area2D/+AttackCollision:disabled")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_assop"]
+resource_name = "in_attack"
+length = 2.50001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InAttackTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InAttackTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/InAttackCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 2.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"in_fire"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InAttackVFX/GroundCrackVFX:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.08333, 2.25, 2.49861),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("InAttackVFX/GroundCrackVFX:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.035, 0.035), Vector2(0.07, 0.07)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("InAttackVFX:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DebuffHitAudio:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.95282),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_l3fnj"]
+resource_name = "out_attack"
+length = 2.50001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OutAttackTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OutAttackTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"out_fire"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OutAttackVFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OutAttackVFX:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.08333, 2.25, 2.49861),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("OutAttackVFX/Marker2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.93, 0.93)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DebuffHitAudio:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.95559),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Area2D/OutAttackCollision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2, 2.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_4tva8"]
+resource_name = "x_attack"
+length = 2.50001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("xAttackTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("xAttackTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"x_fire"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("xAttackVFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("xAttackVFX:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.08333, 2.25, 2.49861),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.854902), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("xAttackVFX/Marker2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2, 2.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.45, 0.45), Vector2(0.93, 0.93)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DebuffHitAudio:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.95698),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"camera_shake"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Area2D/xAttackCollision:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2, 2.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y8vl1"]
+_data = {
+"+_attack": SubResource("Animation_ed8ky"),
+"RESET": SubResource("Animation_qxpfr"),
+"in_attack": SubResource("Animation_assop"),
+"out_attack": SubResource("Animation_l3fnj"),
+"x_attack": SubResource("Animation_4tva8")
+}
+
+[node name="DebuffAttacks" type="Node2D"]
+z_index = 1
+z_as_relative = false
+script = ExtResource("1_lruy0")
+
+[node name="InAttackTelegraph" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("2_ssau0")
+
+[node name="OutAttackTelegraph" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("3_4ib35")
+
+[node name="+AttackTelegraph" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("4_rdl7m")
+
+[node name="xAttackTelegraph" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.482353)
+texture = ExtResource("5_5hc5g")
+
+[node name="InAttackVFX" type="Sprite2D" parent="."]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_a4hfm")
+texture = ExtResource("2_ssau0")
+
+[node name="ColorRect" type="ColorRect" parent="InAttackVFX"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -550.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="GroundCrackVFX" type="Sprite2D" parent="InAttackVFX"]
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="DarkWindVFX" type="AnimatedSprite2D" parent="InAttackVFX"]
+material = SubResource("CanvasItemMaterial_41ss8")
+scale = Vector2(0.275, 0.275)
+sprite_frames = SubResource("SpriteFrames_epguy")
+frame = 16
+frame_progress = 1.0
+
+[node name="OutAttackVFX" type="Sprite2D" parent="."]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_aq484")
+texture = ExtResource("3_4ib35")
+
+[node name="ColorRect" type="ColorRect" parent="OutAttackVFX"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -550.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="Marker2D" type="Marker2D" parent="OutAttackVFX"]
+scale = Vector2(0.93, 0.93)
+
+[node name="GroundCrackVFX" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-37, 39)
+rotation = 0.785397
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX2" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(37, 38)
+rotation = -0.785397
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX3" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(0, 53)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX4" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(0, -53)
+rotation = -3.14159
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX5" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(38, -38)
+rotation = -2.35619
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX6" type="Sprite2D" parent="OutAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-38, -38)
+rotation = -3.92699
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="DarkWindVFX" type="AnimatedSprite2D" parent="OutAttackVFX"]
+material = SubResource("CanvasItemMaterial_41ss8")
+scale = Vector2(0.74, 0.74)
+sprite_frames = SubResource("SpriteFrames_epguy")
+frame = 16
+frame_progress = 1.0
+
+[node name="+AttackVFX" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_afpv8")
+texture = ExtResource("4_rdl7m")
+
+[node name="ColorRect" type="ColorRect" parent="+AttackVFX"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -550.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="Marker2D" type="Marker2D" parent="+AttackVFX"]
+
+[node name="GroundCrackVFX" type="Sprite2D" parent="+AttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(1.07527, 52.6882)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX4" type="Sprite2D" parent="+AttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(52.6882, -9.67742)
+rotation = -1.57079
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX7" type="Sprite2D" parent="+AttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-52.6882, -3.2258)
+rotation = -4.71238
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX10" type="Sprite2D" parent="+AttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-1.07526, -68.8172)
+rotation = -3.14159
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="DarkWindVFX" type="AnimatedSprite2D" parent="+AttackVFX"]
+material = SubResource("CanvasItemMaterial_41ss8")
+scale = Vector2(1.255, 1.255)
+sprite_frames = SubResource("SpriteFrames_epguy")
+frame = 16
+frame_progress = 1.0
+
+[node name="xAttackVFX" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 2
+material = SubResource("ShaderMaterial_0lyd4")
+texture = ExtResource("5_5hc5g")
+
+[node name="ColorRect" type="ColorRect" parent="xAttackVFX"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -550.0
+offset_top = -550.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="Marker2D" type="Marker2D" parent="xAttackVFX"]
+rotation = 0.951204
+scale = Vector2(0.45, 0.45)
+
+[node name="GroundCrackVFX" type="Sprite2D" parent="xAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(1.07527, 52.6882)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX2" type="Sprite2D" parent="xAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-17.2043, 139.785)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX4" type="Sprite2D" parent="xAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(52.6882, -9.67742)
+rotation = -1.57079
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX7" type="Sprite2D" parent="xAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-52.6882, -3.2258)
+rotation = -4.71238
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="GroundCrackVFX10" type="Sprite2D" parent="xAttackVFX/Marker2D"]
+self_modulate = Color(1, 1, 1, 0.517647)
+material = SubResource("CanvasItemMaterial_dk0qe")
+position = Vector2(-1.07526, -68.8172)
+rotation = -3.14159
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("7_e3y5r")
+
+[node name="DarkWindVFX" type="AnimatedSprite2D" parent="xAttackVFX"]
+material = SubResource("CanvasItemMaterial_41ss8")
+scale = Vector2(1.255, 1.255)
+sprite_frames = SubResource("SpriteFrames_epguy")
+frame = 16
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="OutAttackCollision" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-14, -198, -14, -197, -24, -197, -24, -196, -31, -196, -31, -195, -37, -195, -37, -194, -41, -194, -41, -193, -46, -193, -46, -192, -50, -192, -50, -191, -53, -191, -53, -190, -57, -190, -57, -189, -60, -189, -60, -188, -63, -188, -63, -187, -66, -187, -66, -186, -69, -186, -69, -185, -71, -185, -71, -184, -74, -184, -74, -183, -76, -183, -76, -182, -79, -182, -79, -181, -81, -181, -81, -180, -83, -180, -83, -179, -85, -179, -85, -178, -87, -178, -87, -177, -89, -177, -89, -176, -91, -176, -91, -175, -93, -175, -93, -174, -95, -174, -95, -173, -97, -173, -97, -172, -98, -172, -98, -171, -100, -171, -100, -170, -102, -170, -102, -169, -103, -169, -103, -168, -105, -168, -105, -167, -107, -167, -107, -166, -108, -166, -108, -165, -110, -165, -110, -164, -111, -164, -111, -163, -113, -163, -113, -162, -114, -162, -114, -161, -115, -161, -115, -160, -117, -160, -117, -159, -118, -159, -118, -158, -119, -158, -119, -157, -121, -157, -121, -156, -122, -156, -122, -155, -123, -155, -123, -154, -125, -154, -125, -153, -126, -153, -126, -152, -127, -152, -127, -151, -128, -151, -128, -150, -129, -150, -129, -149, -130, -149, -130, -148, -132, -148, -132, -147, -133, -147, -133, -146, -134, -146, -134, -145, -135, -145, -135, -144, -136, -144, -136, -143, -137, -143, -137, -142, -138, -142, -138, -141, -139, -141, -139, -140, -140, -140, -140, -139, -141, -139, -141, -138, -142, -138, -142, -137, -143, -137, -143, -136, -144, -136, -144, -135, -145, -135, -145, -134, -146, -134, -146, -133, -147, -133, -147, -132, -148, -132, -148, -130, -149, -130, -149, -129, -150, -129, -150, -128, -151, -128, -151, -127, -152, -127, -152, -126, -153, -126, -153, -125, -154, -125, -154, -123, -155, -123, -155, -122, -156, -122, -156, -121, -157, -121, -157, -119, -158, -119, -158, -118, -159, -118, -159, -117, -160, -117, -160, -115, -161, -115, -161, -114, -162, -114, -162, -113, -163, -113, -163, -111, -164, -111, -164, -110, -165, -110, -165, -108, -166, -108, -166, -107, -167, -107, -167, -105, -168, -105, -168, -103, -169, -103, -169, -102, -170, -102, -170, -100, -171, -100, -171, -98, -172, -98, -172, -97, -173, -97, -173, -95, -174, -95, -174, -93, -175, -93, -175, -91, -176, -91, -176, -89, -177, -89, -177, -87, -178, -87, -178, -85, -179, -85, -179, -83, -180, -83, -180, -81, -181, -81, -181, -79, -182, -79, -182, -76, -183, -76, -183, -74, -184, -74, -184, -71, -185, -71, -185, -69, -186, -69, -186, -66, -187, -66, -187, -63, -188, -63, -188, -60, -189, -60, -189, -57, -190, -57, -190, -53, -191, -53, -191, -50, -192, -50, -192, -46, -193, -46, -193, -41, -194, -41, -194, -37, -195, -37, -195, -31, -196, -31, -196, -24, -197, -24, -197, -14, -198, -14, -198, 14, -197, 14, -197, 24, -196, 24, -196, 31, -195, 31, -195, 37, -194, 37, -194, 41, -193, 41, -193, 46, -192, 46, -192, 50, -191, 50, -191, 53, -190, 53, -190, 57, -189, 57, -189, 60, -188, 60, -188, 63, -187, 63, -187, 66, -186, 66, -186, 69, -185, 69, -185, 71, -184, 71, -184, 74, -183, 74, -183, 76, -182, 76, -182, 79, -181, 79, -181, 81, -180, 81, -180, 83, -179, 83, -179, 85, -178, 85, -178, 87, -177, 87, -177, 89, -176, 89, -176, 91, -175, 91, -175, 93, -174, 93, -174, 95, -173, 95, -173, 97, -172, 97, -172, 98, -171, 98, -171, 100, -170, 100, -170, 102, -169, 102, -169, 103, -168, 103, -168, 105, -167, 105, -167, 107, -166, 107, -166, 108, -165, 108, -165, 110, -164, 110, -164, 111, -163, 111, -163, 113, -162, 113, -162, 114, -161, 114, -161, 115, -160, 115, -160, 117, -159, 117, -159, 118, -158, 118, -158, 119, -157, 119, -157, 121, -156, 121, -156, 122, -155, 122, -155, 123, -154, 123, -154, 125, -153, 125, -153, 126, -152, 126, -152, 127, -151, 127, -151, 128, -150, 128, -150, 129, -149, 129, -149, 130, -148, 130, -148, 132, -147, 132, -147, 133, -146, 133, -146, 134, -145, 134, -145, 135, -144, 135, -144, 136, -143, 136, -143, 137, -142, 137, -142, 138, -141, 138, -141, 139, -140, 139, -140, 140, -139, 140, -139, 141, -138, 141, -138, 142, -137, 142, -137, 143, -136, 143, -136, 144, -135, 144, -135, 145, -134, 145, -134, 146, -133, 146, -133, 147, -132, 147, -132, 148, -130, 148, -130, 149, -129, 149, -129, 150, -128, 150, -128, 151, -127, 151, -127, 152, -126, 152, -126, 153, -125, 153, -125, 154, -123, 154, -123, 155, -122, 155, -122, 156, -121, 156, -121, 157, -119, 157, -119, 158, -118, 158, -118, 159, -117, 159, -117, 160, -115, 160, -115, 161, -114, 161, -114, 162, -113, 162, -113, 163, -111, 163, -111, 164, -110, 164, -110, 165, -108, 165, -108, 166, -107, 166, -107, 167, -105, 167, -105, 168, -103, 168, -103, 169, -102, 169, -102, 170, -100, 170, -100, 171, -98, 171, -98, 172, -97, 172, -97, 173, -95, 173, -95, 174, -93, 174, -93, 175, -91, 175, -91, 176, -89, 176, -89, 177, -87, 177, -87, 178, -85, 178, -85, 179, -83, 179, -83, 180, -81, 180, -81, 181, -79, 181, -79, 182, -76, 182, -76, 183, -74, 183, -74, 184, -71, 184, -71, 185, -69, 185, -69, 186, -66, 186, -66, 187, -63, 187, -63, 188, -60, 188, -60, 189, -57, 189, -57, 190, -53, 190, -53, 191, -50, 191, -50, 192, -46, 192, -46, 193, -41, 193, -41, 194, -37, 194, -37, 195, -31, 195, -31, 196, -24, 196, -24, 197, -14, 197, -14, 198, 14, 198, 14, 197, 24, 197, 24, 196, 31, 196, 31, 195, 37, 195, 37, 194, 41, 194, 41, 193, 46, 193, 46, 192, 50, 192, 50, 191, 53, 191, 53, 190, 57, 190, 57, 189, 60, 189, 60, 188, 63, 188, 63, 187, 66, 187, 66, 186, 69, 186, 69, 185, 71, 185, 71, 184, 74, 184, 74, 183, 76, 183, 76, 182, 79, 182, 79, 181, 81, 181, 81, 180, 83, 180, 83, 179, 85, 179, 85, 178, 87, 178, 87, 177, 89, 177, 89, 176, 91, 176, 91, 175, 93, 175, 93, 174, 95, 174, 95, 173, 97, 173, 97, 172, 98, 172, 98, 171, 100, 171, 100, 170, 102, 170, 102, 169, 103, 169, 103, 168, 105, 168, 105, 167, 107, 167, 107, 166, 108, 166, 108, 165, 110, 165, 110, 164, 111, 164, 111, 163, 113, 163, 113, 162, 114, 162, 114, 161, 115, 161, 115, 160, 117, 160, 117, 159, 118, 159, 118, 158, 119, 158, 119, 157, 121, 157, 121, 156, 122, 156, 122, 155, 123, 155, 123, 154, 125, 154, 125, 153, 126, 153, 126, 152, 127, 152, 127, 151, 128, 151, 128, 150, 129, 150, 129, 149, 130, 149, 130, 148, 132, 148, 132, 147, 133, 147, 133, 146, 134, 146, 134, 145, 135, 145, 135, 144, 136, 144, 136, 143, 137, 143, 137, 142, 138, 142, 138, 141, 139, 141, 139, 140, 140, 140, 140, 139, 141, 139, 141, 138, 142, 138, 142, 137, 143, 137, 143, 136, 144, 136, 144, 135, 145, 135, 145, 134, 146, 134, 146, 133, 147, 133, 147, 132, 148, 132, 148, 130, 149, 130, 149, 129, 150, 129, 150, 128, 151, 128, 151, 127, 152, 127, 152, 126, 153, 126, 153, 125, 154, 125, 154, 123, 155, 123, 155, 122, 156, 122, 156, 121, 157, 121, 157, 119, 158, 119, 158, 118, 159, 118, 159, 117, 160, 117, 160, 115, 161, 115, 161, 114, 162, 114, 162, 113, 163, 113, 163, 111, 164, 111, 164, 110, 165, 110, 165, 108, 166, 108, 166, 107, 167, 107, 167, 105, 168, 105, 168, 103, 169, 103, 169, 102, 170, 102, 170, 100, 171, 100, 171, 98, 172, 98, 172, 97, 173, 97, 173, 95, 174, 95, 174, 93, 175, 93, 175, 91, 176, 91, 176, 89, 177, 89, 177, 87, 178, 87, 178, 85, 179, 85, 179, 83, 180, 83, 180, 81, 181, 81, 181, 79, 182, 79, 182, 76, 183, 76, 183, 74, 184, 74, 184, 71, 185, 71, 185, 69, 186, 69, 186, 66, 187, 66, 187, 63, 188, 63, 188, 60, 189, 60, 189, 57, 190, 57, 190, 53, 191, 53, 191, 50, 192, 50, 192, 46, 193, 46, 193, 41, 194, 41, 194, 37, 195, 37, 195, 31, 196, 31, 196, 24, 197, 24, 197, 14, 198, 14, 198, -14, 197, -14, 197, -24, 196, -24, 196, -31, 195, -31, 195, -37, 194, -37, 194, -41, 193, -41, 193, -46, 192, -46, 192, -50, 191, -50, 191, -53, 190, -53, 190, -57, 189, -57, 189, -60, 188, -60, 188, -63, 187, -63, 187, -66, 186, -66, 186, -69, 185, -69, 185, -71, 184, -71, 184, -74, 183, -74, 183, -76, 182, -76, 182, -79, 181, -79, 181, -81, 180, -81, 180, -83, 179, -83, 179, -85, 178, -85, 178, -87, 177, -87, 177, -89, 176, -89, 176, -91, 175, -91, 175, -93, 174, -93, 174, -95, 173, -95, 173, -97, 172, -97, 172, -98, 171, -98, 171, -100, 170, -100, 170, -102, 169, -102, 169, -103, 168, -103, 168, -105, 167, -105, 167, -107, 166, -107, 166, -108, 165, -108, 165, -110, 164, -110, 164, -111, 163, -111, 163, -113, 162, -113, 162, -114, 161, -114, 161, -115, 160, -115, 160, -117, 159, -117, 159, -118, 158, -118, 158, -119, 157, -119, 157, -121, 156, -121, 156, -122, 155, -122, 155, -123, 154, -123, 154, -125, 153, -125, 153, -126, 152, -126, 152, -127, 151, -127, 151, -128, 150, -128, 150, -129, 149, -129, 149, -130, 148, -130, 148, -132, 147, -132, 147, -133, 146, -133, 146, -134, 145, -134, 145, -135, 144, -135, 144, -136, 143, -136, 143, -137, 142, -137, 142, -138, 141, -138, 141, -139, 140, -139, 140, -140, 139, -140, 139, -141, 138, -141, 138, -142, 137, -142, 137, -143, 136, -143, 136, -144, 135, -144, 135, -145, 134, -145, 134, -146, 133, -146, 133, -147, 132, -147, 132, -148, 130, -148, 130, -149, 129, -149, 129, -150, 128, -150, 128, -151, 127, -151, 127, -152, 126, -152, 126, -153, 125, -153, 125, -154, 123, -154, 123, -155, 122, -155, 122, -156, 121, -156, 121, -157, 119, -157, 119, -158, 118, -158, 118, -159, 117, -159, 117, -160, 115, -160, 115, -161, 114, -161, 114, -162, 113, -162, 113, -163, 111, -163, 111, -164, 110, -164, 110, -165, 108, -165, 108, -166, 107, -166, 107, -167, 105, -167, 105, -168, 103, -168, 103, -169, 102, -169, 102, -170, 100, -170, 100, -171, 98, -171, 98, -172, 97, -172, 97, -173, 95, -173, 95, -174, 93, -174, 93, -175, 91, -175, 91, -176, 89, -176, 89, -177, 87, -177, 87, -178, 85, -178, 85, -179, 83, -179, 83, -180, 81, -180, 81, -181, 79, -181, 79, -182, 76, -182, 76, -183, 74, -183, 74, -184, 71, -184, 71, -185, 69, -185, 69, -186, 66, -186, 66, -187, 63, -187, 63, -188, 60, -188, 60, -189, 57, -189, 57, -190, 53, -190, 53, -191, 50, -191, 50, -192, 46, -192, 46, -193, 41, -193, 41, -194, 37, -194, 37, -195, 31, -195, 31, -196, 24, -196, 24, -197, 14, -197, 14, -198, 1, -198, 1, -51, 7, -51, 7, -50, 12, -50, 12, -49, 15, -49, 15, -48, 18, -48, 18, -47, 20, -47, 20, -46, 23, -46, 23, -45, 24, -45, 24, -44, 26, -44, 26, -43, 28, -43, 28, -42, 29, -42, 29, -41, 30, -41, 30, -40, 32, -40, 32, -39, 33, -39, 33, -38, 34, -38, 34, -37, 35, -37, 35, -36, 36, -36, 36, -35, 37, -35, 37, -34, 38, -34, 38, -33, 39, -33, 39, -32, 40, -32, 40, -30, 41, -30, 41, -29, 42, -29, 42, -28, 43, -28, 43, -26, 44, -26, 44, -24, 45, -24, 45, -23, 46, -23, 46, -20, 47, -20, 47, -18, 48, -18, 48, -15, 49, -15, 49, -12, 50, -12, 50, -7, 51, -7, 51, 7, 50, 7, 50, 12, 49, 12, 49, 15, 48, 15, 48, 18, 47, 18, 47, 20, 46, 20, 46, 23, 45, 23, 45, 24, 44, 24, 44, 26, 43, 26, 43, 28, 42, 28, 42, 29, 41, 29, 41, 30, 40, 30, 40, 32, 39, 32, 39, 33, 38, 33, 38, 34, 37, 34, 37, 35, 36, 35, 36, 36, 35, 36, 35, 37, 34, 37, 34, 38, 33, 38, 33, 39, 32, 39, 32, 40, 30, 40, 30, 41, 29, 41, 29, 42, 28, 42, 28, 43, 26, 43, 26, 44, 24, 44, 24, 45, 23, 45, 23, 46, 20, 46, 20, 47, 18, 47, 18, 48, 15, 48, 15, 49, 12, 49, 12, 50, 7, 50, 7, 51, -7, 51, -7, 50, -12, 50, -12, 49, -15, 49, -15, 48, -18, 48, -18, 47, -20, 47, -20, 46, -23, 46, -23, 45, -24, 45, -24, 44, -26, 44, -26, 43, -28, 43, -28, 42, -29, 42, -29, 41, -30, 41, -30, 40, -32, 40, -32, 39, -33, 39, -33, 38, -34, 38, -34, 37, -35, 37, -35, 36, -36, 36, -36, 35, -37, 35, -37, 34, -38, 34, -38, 33, -39, 33, -39, 32, -40, 32, -40, 30, -41, 30, -41, 29, -42, 29, -42, 28, -43, 28, -43, 26, -44, 26, -44, 24, -45, 24, -45, 23, -46, 23, -46, 20, -47, 20, -47, 18, -48, 18, -48, 15, -49, 15, -49, 12, -50, 12, -50, 7, -51, 7, -51, -7, -50, -7, -50, -12, -49, -12, -49, -15, -48, -15, -48, -18, -47, -18, -47, -20, -46, -20, -46, -23, -45, -23, -45, -24, -44, -24, -44, -26, -43, -26, -43, -28, -42, -28, -42, -29, -41, -29, -41, -30, -40, -30, -40, -32, -39, -32, -39, -33, -38, -33, -38, -34, -37, -34, -37, -35, -36, -35, -36, -36, -35, -36, -35, -37, -34, -37, -34, -38, -33, -38, -33, -39, -32, -39, -32, -40, -30, -40, -30, -41, -29, -41, -29, -42, -28, -42, -28, -43, -26, -43, -26, -44, -24, -44, -24, -45, -23, -45, -23, -46, -20, -46, -20, -47, -18, -47, -18, -48, -15, -48, -15, -49, -12, -49, -12, -50, -7, -50, -7, -51, 1, -51, 1, -198)
+disabled = true
+
+[node name="InAttackCollision" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-7, -51, -7, -50, -12, -50, -12, -49, -15, -49, -15, -48, -18, -48, -18, -47, -20, -47, -20, -46, -23, -46, -23, -45, -24, -45, -24, -44, -26, -44, -26, -43, -28, -43, -28, -42, -29, -42, -29, -41, -30, -41, -30, -40, -32, -40, -32, -39, -33, -39, -33, -38, -34, -38, -34, -37, -35, -37, -35, -36, -36, -36, -36, -35, -37, -35, -37, -34, -38, -34, -38, -33, -39, -33, -39, -32, -40, -32, -40, -30, -41, -30, -41, -29, -42, -29, -42, -28, -43, -28, -43, -26, -44, -26, -44, -24, -45, -24, -45, -23, -46, -23, -46, -20, -47, -20, -47, -18, -48, -18, -48, -15, -49, -15, -49, -12, -50, -12, -50, -7, -51, -7, -51, 7, -50, 7, -50, 12, -49, 12, -49, 15, -48, 15, -48, 18, -47, 18, -47, 20, -46, 20, -46, 23, -45, 23, -45, 24, -44, 24, -44, 26, -43, 26, -43, 28, -42, 28, -42, 29, -41, 29, -41, 30, -40, 30, -40, 32, -39, 32, -39, 33, -38, 33, -38, 34, -37, 34, -37, 35, -36, 35, -36, 36, -35, 36, -35, 37, -34, 37, -34, 38, -33, 38, -33, 39, -32, 39, -32, 40, -30, 40, -30, 41, -29, 41, -29, 42, -28, 42, -28, 43, -26, 43, -26, 44, -24, 44, -24, 45, -23, 45, -23, 46, -20, 46, -20, 47, -18, 47, -18, 48, -15, 48, -15, 49, -12, 49, -12, 50, -7, 50, -7, 51, 7, 51, 7, 50, 12, 50, 12, 49, 15, 49, 15, 48, 18, 48, 18, 47, 20, 47, 20, 46, 23, 46, 23, 45, 24, 45, 24, 44, 26, 44, 26, 43, 28, 43, 28, 42, 29, 42, 29, 41, 30, 41, 30, 40, 32, 40, 32, 39, 33, 39, 33, 38, 34, 38, 34, 37, 35, 37, 35, 36, 36, 36, 36, 35, 37, 35, 37, 34, 38, 34, 38, 33, 39, 33, 39, 32, 40, 32, 40, 30, 41, 30, 41, 29, 42, 29, 42, 28, 43, 28, 43, 26, 44, 26, 44, 24, 45, 24, 45, 23, 46, 23, 46, 20, 47, 20, 47, 18, 48, 18, 48, 15, 49, 15, 49, 12, 50, 12, 50, 7, 51, 7, 51, -7, 50, -7, 50, -12, 49, -12, 49, -15, 48, -15, 48, -18, 47, -18, 47, -20, 46, -20, 46, -23, 45, -23, 45, -24, 44, -24, 44, -26, 43, -26, 43, -28, 42, -28, 42, -29, 41, -29, 41, -30, 40, -30, 40, -32, 39, -32, 39, -33, 38, -33, 38, -34, 37, -34, 37, -35, 36, -35, 36, -36, 35, -36, 35, -37, 34, -37, 34, -38, 33, -38, 33, -39, 32, -39, 32, -40, 30, -40, 30, -41, 29, -41, 29, -42, 28, -42, 28, -43, 26, -43, 26, -44, 24, -44, 24, -45, 23, -45, 23, -46, 20, -46, 20, -47, 18, -47, 18, -48, 15, -48, 15, -49, 12, -49, 12, -50, 7, -50, 7, -51)
+disabled = true
+
+[node name="xAttackCollision" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-137, -159, -137, -158, -138, -158, -138, -157, -139, -157, -139, -156, -140, -156, -140, -155, -141, -155, -141, -154, -142, -154, -142, -153, -143, -153, -143, -152, -144, -152, -144, -151, -145, -151, -145, -150, -146, -150, -146, -149, -147, -149, -147, -148, -148, -148, -148, -147, -149, -147, -149, -146, -150, -146, -150, -145, -151, -145, -151, -144, -152, -144, -152, -143, -153, -143, -153, -142, -154, -142, -154, -141, -155, -141, -155, -140, -156, -140, -156, -139, -157, -139, -157, -138, -158, -138, -158, -137, -159, -137, -159, -136, -158, -136, -158, -135, -157, -135, -157, -134, -156, -134, -156, -133, -155, -133, -155, -132, -154, -132, -154, -131, -153, -131, -153, -130, -152, -130, -152, -129, -151, -129, -151, -128, -150, -128, -150, -127, -149, -127, -149, -126, -148, -126, -148, -125, -147, -125, -147, -124, -146, -124, -146, -123, -145, -123, -145, -122, -144, -122, -144, -121, -143, -121, -143, -120, -142, -120, -142, -119, -141, -119, -141, -118, -140, -118, -140, -117, -139, -117, -139, -116, -138, -116, -138, -115, -137, -115, -137, -114, -136, -114, -136, -113, -135, -113, -135, -112, -134, -112, -134, -111, -133, -111, -133, -110, -132, -110, -132, -109, -131, -109, -131, -108, -130, -108, -130, -107, -129, -107, -129, -106, -128, -106, -128, -105, -127, -105, -127, -104, -126, -104, -126, -103, -125, -103, -125, -102, -124, -102, -124, -101, -123, -101, -123, -100, -122, -100, -122, -99, -121, -99, -121, -98, -120, -98, -120, -97, -119, -97, -119, -96, -118, -96, -118, -95, -117, -95, -117, -94, -116, -94, -116, -93, -115, -93, -115, -92, -114, -92, -114, -91, -113, -91, -113, -90, -112, -90, -112, -89, -111, -89, -111, -88, -110, -88, -110, -87, -109, -87, -109, -86, -108, -86, -108, -85, -107, -85, -107, -84, -106, -84, -106, -83, -105, -83, -105, -82, -104, -82, -104, -81, -103, -81, -103, -80, -102, -80, -102, -79, -101, -79, -101, -78, -100, -78, -100, -77, -99, -77, -99, -76, -98, -76, -98, -75, -97, -75, -97, -74, -96, -74, -96, -73, -95, -73, -95, -72, -94, -72, -94, -71, -93, -71, -93, -70, -92, -70, -92, -69, -91, -69, -91, -68, -90, -68, -90, -67, -89, -67, -89, -66, -88, -66, -88, -65, -87, -65, -87, -64, -86, -64, -86, -63, -85, -63, -85, -62, -84, -62, -84, -61, -83, -61, -83, -60, -82, -60, -82, -59, -81, -59, -81, -58, -80, -58, -80, -57, -79, -57, -79, -56, -78, -56, -78, -55, -77, -55, -77, -54, -76, -54, -76, -53, -75, -53, -75, -52, -74, -52, -74, -51, -73, -51, -73, -50, -72, -50, -72, -49, -71, -49, -71, -48, -70, -48, -70, -47, -69, -47, -69, -46, -68, -46, -68, -45, -67, -45, -67, -44, -66, -44, -66, -43, -65, -43, -65, -42, -64, -42, -64, -41, -63, -41, -63, -40, -62, -40, -62, -39, -61, -39, -61, -38, -60, -38, -60, -37, -59, -37, -59, -36, -58, -36, -58, -35, -57, -35, -57, -34, -56, -34, -56, -33, -55, -33, -55, -32, -54, -32, -54, -31, -53, -31, -53, -30, -52, -30, -52, -29, -51, -29, -51, -28, -50, -28, -50, -27, -49, -27, -49, -26, -48, -26, -48, -25, -47, -25, -47, -24, -46, -24, -46, -23, -45, -23, -45, -22, -44, -22, -44, -21, -43, -21, -43, -20, -42, -20, -42, -19, -41, -19, -41, -18, -40, -18, -40, -17, -39, -17, -39, -16, -38, -16, -38, -15, -37, -15, -37, -14, -36, -14, -36, -13, -35, -13, -35, -12, -34, -12, -34, -11, -33, -11, -33, -10, -32, -10, -32, -9, -31, -9, -31, -8, -30, -8, -30, -7, -29, -7, -29, -6, -28, -6, -28, -5, -27, -5, -27, -4, -26, -4, -26, -3, -25, -3, -25, -2, -24, -2, -24, -1, -23, -1, -23, 1, -24, 1, -24, 2, -25, 2, -25, 3, -26, 3, -26, 4, -27, 4, -27, 5, -28, 5, -28, 6, -29, 6, -29, 7, -30, 7, -30, 8, -31, 8, -31, 9, -32, 9, -32, 10, -33, 10, -33, 11, -34, 11, -34, 12, -35, 12, -35, 13, -36, 13, -36, 14, -37, 14, -37, 15, -38, 15, -38, 16, -39, 16, -39, 17, -40, 17, -40, 18, -41, 18, -41, 19, -42, 19, -42, 20, -43, 20, -43, 21, -44, 21, -44, 22, -45, 22, -45, 23, -46, 23, -46, 24, -47, 24, -47, 25, -48, 25, -48, 26, -49, 26, -49, 27, -50, 27, -50, 28, -51, 28, -51, 29, -52, 29, -52, 30, -53, 30, -53, 31, -54, 31, -54, 32, -55, 32, -55, 33, -56, 33, -56, 34, -57, 34, -57, 35, -58, 35, -58, 36, -59, 36, -59, 37, -60, 37, -60, 38, -61, 38, -61, 39, -62, 39, -62, 40, -63, 40, -63, 41, -64, 41, -64, 42, -65, 42, -65, 43, -66, 43, -66, 44, -67, 44, -67, 45, -68, 45, -68, 46, -69, 46, -69, 47, -70, 47, -70, 48, -71, 48, -71, 49, -72, 49, -72, 50, -73, 50, -73, 51, -74, 51, -74, 52, -75, 52, -75, 53, -76, 53, -76, 54, -77, 54, -77, 55, -78, 55, -78, 56, -79, 56, -79, 57, -80, 57, -80, 58, -81, 58, -81, 59, -82, 59, -82, 60, -83, 60, -83, 61, -84, 61, -84, 62, -85, 62, -85, 63, -86, 63, -86, 64, -87, 64, -87, 65, -88, 65, -88, 66, -89, 66, -89, 67, -90, 67, -90, 68, -91, 68, -91, 69, -92, 69, -92, 70, -93, 70, -93, 71, -94, 71, -94, 72, -95, 72, -95, 73, -96, 73, -96, 74, -97, 74, -97, 75, -98, 75, -98, 76, -99, 76, -99, 77, -100, 77, -100, 78, -101, 78, -101, 79, -102, 79, -102, 80, -103, 80, -103, 81, -104, 81, -104, 82, -105, 82, -105, 83, -106, 83, -106, 84, -107, 84, -107, 85, -108, 85, -108, 86, -109, 86, -109, 87, -110, 87, -110, 88, -111, 88, -111, 89, -112, 89, -112, 90, -113, 90, -113, 91, -114, 91, -114, 92, -115, 92, -115, 93, -116, 93, -116, 94, -117, 94, -117, 95, -118, 95, -118, 96, -119, 96, -119, 97, -120, 97, -120, 98, -121, 98, -121, 99, -122, 99, -122, 100, -123, 100, -123, 101, -124, 101, -124, 102, -125, 102, -125, 103, -126, 103, -126, 104, -127, 104, -127, 105, -128, 105, -128, 106, -129, 106, -129, 107, -130, 107, -130, 108, -131, 108, -131, 109, -132, 109, -132, 110, -133, 110, -133, 111, -134, 111, -134, 112, -135, 112, -135, 113, -136, 113, -136, 114, -137, 114, -137, 115, -138, 115, -138, 116, -139, 116, -139, 117, -140, 117, -140, 118, -141, 118, -141, 119, -142, 119, -142, 120, -143, 120, -143, 121, -144, 121, -144, 122, -145, 122, -145, 123, -146, 123, -146, 124, -147, 124, -147, 125, -148, 125, -148, 126, -149, 126, -149, 127, -150, 127, -150, 128, -151, 128, -151, 129, -152, 129, -152, 130, -153, 130, -153, 131, -154, 131, -154, 132, -155, 132, -155, 133, -156, 133, -156, 134, -157, 134, -157, 135, -158, 135, -158, 136, -159, 136, -159, 137, -158, 137, -158, 138, -157, 138, -157, 139, -156, 139, -156, 140, -155, 140, -155, 141, -154, 141, -154, 142, -153, 142, -153, 143, -152, 143, -152, 144, -151, 144, -151, 145, -150, 145, -150, 146, -149, 146, -149, 147, -148, 147, -148, 148, -147, 148, -147, 149, -146, 149, -146, 150, -145, 150, -145, 151, -144, 151, -144, 152, -143, 152, -143, 153, -142, 153, -142, 154, -141, 154, -141, 155, -140, 155, -140, 156, -139, 156, -139, 157, -138, 157, -138, 158, -137, 158, -137, 159, -136, 159, -136, 158, -135, 158, -135, 157, -134, 157, -134, 156, -133, 156, -133, 155, -132, 155, -132, 154, -131, 154, -131, 153, -130, 153, -130, 152, -129, 152, -129, 151, -128, 151, -128, 150, -127, 150, -127, 149, -126, 149, -126, 148, -125, 148, -125, 147, -124, 147, -124, 146, -123, 146, -123, 145, -122, 145, -122, 144, -121, 144, -121, 143, -120, 143, -120, 142, -119, 142, -119, 141, -118, 141, -118, 140, -117, 140, -117, 139, -116, 139, -116, 138, -115, 138, -115, 137, -114, 137, -114, 136, -113, 136, -113, 135, -112, 135, -112, 134, -111, 134, -111, 133, -110, 133, -110, 132, -109, 132, -109, 131, -108, 131, -108, 130, -107, 130, -107, 129, -106, 129, -106, 128, -105, 128, -105, 127, -104, 127, -104, 126, -103, 126, -103, 125, -102, 125, -102, 124, -101, 124, -101, 123, -100, 123, -100, 122, -99, 122, -99, 121, -98, 121, -98, 120, -97, 120, -97, 119, -96, 119, -96, 118, -95, 118, -95, 117, -94, 117, -94, 116, -93, 116, -93, 115, -92, 115, -92, 114, -91, 114, -91, 113, -90, 113, -90, 112, -89, 112, -89, 111, -88, 111, -88, 110, -87, 110, -87, 109, -86, 109, -86, 108, -85, 108, -85, 107, -84, 107, -84, 106, -83, 106, -83, 105, -82, 105, -82, 104, -81, 104, -81, 103, -80, 103, -80, 102, -79, 102, -79, 101, -78, 101, -78, 100, -77, 100, -77, 99, -76, 99, -76, 98, -75, 98, -75, 97, -74, 97, -74, 96, -73, 96, -73, 95, -72, 95, -72, 94, -71, 94, -71, 93, -70, 93, -70, 92, -69, 92, -69, 91, -68, 91, -68, 90, -67, 90, -67, 89, -66, 89, -66, 88, -65, 88, -65, 87, -64, 87, -64, 86, -63, 86, -63, 85, -62, 85, -62, 84, -61, 84, -61, 83, -60, 83, -60, 82, -59, 82, -59, 81, -58, 81, -58, 80, -57, 80, -57, 79, -56, 79, -56, 78, -55, 78, -55, 77, -54, 77, -54, 76, -53, 76, -53, 75, -52, 75, -52, 74, -51, 74, -51, 73, -50, 73, -50, 72, -49, 72, -49, 71, -48, 71, -48, 70, -47, 70, -47, 69, -46, 69, -46, 68, -45, 68, -45, 67, -44, 67, -44, 66, -43, 66, -43, 65, -42, 65, -42, 64, -41, 64, -41, 63, -40, 63, -40, 62, -39, 62, -39, 61, -38, 61, -38, 60, -37, 60, -37, 59, -36, 59, -36, 58, -35, 58, -35, 57, -34, 57, -34, 56, -33, 56, -33, 55, -32, 55, -32, 54, -31, 54, -31, 53, -30, 53, -30, 52, -29, 52, -29, 51, -28, 51, -28, 50, -27, 50, -27, 49, -26, 49, -26, 48, -25, 48, -25, 47, -24, 47, -24, 46, -23, 46, -23, 45, -22, 45, -22, 44, -21, 44, -21, 43, -20, 43, -20, 42, -19, 42, -19, 41, -18, 41, -18, 40, -17, 40, -17, 39, -16, 39, -16, 38, -15, 38, -15, 37, -14, 37, -14, 36, -13, 36, -13, 35, -12, 35, -12, 34, -11, 34, -11, 33, -10, 33, -10, 32, -9, 32, -9, 31, -8, 31, -8, 30, -7, 30, -7, 29, -6, 29, -6, 28, -5, 28, -5, 27, -4, 27, -4, 26, -3, 26, -3, 25, -2, 25, -2, 24, -1, 24, -1, 23, 1, 23, 1, 24, 2, 24, 2, 25, 3, 25, 3, 26, 4, 26, 4, 27, 5, 27, 5, 28, 6, 28, 6, 29, 7, 29, 7, 30, 8, 30, 8, 31, 9, 31, 9, 32, 10, 32, 10, 33, 11, 33, 11, 34, 12, 34, 12, 35, 13, 35, 13, 36, 14, 36, 14, 37, 15, 37, 15, 38, 16, 38, 16, 39, 17, 39, 17, 40, 18, 40, 18, 41, 19, 41, 19, 42, 20, 42, 20, 43, 21, 43, 21, 44, 22, 44, 22, 45, 23, 45, 23, 46, 24, 46, 24, 47, 25, 47, 25, 48, 26, 48, 26, 49, 27, 49, 27, 50, 28, 50, 28, 51, 29, 51, 29, 52, 30, 52, 30, 53, 31, 53, 31, 54, 32, 54, 32, 55, 33, 55, 33, 56, 34, 56, 34, 57, 35, 57, 35, 58, 36, 58, 36, 59, 37, 59, 37, 60, 38, 60, 38, 61, 39, 61, 39, 62, 40, 62, 40, 63, 41, 63, 41, 64, 42, 64, 42, 65, 43, 65, 43, 66, 44, 66, 44, 67, 45, 67, 45, 68, 46, 68, 46, 69, 47, 69, 47, 70, 48, 70, 48, 71, 49, 71, 49, 72, 50, 72, 50, 73, 51, 73, 51, 74, 52, 74, 52, 75, 53, 75, 53, 76, 54, 76, 54, 77, 55, 77, 55, 78, 56, 78, 56, 79, 57, 79, 57, 80, 58, 80, 58, 81, 59, 81, 59, 82, 60, 82, 60, 83, 61, 83, 61, 84, 62, 84, 62, 85, 63, 85, 63, 86, 64, 86, 64, 87, 65, 87, 65, 88, 66, 88, 66, 89, 67, 89, 67, 90, 68, 90, 68, 91, 69, 91, 69, 92, 70, 92, 70, 93, 71, 93, 71, 94, 72, 94, 72, 95, 73, 95, 73, 96, 74, 96, 74, 97, 75, 97, 75, 98, 76, 98, 76, 99, 77, 99, 77, 100, 78, 100, 78, 101, 79, 101, 79, 102, 80, 102, 80, 103, 81, 103, 81, 104, 82, 104, 82, 105, 83, 105, 83, 106, 84, 106, 84, 107, 85, 107, 85, 108, 86, 108, 86, 109, 87, 109, 87, 110, 88, 110, 88, 111, 89, 111, 89, 112, 90, 112, 90, 113, 91, 113, 91, 114, 92, 114, 92, 115, 93, 115, 93, 116, 94, 116, 94, 117, 95, 117, 95, 118, 96, 118, 96, 119, 97, 119, 97, 120, 98, 120, 98, 121, 99, 121, 99, 122, 100, 122, 100, 123, 101, 123, 101, 124, 102, 124, 102, 125, 103, 125, 103, 126, 104, 126, 104, 127, 105, 127, 105, 128, 106, 128, 106, 129, 107, 129, 107, 130, 108, 130, 108, 131, 109, 131, 109, 132, 110, 132, 110, 133, 111, 133, 111, 134, 112, 134, 112, 135, 113, 135, 113, 136, 114, 136, 114, 137, 115, 137, 115, 138, 116, 138, 116, 139, 117, 139, 117, 140, 118, 140, 118, 141, 119, 141, 119, 142, 120, 142, 120, 143, 121, 143, 121, 144, 122, 144, 122, 145, 123, 145, 123, 146, 124, 146, 124, 147, 125, 147, 125, 148, 126, 148, 126, 149, 127, 149, 127, 150, 128, 150, 128, 151, 129, 151, 129, 152, 130, 152, 130, 153, 131, 153, 131, 154, 132, 154, 132, 155, 133, 155, 133, 156, 134, 156, 134, 157, 135, 157, 135, 158, 136, 158, 136, 159, 137, 159, 137, 158, 138, 158, 138, 157, 139, 157, 139, 156, 140, 156, 140, 155, 141, 155, 141, 154, 142, 154, 142, 153, 143, 153, 143, 152, 144, 152, 144, 151, 145, 151, 145, 150, 146, 150, 146, 149, 147, 149, 147, 148, 148, 148, 148, 147, 149, 147, 149, 146, 150, 146, 150, 145, 151, 145, 151, 144, 152, 144, 152, 143, 153, 143, 153, 142, 154, 142, 154, 141, 155, 141, 155, 140, 156, 140, 156, 139, 157, 139, 157, 138, 158, 138, 158, 137, 159, 137, 159, 136, 158, 136, 158, 135, 157, 135, 157, 134, 156, 134, 156, 133, 155, 133, 155, 132, 154, 132, 154, 131, 153, 131, 153, 130, 152, 130, 152, 129, 151, 129, 151, 128, 150, 128, 150, 127, 149, 127, 149, 126, 148, 126, 148, 125, 147, 125, 147, 124, 146, 124, 146, 123, 145, 123, 145, 122, 144, 122, 144, 121, 143, 121, 143, 120, 142, 120, 142, 119, 141, 119, 141, 118, 140, 118, 140, 117, 139, 117, 139, 116, 138, 116, 138, 115, 137, 115, 137, 114, 136, 114, 136, 113, 135, 113, 135, 112, 134, 112, 134, 111, 133, 111, 133, 110, 132, 110, 132, 109, 131, 109, 131, 108, 130, 108, 130, 107, 129, 107, 129, 106, 128, 106, 128, 105, 127, 105, 127, 104, 126, 104, 126, 103, 125, 103, 125, 102, 124, 102, 124, 101, 123, 101, 123, 100, 122, 100, 122, 99, 121, 99, 121, 98, 120, 98, 120, 97, 119, 97, 119, 96, 118, 96, 118, 95, 117, 95, 117, 94, 116, 94, 116, 93, 115, 93, 115, 92, 114, 92, 114, 91, 113, 91, 113, 90, 112, 90, 112, 89, 111, 89, 111, 88, 110, 88, 110, 87, 109, 87, 109, 86, 108, 86, 108, 85, 107, 85, 107, 84, 106, 84, 106, 83, 105, 83, 105, 82, 104, 82, 104, 81, 103, 81, 103, 80, 102, 80, 102, 79, 101, 79, 101, 78, 100, 78, 100, 77, 99, 77, 99, 76, 98, 76, 98, 75, 97, 75, 97, 74, 96, 74, 96, 73, 95, 73, 95, 72, 94, 72, 94, 71, 93, 71, 93, 70, 92, 70, 92, 69, 91, 69, 91, 68, 90, 68, 90, 67, 89, 67, 89, 66, 88, 66, 88, 65, 87, 65, 87, 64, 86, 64, 86, 63, 85, 63, 85, 62, 84, 62, 84, 61, 83, 61, 83, 60, 82, 60, 82, 59, 81, 59, 81, 58, 80, 58, 80, 57, 79, 57, 79, 56, 78, 56, 78, 55, 77, 55, 77, 54, 76, 54, 76, 53, 75, 53, 75, 52, 74, 52, 74, 51, 73, 51, 73, 50, 72, 50, 72, 49, 71, 49, 71, 48, 70, 48, 70, 47, 69, 47, 69, 46, 68, 46, 68, 45, 67, 45, 67, 44, 66, 44, 66, 43, 65, 43, 65, 42, 64, 42, 64, 41, 63, 41, 63, 40, 62, 40, 62, 39, 61, 39, 61, 38, 60, 38, 60, 37, 59, 37, 59, 36, 58, 36, 58, 35, 57, 35, 57, 34, 56, 34, 56, 33, 55, 33, 55, 32, 54, 32, 54, 31, 53, 31, 53, 30, 52, 30, 52, 29, 51, 29, 51, 28, 50, 28, 50, 27, 49, 27, 49, 26, 48, 26, 48, 25, 47, 25, 47, 24, 46, 24, 46, 23, 45, 23, 45, 22, 44, 22, 44, 21, 43, 21, 43, 20, 42, 20, 42, 19, 41, 19, 41, 18, 40, 18, 40, 17, 39, 17, 39, 16, 38, 16, 38, 15, 37, 15, 37, 14, 36, 14, 36, 13, 35, 13, 35, 12, 34, 12, 34, 11, 33, 11, 33, 10, 32, 10, 32, 9, 31, 9, 31, 8, 30, 8, 30, 7, 29, 7, 29, 6, 28, 6, 28, 5, 27, 5, 27, 4, 26, 4, 26, 3, 25, 3, 25, 2, 24, 2, 24, 1, 23, 1, 23, -1, 24, -1, 24, -2, 25, -2, 25, -3, 26, -3, 26, -4, 27, -4, 27, -5, 28, -5, 28, -6, 29, -6, 29, -7, 30, -7, 30, -8, 31, -8, 31, -9, 32, -9, 32, -10, 33, -10, 33, -11, 34, -11, 34, -12, 35, -12, 35, -13, 36, -13, 36, -14, 37, -14, 37, -15, 38, -15, 38, -16, 39, -16, 39, -17, 40, -17, 40, -18, 41, -18, 41, -19, 42, -19, 42, -20, 43, -20, 43, -21, 44, -21, 44, -22, 45, -22, 45, -23, 46, -23, 46, -24, 47, -24, 47, -25, 48, -25, 48, -26, 49, -26, 49, -27, 50, -27, 50, -28, 51, -28, 51, -29, 52, -29, 52, -30, 53, -30, 53, -31, 54, -31, 54, -32, 55, -32, 55, -33, 56, -33, 56, -34, 57, -34, 57, -35, 58, -35, 58, -36, 59, -36, 59, -37, 60, -37, 60, -38, 61, -38, 61, -39, 62, -39, 62, -40, 63, -40, 63, -41, 64, -41, 64, -42, 65, -42, 65, -43, 66, -43, 66, -44, 67, -44, 67, -45, 68, -45, 68, -46, 69, -46, 69, -47, 70, -47, 70, -48, 71, -48, 71, -49, 72, -49, 72, -50, 73, -50, 73, -51, 74, -51, 74, -52, 75, -52, 75, -53, 76, -53, 76, -54, 77, -54, 77, -55, 78, -55, 78, -56, 79, -56, 79, -57, 80, -57, 80, -58, 81, -58, 81, -59, 82, -59, 82, -60, 83, -60, 83, -61, 84, -61, 84, -62, 85, -62, 85, -63, 86, -63, 86, -64, 87, -64, 87, -65, 88, -65, 88, -66, 89, -66, 89, -67, 90, -67, 90, -68, 91, -68, 91, -69, 92, -69, 92, -70, 93, -70, 93, -71, 94, -71, 94, -72, 95, -72, 95, -73, 96, -73, 96, -74, 97, -74, 97, -75, 98, -75, 98, -76, 99, -76, 99, -77, 100, -77, 100, -78, 101, -78, 101, -79, 102, -79, 102, -80, 103, -80, 103, -81, 104, -81, 104, -82, 105, -82, 105, -83, 106, -83, 106, -84, 107, -84, 107, -85, 108, -85, 108, -86, 109, -86, 109, -87, 110, -87, 110, -88, 111, -88, 111, -89, 112, -89, 112, -90, 113, -90, 113, -91, 114, -91, 114, -92, 115, -92, 115, -93, 116, -93, 116, -94, 117, -94, 117, -95, 118, -95, 118, -96, 119, -96, 119, -97, 120, -97, 120, -98, 121, -98, 121, -99, 122, -99, 122, -100, 123, -100, 123, -101, 124, -101, 124, -102, 125, -102, 125, -103, 126, -103, 126, -104, 127, -104, 127, -105, 128, -105, 128, -106, 129, -106, 129, -107, 130, -107, 130, -108, 131, -108, 131, -109, 132, -109, 132, -110, 133, -110, 133, -111, 134, -111, 134, -112, 135, -112, 135, -113, 136, -113, 136, -114, 137, -114, 137, -115, 138, -115, 138, -116, 139, -116, 139, -117, 140, -117, 140, -118, 141, -118, 141, -119, 142, -119, 142, -120, 143, -120, 143, -121, 144, -121, 144, -122, 145, -122, 145, -123, 146, -123, 146, -124, 147, -124, 147, -125, 148, -125, 148, -126, 149, -126, 149, -127, 150, -127, 150, -128, 151, -128, 151, -129, 152, -129, 152, -130, 153, -130, 153, -131, 154, -131, 154, -132, 155, -132, 155, -133, 156, -133, 156, -134, 157, -134, 157, -135, 158, -135, 158, -136, 159, -136, 159, -137, 158, -137, 158, -138, 157, -138, 157, -139, 156, -139, 156, -140, 155, -140, 155, -141, 154, -141, 154, -142, 153, -142, 153, -143, 152, -143, 152, -144, 151, -144, 151, -145, 150, -145, 150, -146, 149, -146, 149, -147, 148, -147, 148, -148, 147, -148, 147, -149, 146, -149, 146, -150, 145, -150, 145, -151, 144, -151, 144, -152, 143, -152, 143, -153, 142, -153, 142, -154, 141, -154, 141, -155, 140, -155, 140, -156, 139, -156, 139, -157, 138, -157, 138, -158, 137, -158, 137, -159, 136, -159, 136, -158, 135, -158, 135, -157, 134, -157, 134, -156, 133, -156, 133, -155, 132, -155, 132, -154, 131, -154, 131, -153, 130, -153, 130, -152, 129, -152, 129, -151, 128, -151, 128, -150, 127, -150, 127, -149, 126, -149, 126, -148, 125, -148, 125, -147, 124, -147, 124, -146, 123, -146, 123, -145, 122, -145, 122, -144, 121, -144, 121, -143, 120, -143, 120, -142, 119, -142, 119, -141, 118, -141, 118, -140, 117, -140, 117, -139, 116, -139, 116, -138, 115, -138, 115, -137, 114, -137, 114, -136, 113, -136, 113, -135, 112, -135, 112, -134, 111, -134, 111, -133, 110, -133, 110, -132, 109, -132, 109, -131, 108, -131, 108, -130, 107, -130, 107, -129, 106, -129, 106, -128, 105, -128, 105, -127, 104, -127, 104, -126, 103, -126, 103, -125, 102, -125, 102, -124, 101, -124, 101, -123, 100, -123, 100, -122, 99, -122, 99, -121, 98, -121, 98, -120, 97, -120, 97, -119, 96, -119, 96, -118, 95, -118, 95, -117, 94, -117, 94, -116, 93, -116, 93, -115, 92, -115, 92, -114, 91, -114, 91, -113, 90, -113, 90, -112, 89, -112, 89, -111, 88, -111, 88, -110, 87, -110, 87, -109, 86, -109, 86, -108, 85, -108, 85, -107, 84, -107, 84, -106, 83, -106, 83, -105, 82, -105, 82, -104, 81, -104, 81, -103, 80, -103, 80, -102, 79, -102, 79, -101, 78, -101, 78, -100, 77, -100, 77, -99, 76, -99, 76, -98, 75, -98, 75, -97, 74, -97, 74, -96, 73, -96, 73, -95, 72, -95, 72, -94, 71, -94, 71, -93, 70, -93, 70, -92, 69, -92, 69, -91, 68, -91, 68, -90, 67, -90, 67, -89, 66, -89, 66, -88, 65, -88, 65, -87, 64, -87, 64, -86, 63, -86, 63, -85, 62, -85, 62, -84, 61, -84, 61, -83, 60, -83, 60, -82, 59, -82, 59, -81, 58, -81, 58, -80, 57, -80, 57, -79, 56, -79, 56, -78, 55, -78, 55, -77, 54, -77, 54, -76, 53, -76, 53, -75, 52, -75, 52, -74, 51, -74, 51, -73, 50, -73, 50, -72, 49, -72, 49, -71, 48, -71, 48, -70, 47, -70, 47, -69, 46, -69, 46, -68, 45, -68, 45, -67, 44, -67, 44, -66, 43, -66, 43, -65, 42, -65, 42, -64, 41, -64, 41, -63, 40, -63, 40, -62, 39, -62, 39, -61, 38, -61, 38, -60, 37, -60, 37, -59, 36, -59, 36, -58, 35, -58, 35, -57, 34, -57, 34, -56, 33, -56, 33, -55, 32, -55, 32, -54, 31, -54, 31, -53, 30, -53, 30, -52, 29, -52, 29, -51, 28, -51, 28, -50, 27, -50, 27, -49, 26, -49, 26, -48, 25, -48, 25, -47, 24, -47, 24, -46, 23, -46, 23, -45, 22, -45, 22, -44, 21, -44, 21, -43, 20, -43, 20, -42, 19, -42, 19, -41, 18, -41, 18, -40, 17, -40, 17, -39, 16, -39, 16, -38, 15, -38, 15, -37, 14, -37, 14, -36, 13, -36, 13, -35, 12, -35, 12, -34, 11, -34, 11, -33, 10, -33, 10, -32, 9, -32, 9, -31, 8, -31, 8, -30, 7, -30, 7, -29, 6, -29, 6, -28, 5, -28, 5, -27, 4, -27, 4, -26, 3, -26, 3, -25, 2, -25, 2, -24, 1, -24, 1, -23, -1, -23, -1, -24, -2, -24, -2, -25, -3, -25, -3, -26, -4, -26, -4, -27, -5, -27, -5, -28, -6, -28, -6, -29, -7, -29, -7, -30, -8, -30, -8, -31, -9, -31, -9, -32, -10, -32, -10, -33, -11, -33, -11, -34, -12, -34, -12, -35, -13, -35, -13, -36, -14, -36, -14, -37, -15, -37, -15, -38, -16, -38, -16, -39, -17, -39, -17, -40, -18, -40, -18, -41, -19, -41, -19, -42, -20, -42, -20, -43, -21, -43, -21, -44, -22, -44, -22, -45, -23, -45, -23, -46, -24, -46, -24, -47, -25, -47, -25, -48, -26, -48, -26, -49, -27, -49, -27, -50, -28, -50, -28, -51, -29, -51, -29, -52, -30, -52, -30, -53, -31, -53, -31, -54, -32, -54, -32, -55, -33, -55, -33, -56, -34, -56, -34, -57, -35, -57, -35, -58, -36, -58, -36, -59, -37, -59, -37, -60, -38, -60, -38, -61, -39, -61, -39, -62, -40, -62, -40, -63, -41, -63, -41, -64, -42, -64, -42, -65, -43, -65, -43, -66, -44, -66, -44, -67, -45, -67, -45, -68, -46, -68, -46, -69, -47, -69, -47, -70, -48, -70, -48, -71, -49, -71, -49, -72, -50, -72, -50, -73, -51, -73, -51, -74, -52, -74, -52, -75, -53, -75, -53, -76, -54, -76, -54, -77, -55, -77, -55, -78, -56, -78, -56, -79, -57, -79, -57, -80, -58, -80, -58, -81, -59, -81, -59, -82, -60, -82, -60, -83, -61, -83, -61, -84, -62, -84, -62, -85, -63, -85, -63, -86, -64, -86, -64, -87, -65, -87, -65, -88, -66, -88, -66, -89, -67, -89, -67, -90, -68, -90, -68, -91, -69, -91, -69, -92, -70, -92, -70, -93, -71, -93, -71, -94, -72, -94, -72, -95, -73, -95, -73, -96, -74, -96, -74, -97, -75, -97, -75, -98, -76, -98, -76, -99, -77, -99, -77, -100, -78, -100, -78, -101, -79, -101, -79, -102, -80, -102, -80, -103, -81, -103, -81, -104, -82, -104, -82, -105, -83, -105, -83, -106, -84, -106, -84, -107, -85, -107, -85, -108, -86, -108, -86, -109, -87, -109, -87, -110, -88, -110, -88, -111, -89, -111, -89, -112, -90, -112, -90, -113, -91, -113, -91, -114, -92, -114, -92, -115, -93, -115, -93, -116, -94, -116, -94, -117, -95, -117, -95, -118, -96, -118, -96, -119, -97, -119, -97, -120, -98, -120, -98, -121, -99, -121, -99, -122, -100, -122, -100, -123, -101, -123, -101, -124, -102, -124, -102, -125, -103, -125, -103, -126, -104, -126, -104, -127, -105, -127, -105, -128, -106, -128, -106, -129, -107, -129, -107, -130, -108, -130, -108, -131, -109, -131, -109, -132, -110, -132, -110, -133, -111, -133, -111, -134, -112, -134, -112, -135, -113, -135, -113, -136, -114, -136, -114, -137, -115, -137, -115, -138, -116, -138, -116, -139, -117, -139, -117, -140, -118, -140, -118, -141, -119, -141, -119, -142, -120, -142, -120, -143, -121, -143, -121, -144, -122, -144, -122, -145, -123, -145, -123, -146, -124, -146, -124, -147, -125, -147, -125, -148, -126, -148, -126, -149, -127, -149, -127, -150, -128, -150, -128, -151, -129, -151, -129, -152, -130, -152, -130, -153, -131, -153, -131, -154, -132, -154, -132, -155, -133, -155, -133, -156, -134, -156, -134, -157, -135, -157, -135, -158, -136, -158, -136, -159)
+disabled = true
+
+[node name="+AttackCollision" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-16, -224, -16, -16, -219, -16, -219, 16, -16, 16, -16, 224, 16, 224, 16, 16, 219, 16, 219, -16, 16, -16, 16, -224)
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y8vl1")
+}
+autoplay = "RESET"
+
+[node name="DebuffHitAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_7u6lo")
+volume_db = -8.0
+bus = &"SFX"

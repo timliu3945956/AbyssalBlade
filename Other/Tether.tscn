@@ -1,0 +1,207 @@
+[gd_scene load_steps=15 format=3 uid="uid://bp3umrxry0i2v"]
+
+[ext_resource type="Script" path="res://Other/tether.gd" id="1_p46aq"]
+[ext_resource type="Shader" path="res://Levels/disable.gdshader" id="2_q3u7m"]
+[ext_resource type="Shader" path="res://Levels/rectangle_glow.gdshader" id="2_x5otg"]
+[ext_resource type="Texture2D" uid="uid://pkqmk6aqcrop" path="res://Utilities/Effects/spotlight_8_alpha.png" id="3_2tse1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kae6t"]
+shader = ExtResource("2_x5otg")
+shader_parameter/rect_size = Vector2(400, 0.17)
+shader_parameter/bness = 0.0
+shader_parameter/fall_off_scale = 2.585
+shader_parameter/b_offset = 0.315
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0rqhf"]
+blend_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuvfx"]
+shader = ExtResource("2_q3u7m")
+
+[sub_resource type="Gradient" id="Gradient_qg8gr"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xnwmm"]
+gradient = SubResource("Gradient_qg8gr")
+
+[sub_resource type="Animation" id="Animation_k5c0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:material:shader_parameter/b_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.315]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sim1o"]
+resource_name = "end_vfx"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.45, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1ofd0"]
+resource_name = "line_start"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:material:shader_parameter/b_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.285, 0.285]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7o18q"]
+resource_name = "line_vfx"
+length = 1.00001
+loop_mode = 2
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.45]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:material:shader_parameter/b_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.285, 0.04]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3q6ey"]
+_data = {
+"RESET": SubResource("Animation_k5c0n"),
+"end_vfx": SubResource("Animation_sim1o"),
+"line_start": SubResource("Animation_1ofd0"),
+"line_vfx": SubResource("Animation_7o18q")
+}
+
+[node name="Tether" type="Node2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 3
+z_as_relative = false
+position = Vector2(0, -8)
+script = ExtResource("1_p46aq")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_kae6t")
+scale = Vector2(0.971429, 0.666667)
+points = PackedVector2Array(0, 0, 177.059, 0)
+width = 1.0
+texture = ExtResource("3_2tse1")
+texture_mode = 1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Line2D"]
+visible = false
+material = SubResource("CanvasItemMaterial_0rqhf")
+texture = ExtResource("3_2tse1")
+gravity = Vector2(0, 0)
+scale_amount_min = 0.0
+scale_amount_max = 0.04
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+scale = Vector2(0.925, 0.925)
+
+[node name="Node2D" type="Sprite2D" parent="Marker2D"]
+visible = false
+clip_children = 2
+material = SubResource("ShaderMaterial_uuvfx")
+position = Vector2(161.5, 0)
+scale = Vector2(5.04688, 1)
+texture = SubResource("GradientTexture2D_xnwmm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3q6ey")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,3294 @@
+[gd_scene load_steps=173 format=3 uid="uid://ibpjmyob8k7h"]
+
+[ext_resource type="Script" path="res://Menu/StageSelect/stage_select.gd" id="1_0j2ci"]
+[ext_resource type="Texture2D" uid="uid://ry76fr40bh1x" path="res://Utilities/menu/mainmenu_background.png" id="1_pcga7"]
+[ext_resource type="Shader" uid="uid://brpjtuahwxqa" path="res://Utilities/parallax shaders/layer_2_trees.tres" id="3_010pr"]
+[ext_resource type="Texture2D" uid="uid://c62py63e2gler" path="res://Utilities/menu/stage select/Stage_Select_underlay.png" id="3_82u21"]
+[ext_resource type="Texture2D" uid="uid://dvk4o4wr5mbxc" path="res://Utilities/menu/stage select/LOCKED Panel.png" id="3_k34o3"]
+[ext_resource type="Texture2D" uid="uid://ptf2ussgrta" path="res://sprites/tilesets/BG_1.png" id="4_pkpdq"]
+[ext_resource type="Texture2D" uid="uid://dcbj3gbbgglei" path="res://sprites/tilesets/layer2.png" id="5_jyplt"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="6_2ynpa"]
+[ext_resource type="Script" path="res://Menu/fade_button.gd" id="6_5flcn"]
+[ext_resource type="AudioStream" uid="uid://baw484xopw2n1" path="res://audio/music/main menu music (memory of the lost).wav" id="6_hxddm"]
+[ext_resource type="Texture2D" uid="uid://db6ek8n7accsv" path="res://sprites/tilesets/layer3.png" id="6_rp01p"]
+[ext_resource type="Texture2D" uid="uid://d342bd6uglm2p" path="res://sprites/tilesets/layer4.png" id="7_bslxg"]
+[ext_resource type="Texture2D" uid="uid://b61hlw3knnqfn" path="res://sprites/tilesets/layer5.png" id="8_3jemq"]
+[ext_resource type="Script" path="res://Menu/fade_button_2.gd" id="8_tvbuk"]
+[ext_resource type="Texture2D" uid="uid://c78u26oecwmeh" path="res://sprites/tilesets/layer6.png" id="9_hsubw"]
+[ext_resource type="Texture2D" uid="uid://iomc57p8cjxn" path="res://sprites/tilesets/BG_5_ambience.png" id="10_4fgjc"]
+[ext_resource type="Shader" path="res://Levels/blur.gdshader" id="11_m8x4x"]
+[ext_resource type="Texture2D" uid="uid://ofanc4lgj5te" path="res://sprites/tilesets/BG_2.png" id="12_nyvkp"]
+[ext_resource type="Texture2D" uid="uid://dbyuptyas7cyx" path="res://sprites/tilesets/BG_3.png" id="13_bmiv8"]
+[ext_resource type="Texture2D" uid="uid://d2lgcwmm0ipax" path="res://sprites/tilesets/BG_4.png" id="14_4r8op"]
+[ext_resource type="Texture2D" uid="uid://co4r5xmtlagnk" path="res://sprites/tilesets/bargaining parallax/bargaining_layer2.png" id="15_6n4nk"]
+[ext_resource type="Texture2D" uid="uid://crqoqairlu7s1" path="res://sprites/tilesets/bargaining parallax/bargaining_layer3.png" id="16_6gdxs"]
+[ext_resource type="Texture2D" uid="uid://dnqfviah8klla" path="res://sprites/tilesets/bargaining parallax/bargaining_layer4.png" id="17_frgqg"]
+[ext_resource type="Shader" path="res://Levels/rectangle_glow.gdshader" id="18_ptpyw"]
+[ext_resource type="Texture2D" uid="uid://dmklcm41riquu" path="res://sprites/tilesets/bargaining parallax/bargaining_layer5.png" id="19_2vkub"]
+[ext_resource type="Texture2D" uid="uid://domdcdojktp74" path="res://sprites/tilesets/bargaining parallax/bargaining_layer6.png" id="20_weyt6"]
+[ext_resource type="Texture2D" uid="uid://bofdqo11abprj" path="res://sprites/tilesets/bargaining parallax/bargaining_layer7 (fog).png" id="21_ea85y"]
+[ext_resource type="Texture2D" uid="uid://d0nvg5ec7rums" path="res://sprites/tilesets/depression parallax/rockparallax_layer7(fade bg).png" id="22_v4to6"]
+[ext_resource type="Texture2D" uid="uid://c6s66t2ahusy1" path="res://sprites/tilesets/depression parallax/rockparallax_layer6(moon).png" id="23_7pnh0"]
+[ext_resource type="Texture2D" uid="uid://db85qb4u0qn4q" path="res://Utilities/menu/stage select/new assets/STAGE 1 BUTTON.png" id="23_svtyp"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="23_upnow"]
+[ext_resource type="Texture2D" uid="uid://c4blm2drsb21k" path="res://Utilities/menu/stage select/new assets/Stage 2 Description.png" id="24_86cgg"]
+[ext_resource type="Texture2D" uid="uid://cjnremj7sj82s" path="res://sprites/DenialBoss/boss_animations/idle.png" id="24_eqys3"]
+[ext_resource type="Texture2D" uid="uid://drym4gk0dci85" path="res://sprites/tilesets/depression parallax/rockparallax_layer5.png" id="24_tttdg"]
+[ext_resource type="Texture2D" uid="uid://dqnrr8o050ttn" path="res://sprites/AngerBoss/Idle/boss_idle.png" id="25_64sus"]
+[ext_resource type="Texture2D" uid="uid://ckixv7nrjw35m" path="res://sprites/tilesets/depression parallax/rockparallax_layer4.png" id="25_e3we7"]
+[ext_resource type="Texture2D" uid="uid://crxm8dobq2dl6" path="res://sprites/BargainingBoss/MainBoss/bargaining_idle.png" id="26_f8q1t"]
+[ext_resource type="Texture2D" uid="uid://qjwtvvrgl2pb" path="res://Utilities/menu/stage select/new assets/Score_Display.png" id="26_fko8w"]
+[ext_resource type="Texture2D" uid="uid://bv3clg08ry78f" path="res://sprites/tilesets/depression parallax/rockparallax_layer3.png" id="26_x8uws"]
+[ext_resource type="Texture2D" uid="uid://bo8rk544mkipq" path="res://sprites/DepressionBoss/third iteration/depression_idle.png" id="27_j2mbs"]
+[ext_resource type="Texture2D" uid="uid://q0qeblcimpr6" path="res://sprites/tilesets/depression parallax/rockparallax_layer2.png" id="27_jcrx4"]
+[ext_resource type="Texture2D" uid="uid://blkmwv0i26kwx" path="res://Utilities/menu/stage select/new assets/STAGE 2 BUTTON.png" id="28_kmpsn"]
+[ext_resource type="Texture2D" uid="uid://cyo5k2l4puf7k" path="res://sprites/tilesets/depression parallax/rockparallax_layer1.png" id="28_l77xc"]
+[ext_resource type="Texture2D" uid="uid://blqwb61asqjxu" path="res://Utilities/menu/stage select/new assets/STAGE 3 BUTTON.png" id="30_3lxsd"]
+[ext_resource type="Texture2D" uid="uid://3gcijlssqoc7" path="res://Utilities/menu/stage select/new assets/Stage_4_Description.png" id="30_qx1kw"]
+[ext_resource type="Texture2D" uid="uid://gckaog6tq2rx" path="res://Utilities/menu/stage select/new assets/Stage 1 Description.png" id="31_xs4dx"]
+[ext_resource type="Texture2D" uid="uid://n6l4xkahjysf" path="res://Utilities/menu/stage select/new assets/STAGE_4_BUTTON.png" id="33_n5cns"]
+[ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="35_2xgyo"]
+[ext_resource type="Script" path="res://Menu/fade_button_3.gd" id="35_ywoew"]
+[ext_resource type="Script" path="res://Menu/fade_button_4.gd" id="48_lae7t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g27ie"]
+texture = ExtResource("1_pcga7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3k2h"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 2.3
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fudl3"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 1.9
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s2h4"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 1.6
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wttkq"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 1.3
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pel1"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03qja"]
+shader = ExtResource("3_010pr")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myjra"]
+shader = ExtResource("11_m8x4x")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[sub_resource type="Gradient" id="Gradient_nocyc"]
+offsets = PackedFloat32Array(0, 0.577778, 0.585185, 1)
+colors = PackedColorArray(0.753984, 0.753984, 0.753984, 1, 0.687215, 0.687215, 0.687215, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wm178"]
+gradient = SubResource("Gradient_nocyc")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_kbg20"]
+offsets = PackedFloat32Array(0.139098, 0.37218, 0.639098)
+colors = PackedColorArray(1, 1, 1, 1, 0.438889, 0.438889, 0.438889, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ph4yf"]
+gradient = SubResource("Gradient_kbg20")
+width = 304
+height = 304
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flhel"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.1)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6q55"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.01)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k10k"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.013, 0.02)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqnyd"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.03)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iifb3"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.045)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo6a1"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.008, 0.065)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_daomn"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.008, 0.01)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ms4jf"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.028, 0.045)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rffxq"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.028, 0.025)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjyan"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.028, 0.015)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnqrx"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.013, 0.015)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uevt"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.028, 0.03)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vf4fl"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.018, 0.015)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2318"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.02)
+shader_parameter/bness = 0.1
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr5b2"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.025)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqbtw"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.055)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utnkq"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.07)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ktbi"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.11)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_46eke"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.07)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ett"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.063, 0.055)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw18v"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.048, 0.075)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2kfq"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.14)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sft3"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.038, 0.035)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y16nv"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.023, 0.03)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyvjj"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.023, 0.035)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h40so"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.023, 0.03)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipoq3"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.013, 0.01)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo8jx"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.011, 0.065)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3miyr"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.011, 0.035)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j223j"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.031, 0.01)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xqbe6"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.021, 0.065)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_432vd"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.031, 0.065)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8wkw"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.026, 0.065)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxk75"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.016, 0.035)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tfi7"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.016, 0.1)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf6xk"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.031, 0.045)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0li1f"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.026, 0.035)
+shader_parameter/bness = 0.15
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiadn"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.036, 0.062)
+shader_parameter/bness = 0.09
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ln0fg"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.031, 0.045)
+shader_parameter/bness = 0.255
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wlert"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.066, 0.035)
+shader_parameter/bness = 0.255
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wq72l"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.008, 0.086)
+shader_parameter/bness = 0.255
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0y8dg"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.031)
+shader_parameter/bness = 0.255
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ftun1"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.045)
+shader_parameter/bness = 0.255
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkxdh"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.005)
+shader_parameter/bness = 0.25
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vykf5"]
+shader = ExtResource("18_ptpyw")
+shader_parameter/rect_size = Vector2(0.033, 0.05)
+shader_parameter/bness = 0.25
+shader_parameter/fall_off_scale = 5.575
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8usq"]
+shader = ExtResource("11_m8x4x")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = null
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
+
+[sub_resource type="Gradient" id="Gradient_ocdsq"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvhst"]
+gradient = SubResource("Gradient_ocdsq")
+width = 986
+height = 660
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xb6il"]
+texture = ExtResource("3_82u21")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncxmp"]
+shader = ExtResource("23_upnow")
+shader_parameter/flash_color = Color(1, 0.290196, 0.243137, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ewe3"]
+resource_local_to_scene = true
+shader = ExtResource("23_upnow")
+shader_parameter/flash_color = Color(1, 0.290196, 0.243137, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8qt2s"]
+shader = ExtResource("23_upnow")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eyh60"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h01kv"]
+texture = ExtResource("31_xs4dx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqeq3"]
+texture = ExtResource("24_86cgg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kdnr8"]
+texture = ExtResource("30_qx1kw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sbu5b"]
+texture = ExtResource("26_fko8w")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7sr0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_su3oa"]
+texture = ExtResource("23_svtyp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5nep"]
+texture = ExtResource("23_svtyp")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nn51e"]
+texture = ExtResource("23_svtyp")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2fame"]
+texture = ExtResource("23_svtyp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5svv5"]
+texture = ExtResource("23_svtyp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o7u8m"]
+texture = ExtResource("23_svtyp")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kslqc"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_wox6q"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hnd78"]
+curve = SubResource("Curve_wox6q")
+
+[sub_resource type="Gradient" id="Gradient_y44d7"]
+offsets = PackedFloat32Array(0, 0.333333, 0.626667, 0.862222, 1)
+colors = PackedColorArray(1, 1, 0.258824, 1, 1, 0.870588, 0.121569, 1, 1, 0.490196, 0.0784314, 1, 0.933333, 0.321569, 0.0705882, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bidil"]
+gradient = SubResource("Gradient_y44d7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsh08"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 19.825, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+inherit_velocity_ratio = 50.0
+direction = Vector3(0, -1, 0)
+angular_velocity_curve = SubResource("CurveTexture_hnd78")
+gravity = Vector3(0, -65.96, 0)
+scale_min = 0.2
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_bidil")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+turbulence_enabled = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jsnrc"]
+texture = ExtResource("28_kmpsn")
+modulate_color = Color(1, 1, 1, 0.85098)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_susnw"]
+texture = ExtResource("28_kmpsn")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eq6m2"]
+texture = ExtResource("28_kmpsn")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ldg2r"]
+texture = ExtResource("28_kmpsn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_we1ep"]
+texture = ExtResource("28_kmpsn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gih2s"]
+texture = ExtResource("28_kmpsn")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v6qgw"]
+texture = ExtResource("30_3lxsd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjmin"]
+texture = ExtResource("30_3lxsd")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a73jy"]
+texture = ExtResource("30_3lxsd")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7i06a"]
+texture = ExtResource("30_3lxsd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0li28"]
+texture = ExtResource("33_n5cns")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cb471"]
+texture = ExtResource("30_3lxsd")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_evamm"]
+texture = ExtResource("33_n5cns")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ao3y2"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5ryn"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u8adq"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6hj8"]
+texture = ExtResource("33_n5cns")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgirl"]
+texture = ExtResource("33_n5cns")
+modulate_color = Color(1, 1, 1, 0.627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjn0d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7peei"]
+texture = ExtResource("3_k34o3")
+modulate_color = Color(1, 1, 1, 0.498039)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enup7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo5h4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmkf5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm8dl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfy0a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a485"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cikb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm4hu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huqbb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c3ot"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_l7qgn"]
+resource_name = "asdf"
+
+[sub_resource type="Animation" id="Animation_iald2"]
+resource_name = "idle_right"
+length = 1.25001
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss0:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_eqys3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss0:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss0:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boss0:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7kh40"]
+resource_name = "boss_idle_1"
+length = 0.999608
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_64sus")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss1:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss1:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165, 0.4998, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boss1:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xn7j7"]
+resource_name = "boss_idle_2"
+length = 0.749708
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("26_f8q1t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss2:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.2499, 0.3332, 0.4165, 0.4998, 0.5831, 0.6664),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boss2:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cfl1u"]
+resource_name = "boss_idle_3"
+length = 1.12501
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss3:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_j2mbs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss3:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_a8fse"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss3:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("27_j2mbs")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss3:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0hso"]
+_data = {
+"RESET": SubResource("Animation_a8fse"),
+"asdf": SubResource("Animation_l7qgn"),
+"boss_idle_0": SubResource("Animation_iald2"),
+"boss_idle_1": SubResource("Animation_7kh40"),
+"boss_idle_2": SubResource("Animation_xn7j7"),
+"boss_idle_3": SubResource("Animation_cfl1u")
+}
+
+[sub_resource type="Animation" id="Animation_ijhd3"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect18:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect13:material:shader_parameter/bness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.255]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect9:material:shader_parameter/bness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.255]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect8:material:shader_parameter/bness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.255]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect7:material:shader_parameter/bness")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.255]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect6:material:shader_parameter/bness")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.255]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect:material:shader_parameter/bness")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.09]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect51:material:shader_parameter/bness")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect49:material:shader_parameter/bness")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect48:material:shader_parameter/bness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect45:material:shader_parameter/bness")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect43:material:shader_parameter/bness")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect41:material:shader_parameter/bness")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect40:material:shader_parameter/bness")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect34:material:shader_parameter/bness")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect39:material:shader_parameter/bness")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect32:material:shader_parameter/bness")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect26:material:shader_parameter/bness")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect25:material:shader_parameter/bness")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect23:material:shader_parameter/bness")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect22:material:shader_parameter/bness")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.15]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect22:material:shader_parameter/bness")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect23:material:shader_parameter/bness")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect24:material:shader_parameter/bness")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect32:material:shader_parameter/bness")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect33:material:shader_parameter/bness")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect34:material:shader_parameter/bness")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect36:material:shader_parameter/bness")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect38:material:shader_parameter/bness")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect39:material:shader_parameter/bness")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect31:material:shader_parameter/bness")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect28:material:shader_parameter/bness")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect27:material:shader_parameter/bness")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect30:material:shader_parameter/bness")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+
+[sub_resource type="Animation" id="Animation_tvxgq"]
+resource_name = "light_repeat"
+length = 2.00001
+loop_mode = 2
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect18:material:shader_parameter/bness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect13:material:shader_parameter/bness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.255, 0.35, 0.255]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect9:material:shader_parameter/bness")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.255, 0.4, 0.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect8:material:shader_parameter/bness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.255, 0.35]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect7:material:shader_parameter/bness")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.833333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.255, 0.33, 0.4]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect6:material:shader_parameter/bness")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.75, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.255, 0.1]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background3/Node2D/ParallaxLayer4/ColorRect:material:shader_parameter/bness")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.666667, 1.33333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.09, 0.2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect51:material:shader_parameter/bness")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.25]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect49:material:shader_parameter/bness")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.916667, 1.25, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.15, 0.25, 0.2, 0.3, 0.15]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect48:material:shader_parameter/bness")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.25]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect45:material:shader_parameter/bness")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.25]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect43:material:shader_parameter/bness")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.916667, 1.25, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.15, 0.25, 0.2, 0.15]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect41:material:shader_parameter/bness")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect40:material:shader_parameter/bness")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.41667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.22]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect34:material:shader_parameter/bness")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.41667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.25]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect39:material:shader_parameter/bness")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.22]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect32:material:shader_parameter/bness")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.713453, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect26:material:shader_parameter/bness")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect25:material:shader_parameter/bness")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.5, 0.916667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect23:material:shader_parameter/bness")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0.916667, 1.33333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Background3/Node2D/ParallaxLayer6/ColorRect22:material:shader_parameter/bness")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(1.33333, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.15, 0.2]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect22:material:shader_parameter/bness")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect23:material:shader_parameter/bness")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect24:material:shader_parameter/bness")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect32:material:shader_parameter/bness")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0.75, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect33:material:shader_parameter/bness")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0.75, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect34:material:shader_parameter/bness")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0.25, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect36:material:shader_parameter/bness")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0.25, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect38:material:shader_parameter/bness")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0.416667, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.2]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect39:material:shader_parameter/bness")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.1, 0.15]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect31:material:shader_parameter/bness")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.3]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect28:material:shader_parameter/bness")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 0.3]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect27:material:shader_parameter/bness")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0.5, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.1]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Background3/Node2D/ParallaxLayer3/ColorRect30:material:shader_parameter/bness")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.07177),
+"update": 0,
+"values": [0.1, 0.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyjsr"]
+_data = {
+"RESET": SubResource("Animation_ijhd3"),
+"light_repeat": SubResource("Animation_tvxgq")
+}
+
+[node name="StageSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0j2ci")
+
+[node name="Background" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g27ie")
+
+[node name="Background1" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Background1"]
+position = Vector2(44, 33)
+scale = Vector2(0.82, 0.82)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -100
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_d3k2h")
+position = Vector2(240, 135)
+texture = ExtResource("4_pkpdq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer2"]
+z_index = -2
+material = SubResource("ShaderMaterial_d3k2h")
+position = Vector2(240, 135)
+texture = ExtResource("5_jyplt")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer7"]
+z_index = -2
+material = SubResource("ShaderMaterial_fudl3")
+position = Vector2(240, 135)
+texture = ExtResource("6_rp01p")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer3"]
+z_index = -2
+material = SubResource("ShaderMaterial_5s2h4")
+position = Vector2(240, 135)
+texture = ExtResource("7_bslxg")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.65, 0.65)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer6"]
+z_index = -2
+material = SubResource("ShaderMaterial_wttkq")
+position = Vector2(240, 135)
+texture = ExtResource("8_3jemq")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer4"]
+z_index = -2
+material = SubResource("ShaderMaterial_3pel1")
+position = Vector2(240, 135)
+texture = ExtResource("9_hsubw")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Background1/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background1/Node2D/ParallaxLayer5"]
+z_index = -2
+material = SubResource("ShaderMaterial_03qja")
+position = Vector2(237.037, 135.802)
+texture = ExtResource("10_4fgjc")
+
+[node name="Background2" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Background2"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(44, 33)
+scale = Vector2(0.82, 0.82)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background2/Node2D"]
+z_index = -100
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background2/Node2D/ParallaxLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_myjra")
+position = Vector2(240, 135)
+texture = ExtResource("4_pkpdq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background2/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background2/Node2D/ParallaxLayer2"]
+z_index = -2
+material = SubResource("ShaderMaterial_myjra")
+position = Vector2(240, 135)
+texture = ExtResource("12_nyvkp")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background2/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background2/Node2D/ParallaxLayer3"]
+z_index = -2
+material = SubResource("ShaderMaterial_myjra")
+position = Vector2(240, 135)
+texture = ExtResource("13_bmiv8")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background2/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background2/Node2D/ParallaxLayer4"]
+z_index = -2
+material = SubResource("ShaderMaterial_myjra")
+position = Vector2(240, 135)
+texture = ExtResource("14_4r8op")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Background2/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background2/Node2D/ParallaxLayer5"]
+z_index = -2
+material = SubResource("ShaderMaterial_myjra")
+position = Vector2(240, 135)
+texture = ExtResource("10_4fgjc")
+
+[node name="Background3" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Background3"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(44, 33)
+scale = Vector2(0.82, 0.82)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -100
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("4_pkpdq")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -4
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer2"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("15_6n4nk")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background3/Node2D/ParallaxLayer2"]
+position = Vector2(113, -5)
+energy = 0.71
+range_z_min = -164
+range_z_max = -6
+range_layer_min = -512
+range_layer_max = -100
+texture = SubResource("GradientTexture2D_wm178")
+texture_scale = 1.92
+
+[node name="MiddleLight2" type="PointLight2D" parent="Background3/Node2D/ParallaxLayer2"]
+position = Vector2(109, -5)
+range_z_max = -1
+range_layer_min = -7
+texture = SubResource("GradientTexture2D_ph4yf")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -3
+motion_scale = Vector2(0.75, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer7"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("16_6gdxs")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer3"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("17_frgqg")
+
+[node name="ColorRect22" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_flhel")
+offset_left = 40.0
+offset_top = 43.0
+offset_right = 79.0
+offset_bottom = 88.0
+
+[node name="ColorRect23" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_d6q55")
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 79.0
+offset_bottom = 97.0
+
+[node name="ColorRect24" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_2k10k")
+offset_left = 35.0
+offset_top = 34.0
+offset_right = 74.0
+offset_bottom = 84.0
+
+[node name="ColorRect25" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_tqnyd")
+offset_left = -55.0
+offset_top = 40.0
+offset_right = -16.0
+offset_bottom = 89.0
+
+[node name="ColorRect26" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_tqnyd")
+offset_left = -55.0
+offset_top = 35.0
+offset_right = -16.0
+offset_bottom = 84.0
+
+[node name="ColorRect29" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_iifb3")
+offset_left = -70.0
+offset_top = 48.0
+offset_right = -25.0
+offset_bottom = 103.0
+
+[node name="ColorRect32" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_fo6a1")
+offset_left = 403.0
+offset_top = 22.0
+offset_right = 464.0
+offset_bottom = 91.0
+
+[node name="ColorRect33" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_daomn")
+offset_left = 402.0
+offset_top = 39.0
+offset_right = 465.0
+offset_bottom = 88.0
+
+[node name="ColorRect34" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_ms4jf")
+offset_left = 446.0
+offset_top = 39.0
+offset_right = 499.0
+offset_bottom = 94.0
+
+[node name="ColorRect35" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_ms4jf")
+offset_left = 450.0
+offset_top = 39.0
+offset_right = 503.0
+offset_bottom = 94.0
+
+[node name="ColorRect36" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_rffxq")
+offset_left = 461.0
+offset_top = 42.0
+offset_right = 514.0
+offset_bottom = 101.0
+
+[node name="ColorRect37" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_rffxq")
+offset_left = 458.0
+offset_top = 26.0
+offset_right = 511.0
+offset_bottom = 85.0
+
+[node name="ColorRect38" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_xjyan")
+offset_left = 449.0
+offset_top = 17.0
+offset_right = 502.0
+offset_bottom = 83.0
+
+[node name="ColorRect39" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_hnqrx")
+offset_left = 453.0
+offset_top = 17.0
+offset_right = 529.0
+offset_bottom = 83.0
+
+[node name="ColorRect40" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_hnqrx")
+offset_left = 450.0
+offset_top = 17.0
+offset_right = 526.0
+offset_bottom = 83.0
+
+[node name="ColorRect30" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_iifb3")
+offset_left = -65.0
+offset_top = 48.0
+offset_right = -20.0
+offset_bottom = 103.0
+
+[node name="ColorRect31" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_7uevt")
+offset_left = -45.0
+offset_top = 56.0
+offset_right = -9.0
+offset_bottom = 105.0
+
+[node name="ColorRect28" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_vf4fl")
+offset_left = -58.0
+offset_top = 15.0
+offset_right = -2.0
+offset_bottom = 114.0
+
+[node name="ColorRect27" type="ColorRect" parent="Background3/Node2D/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_i2318")
+offset_left = -64.0
+offset_top = 34.0
+offset_right = -25.0
+offset_bottom = 84.0
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.65, 0.65)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer6"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("19_2vkub")
+
+[node name="ColorRect22" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_yr5b2")
+offset_left = 410.0
+offset_top = 178.0
+offset_right = 449.0
+offset_bottom = 218.0
+
+[node name="ColorRect23" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_dqbtw")
+offset_left = 410.0
+offset_top = 176.0
+offset_right = 449.0
+offset_bottom = 212.0
+
+[node name="ColorRect25" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_utnkq")
+offset_left = 409.0
+offset_top = 170.0
+offset_right = 450.0
+offset_bottom = 205.0
+
+[node name="ColorRect26" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_5ktbi")
+offset_left = 410.0
+offset_top = 158.0
+offset_right = 449.0
+offset_bottom = 194.0
+
+[node name="ColorRect27" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_46eke")
+offset_left = 432.0
+offset_top = 170.0
+offset_right = 462.0
+offset_bottom = 205.0
+
+[node name="ColorRect28" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_s3ett")
+offset_left = 437.0
+offset_top = 176.0
+offset_right = 469.0
+offset_bottom = 212.0
+
+[node name="ColorRect29" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_mw18v")
+offset_left = 450.0
+offset_top = 171.0
+offset_right = 481.0
+offset_bottom = 204.0
+
+[node name="ColorRect30" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_g2kfq")
+offset_left = 474.0
+offset_top = 155.0
+offset_right = 513.0
+offset_bottom = 194.0
+
+[node name="ColorRect31" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_7sft3")
+offset_left = 437.0
+offset_top = 153.0
+offset_right = 476.0
+offset_bottom = 196.0
+
+[node name="ColorRect32" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_7sft3")
+offset_left = 441.0
+offset_top = 153.0
+offset_right = 480.0
+offset_bottom = 196.0
+
+[node name="ColorRect33" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_y16nv")
+offset_left = 429.0
+offset_top = 146.0
+offset_right = 471.0
+offset_bottom = 195.0
+
+[node name="ColorRect36" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_iyvjj")
+offset_left = 419.0
+offset_top = 143.0
+offset_right = 461.0
+offset_bottom = 199.0
+
+[node name="ColorRect37" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_h40so")
+offset_left = 405.0
+offset_top = 128.0
+offset_right = 468.0
+offset_bottom = 177.0
+
+[node name="ColorRect38" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_h40so")
+offset_left = 411.0
+offset_top = 128.0
+offset_right = 474.0
+offset_bottom = 177.0
+
+[node name="ColorRect39" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_h40so")
+offset_left = 411.0
+offset_top = 122.0
+offset_right = 474.0
+offset_bottom = 171.0
+
+[node name="ColorRect34" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_ipoq3")
+offset_left = 429.0
+offset_top = 144.0
+offset_right = 468.0
+offset_bottom = 193.0
+
+[node name="ColorRect35" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_ipoq3")
+offset_left = 432.0
+offset_top = 144.0
+offset_right = 471.0
+offset_bottom = 193.0
+
+[node name="ColorRect40" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_qo8jx")
+offset_left = 41.0
+offset_top = 139.0
+offset_right = 84.0
+offset_bottom = 185.0
+
+[node name="ColorRect41" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_3miyr")
+offset_left = 41.0
+offset_top = 135.0
+offset_right = 84.0
+offset_bottom = 178.0
+
+[node name="ColorRect42" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_j223j")
+offset_left = 25.0
+offset_top = 149.0
+offset_right = 89.0
+offset_bottom = 196.0
+
+[node name="ColorRect43" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_xqbe6")
+offset_left = -18.0
+offset_top = 153.0
+offset_right = 53.0
+offset_bottom = 199.0
+
+[node name="ColorRect44" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_432vd")
+offset_left = -19.0
+offset_top = 153.0
+offset_right = 45.0
+offset_bottom = 199.0
+
+[node name="ColorRect45" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_o8wkw")
+offset_left = -28.0
+offset_top = 153.0
+offset_right = 29.0
+offset_bottom = 199.0
+
+[node name="ColorRect46" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_bxk75")
+offset_left = -21.0
+offset_top = 160.0
+offset_right = 10.0
+offset_bottom = 203.0
+
+[node name="ColorRect47" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_bxk75")
+offset_left = -38.0
+offset_top = 160.0
+offset_right = -7.0
+offset_bottom = 203.0
+
+[node name="ColorRect48" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_5tfi7")
+offset_left = -38.0
+offset_top = 141.0
+offset_right = -7.0
+offset_bottom = 186.0
+
+[node name="ColorRect49" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_cf6xk")
+offset_left = -28.0
+offset_top = 135.0
+offset_right = 36.0
+offset_bottom = 179.0
+
+[node name="ColorRect50" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_cf6xk")
+offset_left = -28.0
+offset_top = 141.0
+offset_right = 36.0
+offset_bottom = 185.0
+
+[node name="ColorRect51" type="ColorRect" parent="Background3/Node2D/ParallaxLayer6"]
+material = SubResource("ShaderMaterial_0li1f")
+offset_left = -14.0
+offset_top = 135.0
+offset_right = 43.0
+offset_bottom = 178.0
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer4"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("20_weyt6")
+
+[node name="ColorRect" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_iiadn")
+offset_left = 59.0
+offset_top = 260.0
+offset_right = 100.0
+offset_bottom = 300.995
+
+[node name="ColorRect2" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_iiadn")
+offset_left = 53.0
+offset_top = 260.0
+offset_right = 94.0
+offset_bottom = 300.995
+
+[node name="ColorRect3" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ln0fg")
+offset_left = 80.0
+offset_top = 240.0
+offset_right = 121.0
+offset_bottom = 282.0
+
+[node name="ColorRect4" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ln0fg")
+offset_left = 80.0
+offset_top = 246.0
+offset_right = 121.0
+offset_bottom = 288.0
+
+[node name="ColorRect5" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ln0fg")
+offset_left = 80.0
+offset_top = 258.0
+offset_right = 121.0
+offset_bottom = 300.0
+
+[node name="ColorRect6" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ln0fg")
+offset_left = 53.0
+offset_top = 237.0
+offset_right = 94.0
+offset_bottom = 279.0
+
+[node name="ColorRect7" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_wlert")
+offset_left = 60.0
+offset_top = 246.0
+offset_right = 102.0
+offset_bottom = 287.0
+
+[node name="ColorRect8" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_wq72l")
+offset_left = 32.0
+offset_top = 218.195
+offset_right = 73.0
+offset_bottom = 262.195
+
+[node name="ColorRect9" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_0y8dg")
+offset_left = 1.0
+offset_top = 228.0
+offset_right = 42.0
+offset_bottom = 271.0
+
+[node name="ColorRect10" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_0y8dg")
+offset_left = 1.0
+offset_top = 245.0
+offset_right = 42.0
+offset_bottom = 288.0
+
+[node name="ColorRect11" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_0y8dg")
+offset_left = 7.0
+offset_top = 245.0
+offset_right = 48.0
+offset_bottom = 288.0
+
+[node name="ColorRect12" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ftun1")
+offset_left = 30.0
+offset_top = 199.0
+offset_right = 71.0
+offset_bottom = 241.0
+
+[node name="ColorRect13" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_ftun1")
+offset_left = 36.0
+offset_top = 199.0
+offset_right = 77.0
+offset_bottom = 241.0
+
+[node name="ColorRect14" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_lkxdh")
+offset_left = 406.0
+offset_top = 201.0
+offset_right = 447.0
+offset_bottom = 242.0
+
+[node name="ColorRect15" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_lkxdh")
+offset_left = 411.0
+offset_top = 201.0
+offset_right = 452.0
+offset_bottom = 242.0
+
+[node name="ColorRect16" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_lkxdh")
+offset_left = 415.0
+offset_top = 201.0
+offset_right = 456.0
+offset_bottom = 242.0
+
+[node name="ColorRect17" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_lkxdh")
+offset_left = 411.0
+offset_top = 213.0
+offset_right = 452.0
+offset_bottom = 254.0
+
+[node name="ColorRect18" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_lkxdh")
+offset_left = 420.0
+offset_top = 207.0
+offset_right = 461.0
+offset_bottom = 248.0
+
+[node name="ColorRect19" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_vykf5")
+offset_left = 471.0
+offset_top = 257.0
+offset_right = 512.0
+offset_bottom = 295.0
+
+[node name="ColorRect20" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_vykf5")
+offset_left = 477.0
+offset_top = 257.0
+offset_right = 518.0
+offset_bottom = 295.0
+
+[node name="ColorRect21" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_vykf5")
+offset_left = 491.0
+offset_top = 257.0
+offset_right = 532.0
+offset_bottom = 295.0
+
+[node name="ColorRect22" type="ColorRect" parent="Background3/Node2D/ParallaxLayer4"]
+material = SubResource("ShaderMaterial_vykf5")
+offset_left = 497.0
+offset_top = 257.0
+offset_right = 538.0
+offset_bottom = 295.0
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Background3/Node2D"]
+z_index = -2
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background3/Node2D/ParallaxLayer5"]
+z_index = -2
+position = Vector2(240, 135)
+texture = ExtResource("21_ea85y")
+
+[node name="Background4" type="ParallaxBackground" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Background4"]
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer7"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("22_v4to6")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer6"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("23_7pnh0")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("24_tttdg")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer2"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("25_e3we7")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer3"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("26_x8uws")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.6, 0.6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer4"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("27_jcrx4")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Background4/Node2D"]
+z_index = -2
+position = Vector2(-12, -7)
+scale = Vector2(1.05, 1.05)
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background4/Node2D/ParallaxLayer5"]
+z_index = -2
+material = SubResource("ShaderMaterial_q8usq")
+position = Vector2(240, 135)
+texture = ExtResource("28_l77xc")
+
+[node name="DarkShade" type="PointLight2D" parent="."]
+position = Vector2(-29, 144)
+energy = 1.2
+blend_mode = 1
+range_z_max = 0
+range_layer_min = -100
+range_layer_max = -1
+texture = SubResource("GradientTexture2D_dvhst")
+offset = Vector2(270, 0)
+texture_scale = 0.5
+
+[node name="Foreground" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xb6il")
+
+[node name="Boss0" type="Sprite2D" parent="."]
+z_index = 7
+material = SubResource("ShaderMaterial_ncxmp")
+position = Vector2(108, 30)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("24_eqys3")
+hframes = 10
+
+[node name="Boss1" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 6
+material = SubResource("ShaderMaterial_2ewe3")
+position = Vector2(106, 84)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("25_64sus")
+offset = Vector2(0, -6)
+hframes = 12
+frame = 5
+
+[node name="Boss2" type="Sprite2D" parent="."]
+z_index = 7
+material = SubResource("ShaderMaterial_8qt2s")
+position = Vector2(104, 106)
+texture = ExtResource("26_f8q1t")
+hframes = 9
+
+[node name="Boss3" type="Sprite2D" parent="."]
+z_index = 7
+material = SubResource("ShaderMaterial_8qt2s")
+position = Vector2(104, 158.5)
+scale = Vector2(0.63, 0.63)
+texture = ExtResource("27_j2mbs")
+hframes = 9
+
+[node name="DescriptionContainer" type="PanelContainer" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 240.0
+offset_bottom = 270.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eyh60")
+
+[node name="Description1" type="Label" parent="DescriptionContainer"]
+z_index = -2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_h01kv")
+
+[node name="Description2" type="Label" parent="DescriptionContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_kqeq3")
+
+[node name="Description3" type="Label" parent="DescriptionContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_kdnr8")
+
+[node name="Description4" type="Label" parent="DescriptionContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = -2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_kdnr8")
+
+[node name="Label" type="Label" parent="DescriptionContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_sbu5b")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -328.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_t7sr0")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Stage1Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 2
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Stage2Button")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Stage2Button")
+focus_neighbor_bottom = NodePath(".")
+theme_override_styles/focus = SubResource("StyleBoxTexture_su3oa")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_h5nep")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_nn51e")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2fame")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5svv5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o7u8m")
+script = ExtResource("6_5flcn")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+text = "Stage 1"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 4
+text = "Clear Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button/MarginContainer"]
+layout_mode = 2
+
+[node name="CampfireParticle" type="GPUParticles2D" parent="PanelContainer/MarginContainer/VBoxContainer/Stage1Button"]
+visible = false
+material = SubResource("CanvasItemMaterial_kslqc")
+position = Vector2(55, 14)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_tsh08")
+texture = ExtResource("35_2xgyo")
+lifetime = 1.2
+
+[node name="Stage2Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Stage1Button")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Stage1Button")
+focus_neighbor_bottom = NodePath(".")
+theme_override_styles/focus = SubResource("StyleBoxTexture_jsnrc")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_susnw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eq6m2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ldg2r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_we1ep")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gih2s")
+script = ExtResource("8_tvbuk")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+text = "Stage 2"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 4
+text = "Clear Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage2Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Stage3Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxTexture_v6qgw")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_fjmin")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_a73jy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7i06a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0li28")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cb471")
+script = ExtResource("35_ywoew")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+text = "Stage 2"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 4
+text = "Clear Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage3Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Stage4Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxTexture_evamm")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ao3y2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_q5ryn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_u8adq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w6hj8")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kgirl")
+script = ExtResource("48_lae7t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 185.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+text = "Stage 2"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearTimeLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 4
+text = "Clear Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Stage4Button/MarginContainer"]
+layout_mode = 2
+
+[node name="Stage5Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_yjn0d")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_7peei")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_enup7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mo5h4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o7u8m")
+
+[node name="PanelContainer2" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 207.0
+offset_top = 126.0
+offset_right = 247.0
+offset_bottom = 133.51
+
+[node name="ClearTime" type="Label" parent="PanelContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 7
+vertical_alignment = 1
+
+[node name="ClearTime2" type="Label" parent="PanelContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 7
+vertical_alignment = 1
+
+[node name="ClearTime3" type="Label" parent="PanelContainer2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 7
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer2"]
+visible = false
+layout_mode = 2
+offset_left = -3.0
+offset_top = 16.0
+offset_right = 37.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 7
+text = "Null"
+vertical_alignment = 1
+
+[node name="ClearCount" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClearCount1" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="ClearCount2" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="ClearCount3" type="Label" parent="ClearCount"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 209.0
+offset_top = 159.0
+offset_right = 249.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstTimeToClear" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FirstClearTime1" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstClearTime2" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="FirstClearTime3" type="Label" parent="FirstTimeToClear"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 211.0
+offset_top = 209.0
+offset_right = 251.0
+offset_bottom = 217.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="AttemptsContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Attempts1" type="Label" parent="AttemptsContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 226.0
+offset_right = 232.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="Attempts2" type="Label" parent="AttemptsContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 226.0
+offset_right = 232.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="Attempts3" type="Label" parent="AttemptsContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 192.0
+offset_top = 226.0
+offset_right = 232.0
+offset_bottom = 234.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -13.0
+offset_right = 32.0
+grow_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.281428, 0.285774, 0.287634, 1)
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxFlat_cmkf5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nm8dl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qfy0a")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1a485")
+text = "Back
+"
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 234.0
+offset_right = 467.0
+offset_bottom = 258.0
+theme_override_fonts/font = ExtResource("6_2ynpa")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxFlat_1cikb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gm4hu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_huqbb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_8c3ot")
+text = "Play"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hxddm")
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n0hso")
+}
+
+[node name="LightAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nyjsr")
+}
+autoplay = "light_repeat"
+
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="." method="_on_stage_1_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage1Button" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="." method="_on_stage_2_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage2Button" method="_on_pressed"]
+[connection signal="focus_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_focus_entered"]
+[connection signal="focus_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="." method="_on_stage_3_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" to="PanelContainer/MarginContainer/VBoxContainer/Stage3Button" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Stage4Button" to="." method="_on_stage_4_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

@@ -1,24 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://sxjjfhh5ms51"]
+[gd_scene load_steps=6 format=3 uid="uid://sxjjfhh5ms51"]
+
+[ext_resource type="Material" uid="uid://cilx6hsw27l53" path="res://Material/spirit_particle_generator.tres" id="1_hakcv"]
+[ext_resource type="Texture2D" uid="uid://cgnjyla34y5o" path="res://Utilities/Effects/spotlight_1.png" id="1_qvw8l"]
 
 [sub_resource type="Gradient" id="Gradient_s2gbv"]
-offsets = PackedFloat32Array(0, 0.619658, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.686275, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_p5n5y"]
 gradient = SubResource("Gradient_s2gbv")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i7msg"]
-lifetime_randomness = 0.08
-particle_flag_disable_z = true
+lifetime_randomness = 0.15
 emission_shape = 3
-emission_box_extents = Vector3(480, 270, 1)
-gravity = Vector3(0, -5, 0)
+emission_box_extents = Vector3(350, 240, 1)
+gravity = Vector3(0, -15, 0)
 radial_accel_min = -1.0
 radial_accel_max = -1.0
-scale_max = 4.0
+scale_min = 0.01
+scale_max = 0.01
 color_ramp = SubResource("GradientTexture1D_p5n5y")
+turbulence_enabled = true
 
 [node name="SpiritParticleGenerator" type="GPUParticles2D"]
-amount = 30
+material = ExtResource("1_hakcv")
+amount = 25
 process_material = SubResource("ParticleProcessMaterial_i7msg")
-lifetime = 2.0
+texture = ExtResource("1_qvw8l")
+lifetime = 3.0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://85tdarqc0drk"]
+
+[ext_resource type="Script" path="res://Singleton/input_manager.gd" id="1_vxxva"]
+[ext_resource type="Script" path="res://Singleton/controller_manager.gd" id="2_7hobn"]
+
+[node name="InputManager" type="Node"]
+script = ExtResource("1_vxxva")
+
+[node name="ControllerManager" type="Node" parent="."]
+script = ExtResource("2_7hobn")

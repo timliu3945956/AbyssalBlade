@@ -9,20 +9,13 @@ var radius = 110
 var attack_counter = 0
 var can_transition: bool = false
 
+const CYCLE := 4.0
 var current_vertex_index: int = 0
 
 func enter():
 	super.enter()
+	var start_ms := Time.get_ticks_msec()
 	owner.set_physics_process(true)
-	
-	#move_boss()
-	#if center_of_arena.x - position.x > 0:
-		#animation_player.play("idle_right")
-	#else:
-		#animation_player.play("idle_left")
-		
-	#await get_tree().create_timer(0.1666).timeout
-	
 	animation_player.play("charge")
 	if center_of_arena.x - owner.position.x > 0:
 		owner.sprite.flip_h = false
@@ -31,11 +24,6 @@ func enter():
 		owner.sprite.flip_h = true
 		owner.sprite_shadow.flip_h = true
 	await get_tree().create_timer(2).timeout
-	
-	
-	#animation_player.play("into_charge")
-	#await animation_player.animation_finished
-	
 	
 	owner.beam_rotation.rotation = owner.beam_rotation.global_position.angle_to_point(player.global_position)
 	owner.beam_animation_player.play("beam_telegraph")
@@ -49,26 +37,25 @@ func enter():
 		owner.sprite_shadow.flip_h = true
 		
 	animation_player.play("beam")
-	await get_tree().create_timer(0.0998).timeout
+	await get_tree().create_timer(0.15).timeout
 	auto_attack_audio.play()
 	await owner.beam_animation_player.animation_finished
 	
-	#await get_tree().create_timer(0.1501).timeout
-	#auto_attack_audio.play()
-	#await get_tree().create_timer(0.2499).timeout
-	
-	
 	beam(beam_rotation)
-	await get_tree().create_timer(1).timeout
-	
+	await get_tree().create_timer(0.979).timeout
+	#await get_tree().create_timer(0.033).timeout
 	owner.auto_attack_count += 1
+	var elapsed := (Time.get_ticks_msec() - start_ms) / 1000.0
+	print("ranged elapsed time since start of attack", elapsed)
+	if elapsed < CYCLE:
+		print("ranged amount missing in time", CYCLE - elapsed)
+		await get_tree().create_timer(CYCLE - elapsed).timeout
+	
 	can_transition = true
 	
 func beam(rotation: Vector2):
 	var beam = LaserBeam.instantiate()
-	#beam.position = Vector2(0, -6)
 	beam.rotation = (rotation).angle()
-	#beam.position.angle_to_point(player.position)
 	add_child(beam)
 	print("beam being instantiated")
 	
@@ -134,6 +121,8 @@ func move_boss_to_furthest_adjacent_vertex(boss: Node2D, player: Node2D, vertex_
 	return tween
 	
 func get_boss_vertex_index(boss_pos: Vector2, vertex_positions: Array) -> int:
+	
+	
 	# Finds the index of whichever vertex is closest to `boss_pos`
 	var closest_index = 0
 	var closest_dist = INF

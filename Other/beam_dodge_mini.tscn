@@ -30,7 +30,6 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(1, 1.335, 1)
 emission_shape = 3
 emission_box_extents = Vector3(400.46, 21.85, 1)
-inherit_velocity_ratio = 0.51
 direction = Vector3(0, -1, 0)
 spread = 30.0
 initial_velocity_min = 60.0
@@ -1686,6 +1685,8 @@ scale = Vector2(2.437, 1)
 position = Vector2(88.2232, 0)
 scale = Vector2(0.345, 0.15)
 sprite_frames = SubResource("SpriteFrames_xjtky")
+frame = 64
+frame_progress = 1.0
 
 [node name="RedZap2" type="AnimatedSprite2D" parent="Marker2D/Node2D"]
 position = Vector2(258.104, 0)
@@ -1697,6 +1698,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D"]
+visible = false
 position = Vector2(413.5, 0)
 shape = SubResource("RectangleShape2D_qx1dk")
 disabled = true

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var sac_aoe_1: AnimatedSprite2D = $SacAOE1
 @onready var sac_aoe_2: AnimatedSprite2D = $SacAOE2
 @onready var aoe_particles: GPUParticles2D = $AOEParticles
+@onready var orb_soak_audio: AudioStreamPlayer2D = $OrbSoakAudio
 
 #vfx
 @onready var fire_orb_red: AnimatedSprite2D = $"FireOrb(Red)"
@@ -17,7 +18,7 @@ extends CharacterBody2D
 
 @onready var orb_zero_velocity_timer: Timer = $OrbZeroVelocityTimer
 
-var move_speed = 21.25
+var move_speed = 25.5
 var current_speed: float
 var orb_color: String = "red"
 var player: CharacterBody2D
@@ -52,6 +53,7 @@ func _on_orb_hitbox_area_entered(area: Area2D) -> void:
 		await animation_player.animation_finished
 	else:
 		#play animation here for gold absorb
+		orb_soak_audio.play()
 		gold_orb.visible = false
 		set_physics_process(false)
 		randomize()

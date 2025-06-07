@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://joxup503vv0s"]
+
+[ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="1_a0ies"]
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_denial.gd" id="1_tmhtj"]
+[ext_resource type="Texture2D" uid="uid://cjnremj7sj82s" path="res://sprites/DenialBoss/boss_animations/idle.png" id="2_tb8cs"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="3_fad12"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upppx"]
+shader = ExtResource("1_a0ies")
+shader_parameter/fade_alpha = 0.7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dficq"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(0, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_047xn"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(214, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfrm8"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(428, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb5q3"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(642, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh4ok"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(856, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2el4"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(1070, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_338op"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(1284, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eha1p"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(1498, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy3ac"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(1712, 0, 214, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll41q"]
+atlas = ExtResource("2_tb8cs")
+region = Rect2(1926, 0, 214, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ql4bp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dficq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_047xn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfrm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb5q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh4ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2el4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_338op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eha1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy3ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll41q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xhpn8"]
+radius = 45.0
+
+[node name="LobbyDenial" type="Node2D"]
+z_index = 1
+script = ExtResource("1_tmhtj")
+
+[node name="DenialShadow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_upppx")
+position = Vector2(1, -31.3333)
+sprite_frames = SubResource("SpriteFrames_ql4bp")
+autoplay = "default"
+frame_progress = 0.905421
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_fad12")]
+prompt_offset_y = 60.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xhpn8")
+
+[editable path="InteractionArea"]

@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var hit_particles: AnimatedSprite2D = $HitParticles2
 @onready var label: Label = $Label
+@onready var spawn_shadow_audio: AudioStreamPlayer2D = $SpawnShadowAudio
 
 @onready var hurtbox: CollisionShape2D = $Hurtbox/CollisionShape2D
 var invincible: bool = true
@@ -25,17 +26,19 @@ var timer_set: float
 var collision_set: bool
 
 func _ready():
+	sprite.material.set_shader_parameter("flash_modifier", 0.0)
 	black_wind.play("default")
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite.material, "shader_parameter/fade_alpha", 1, 0.5)
 	tween.tween_property(sprite_shadow.material, "shader_parameter/fade_alpha", 1, 0.5)
 	animation_player.play("pillar_idle")
+	spawn_shadow_audio.play()
 	pillar_timer.start(timer_set)
 	hurtbox.disabled = collision_set
 	
 func _process(delta):
 	if pillar_timer.time_left > 0:
-		label.text = str(int(pillar_timer.time_left))
+		label.text = str(int(ceil(pillar_timer.time_left)))
 
 #Hitbox for DEPRESSIVE THOUGHTS
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -60,6 +63,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
 	#checks if player orb buff is on
 	if player.orb_buff == true:
+		hurtbox.set_deferred("disabled", true)
 		if is_instance_valid(label):
 			label.queue_free()
 		player.orb_buff = false
@@ -76,6 +80,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		
 # hurtbox for DESTRUCTIVE THOUGHTS
 func _on_hurtbox_for_boss_area_entered(area: Area2D) -> void:
+	print("player dies, is this where i end up?")
 	print("pillar hit by boss protean")
 	if is_instance_valid(label):
 		label.queue_free()

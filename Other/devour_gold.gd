@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var sac_aoe_1: AnimatedSprite2D = $SacAOE1
 @onready var sac_aoe_2: AnimatedSprite2D = $SacAOE2
 @onready var aoe_particles: GPUParticles2D = $AOEParticles
+@onready var orb_soak_audio: AudioStreamPlayer2D = $OrbSoakAudio
 
 #vfx
 @onready var fire_orb_red: AnimatedSprite2D = $"FireOrb(Red)"
@@ -18,8 +19,9 @@ var tween: Tween
 
 func _ready():
 	#orb_color_change_timer.start()
-	#animation_player.play("orb_red_start")
+	animation_player.play("orb_red_start")
 	fire_orb_red.play("default")
+	await get_tree().create_timer(0.5).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", boss.position, 5)
 
@@ -35,6 +37,7 @@ func _on_orb_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_orb_player_hurtbox_area_entered(area: Area2D) -> void:
 	GlobalEvents.emit_signal("devour_gold_collected")
+	orb_soak_audio.play()
 	#insert anim for orb dissapearing here
 	fire_orb_red.visible = false
 	tween.kill()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co8mnsosg6m1v"
+path="res://.godot/imported/structure break.mp3-dd32525e5a4fb4efc3d6efb0bbffd7d8.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/structure break.mp3"
+dest_files=["res://.godot/imported/structure break.mp3-dd32525e5a4fb4efc3d6efb0bbffd7d8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

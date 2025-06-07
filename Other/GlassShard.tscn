@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnykq0b6ngeh"]
+
+[ext_resource type="Script" path="res://Other/glass_shard.gd" id="1_d0qlo"]
+[ext_resource type="Texture2D" uid="uid://t6y4lp0o08tn" path="res://Utilities/Effects/glass_1.png" id="2_ypxrh"]
+[ext_resource type="Script" path="res://Utilities/DashGhost/ObjectTrail.gd" id="3_b3bjj"]
+[ext_resource type="PackedScene" uid="uid://d2nrf0cl4uvfi" path="res://Utilities/DashGhost/DashTrail.tscn" id="3_gy0ex"]
+
+[sub_resource type="Gradient" id="Gradient_xrt17"]
+colors = PackedColorArray(0.843137, 0.843137, 0.843137, 1, 0, 0, 0, 0.141176)
+
+[node name="GlassShard" type="Node2D"]
+z_index = 5
+script = ExtResource("1_d0qlo")
+max_radius = 250.0
+min_radius = 20.0
+hold_duration = 2.0
+min_scale = 0.1
+max_scale = 0.35
+min_spin_deg_per_sec = 30.0
+max_spin_deg_per_sec = 180.0
+
+[node name="DashTrail" parent="." instance=ExtResource("3_gy0ex")]
+width = 2.0
+gradient = SubResource("Gradient_xrt17")
+begin_cap_mode = 2
+script = ExtResource("3_b3bjj")
+MAX_LENGTH = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ypxrh")

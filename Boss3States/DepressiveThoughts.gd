@@ -5,6 +5,7 @@ var DepressionPillar2 = preload("res://Other/DepressionPillar2.tscn")
 var DepressionOrb = preload("res://Other/DepressionOrb.tscn")
 
 var can_transition: bool = false
+var pick_random_timer: int = randi_range(1, 2)
 
 func enter():
 	super.enter()
@@ -43,7 +44,10 @@ func pillar_spawn(pillar_position: Vector2):
 	var pillar = DepressionPillar.instantiate()
 	pillar.position = pillar_position
 	pillar.player = player
-	pillar.timer_set = 13.0
+	if pick_random_timer == 1:
+		pillar.timer_set = 13.0
+	else:
+		pillar.timer_set = 23.0
 	pillar.collision_set = false
 	get_parent().get_parent().get_parent().add_child(pillar)
 
@@ -51,7 +55,10 @@ func pillar_spawn_2(pillar_position: Vector2):
 	var pillar_2 = DepressionPillar2.instantiate()
 	pillar_2.position = pillar_position
 	pillar_2.player = player
-	pillar_2.timer_set = 23.0
+	if pick_random_timer == 1:
+		pillar_2.timer_set = 23.0
+	else:
+		pillar_2.timer_set = 13.0
 	pillar_2.collision_set = false
 	get_parent().get_parent().get_parent().add_child(pillar_2)
 

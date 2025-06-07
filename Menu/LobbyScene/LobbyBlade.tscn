@@ -1,0 +1,283 @@
+[gd_scene load_steps=40 format=3 uid="uid://h2oywn38ke65"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_blade.gd" id="1_fpqxy"]
+[ext_resource type="Texture2D" uid="uid://bkg0ch6e0o336" path="res://Utilities/Effects/particlefx/Wind_Shout_Burst_White_v6_spritesheet.png" id="2_aqro1"]
+[ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_y5vg6"]
+[ext_resource type="Texture2D" uid="uid://sab7qd5cwwkk" path="res://Utilities/Effects/particlefx/Wind_Shout_Loop_White_v1_A_spritesheet.png" id="3_x6fhq"]
+[ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="4_asc87"]
+[ext_resource type="Texture2D" uid="uid://0lqvhvuma00v" path="res://Utilities/menu/lobby/ab_ground.png" id="6_ew7m6"]
+[ext_resource type="AudioStream" uid="uid://1hjbryml4rjn" path="res://audio/sfx/Boss/knockback.wav" id="6_og0mp"]
+[ext_resource type="Texture2D" uid="uid://d3yqso47xqbl2" path="res://Utilities/menu/save file/gems_clear.png" id="7_1e5sk"]
+[ext_resource type="Shader" path="res://Utilities/menu/save file/highlight_shader.gdshader" id="8_wg0px"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6x46s"]
+blend_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er605"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jifc"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoe1b"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrrkj"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysigc"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0uvq"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76q6n"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqa5m"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa3ui"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apprr"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljijn"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1khf"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_042r7"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw66y"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrruh"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvtx0"]
+atlas = ExtResource("2_aqro1")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu2ve"]
+atlas = ExtResource("3_x6fhq")
+region = Rect2(2560, 3584, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_77qdq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er605")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jifc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yoe1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrrkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysigc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0uvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76q6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqa5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa3ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apprr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljijn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1khf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_042r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw66y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrruh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvtx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu2ve")
+}],
+"loop": false,
+"name": &"knockback_effect",
+"speed": 25.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_my56c"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_euu56"]
+offsets = PackedFloat32Array(0, 0.724138, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gx35"]
+gradient = SubResource("Gradient_euu56")
+
+[sub_resource type="Curve" id="Curve_74p8a"]
+_data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.238924), -1.04308, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_kno4f"]
+curve = SubResource("Curve_74p8a")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cepsd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(0, -40, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_kno4f")
+color_ramp = SubResource("GradientTexture1D_2gx35")
+turbulence_enabled = true
+turbulence_noise_speed_random = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dn3di"]
+shader = ExtResource("2_y5vg6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnx7l"]
+shader = ExtResource("2_y5vg6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/fade_alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ks545"]
+shader = ExtResource("8_wg0px")
+shader_parameter/Line_Smoothness = 0.066
+shader_parameter/Line_Width = 0.099
+shader_parameter/Brightness = 3.0
+shader_parameter/Rotation_deg = 90.0
+shader_parameter/Distortion = 1.52
+shader_parameter/Speed = 0.3
+shader_parameter/Position = 0.448
+shader_parameter/Position_Min = 0.25
+shader_parameter/Position_Max = 0.5
+shader_parameter/Alpha = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgfq3"]
+radius = 3.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpaym"]
+size = Vector2(8, 25)
+
+[node name="LobbyBlade" type="Node2D"]
+z_index = 1
+script = ExtResource("1_fpqxy")
+
+[node name="KnockbackEffect" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.392157)
+material = SubResource("CanvasItemMaterial_6x46s")
+scale = Vector2(0.815, 0.815)
+sprite_frames = SubResource("SpriteFrames_77qdq")
+animation = &"knockback_effect"
+frame = 16
+frame_progress = 1.0
+
+[node name="GoldParticles" type="GPUParticles2D" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_my56c")
+position = Vector2(0, -3)
+rotation = -1.5708
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_cepsd")
+texture = ExtResource("4_asc87")
+lifetime = 4.0
+
+[node name="Blade" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dn3di")
+position = Vector2(0, -27.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_ew7m6")
+
+[node name="Gem" type="Sprite2D" parent="."]
+clip_children = 2
+material = SubResource("ShaderMaterial_vnx7l")
+position = Vector2(0, -9)
+rotation = -4.71238
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_1e5sk")
+
+[node name="ColorRect" type="ColorRect" parent="Gem"]
+material = SubResource("ShaderMaterial_ks545")
+offset_left = 16.6666
+offset_top = -5.00011
+offset_right = 26.6666
+offset_bottom = 32.9999
+rotation = 1.57079
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_tgfq3")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_wpaym")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="KnockbackAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -12)
+stream = ExtResource("6_og0mp")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="animation_finished" from="KnockbackEffect" to="." method="_on_knockback_effect_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

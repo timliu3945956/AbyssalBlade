@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bdfbas3qsbrfc"]
 
 [ext_resource type="Script" path="res://Characters/circle_aoe.gd" id="1_u6gox"]
+[ext_resource type="AudioStream" uid="uid://b14fp561moucg" path="res://audio/sfx/Boss/2_eruption.wav" id="3_c4xmt"]
 [ext_resource type="Texture2D" uid="uid://dr4edr0xbnwot" path="res://sprites/boss_room_attacks/Mechanic2/initial bait.png" id="3_fc88q"]
-[ext_resource type="AudioStream" uid="uid://cb2sw6scvwf6n" path="res://audio/sfx/Boss/eruption bait.wav" id="3_gn6uu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc124"]
 atlas = ExtResource("3_fc88q")
@@ -97,19 +97,19 @@ animations = [{
 }]
 
 [node name="CircleAOE" type="Node2D"]
-z_index = -1
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_u6gox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_5inek")
 animation = &"CircleAOE"
 frame = 11
 frame_progress = 1.0
 
 [node name="EruptionAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gn6uu")
-volume_db = -5.0
+stream = ExtResource("3_c4xmt")
+volume_db = -8.0
 bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

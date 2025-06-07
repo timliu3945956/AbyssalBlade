@@ -1,0 +1,366 @@
+[gd_scene load_steps=45 format=3 uid="uid://iriwre5oq8xo"]
+
+[ext_resource type="Script" path="res://Menu/tutorial_page.gd" id="1_ce860"]
+[ext_resource type="Texture2D" uid="uid://cxmekaehfpedg" path="res://Utilities/menu/stage select/stage_select_revamp/Stage_Select_none.png" id="1_l0unv"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_8raxq"]
+[ext_resource type="Texture2D" uid="uid://8ynn8mql1j5r" path="res://Utilities/menu/guide/guide_movement.png" id="3_h12bl"]
+[ext_resource type="Texture2D" uid="uid://06lg72500wwq" path="res://Utilities/menu/guide/divider.png" id="3_u4o5y"]
+[ext_resource type="Texture2D" uid="uid://on6sbcblfon1" path="res://Utilities/menu/guide/guide_aiming.png" id="4_cvsj7"]
+[ext_resource type="Texture2D" uid="uid://b2oifp6up83nv" path="res://Utilities/menu/guide/guide_abyssalgauge.png" id="4_fk5f0"]
+[ext_resource type="Texture2D" uid="uid://djudgurl3gfa8" path="res://Utilities/menu/guide/guide_hurtbox.png" id="5_xthup"]
+[ext_resource type="Texture2D" uid="uid://dgbexxs302ook" path="res://Utilities/menu/guide/guide_death.png" id="6_pm1xu"]
+[ext_resource type="Texture2D" uid="uid://43q2q6wqu7ks" path="res://Utilities/menu/guide/guide_slash.png" id="8_edrqx"]
+[ext_resource type="Texture2D" uid="uid://6xx8y8dc6ipf" path="res://Utilities/menu/guide/guide_cleave.png" id="9_lx78q"]
+[ext_resource type="Texture2D" uid="uid://co0ipnvq5sows" path="res://Utilities/menu/guide/guide_dash.png" id="10_8mb5a"]
+[ext_resource type="Texture2D" uid="uid://cld3ny7klxm2t" path="res://Utilities/menu/guide/guide_charge.png" id="11_3gv3p"]
+[ext_resource type="Texture2D" uid="uid://nw1f4nu43mk3" path="res://Utilities/menu/guide/guide_surge.png" id="12_jjotd"]
+[ext_resource type="Texture2D" uid="uid://xmppul2uxng" path="res://Utilities/menu/guide/guide_surgeslash.png" id="13_lgx6i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egebv"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txflv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlmjg"]
+texture = ExtResource("3_h12bl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eyerg"]
+texture = ExtResource("4_cvsj7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qy27p"]
+texture = ExtResource("5_xthup")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gkxva"]
+texture = ExtResource("6_pm1xu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llk84"]
+texture = ExtResource("4_fk5f0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_57kke"]
+texture = ExtResource("8_edrqx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e4nif"]
+texture = ExtResource("9_lx78q")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o7iph"]
+texture = ExtResource("10_8mb5a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0hhn"]
+texture = ExtResource("11_3gv3p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8de57"]
+texture = ExtResource("12_jjotd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c8ccl"]
+texture = ExtResource("13_lgx6i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16rt6"]
+texture = ExtResource("1_l0unv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c66rj"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kv48"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6i8oa"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2v4nb"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mi4oh"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cx40e"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5mm64"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bn3qk"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l8mmh"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lesbp"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f2482"]
+content_margin_left = 6.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3yel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhchq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vit5y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0nbwi"]
+
+[node name="TutorialPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ce860")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_egebv")
+
+[node name="GuideLabel" type="Label" parent="CanvasLayer"]
+offset_left = 93.0
+offset_top = 17.0
+offset_right = 153.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 7
+text = "Guide"
+vertical_alignment = 1
+
+[node name="DescriptionContainer" type="Panel" parent="CanvasLayer"]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_txflv")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DescriptionContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MovementText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_nlmjg")
+
+[node name="AimingText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_eyerg")
+
+[node name="HurtboxText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_qy27p")
+
+[node name="DeathText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_gkxva")
+
+[node name="AbyssalGaugeText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_llk84")
+
+[node name="SlashText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_57kke")
+
+[node name="CleaveText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_e4nif")
+
+[node name="DashText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_o7iph")
+
+[node name="ChargeText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_o0hhn")
+
+[node name="SurgeText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_8de57")
+
+[node name="SurgeSlashText" type="Label" parent="CanvasLayer/DescriptionContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_c8ccl")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_16rt6")
+
+[node name="ButtonContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 101
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ButtonContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="MovementButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_c66rj")
+text = "Movement"
+alignment = 0
+
+[node name="AimingButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_1kv48")
+text = "Aiming"
+alignment = 0
+
+[node name="HurtboxButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_6i8oa")
+text = "Hurtbox"
+alignment = 0
+
+[node name="DeathButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_2v4nb")
+text = "Death"
+alignment = 0
+
+[node name="AbyssalGaugeButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_mi4oh")
+text = "Abyssal Gauge"
+alignment = 0
+
+[node name="SlashButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_cx40e")
+text = "Slash"
+alignment = 0
+
+[node name="CleaveButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_5mm64")
+text = "Cleave"
+alignment = 0
+
+[node name="DashButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_bn3qk")
+text = "Dash"
+alignment = 0
+
+[node name="ChargeButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_l8mmh")
+text = "Charge"
+alignment = 0
+
+[node name="SurgeButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_lesbp")
+text = "Surge"
+alignment = 0
+
+[node name="SurgeSlashButton" type="Button" parent="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxTexture_f2482")
+text = "Surge: Slash+"
+alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PanelContainer"]
+position = Vector2(188, 135)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_u4o5y")
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+z_index = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 362.0
+offset_top = -35.0
+offset_right = 394.0
+offset_bottom = -22.0
+grow_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.281428, 0.285774, 0.287634, 1)
+theme_override_fonts/font = ExtResource("2_8raxq")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h3yel")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vhchq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vit5y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0nbwi")
+text = "Back
+"
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/MovementButton" to="." method="_on_movement_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/AimingButton" to="." method="_on_aiming_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/HurtboxButton" to="." method="_on_hurtbox_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/DeathButton" to="." method="_on_death_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/AbyssalGaugeButton" to="." method="_on_abyssal_gauge_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/SlashButton" to="." method="_on_slash_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/CleaveButton" to="." method="_on_cleave_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/DashButton" to="." method="_on_dash_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/ChargeButton" to="." method="_on_charge_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/SurgeButton" to="." method="_on_surge_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/ButtonContainer/VBoxContainer/SurgeSlashButton" to="." method="_on_surge_slash_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,45 @@
+~ NPC
+#if Global.player_data_slots[Global.current_slot_index].first_play_4
+#	You: You found balance between heart and mind.
+#	You: I thought it was impossible.
+#	You: But watching you... maybe I was wrong.
+GlobalCount.stage_select_pause = true
+if not Global.player_data_slots[Global.current_slot_index].first_play_3
+	You: You found balance between heart and mind.
+	You: I thought it was impossible.
+	You: But watching you... maybe I was wrong.
+elif not Global.player_data_slots[Global.current_slot_index].first_play_2
+	You: You moved on. I didn't.
+	You: Anger helped me cope. But it never helped me heal.
+elif not Global.player_data_slots[Global.current_slot_index].first_play_1
+	You: You faced your past. Mine still holds me.
+	You: I can't escape it.
+else
+	You: I was you before I lost my way.
+	You: I've wandered here for so long.
+	You: Now the blade won't let me leave.
+=> END
+
+~ DENIAL
+% Denial: The past isn't gone. I'm still living in it.
+% Denial: Letting go means admitting it's over.
+% Denial: The truth can't hurt if you never face it.
+=> END
+
+~ ANGER
+% Anger: If I destroy enough, maybe the pain will stop. 
+% Anger: Let it burn. At least flames feel alive.
+% Anger: Pain is the only thing that listens.
+=> END
+
+~ BARGAIN
+% Bargain: There has to be a way to undo this.
+% Bargain: If I give enough, maybe I can bring it back.
+% Bargain: Tell me what it costs. I'll pay it.
+=> END
+
+~ DEPRESSION
+% Depression: Everything I do feels hollow.
+% Depression: They say time heals. I think time just numbs.
+% Depression: Hope is a rebellion I do not allow.
+=> END

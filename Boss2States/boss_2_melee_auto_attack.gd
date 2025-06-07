@@ -10,13 +10,16 @@ extends State
 var center_of_screen = get_viewport_rect().size / 2 
 var attack_counter = 0
 var store_player_position: Vector2
+
+var move_boss: Tween
+const CYCLE := 4.0
 var can_transition: bool = false
 
 func enter():
 	super.enter()
+	var start_ms := Time.get_ticks_msec()
+	
 	owner.set_physics_process(true)
-	#owner.attack_meter_animation.play("auto_attack")
-	#animation_player.play("auto_attack")
 	animation_player.play("charge_up_auto_attack")
 	await animation_player.animation_finished
 	
@@ -32,10 +35,8 @@ func enter():
 	else:
 		animation_player.play("auto_attack_left")
 	await get_tree().create_timer(0.0833).timeout
+	
 	move_boss_to_player(store_player_position, owner)
-	
-	
-	
 	await get_tree().create_timer(0.25).timeout
 	#owner.slam_telegraph_player.play("slam_telegraph")
 	#jump_slam_telegraph.global_position = player.global_position
@@ -51,28 +52,28 @@ func enter():
 		#animation_player.play("auto_attack_left")
 	#await get_tree().create_timer(0.3333).timeout
 	#lightning_slam()
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.942).timeout
 	
 	owner.auto_attack_count += 1
+	var elapsed := (Time.get_ticks_msec() - start_ms) / 1000.0
+	print("melee elapsed time since start of attack", elapsed)
+	if elapsed < CYCLE:
+		print("melee amount missing in time", CYCLE - elapsed)
+		await get_tree().create_timer(CYCLE - elapsed).timeout
 	can_transition = true
 	
 func move_boss_to_player(player_position: Vector2, boss: Node2D):
 	#dash_wind.play("default")
 	jump_wind.play("default")
-	var move_boss = get_tree().create_tween()
+	move_boss = get_tree().create_tween()
+	move_boss.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	move_boss.tween_property(boss, "position", player_position, 0.25) #0.4 seconds before change
-	
-#func lightning_slam():
-	#var lightning_slam = LightningSlam.instantiate()
-	#print("global_position: ", owner.global_position)
-	#lightning_slam.position = position
-	##beam.position.angle_to_point(player.position)
-	#add_child(lightning_slam)
 
 func transition():
 	if can_transition:
 		can_transition = false
 		if owner.auto_attack_count == 3:
+			#owner.fortold_start()
 			get_parent().change_state("Foretold")
 		elif owner.auto_attack_count == 6:
 			get_parent().change_state("WickedHeart")
@@ -82,5 +83,3 @@ func transition():
 			get_parent().change_state("Walk")
 		else:
 			enter()
-		#elif attack_counter == 8:
-			#get_parent().change_state("HandsOfPain")

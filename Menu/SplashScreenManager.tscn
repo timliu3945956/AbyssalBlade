@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://jb4ociv1b20e"]
+
+[ext_resource type="Texture2D" uid="uid://xm3v58p528l2" path="res://Utilities/logo/godot_logo.png" id="1_xcaay"]
+[ext_resource type="Script" path="res://Menu/splash_screen_manager.gd" id="1_y58ed"]
+[ext_resource type="Texture2D" uid="uid://bkrtliddv26ir" path="res://Utilities/logo/vifer_games_logo.png" id="2_ice46"]
+[ext_resource type="AudioStream" uid="uid://nmnvta3c27qu" path="res://audio/music/ABYSSAL BLADE.wav" id="4_s84o0"]
+
+[node name="SplashScreenManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y58ed")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -720.0
+offset_top = -405.0
+offset_right = 720.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GodotLogo" type="TextureRect" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 2
+texture = ExtResource("1_xcaay")
+expand_mode = 1
+
+[node name="ViferLogo" type="TextureRect" parent="CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(480, 270)
+layout_mode = 2
+texture = ExtResource("2_ice46")
+expand_mode = 1
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s84o0")
+volume_db = -30.0
+bus = &"Music"

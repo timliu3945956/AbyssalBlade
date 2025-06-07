@@ -3,6 +3,8 @@ class_name InteractionArea
 
 @export var action_name: String = "interact"
 
+@export var prompt_offset_y: float = -50.0
+
 var interact: Callable = func():
 	pass
 

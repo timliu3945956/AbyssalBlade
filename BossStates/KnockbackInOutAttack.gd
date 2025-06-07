@@ -28,12 +28,12 @@ func enter():
 	animation_player.play("idle_right")
 	await get_tree().create_timer(0.6667).timeout
 	#animation_player.play("idle_right")
-	player.beam_circle_meteor()
+	#player.beam_circle_meteor()
 	owner.boss_room_animation.play("meteor")
 	await get_tree().create_timer(2.6668).timeout
 	animation_player.play("alternate_slam")
 	await get_tree().create_timer(0.3332).timeout
-	owner.beam_circle()
+	#owner.beam_circle()
 	
 	owner.meteor.closest_square_position(player.position)
 	await get_tree().create_timer(1.4004).timeout
@@ -95,7 +95,7 @@ func enter():
 	
 func apply_knockback():
 	if player:
-		player.apply_knockback(center_of_screen + Vector2(240, 135), 175) #350
+		player.apply_knockback(center_of_screen + Vector2(240, 135), 350) #350 #175
 	
 func transition():
 	if can_transition:

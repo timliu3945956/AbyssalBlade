@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmf5j5r1qa5hk"]
 
-[ext_resource type="AudioStream" uid="uid://baw484xopw2n1" path="res://audio/music/main menu music (memory of the lost).wav" id="1_jgugs"]
+[ext_resource type="AudioStream" uid="uid://nmnvta3c27qu" path="res://audio/music/ABYSSAL BLADE.wav" id="1_ngtgr"]
 [ext_resource type="Script" path="res://Menu/audio_player.gd" id="2_60sdq"]
 
 [node name="audio_player" type="AudioStreamPlayer2D"]
 process_mode = 3
-stream = ExtResource("1_jgugs")
+stream = ExtResource("1_ngtgr")
 volume_db = -20.0
 bus = &"Music"
 script = ExtResource("2_60sdq")

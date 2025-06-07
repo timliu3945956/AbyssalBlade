@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddmnx3w5hrhi5"]
+
+[ext_resource type="Script" path="res://Menu/SaveFile/delete_popup.gd" id="1_jw27k"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_tpvht"]
+[ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="2_wf501"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjee7"]
+texture = ExtResource("2_wf501")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aam2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xjwu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usatg"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2mmj"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemvf"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj7is"]
+
+[node name="DeletePopup" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw27k")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_gjee7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -60.0
+offset_right = 64.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_aam2d")
+
+[node name="Label" type="Label" parent="MarginContainer/Panel"]
+layout_mode = 2
+offset_left = 36.5
+offset_top = 22.5
+offset_right = 91.5
+offset_bottom = 32.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_tpvht")
+theme_override_font_sizes/font_size = 9
+text = "Are you sure?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -8.0
+offset_right = 46.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="YesButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_tpvht")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xjwu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_usatg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2mmj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oemvf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cj7is")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_tpvht")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xjwu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_usatg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_k2mmj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oemvf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cj7is")
+text = "No"
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

@@ -53,4 +53,11 @@ func _process(_delta):
 			set_process(false)
 			
 func perform_scene_change():
-	get_tree().change_scene_to_packed(_loaded_resource)
+	#var temp := _loaded_resource.instantiate()
+	#temp.visible = false
+	#get_tree().root.add_child(temp)
+	#
+	#await get_tree().process_frame
+	#temp.queue_free()
+	#change_scene_to_file, _scene_path
+	get_tree().change_scene_to_file(_scene_path)

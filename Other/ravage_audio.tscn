@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3xwgrgw8536s"]
+
+[ext_resource type="AudioStream" uid="uid://de2cgjvhjgqws" path="res://audio/sfx/Boss4/5_ravage.wav" id="1_536vw"]
+[ext_resource type="Script" path="res://Other/ravage_audio.gd" id="2_0q55l"]
+
+[node name="RavageAudio" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_536vw")
+volume_db = -13.0
+autoplay = true
+script = ExtResource("2_0q55l")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://cdgaelc63ek0"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/adjust_controls.gd" id="1_8t32v"]
+[ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="1_ena5d"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_ho3cc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_irr5u"]
+texture = ExtResource("1_ena5d")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xc4ws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_346ln"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c2hb"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7bva"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eubhr"]
+
+[node name="AdjustControls" type="Control"]
+z_index = 4
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8t32v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_irr5u")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -32.0
+offset_right = 35.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ho3cc")
+theme_override_font_sizes/font_size = 9
+text = "Adjust Controls?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -8.0
+offset_right = 46.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="YesButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ho3cc")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xc4ws")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_346ln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0c2hb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t7bva")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eubhr")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ho3cc")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xc4ws")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_346ln")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0c2hb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t7bva")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eubhr")
+text = "No"
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

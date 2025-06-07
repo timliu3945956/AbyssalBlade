@@ -14,10 +14,10 @@ func enter():
 	
 	owner.boss_room_animation.play("arena_aoe")
 	await owner.boss_room_animation.animation_finished
-	can_transition = true
+	#can_transition = true
 	
-func transition():
-	if can_transition:
-		can_transition = false
-		get_parent().change_state()
+#func transition():
+	#if can_transition:
+		#can_transition = falsef
+		#get_parent().change_state()
 		

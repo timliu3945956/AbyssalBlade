@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ho8cin4hyhv2"
+path="res://.godot/imported/fleeting hope safe.mp3-fd772cb30a3a7179141c3ce1b7815f64.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/fleeting hope safe.mp3"
+dest_files=["res://.godot/imported/fleeting hope safe.mp3-fd772cb30a3a7179141c3ce1b7815f64.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
