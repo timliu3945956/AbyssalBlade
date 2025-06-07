@@ -6,7 +6,10 @@ func enter():
 	super.enter()
 	owner.velocity = Vector2.ZERO
 	animation_player.play("idle_right")
-	
+	if owner.timeline >= 6:
+		owner.boss_charge_animation.play("initial_cleave_2")
+	else:
+		owner.boss_charge_animation.play("initial_cleave")
 	match owner.pick_ns_ew:
 		1:
 			owner.boss_room_animation.play("cleave_ns_telegraph")

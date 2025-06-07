@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var player = get_parent().find_child("Player")
 var Meteor = preload("res://Other/MeteorMech.tscn")
+var meteor_drop = Meteor.instantiate()
 
 var squares = [
 	Vector2(-112.5, -112.5),
@@ -38,6 +39,6 @@ func closest_square_position(player_pos: Vector2):
 
 func spawn_meteor(target_position: Vector2):
 	if is_instance_valid(player):
-		var meteor_drop = Meteor.instantiate()
+		meteor_drop = Meteor.instantiate()
 		meteor_drop.position = target_position
 		add_child(meteor_drop)

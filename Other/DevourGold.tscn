@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://xqohfpnttska"]
+[gd_scene load_steps=165 format=3 uid="uid://xqohfpnttska"]
 
 [ext_resource type="Script" path="res://Other/devour_gold.gd" id="1_jijnj"]
 [ext_resource type="Texture2D" uid="uid://dpqtv7sbhbhts" path="res://Utilities/Effects/firevfx/Fireball_v6_Loop_A_gold.png" id="2_5ltm2"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cc4fmiv5lner" path="res://Hitbox and Hurtbox/hurtbox.tscn" id="5_la8qk"]
 [ext_resource type="Texture2D" uid="uid://d0yh0824alk1q" path="res://Utilities/Effects/particlefx/Impact_Wind_White_v6_spritesheet.png" id="6_2m4oi"]
 [ext_resource type="Texture2D" uid="uid://dm4yat7en0w6l" path="res://Utilities/Effects/particlefx/floaty_128.png" id="7_j5jul"]
-[ext_resource type="AudioStream" uid="uid://dt4l8j2r23a2s" path="res://audio/sfx/Boss3/orb soak.mp3" id="11_6u0s3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17wbk"]
 
@@ -1137,7 +1136,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_klord"]
@@ -1241,6 +1240,7 @@ scale = Vector2(0.15625, 0.1875)
 texture = SubResource("GradientTexture2D_hfimw")
 
 [node name="FireOrb(Red)" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-1.52588e-05, -15)
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_bqrsx")
@@ -1324,11 +1324,6 @@ disabled = true
 visible = false
 position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_qgbb0")
-
-[node name="OrbSoakAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_6u0s3")
-volume_db = -15.0
-bus = &"SFX"
 
 [connection signal="area_entered" from="OrbBossHurtbox" to="." method="_on_orb_hitbox_area_entered"]
 [connection signal="area_entered" from="OrbPlayerHurtbox" to="." method="_on_orb_player_hurtbox_area_entered"]

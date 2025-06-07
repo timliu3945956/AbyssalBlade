@@ -95,12 +95,12 @@ func enter():
 		if owner.top_down_charge_count % 2 == 0 and owner.enraged:
 			#await get_tree().create_timer(1).timeout
 			animation_player.play("idle_right")
-			player.beam_circle_meteor()
+			#player.beam_circle_meteor()
 			owner.boss_room_animation.play("meteor")
 			await get_tree().create_timer(2.6668).timeout
 			animation_player.play("alternate_slam")
 			await get_tree().create_timer(0.3332).timeout
-			owner.beam_circle()
+			#owner.beam_circle()
 			
 			owner.meteor.closest_square_position(player.position)
 			await get_tree().create_timer(1.4004).timeout

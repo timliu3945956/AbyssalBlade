@@ -2,6 +2,10 @@ extends Node
 
 var config = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
+const DEFAULT_WINDOW_MODE := "fullscreen"
+
+const ASPECT := Vector2(16, 9)
+const WINDOWED_SCALE := 0.80
 
 func _ready():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
@@ -21,6 +25,10 @@ func _ready():
 		config.set_value("audio", "master_volume", 0.1)
 		config.set_value("audio", "sfx_volume", 0.1)
 		config.set_value("audio", "music_volume", 0.1)
+		config.set_value("audio", "muted", false)
+		
+		config.set_value("video", "window_mode", DEFAULT_WINDOW_MODE)
+		config.set_value("video", "vsync", true)
 		
 		config.save(SETTINGS_FILE_PATH)
 	else:
@@ -35,6 +43,15 @@ func _ready():
 	#for key in config.get_section_keys("video"):
 		#video_settings[key] = config.get_value("video", key)
 	#return video_settings
+func reset_to_default() -> void:
+	config.set_value("audio", "master_volume", 0.1)
+	config.set_value("audio", "sfx_volume", 0.1)
+	config.set_value("audio", "music_volume", 0.1)
+	config.set_value("audio", "muted", false)
+	
+	config.set_value("video", "window_mode", DEFAULT_WINDOW_MODE)
+	config.set_value("video", "vsync", true)
+	config.save(SETTINGS_FILE_PATH)
 	
 func save_audio_setting(key: String, value):
 	config.set_value("audio", key, value)
@@ -44,6 +61,11 @@ func load_audio_settings():
 	var audio_settings = {}
 	for key in config.get_section_keys("audio"):
 		audio_settings[key] = config.get_value("audio", key)
+		
+	if !"muted" in audio_settings:
+		audio_settings["muted"] = false
+		config.set_value("audio", "muted", false)
+		config.save(SETTINGS_FILE_PATH)
 	return audio_settings
 	
 func save_keybinding(action: StringName, event: InputEvent):
@@ -72,3 +94,49 @@ func load_keybindings():
 			
 		keybindings[key] = input_event
 	return keybindings
+	
+func save_window_mode(mode: String) -> void:
+	config.set_value("video", "window_mode", mode)
+	config.save(SETTINGS_FILE_PATH)
+	
+func load_window_mode() -> String:
+	return config.get_value("video", "window_mode", DEFAULT_WINDOW_MODE)
+	
+func apply_window_mode(mode: String) -> void:
+	match mode:
+		"exclusive_fullscreen":
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		"windowed":
+			var screen : Vector2i = DisplayServer.screen_get_size()
+			var size : Vector2i = _calc_window_size(screen, WINDOWED_SCALE)
+			
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_size(size)
+			
+			var pos := (screen - size) / 2
+			DisplayServer.window_set_position(pos)
+			
+func _calc_window_size(screen: Vector2i, scale: float) -> Vector2i:
+	var w := int(screen.x * scale)
+	var h := int(w * ASPECT.y / ASPECT.x)
+	if h > screen.y * scale:
+		h = int(screen.y * scale)
+		w = int(h * ASPECT.x / ASPECT.y)
+	return Vector2i(w, h)
+	
+func save_vsync(enabled: bool) -> void:
+	config.set_value("video", "vsync", enabled)
+	config.save(SETTINGS_FILE_PATH)
+	
+func load_vsync() -> bool:
+	return bool(config.get_value("video", "vsync", true))
+	
+func save_muted(muted: bool) -> void:
+	config.set_value("audio", "muted", muted)
+	config.save(SETTINGS_FILE_PATH)
+	
+func load_muted() -> bool:
+	return bool(config.get_value("audio", "muted", false))
+	
+func get_bool(section: String, key: String, default_val: bool) -> bool:
+	return bool(config.get_value(section, key, default_val))

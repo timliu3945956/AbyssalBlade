@@ -44,9 +44,9 @@ func enter():
 	#await get_tree().create_timer(1.5833).timeout
 	await get_tree().create_timer(2.25).timeout
 	animation_player.play("buff")
-	owner.boss_attack_animation.play("sword_telegraph_double")
+	owner.boss_attack_animation.play("sword_telegraph")
 	await get_tree().create_timer(0.5834).timeout
-	owner.sword_animation.play("sword_drop_double")
+	owner.sword_animation.play("sword_drop")
 	await get_tree().create_timer(0.1666).timeout
 	owner.camera_shake()
 	#await owner.attack_meter_animation.animation_finished
@@ -99,7 +99,7 @@ func enter():
 	await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_last") # 1.5 seconds
 	await animation_player.animation_finished
-	owner.sword_animation.play("sword_end_double")
+	owner.sword_animation.play("sword_end")
 	await owner.sword_animation.animation_finished
 	#animation_player.play("idle_right")
 	#await get_tree().create_timer(0.5).timeout

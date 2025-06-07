@@ -1,0 +1,103 @@
+[gd_scene load_steps=17 format=3 uid="uid://xtudcwydvhfs"]
+
+[ext_resource type="Script" path="res://Menu/LobbyScene/lobby_depression.gd" id="1_5y17p"]
+[ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="1_mud46"]
+[ext_resource type="Texture2D" uid="uid://bo8rk544mkipq" path="res://sprites/DepressionBoss/third iteration/depression_idle.png" id="2_ppvqi"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="4_7nleb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jeca"]
+shader = ExtResource("1_mud46")
+shader_parameter/fade_alpha = 0.7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq5lx"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(0, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q81r2"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(222, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbv21"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(444, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a8gd"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(666, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eee3b"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(888, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uji8a"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(1110, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu0q4"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(1332, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emq0g"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(1554, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sjwv"]
+atlas = ExtResource("2_ppvqi")
+region = Rect2(1776, 0, 222, 119)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iktki"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq5lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q81r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbv21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a8gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eee3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uji8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu0q4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emq0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sjwv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jop2"]
+radius = 28.0
+
+[node name="LobbyDepression" type="Node2D"]
+z_index = 1
+script = ExtResource("1_5y17p")
+
+[node name="DepressionShadow" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6jeca")
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_iktki")
+autoplay = "default"
+frame_progress = 0.968607
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_7nleb")]
+position = Vector2(0.5, 0)
+prompt_offset_y = 60.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_6jop2")

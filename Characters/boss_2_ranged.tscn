@@ -1,23 +1,17 @@
-[gd_scene load_steps=316 format=3 uid="uid://d0sevkr6je28w"]
+[gd_scene load_steps=306 format=3 uid="uid://d0sevkr6je28w"]
 
 [ext_resource type="Script" path="res://Boss2States/boss_2_ranged.gd" id="1_l4tbm"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_23mnv"]
 [ext_resource type="PackedScene" uid="uid://cc4fmiv5lner" path="res://Hitbox and Hurtbox/hurtbox.tscn" id="2_83qhu"]
-[ext_resource type="PackedScene" uid="uid://crxlieqkkfsea" path="res://Healthbar/Healthbar.tscn" id="3_171q5"]
 [ext_resource type="Script" path="res://Boss2States/FiniteStateMachine.gd" id="4_214he"]
-[ext_resource type="Texture2D" uid="uid://ck8t4j7qv8k85" path="res://Utilities/boss HP/bosshp_overlay.png" id="4_tt564"]
 [ext_resource type="Texture2D" uid="uid://661g8tc54emc" path="res://Utilities/Effects/particlefx/hit_effect_wind.png" id="4_tvyj1"]
 [ext_resource type="Texture2D" uid="uid://df1qhfcaciuoy" path="res://Utilities/Effects/particlefx/Jump_Wind_White_v1_spritesheet.png" id="5_4bbqc"]
 [ext_resource type="Texture2D" uid="uid://cswx0j4wua7qr" path="res://sprites/BargainingBoss/Attack/laser.png" id="5_d2ial"]
-[ext_resource type="Script" path="res://Healthbar/healthbar_shake.gd" id="5_ojq72"]
-[ext_resource type="Texture2D" uid="uid://bbcb52n1uyxr4" path="res://sprites/boss_character/slash_sprite.png" id="6_2kg08"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="6_tbpc4"]
 [ext_resource type="Texture2D" uid="uid://8tcpsxk45f4" path="res://Utilities/Effects/windvfx/Wind_Current_White_v3_spritesheet.png" id="7_7q7su"]
-[ext_resource type="Texture2D" uid="uid://dn7euw3xjp0i8" path="res://Utilities/Effects/spotlight_2_alpha.png" id="7_50je8"]
 [ext_resource type="Texture2D" uid="uid://b1u8ogctliohd" path="res://Utilities/cast bar/castbar_underlay.png" id="7_ajr3v"]
 [ext_resource type="Texture2D" uid="uid://dn11hs2yt87od" path="res://Utilities/Effects/windvfx/Wind_Current_White_v4_spritesheet.png" id="8_2foif"]
 [ext_resource type="Texture2D" uid="uid://d1rf8l482ra4n" path="res://Utilities/cast bar/castbar_overlay.png" id="8_do1jp"]
-[ext_resource type="Texture2D" uid="uid://dy05uhybglneg" path="res://sprites/boss_character/hit 3.png" id="8_i2erd"]
 [ext_resource type="Script" path="res://Boss2States/RangedSpecial.gd" id="12_0tj2s"]
 [ext_resource type="Texture2D" uid="uid://bcg4d4tvakkdy" path="res://sprites/BargainingBoss/RangedBoss/newest animations/range_beamtransition.png" id="14_pk8or"]
 [ext_resource type="Texture2D" uid="uid://c6p3g78jkisx5" path="res://sprites/BargainingBoss/RangedBoss/newest animations/range_beam.png" id="15_3acxf"]
@@ -50,11 +44,13 @@
 [ext_resource type="Script" path="res://Boss2States/boss_2_ranged_morph_out.gd" id="28_jbfg5"]
 [ext_resource type="Texture2D" uid="uid://bwx6b4hpd15ud" path="res://sprites/BargainingBoss/RangedBoss/newest animations/range_special.png" id="29_71pqq"]
 [ext_resource type="Texture2D" uid="uid://csrbdh3sud1ku" path="res://sprites/BargainingBoss/RangedBoss/newest animations/Shadow/range_special_shadow.png" id="30_mke2f"]
-[ext_resource type="AudioStream" uid="uid://dltomqgfyaohk" path="res://audio/sfx/Boss2/jump.wav" id="36_6xo5t"]
-[ext_resource type="AudioStream" uid="uid://butthmvk48uva" path="res://audio/sfx/Boss2/beam.wav" id="37_hmgi6"]
 [ext_resource type="AudioStream" uid="uid://c4en3br1j23jc" path="res://audio/sfx/Boss2/randomAOE.wav" id="38_luavx"]
 [ext_resource type="Script" path="res://Boss2States/boss_2_ranged_foretold.gd" id="40_didd4"]
-[ext_resource type="AudioStream" uid="uid://bowlpvdxljx20" path="res://audio/sfx/Boss/knockback slam.wav" id="49_x11q5"]
+[ext_resource type="AudioStream" uid="uid://dm65e4jk6no5n" path="res://audio/sfx/Boss0/1_jump.wav" id="46_qcye0"]
+[ext_resource type="AudioStream" uid="uid://sg5j4xnotbyb" path="res://audio/sfx/Boss2/3_shock.wav" id="47_6ub2w"]
+[ext_resource type="AudioStream" uid="uid://b14fp561moucg" path="res://audio/sfx/Boss/2_eruption.wav" id="49_llyih"]
+[ext_resource type="Texture2D" uid="uid://cnrhj37h7vbiy" path="res://Utilities/boss HP/bosshp_emblems.png" id="50_iipep"]
+[ext_resource type="PackedScene" uid="uid://xnikvutjcb5h" path="res://Healthbar/BossHealthbar.tscn" id="51_olwuu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_owd55"]
 shader = ExtResource("2_23mnv")
@@ -1232,7 +1228,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiyh"]
-size = Vector2(18, 27)
+size = Vector2(18, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mjwj"]
 atlas = ExtResource("4_tvyj1")
@@ -1374,19 +1370,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_jiq37")
 width = 180
 height = 10
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3m65i"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4nfxu"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bsqbd"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 1
-particles_anim_loop = true
 
 [sub_resource type="Animation" id="Animation_yo0ue"]
 length = 0.001
@@ -3453,32 +3436,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1lo5"]
-texture = ExtResource("4_tt564")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-expand_margin_left = 8.0
-expand_margin_top = 58.0
-expand_margin_right = 8.0
-expand_margin_bottom = 58.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fxc1"]
-bg_color = Color(0.941176, 0, 0, 1)
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or4wr"]
-bg_color = Color(0.172833, 0.172833, 0.172833, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0, 0, 0, 0.27451)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uka60"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxvya"]
 
 [sub_resource type="Gradient" id="Gradient_hxoct"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -3561,13 +3519,16 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 visible = false
-position = Vector2(0, -11.5)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_qwiyh")
 disabled = true
 
 [node name="FlashTimer" type="Timer" parent="."]
-wait_time = 0.105
+wait_time = 0.05
 one_shot = true
+
+[node name="VFXTimer" type="Timer" parent="."]
+wait_time = 0.4
 
 [node name="HitParticles2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -3590,7 +3551,7 @@ disabled = true
 
 [node name="AttackMeter" type="Node2D" parent="."]
 visible = false
-position = Vector2(0, -12)
+position = Vector2(0, 2)
 
 [node name="Label" type="Label" parent="AttackMeter"]
 anchors_preset = 8
@@ -3605,7 +3566,7 @@ offset_bottom = -32.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_tbpc4")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 9
 text = "Cleave"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -3627,49 +3588,6 @@ texture_under = ExtResource("7_ajr3v")
 texture_over = ExtResource("8_do1jp")
 texture_progress = SubResource("GradientTexture2D_g47ml")
 texture_progress_offset = Vector2(160, 45)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -12)
-
-[node name="SlashParticles" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_3m65i")
-position = Vector2(-6, 0)
-rotation = 1.5708
-scale = Vector2(0.25, 0.12)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("6_2kg08")
-gravity = Vector2(0, 0)
-color = Color(1, 1, 1, 0.662745)
-
-[node name="SlashGlow" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_4nfxu")
-position = Vector2(-6, 0)
-rotation = 1.5708
-scale = Vector2(0.42, 0.03)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("7_50je8")
-gravity = Vector2(0, 0)
-
-[node name="SwordParticles" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_bsqbd")
-position = Vector2(-6, 0)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("8_i2erd")
-gravity = Vector2(0, 0)
-anim_speed_min = 1.0
-anim_speed_max = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -3743,13 +3661,13 @@ script = ExtResource("27_yilyl")
 script = ExtResource("28_ew0xu")
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("36_6xo5t")
-volume_db = -15.0
+stream = ExtResource("46_qcye0")
+volume_db = -16.0
 bus = &"SFX"
 
 [node name="AutoAttackAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("37_hmgi6")
-volume_db = -20.0
+stream = ExtResource("47_6ub2w")
+volume_db = -16.0
 bus = &"SFX"
 
 [node name="LineAOEAudio" type="AudioStreamPlayer2D" parent="."]
@@ -3759,44 +3677,34 @@ bus = &"SFX"
 
 [node name="JumpLandAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
-stream = ExtResource("49_x11q5")
-volume_db = -5.0
+stream = ExtResource("49_llyih")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("3_171q5")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_top = 24.0
-offset_right = 375.0
-offset_bottom = 34.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
-theme_override_styles/background = SubResource("StyleBoxTexture_a1lo5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0fxc1")
-max_value = 57000.0
-value = 500.0
-script = ExtResource("5_ojq72")
-shake_fade = 0.0
-metadata/_edit_use_anchors_ = true
+[node name="BosshpUnderlay" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_nxvya")
+position = Vector2(240, 26)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("50_iipep")
 
-[node name="HealthDamageBar" parent="CanvasLayer/Healthbar" index="0"]
-theme_override_styles/background = SubResource("StyleBoxFlat_or4wr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_uka60")
-value = 60.0
-metadata/_edit_use_anchors_ = true
+[node name="BossHealthbar" parent="CanvasLayer" instance=ExtResource("51_olwuu")]
+offset_left = 80.0
+offset_top = 6.0
+offset_right = 880.0
+offset_bottom = 106.0
+max_value = 39000.0
 
-[node name="ManaDamageBar" parent="CanvasLayer/Healthbar" index="1"]
-visible = false
+[node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
+max_value = 35000.0
+value = 20000.0
 
-[node name="HealthPercent" parent="CanvasLayer/Healthbar" index="4"]
-offset_top = -10.0
-offset_right = 23.0
-offset_bottom = -2.0
-metadata/_edit_use_anchors_ = true
+[node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]
+offset_left = 60.0
+offset_top = 34.0
+offset_right = 84.0
+offset_bottom = 42.0
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -3808,14 +3716,14 @@ offset_right = 20.0
 offset_bottom = 24.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_tbpc4")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 9
 text = "The Mind"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="AttackMeter" type="Node2D" parent="CanvasLayer"]
-position = Vector2(408, 64)
+position = Vector2(427, 64)
 
 [node name="Label" type="Label" parent="CanvasLayer/AttackMeter"]
 anchors_preset = 8
@@ -3830,7 +3738,7 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_tbpc4")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 9
 text = "Shockwave"
 vertical_alignment = 1
 
@@ -3866,6 +3774,7 @@ vertical_alignment = 1
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="VFXTimer" to="." method="_on_vfx_timer_timeout"]
 
 [editable path="Hurtbox"]
-[editable path="CanvasLayer/Healthbar"]
+[editable path="CanvasLayer/BossHealthbar"]

@@ -11,6 +11,8 @@ func enter():
 		animation_player.play("idle_right")
 	else:
 		animation_player.play("idle_left")
+	owner.darkness_balance_vfx_spawn()
+	owner.vfx_timer.start()
 	await get_tree().create_timer(10).timeout
 	
 	owner.morph_animation.play("flash")

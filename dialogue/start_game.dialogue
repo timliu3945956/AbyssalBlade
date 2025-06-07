@@ -1,0 +1,49 @@
+~ MainMenu
+   : [center]Welcome, Wanderer.[/center]
+   : [center]You've endured much to stand here.[/center]
+   : [center]Others came before you, convinced they would succeed.[/center]
+   : [center]I cut them down, one by one.[/center]
+   : [center]You think you'll be different?[/center]
+   : [center]Prove it.[/center]
+   : [center]Break the cycle or fall like the rest.[/center]
+do TransitionScreen.transition_cutscene()
+do AudioPlayer.fade_out_music(4)
+=> END!
+
+~ DenialEnd
+   : [center]You've beaten Denial.[/center]
+   : [center]But you were safer in the lie.[/center]
+   : [center]Now reality cuts deep, and there's nowhere left to hide.[/center]
+do TransitionScreen.transition_cutscene()
+do AudioPlayer.fade_out_music(4)
+=> END
+
+~ AngerEnd
+   : [center]Your rage amuses me, wild yet powerless.[/center]
+   : [center]Do you really think you've conquered it?[/center]
+   : [center]Anger will wait patiently, ready to consume you again.[/center]
+do TransitionScreen.transition_dead()
+do AudioPlayer.fade_out_music(4)
+=> END
+
+~ BargainEnd
+   : [center]You tried so desperately to bargain with fate.[/center]
+   : [center]You believed your heart and mind could change reality.[/center]
+   : [center]How tragic, thinking you could regain what was already lost.[/center]
+do TransitionScreen.transition_dead()
+do AudioPlayer.fade_out_music(4)
+=> END
+
+~ DepressionEnd
+   : [center]You sank into sorrow and yet still crawled forward.[/center]
+   : [center]Impressive... for one so broken.[/center]
+   : [center]But grief will always linger, pulling you back into the abyss.[/center]
+   : [center]Now face me... and meet your end.[/center]
+do TransitionScreen.transition_dead()
+do AudioPlayer.fade_out_music(4)
+=> END
+
+~ GriefStart
+You: The blade chose me because I never let go.
+You: But in the end.
+You: All paths lead to grief.

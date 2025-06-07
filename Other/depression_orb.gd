@@ -18,7 +18,7 @@ extends CharacterBody2D
 
 @onready var orb_zero_velocity_timer: Timer = $OrbZeroVelocityTimer
 
-var move_speed = 21.25
+var move_speed = 25.5
 var current_speed: float
 var orb_color: String = "red"
 var player: CharacterBody2D

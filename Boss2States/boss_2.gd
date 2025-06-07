@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var hurtbox: CollisionShape2D = $Hurtbox/CollisionShape2D
 
 @onready var attack_meter: Node2D = $AttackMeter
+@onready var attack_meter_UI: Node2D = $CanvasLayer/AttackMeter
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var telegraph_player: AnimationPlayer = $TelegraphPlayer
@@ -27,7 +28,8 @@ extends CharacterBody2D
 @onready var boss_attack_animation_2 = get_node("../BossAttackAnimationPlayer2")
 @onready var sword_animation = get_node("../SwordAnimationPlayer")
 @onready var screen_animation = get_node("../ScreenAnimationPlayer")
-@onready var enrage_background = get_node("../EnrageBackground") 
+@onready var enrage_background = get_node("../EnrageBackground")
+@onready var boss_death_anim = get_node("../BossDeathAnimation")
 
 @onready var cleave_aim = get_node("../Area2D/CleaveAim")
 @onready var beam_aim: Marker2D = $BeamAim
@@ -39,8 +41,6 @@ extends CharacterBody2D
 @onready var cleave_telegraph = get_node("../CleaveTelegraphAnimationPlayer")
 @onready var attack_vfx_animation = get_node("../AttackVFXAnimation")
 @onready var smoke: AnimatedSprite2D = $smoke
-
-@onready var healthbar: ProgressBar = $CanvasLayer/Healthbar
 
 @onready var lightning_1_triangle_0 = get_node("../Area2D/Triangle0VFX/Lightning1")
 @onready var lightning_2_triangle_0 = get_node("../Area2D/Triangle0VFX/Lightning2")
@@ -99,16 +99,16 @@ extends CharacterBody2D
 @onready var combo_surge: Node2D = $FiniteStateMachine/ComboSurge
 @onready var enrage: Node2D = $FiniteStateMachine/Enrage
 @onready var final_discharge: Node2D = $FiniteStateMachine/FinalDischarge
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 
-@onready var boss_killed = get_node("../BossKilled")
+@onready var boss_killed = get_node("../Portal")
 @onready var boss_death: bool = false
 
 # flash particles
 @onready var sprite = $Sprite2D
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
 @onready var flash_timer: Timer = $FlashTimer
-@onready var hit_particles: AnimatedSprite2D = $HitParticles2
 @onready var jump_wind: AnimatedSprite2D = $JumpWind
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var dash_particles: GPUParticles2D = $DashParticles
@@ -122,18 +122,23 @@ extends CharacterBody2D
 @onready var sword_particles: CPUParticles2D = $Marker2D/SwordParticles
 @onready var slash_glow: CPUParticles2D = $Marker2D/SlashGlow
 
+@onready var boss_healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar
+
 @onready var beam_circle_timer: Timer = $BeamCircleTimer
 #var circle_ref: Node2D
 var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_fade.tscn")
+var hit_particle = preload("res://Other/hit_particles.tscn")
+
 var MeleeSpecial2 = preload("res://Other/melee_special_part_2.tscn")
 var MeleeAuto = preload("res://Utilities/Effects/lightningvfx/MeleeSlamVFX.tscn")
+var phase_in_particles = preload("res://Other/boss_2_phase_morphin_vfx.tscn")
 var circle_ref: Node2D
 
 var direction : Vector2
 var move_speed = 60 #120
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 57000 : set = _set_health #57000
+var health_amount = 35000 : set = _set_health #37000
 var center_of_screen = get_viewport_rect().size / 2
 
 var timeline: int = 0
@@ -150,6 +155,7 @@ var target_position = center_of_screen + Vector2(cos(deg_to_rad(-90)),sin(deg_to
 var opposite_position = center_of_screen + Vector2(cos(deg_to_rad(90)),sin(deg_to_rad(90))) * 100
 
 signal main_boss_finished
+var _last_t : int
 
 #var pick_top_bottom = randi_range(1, 2)
 #var pick_ns_ew = randi_range(1, 2)
@@ -158,17 +164,22 @@ signal main_boss_finished
 func _ready():
 	randomize()
 	set_physics_process(false)
-	healthbar.init_health(health_amount)
+	boss_healthbar.init_health(health_amount)
 	GlobalCount.can_pause = true
+	GlobalCount.can_charge = false
 	#player.charge_icon_disable()
-	hit_particles.frame = 0
 	connect("main_boss_finished", _main_boss_finished)
 	enraged = false
 	beam_count = 0
 	dash_particles.emitting = false
 	enrage_fire.visible = false
+	_last_t = Time.get_ticks_usec()
 
-#func _process(delta):
+func _process(delta):
+	var now := Time.get_ticks_usec()
+	var dt := float(now - _last_t) * 1e-6
+	_last_t = now
+	boss_death_anim.advance(dt)
 	#if beam_circle_timer.time_left > 0:
 		#circle_ref.global_position = player.global_position
 	#if beam_timer.time_left > 0:
@@ -183,7 +194,7 @@ func _physics_process(delta):
 
 func _set_health(value):
 	health_amount = value
-	healthbar.health = health_amount
+	boss_healthbar.health = health_amount
 	
 func flash():
 	sprite.material.set_shader_parameter("flash_modifier", 1)
@@ -198,15 +209,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health_amount -= player.damage_amount
 		GlobalCount.dps_count += player.damage_amount
 		flash()
-		hit_particles.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
 		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles.play("hit_particles")
+		if player.transformed:
+			spawn_attack_vfx("surge")
+		else:
+			spawn_attack_vfx("normal")
 		
 		player.attack_count += 1
 		if player.dash_gauge >= 3 and not player.transformed:
@@ -219,72 +226,90 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		if player.swing.playing:
 			player.swing.stop()
 		if player.transformed:
-			player.abyssal_surge_hit.play()
+			player.play_with_random_pitch(player.abyssal_surge_hit, 0.9, 1.15)
+			#player.abyssal_surge_hit.play()
 		else:
-			player.hit.play()
+			player.play_with_random_pitch(player.hit, 0.9, 1.15)
+			#player.hit.play()
 		
-		if player.mana < 20:
-			player.mana += 1
-			if player.mana >= 20:
-				player.charge_icon_disable()
-				player.transform_icon_disable()
-				player.surge_ready.play()
-				
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 3
+				if player.mana >= 100:
+					player.charge_icon_disable()
+					player.transform_icon_disable()
+					player.surge_ready.play()
+					
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 	elif area.name == "HeavyHitBox":
-		health_amount -= (player.damage_amount * 4) #4
-		GlobalCount.dps_count += (player.damage_amount * 4) #4
+		health_amount -= (player.damage_amount * 8) #4
+		GlobalCount.dps_count += (player.damage_amount * 8) #4
 		flash()
 		
-		hit_particles.rotation = position.angle_to_point(player.position) + PI + 45
-		#hit_particles.rotation = position.angle_to_point(player.position) + PI
-		marker_2d.rotation = position.angle_to_point(player.position) + PI
-		
-		sword_particles.emitting = true
-		slash_particles.emitting = true
-		slash_glow.emitting = true
-		#hit_particles.emitting = true
-		hit_particles.play("hit_particles")
+		spawn_attack_vfx("heavy")
 		
 		if player.swing.playing:
 			player.swing.stop()
 		
-		player.heavy_hit.play()
+		player.play_with_random_pitch(player.heavy_hit, 0.9, 1.15)
+		#player.heavy_hit.play()
 		
-		if player.mana < 20:
-			player.mana += 4 #4
-			if player.mana >= 20:
-				player.charge_icon_disable()
-				player.transform_icon_disable()
-				player.surge_ready.play()
-				
-				player.mana_bar_fire.process_material.color.a = 1.0
-				player.mana_bar_fire.emitting = true
+		if !GlobalCount.abyss_mode:
+			if player.mana < 100:
+				player.mana += 20 #4
+				if player.mana >= 100:
+					player.charge_icon_disable()
+					player.transform_icon_disable()
+					player.surge_ready.play()
+					
+					player.mana_bar_fire.process_material.color.a = 1.0
+					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
+		sprite.start_shake(1.8, 0.2)
+		player.high_pitch_slice_audio.play()
+		boss_death_anim.play("death")
+		#GlobalCount.timer_active = false
+		HitStopManager.hit_stop_boss_death()
 		player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
 		player.hurtbox_collision.call_deferred("set", "disabled", true)
 		
 		hurtbox.call_deferred("set", "disabled", true)
 		
-		boss_attack_animation.queue_free()
-		triangle_animation_long.queue_free()
-		triangle_animation.queue_free()
-		triangle_animation_2.queue_free()
-		boss_attack_animation_2.queue_free()
-		sword_animation.queue_free()
+		#boss_attack_animation.queue_free()
+		#triangle_animation_long.queue_free()
+		#triangle_animation.queue_free()
+		#triangle_animation_2.queue_free()
+		#boss_attack_animation_2.queue_free()
+		#sword_animation.queue_free()
 		#top_bottom_animation_player.queue_free()
 		#in_out_animation_player.queue_free()
 		animation_player.stop()
 		
-		attack_meter.queue_free()
-		player.hurtbox_collision.disabled = true
+		#player.hurtbox_collision.disabled = true
 		boss_death = true
 		find_child("FiniteStateMachine").change_state("Death")
 		remove_states()
 		
+func spawn_attack_vfx(attack_type: String):
+	var particle_vfx = hit_particle.instantiate()
+	particle_vfx.rotation = position.angle_to_point(player.position) + PI
+	particle_vfx.hit_type = attack_type
+	add_child(particle_vfx)
+
+func spawn_phase_particles():
+	var vfx = phase_in_particles.instantiate()
+	vfx.position = Vector2(0, -8)
+	add_child(vfx)
+	
 func remove_states():
+	boss_attack_animation.queue_free()
+	triangle_animation_long.queue_free()
+	triangle_animation.queue_free()
+	triangle_animation_2.queue_free()
+	boss_attack_animation_2.queue_free()
+	sword_animation.queue_free()
 	idle.queue_free()
 	beam.queue_free()
 	forward_cleave.queue_free()
@@ -303,10 +328,12 @@ func remove_states():
 	enrage.queue_free()
 	final_discharge.queue_free()
 	dash_particles.queue_free()
-	healthbar.queue_free()
+	canvas_layer.queue_free()
+	attack_meter.queue_free()
+	boss_room.area_2d.queue_free()
 
 func camera_shake():
-	GlobalCount.camera.apply_shake(1.5, 15.0)
+	GlobalCount.camera.apply_shake(8.0, 15.0)
 	
 func cleave_rotate():
 	cleave_aim.position = position
@@ -325,8 +352,8 @@ func beam_rotate():
 	beam_aim.rotation = beam_aim.global_position.angle_to_point(player.global_position)
 	
 func _main_boss_finished():
-	boss_ranged.find_child("FiniteStateMachine").change_state("MorphIn")
 	boss_melee.find_child("FiniteStateMachine").change_state("MorphIn")
+	boss_ranged.find_child("FiniteStateMachine").change_state("MorphIn")
 	
 func morph_apart_health():
 	boss_melee.health_amount = self.health_amount

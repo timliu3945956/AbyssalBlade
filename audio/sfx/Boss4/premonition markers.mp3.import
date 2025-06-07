@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkckmb1iu768n"
+path="res://.godot/imported/premonition markers.mp3-132cedd8f5330a9e9260b7ed79f21cf8.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/premonition markers.mp3"
+dest_files=["res://.godot/imported/premonition markers.mp3-132cedd8f5330a9e9260b7ed79f21cf8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

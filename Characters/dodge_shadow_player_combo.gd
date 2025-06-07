@@ -86,6 +86,7 @@ func move_to_next_target():
 	else:
 		emit_signal("action_completed", selected_indices)
 		smoke.play("smoke")
+		spawn_shadow_audio.play()
 		await get_tree().create_timer(0.0833).timeout
 		sprite_2d.material.set_shader_parameter("fade_alpha", 0)
 		await get_tree().create_timer(0.4495).timeout
@@ -116,6 +117,7 @@ func move_to_target(delta):
 			state_machine.travel("BossWalk")
 		else:
 			animation_tree.set("parameters/Walk/blend_position", direction)
+			animation_tree.set("parameters/Idle/blend_position", direction)
 			state_machine.travel("Walk")
 	else:
 		if is_wrong_shadow and current_target_index >= 2:

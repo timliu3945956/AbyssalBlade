@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://xnikvutjcb5h"]
+
+[ext_resource type="Texture2D" uid="uid://b10kdtr51usib" path="res://Utilities/boss HP/bosshp_underlay.png" id="1_1j32t"]
+[ext_resource type="Script" path="res://Healthbar/boss_healthbar.gd" id="2_srkhf"]
+[ext_resource type="FontFile" uid="uid://b0y1swh713a2c" path="res://Utilities/Font/type_writer2.ttf" id="3_edcfb"]
+
+[sub_resource type="Gradient" id="Gradient_g08ec"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ritt"]
+gradient = SubResource("Gradient_g08ec")
+width = 714
+
+[sub_resource type="Gradient" id="Gradient_sh6w6"]
+colors = PackedColorArray(0.941176, 0, 0, 1, 0.941176, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_61xv3"]
+gradient = SubResource("Gradient_sh6w6")
+width = 714
+
+[node name="BossHealthbar" type="TextureProgressBar"]
+clip_children = 2
+z_index = 1
+offset_right = 500.0
+offset_bottom = 100.0
+scale = Vector2(0.4, 0.4)
+max_value = 65000.0
+step = 0.01
+value = 19991.7
+texture_under = ExtResource("1_1j32t")
+texture_progress = ExtResource("1_1j32t")
+script = ExtResource("2_srkhf")
+
+[node name="HealthDamageBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 17.0
+offset_right = 757.0
+offset_bottom = 81.0
+step = 0.01
+value = 60.0
+texture_progress = SubResource("GradientTexture2D_3ritt")
+
+[node name="Healthbar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -33.0
+offset_right = 357.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 50.0
+texture_progress = SubResource("GradientTexture2D_61xv3")
+
+[node name="HealthPercent" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 54.1667
+offset_top = 30.0
+offset_right = 78.1667
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("3_edcfb")
+theme_override_font_sizes/font_size = 8
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthTimer" type="Timer" parent="."]
+wait_time = 0.4
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

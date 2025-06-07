@@ -1,6 +1,7 @@
 extends State
 
 var CircleAOE = preload("res://Characters/circle_aoe.tscn")
+var phase_vfx = preload("res://Other/boss_1_phase_vfx.tscn")
 @onready var knockback_effect: AnimatedSprite2D = $"../../KnockbackEffect"
 @onready var jump_effect: AnimatedSprite2D = $"../../JumpEffect"
 
@@ -15,10 +16,10 @@ func enter():
 	super.enter()
 	owner.velocity = Vector2.ZERO
 	# Add Explosion mechanic here
-	if owner.explosion_count == 0:
-		owner.boss_room_animation.play("chargeup_explosions")
-	else:
-		owner.boss_room_animation.play("chargeup_explosions_2")
+	#if owner.explosion_count == 0:
+	owner.boss_room_animation.play("chargeup_explosions")
+	#else:
+		#owner.boss_room_animation.play("chargeup_explosions_2")
 	
 	animation_player.play("idle_right")
 	await owner.boss_room_animation.animation_finished
@@ -44,17 +45,30 @@ func enter():
 	if owner.explosion_count == 0:
 		animation_player.play("idle_right")
 	else:
-		smoke.play("smoke")
-		animation_player.play("teleport_out")
+		animation_player.play("idle_right")
+		#smoke.play("smoke")
+		#animation_player.play("teleport_out")
 	await owner.boss_room_animation.animation_finished
 		
 	owner.boss_room_animation.play("explosions")
-	await get_tree().create_timer(2.9988).timeout
 	if owner.enraged:
-		while circle_count < 7 and owner.boss_death == false:
+		player.beam_circle_meteor()
+		await get_tree().create_timer(2.6656).tiemout
+		animation_player.play("alternate_slam")
+		await get_tree().create_timer(0.3332).timeout
+	else:
+		await get_tree().create_timer(2.9988).timeout
+	if owner.enraged:
+		while circle_count < 6 and owner.boss_death == false:
+			owner.beam_circle()
+			
 			circle()
 			circle_count += 1
-			await get_tree().create_timer(2.9988).timeout
+			player.beam_circle_meteor()
+			await get_tree().create_timer(2.6656).timeout
+			animation_player.play("alternate_slam")
+			await get_tree().create_timer(0.3332).timeout
+			
 	else:
 		await owner.boss_room_animation.animation_finished
 	
@@ -90,12 +104,12 @@ func enter():
 		#meteor here
 		await get_tree().create_timer(1).timeout
 		animation_player.play("idle_right")
-		player.beam_circle_meteor()
+		#player.beam_circle_meteor()
 		owner.boss_room_animation.play("meteor")
 		await get_tree().create_timer(2.6668).timeout
 		animation_player.play("alternate_slam")
 		await get_tree().create_timer(0.3332).timeout
-		owner.beam_circle()
+		#owner.beam_circle()
 		
 		owner.meteor.closest_square_position(player.position)
 		await get_tree().create_timer(1.4004).timeout
@@ -106,22 +120,10 @@ func enter():
 		
 		# ENRAGE MODE
 		if !owner.enraged:
-			#await get_tree().create_timer(1).timeout
-			#animation_player.play("idle_right")
-			#player.beam_circle_meteor()
-			#owner.boss_room_animation.play("meteor")
-			#await get_tree().create_timer(2.6668).timeout
-			#animation_player.play("alternate_slam")
-			#await get_tree().create_timer(0.3332).timeout
-			#owner.beam_circle()
-			#
-			#owner.meteor.closest_square_position(player.position)
-			#await get_tree().create_timer(1.4004).timeout
-			#animation_player.play("idle_right")
-			#await get_tree().create_timer(0.9996).timeout
 			
 			#Phase 2 cast here
 			animation_player.play("idle_right")
+			#start_phase_change_vfx()
 			owner.boss_room_animation.play("enrage_cast")
 			await owner.boss_room_animation.animation_finished
 			animation_player.play("mini_enrage")
@@ -135,20 +137,6 @@ func enter():
 			await get_tree().create_timer(0.5).timeout
 			animation_player.play("idle_right")
 		
-		#await owner.boss_room_animation.animation_finished
-		#await get_tree().create_timer(1).timeout
-		#animation_player.play("idle_right")
-		#player.beam_circle_meteor()
-		#owner.boss_room_animation.play("meteor")
-		#await get_tree().create_timer(2.6668).timeout
-		#animation_player.play("alternate_slam")
-		#await get_tree().create_timer(0.3332).timeout
-		#owner.beam_circle()
-		#
-		#owner.meteor.closest_square_position(player.position)
-		#await get_tree().create_timer(1.4004).timeout
-		#animation_player.play("idle_right")
-		#await get_tree().create_timer(0.9996).timeout
 		owner.explosion_count += 1
 		can_transition = true
 	
@@ -166,6 +154,11 @@ func reappear():
 	var fade_duration = 100
 	var fade_step = 1.0 / fade_duration
 	owner.sprite.modulate.a = min(1, owner.sprite.modulate.a + fade_step)
+	
+func start_phase_change_vfx():
+	var vfx = phase_vfx.instantiate()
+	vfx.position = Vector2(0, -15)
+	add_child(vfx)
 	
 func transition():
 	if can_transition:

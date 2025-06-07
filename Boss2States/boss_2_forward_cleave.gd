@@ -67,7 +67,7 @@ func enter():
 			tween.tween_property(owner, "position", move_position, 0.5)
 			
 	owner.dash_audio.play()
-	owner.jump_audio.play()
+	#owner.jump_audio.play()
 	
 	await get_tree().create_timer(0.5).timeout
 

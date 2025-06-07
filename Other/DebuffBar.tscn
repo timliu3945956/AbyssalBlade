@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3jmq0q4r3jy6"]
+
+[ext_resource type="Script" path="res://Other/debuff_bar.gd" id="1_kq5m8"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_b1vsb"]
+[ext_resource type="Texture2D" uid="uid://crl81oxuff6c5" path="res://sprites/GriefBoss/debuff icons/debuff_+.png" id="2_mvh0x"]
+[ext_resource type="AudioStream" uid="uid://dlpyq8gvalbn5" path="res://audio/sfx/0_confirm success.wav" id="4_656xv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8a53a"]
+texture = ExtResource("2_mvh0x")
+
+[node name="DebuffBar" type="Node2D"]
+modulate = Color(1, 1, 1, 0.976471)
+self_modulate = Color(1, 1, 1, 0.933333)
+z_index = 1
+position = Vector2(-25.81, -30)
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_kq5m8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 2.0
+offset_top = -16.0
+offset_right = 42.0
+offset_bottom = 24.0
+
+[node name="DebuffIcons" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Icon1" type="Label" parent="CenterContainer/DebuffIcons"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_font_sizes/font_size = 3
+theme_override_styles/normal = SubResource("StyleBoxTexture_8a53a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon2" type="Label" parent="CenterContainer/DebuffIcons"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_8a53a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon3" type="Label" parent="CenterContainer/DebuffIcons"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_8a53a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon4" type="Label" parent="CenterContainer/DebuffIcons"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_8a53a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+offset_left = 2.5
+offset_top = -20.833
+offset_right = 42.5
+offset_bottom = 19.167
+
+[node name="Timers" type="HBoxContainer" parent="CenterContainer2"]
+layout_mode = 2
+theme_override_constants/separation = -1
+alignment = 1
+
+[node name="CountDown1" type="Label" parent="CenterContainer2/Timers"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b1vsb")
+theme_override_font_sizes/font_size = 5
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountDown2" type="Label" parent="CenterContainer2/Timers"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b1vsb")
+theme_override_font_sizes/font_size = 5
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountDown3" type="Label" parent="CenterContainer2/Timers"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b1vsb")
+theme_override_font_sizes/font_size = 5
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountDown4" type="Label" parent="CenterContainer2/Timers"]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b1vsb")
+theme_override_font_sizes/font_size = 5
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PremonitionSymbolAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_656xv")
+volume_db = -12.0
+autoplay = true
+bus = &"SFX"

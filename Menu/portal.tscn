@@ -1,0 +1,189 @@
+[gd_scene load_steps=23 format=3 uid="uid://ceugei330tv36"]
+
+[ext_resource type="Script" path="res://Menu/portal.gd" id="1_qsh2g"]
+[ext_resource type="Texture2D" uid="uid://cso0eyg870jcl" path="res://Utilities/menu/CIRCLE_BLUE_PORTAL.png" id="2_gkb5g"]
+[ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="2_kup10"]
+[ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="3_m7b8o"]
+[ext_resource type="Texture2D" uid="uid://drniwyp024pw7" path="res://Utilities/menu/settings_and_controls.png" id="7_webo7"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="8_dfhrv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rw8vc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1jb46"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_87l72"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0dkb1"]
+curve = SubResource("Curve_87l72")
+
+[sub_resource type="Gradient" id="Gradient_6qg5x"]
+offsets = PackedFloat32Array(0, 0.495726, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_um0bm"]
+gradient = SubResource("Gradient_6qg5x")
+
+[sub_resource type="Curve" id="Curve_0cdxw"]
+_data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.238924), -1.04308, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7ofw6"]
+curve = SubResource("Curve_0cdxw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x81dk"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.0
+inherit_velocity_ratio = 1.0
+angular_velocity_curve = SubResource("CurveTexture_0dkb1")
+gravity = Vector3(0, -30, 0)
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_7ofw6")
+color_ramp = SubResource("GradientTexture1D_um0bm")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3g8p"]
+radius = 8.0
+height = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wltmv"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nhl0"]
+texture = ExtResource("7_webo7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87e3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6t6xv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gh1hg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0keo"]
+
+[node name="Portal" type="Node2D"]
+script = ExtResource("1_qsh2g")
+
+[node name="VFX" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="VFX"]
+material = SubResource("CanvasItemMaterial_rw8vc")
+texture = ExtResource("2_gkb5g")
+
+[node name="Particles" type="GPUParticles2D" parent="VFX"]
+modulate = Color(0.23371, 0.482232, 0.96847, 1)
+material = SubResource("CanvasItemMaterial_1jb46")
+position = Vector2(0, -2)
+rotation = -1.5708
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_x81dk")
+texture = ExtResource("3_m7b8o")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_kup10")]
+prompt_offset_y = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_u3g8p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Background" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wltmv")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.36
+offset_top = -42.2075
+offset_right = 36.36
+offset_bottom = 42.2075
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_6nhl0")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="NextStage" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = SubResource("StyleBoxEmpty_87e3j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6t6xv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gh1hg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
+text = "Next Stage"
+
+[node name="Retry" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_87e3j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6t6xv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gh1hg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
+text = "Retry"
+
+[node name="Lobby" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(0.419813, 0.419813, 0.419813, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_87e3j")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6t6xv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gh1hg")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
+text = "Lobby"
+
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/NextStage" to="." method="_on_next_stage_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Lobby" to="." method="_on_lobby_pressed"]

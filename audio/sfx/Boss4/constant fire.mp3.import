@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuqsl1dlot0ub"
+path="res://.godot/imported/constant fire.mp3-6e31c20780a84063de740b2be7f710dc.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/constant fire.mp3"
+dest_files=["res://.godot/imported/constant fire.mp3-6e31c20780a84063de740b2be7f710dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

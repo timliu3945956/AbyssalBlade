@@ -11,11 +11,21 @@ func enter():
 		animation_player.play("idle_right")
 	print("This is melee in DarknessBalance")
 	owner.attack_meter_animation.play("darkness_balance")
+	
+	owner.darkness_balance_vfx_spawn()
+	owner.boss_2_ranged.darkness_balance_vfx_spawn()
+	owner.vfx_timer.start()
+	owner.boss_2_ranged.vfx_timer.start()
+	
 	owner.pain_line.start()
 	await owner.attack_meter_animation.animation_finished
 	
 	owner.hands_of_pain()
 	owner.morph_animation.play("flash")
+	
+	owner.vfx_timer.stop()
+	owner.boss_2_ranged.vfx_timer.stop()
+	
 	await get_tree().create_timer(2).timeout
 	
 	#owner.paused = false

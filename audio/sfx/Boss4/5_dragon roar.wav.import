@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://divq8cbdyawmc"
+path="res://.godot/imported/5_dragon roar.wav-0ea04460cc1b3f08c24b9440eed0fd01.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Boss4/5_dragon roar.wav"
+dest_files=["res://.godot/imported/5_dragon roar.wav-0ea04460cc1b3f08c24b9440eed0fd01.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

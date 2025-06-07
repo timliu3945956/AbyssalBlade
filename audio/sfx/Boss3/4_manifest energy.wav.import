@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnf3eomq73dg"
+path="res://.godot/imported/4_manifest energy.wav-297871a4eefe0f793ee801055b9cbb32.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Boss3/4_manifest energy.wav"
+dest_files=["res://.godot/imported/4_manifest energy.wav-297871a4eefe0f793ee801055b9cbb32.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

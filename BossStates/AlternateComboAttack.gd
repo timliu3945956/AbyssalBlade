@@ -9,7 +9,7 @@ func enter():
 	super.enter()
 	owner.velocity = Vector2.ZERO
 	owner.choose_top_down = randi_range(1, 2)
-	owner.boss_room_animation.play("chargeup_alternate_combo")
+	owner.boss_room_animation.play("chargeup_alternate")
 	animation_player.play("idle_right")
 	await owner.boss_room_animation.animation_finished
 	
@@ -32,26 +32,20 @@ func enter():
 	#await get_tree().create_timer(2.1658).timeout
 	
 	while alternate_count < 8 and owner.boss_death == false:
-		if alternate_count == 2 or alternate_count == 5:
-			#animation_player.play("alternate_slam")
-			match owner.choose_top_down:
-				1:
-					owner.smoke_top_1.play("smoke")
-					owner.smoke_top_2.play("smoke")
-					owner.spawn_shadow_audio.play()
-					owner.top_bottom_animation_player.play("top_charge")
-					#owner.top_bottom_animation_player.play("top_transition")
-				2:
-					owner.smoke_bottom_1.play("smoke")
-					owner.smoke_bottom_2.play("smoke")
-					owner.spawn_shadow_audio.play()
-					owner.top_bottom_animation_player.play("bottom_charge")
-					#owner.top_bottom_animation_player.play("bottom_transition")
-			#await owner.top_bottom_animation_player.animation_finished
+		#if alternate_count == 2 or alternate_count == 5:
 			#match owner.choose_top_down:
 				#1:
-					#
+					#owner.smoke_top_1.play("smoke")
+					#owner.smoke_top_2.play("smoke")
+					#owner.spawn_shadow_audio.play()
+					#owner.top_bottom_animation_player.play("top_charge")
 				#2:
+					#owner.smoke_bottom_1.play("smoke")
+					#owner.smoke_bottom_2.play("smoke")
+					#owner.spawn_shadow_audio.play()
+					#owner.top_bottom_animation_player.play("bottom_charge")
+					
+					
 					
 		if alternate_count == 3 or alternate_count == 6:
 			await get_tree().create_timer(0.4998).timeout
@@ -61,11 +55,11 @@ func enter():
 				2:
 					owner.in_out_animation_player.play("attack_out")
 			await get_tree().create_timer(1.8326).timeout #1.8326 total await time
-			match owner.choose_top_down:
-				1:
-					owner.top_bottom_animation_player.play("top_attack")
-				2:
-					owner.top_bottom_animation_player.play("bottom_attack")
+			#match owner.choose_top_down:
+				#1:
+					#owner.top_bottom_animation_player.play("top_attack")
+				#2:
+					#owner.top_bottom_animation_player.play("bottom_attack")
 			choose_in_out = randi_range(1, 2)
 			owner.choose_top_down = randi_range(1, 2)
 			await get_tree().create_timer(0.6664).timeout
@@ -99,7 +93,7 @@ func enter():
 		#
 		#owner.meteor.closest_square_position(player.position)
 		#await get_tree().create_timer(1.4004).timeout
-		animation_player.play("idle_right")
+		#animation_player.play("idle_right")
 		await get_tree().create_timer(0.9996).timeout
 		await get_tree().create_timer(0.5).timeout
 		

@@ -10,6 +10,8 @@ extends Camera2D
 
 var rng = RandomNumberGenerator.new()
 
+var shake_hold_time: float = 0.0
+@export var min_shake_threshold := 0.02
 var shake_strength: float = 0.0
 
 func _ready():
@@ -27,15 +29,25 @@ func _physics_process(delta):
 		else:
 			camera_position = player.global_position
 
-func apply_shake(random_strength : float, shake_time):
+func apply_shake(random_strength : float, shake_time, hold_seconds: float = 0.0):
 	shake_strength = random_strength
+	shake_hold_time = hold_seconds
 	shake_fade = shake_time
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if shake_strength > 0:
+	if shake_strength <= 0:
+		offset = Vector2.ZERO
+		return
+	
+	if shake_hold_time > 0.0:
+		shake_hold_time -= delta
+	else:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
-		offset = randomOffset()
+		if shake_strength < min_shake_threshold:
+			shake_strength = 0.0
+			
+	offset = randomOffset()
 		
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))

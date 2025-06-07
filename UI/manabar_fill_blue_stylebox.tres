@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://pv40p6m33av5"]
+
+[ext_resource type="Texture2D" uid="uid://w0brf42qlpxc" path="res://UI/manabar_fill_blue.tres" id="1_abgam"]
+
+[resource]
+texture = ExtResource("1_abgam")

@@ -7,7 +7,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.248005), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_r83u3"]
-colors = PackedColorArray(0, 0.466667, 1, 1, 0, 0, 0, 0.141176)
+colors = PackedColorArray(0.843137, 0.843137, 0.843137, 1, 0, 0, 0, 0.141176)
 
 [node name="DashTrail" type="Line2D"]
 top_level = true

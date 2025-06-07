@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://daybt382w7u2q"]
+[gd_scene load_steps=12 format=3 uid="uid://daybt382w7u2q"]
 
 [ext_resource type="Script" path="res://Menu/transition_screen.gd" id="1_7cvxn"]
 
@@ -6,6 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_q001p"]
 length = 0.001
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gp2qw"]
@@ -35,9 +36,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_cj512"]
-resource_name = "fade_to_black_dead"
-length = 2.5
+[sub_resource type="Animation" id="Animation_pmpnp"]
+resource_name = "fade_to_black_cutscene"
+length = 4.00001
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -45,10 +47,78 @@ tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cj512"]
+resource_name = "fade_to_black_dead"
+length = 4.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kij7y"]
+resource_name = "fade_to_black_end"
+length = 5.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vp4li"]
+resource_name = "fade_to_black_main_menu"
+length = 0.0833417
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wsyxk"]
+resource_name = "fade_to_main_menu"
+length = 2.39
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.38999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bjhuw"]
@@ -71,16 +141,21 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_q001p"),
 "fade_to_black": SubResource("Animation_gp2qw"),
+"fade_to_black_cutscene": SubResource("Animation_pmpnp"),
 "fade_to_black_dead": SubResource("Animation_cj512"),
+"fade_to_black_end": SubResource("Animation_kij7y"),
+"fade_to_black_main_menu": SubResource("Animation_vp4li"),
+"fade_to_main_menu": SubResource("Animation_wsyxk"),
 "fade_to_normal": SubResource("Animation_bjhuw")
 }
 
 [node name="TransitionScreen" type="CanvasLayer"]
 process_mode = 3
-layer = 3
+layer = 10
 script = ExtResource("1_7cvxn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_nnl1b")
 anchors_preset = 15
 anchor_right = 1.0

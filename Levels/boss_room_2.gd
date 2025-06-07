@@ -6,7 +6,8 @@ extends CenterContainer
 @onready var boss_2_ranged: CharacterBody2D = $Boss2Ranged
 @onready var boss_2_melee: CharacterBody2D = $Boss2Melee
 @onready var boss_2: CharacterBody2D = $Boss2
-
+@onready var cutscene_player: AnimationPlayer = $CutscenePlayer
+@onready var camera: Camera2D = $Player/Camera2D
 
 @onready var lightning_1_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Lightning1
 @onready var lightning_2_triangle_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Lightning2
@@ -89,8 +90,6 @@ extends CenterContainer
 @onready var lightning_ember_middle_second_5: AnimatedSprite2D = $Area2D/MiddleCircleVFX2/EmberMarker5/LightningEmber2
 @onready var lightning_ember_middle_second_6: AnimatedSprite2D = $Area2D/MiddleCircleVFX2/EmberMarker6/LightningEmber2
 
-
-
 @onready var lightning_vfx_outer_1: AnimatedSprite2D = $Area2D/OuterCircleVFX/Marker2D/Lightning4
 @onready var lightning_vfx_outer_2: AnimatedSprite2D = $Area2D/OuterCircleVFX/Marker2D2/Lightning4
 @onready var lightning_vfx_outer_3: AnimatedSprite2D = $Area2D/OuterCircleVFX/Marker2D3/Lightning4
@@ -104,7 +103,6 @@ extends CenterContainer
 @onready var lightning_ember_outer_4: AnimatedSprite2D = $Area2D/OuterCircleVFX/EmberMarker4/LightningEmber3
 @onready var lightning_ember_outer_5: AnimatedSprite2D = $Area2D/OuterCircleVFX/EmberMarker5/LightningEmber3
 @onready var lightning_ember_outer_6: AnimatedSprite2D = $Area2D/OuterCircleVFX/EmberMarker6/LightningEmber3
-
 
 @onready var circle_lightning_0: AnimatedSprite2D = $Area2D/Triangle0VFX/Phase2/CircleLightning
 @onready var circle_lightning_1: AnimatedSprite2D = $Area2D/Triangle1VFX/Phase2/CircleLightning
@@ -140,6 +138,7 @@ extends CenterContainer
 @onready var lightning_second_4: AnimatedSprite2D = $Area2D/Triangle4VFX/Phase2/Marker2D5/Lightning5
 @onready var lightning_ember_second_4: AnimatedSprite2D = $Area2D/Triangle4VFX/Phase2/EmberMarker4/LightningEmber3
 
+@onready var area_2d: Area2D = $Area2D
 
 
 
@@ -151,30 +150,39 @@ extends CenterContainer
 
 var ranged_special_2 = preload("res://Other/ranged_special_part_2.tscn")
 var ranged_special_initial_2 = preload("res://Other/ranged_special_initial_2.tscn")
+var ranged_audio = preload("res://Other/ranged_special_audio.tscn")
 
 @onready var cutscene_animation_player: AnimationPlayer = $CutsceneAnimationPlayer
 @onready var cutscene_camera: Camera2D = $CutsceneCamera
 @onready var camera_2d: Camera2D = $Player/Camera2D
 
-
-
-#var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_progress.tscn")
-#@onready var beam_timer: Timer = $BeamTimer
-#var circle_ref: Node2D
-
-
 var center_of_screen = get_viewport_rect().size / 2
+
+@onready var static_outer_arena: CollisionPolygon2D = $StaticBody2D/CollisionPolygon2D
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	#if Global.player_data.cutscene_viewed_boss_3 == false:
+	static_outer_arena.disabled = true
+	#if Global.player_data_slots[Global.current_slot_index].cutscene_viewed_boss_3 == false:
 		#start_cutscene()
-		#Global.player_data.cutscene_viewed_boss_3 = true
+		#Global.player_data_slots[Global.current_slot_index].cutscene_viewed_boss_3 = true
 		#Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
 	
 	AudioPlayer.stop_music()
 	GlobalCount.reset_count()
+	
+	if GlobalCount.from_stage_select_enter:
+		GlobalCount.from_stage_select_enter = false
+		player.set_process(false)
+		player.set_physics_process(false)
+		GlobalCount.paused = true
+		cutscene_player.play("new_animation")
+		await cutscene_player.animation_finished
+		player.set_process(true)
+		player.set_physics_process(true)
+		GlobalCount.paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -185,16 +193,14 @@ func _process(delta: float) -> void:
 		#circle_ref.position = Vector2(400, 300)
 		#print("cricle_ref pos", circle_ref.global_position)
 func start_cutscene():
-	player.set_process_input(false)
-	player.set_physics_process(false)
+	#player.set_process_input(false)
 	cutscene_camera.make_current()
 
 	cutscene_animation_player.play("boss_intro")
 	await cutscene_animation_player.animation_finished
 	#cutscene_camera.current = false
 	camera_2d.make_current()
-	player.set_process_input(true)
-	player.set_physics_process(true)
+	#player.set_process_input(true)
 
 		
 func inner_melee_special_vfx():
@@ -207,11 +213,6 @@ func inner_melee_special_vfx():
 	lightning_ember_inner_4.play("default")
 	lightning_ember_inner_5.play("default")
 	lightning_ember_inner_6.play("default")
-	
-	#var inner_wind = create_tween()
-	#inner_wind.tween_property(inner_circle_wind, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	#var inner_lightning = create_tween()
-	#inner_lightning.tween_property(inner_circle_lightning, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
 	
 func middle_melee_special_vfx():
 	middle_circle_wind.play("default")
@@ -229,11 +230,6 @@ func middle_melee_special_vfx():
 	lightning_ember_middle_5.play("default")
 	lightning_ember_middle_6.play("default")
 	
-	#var middle_wind = create_tween()
-	#middle_wind.tween_property(middle_circle_wind, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	#var middle_lightning = create_tween()
-	#middle_lightning.tween_property(middle_circle_lightning, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	
 func middle_second_melee_special_vfx():
 	middle_circle_lightning_2.play("default")
 	middle_circle_wind_2.play("default")
@@ -249,10 +245,6 @@ func middle_second_melee_special_vfx():
 	lightning_ember_middle_second_4.play("default")
 	lightning_ember_middle_second_5.play("default")
 	lightning_ember_middle_second_6.play("default")
-	#var middle_second_wind = create_tween()
-	#middle_second_wind.tween_property(middle_circle_lightning_2, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	#var middle_second_lightning = create_tween()
-	#middle_second_lightning.tween_property(middle_circle_wind_2, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
 	
 func outer_melee_special_vfx():
 	outer_circle_wind.play("default")
@@ -272,11 +264,6 @@ func outer_melee_special_vfx():
 	outer_collision.disabled = false
 	await get_tree().create_timer(0.0833).timeout
 	outer_collision.disabled = true
-	#var outer_wind = create_tween()
-	#outer_wind.tween_property(outer_circle_wind, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	#var outer_lightning = create_tween()
-	#outer_lightning.tween_property(outer_circle_lightning, "modulate:a", 0, 0.3).set_trans(Tween.TRANS_LINEAR)
-	
 	
 func enrage_attack():
 	inner_circle_wind.play("default")
@@ -318,22 +305,26 @@ func enrage_attack():
 	lightning_ember_outer_4.play("default")
 	lightning_ember_outer_5.play("default")
 	lightning_ember_outer_6.play("default")
-#func range_special_vfx():
-	#red_lightning_1.play("default")
-	#red_lightning_2.play("default")
-	#red_lightning_3.play("default")
-	#red_lightning_4.play("default")
-	#red_lightning_5.play("default")
-	#red_lightning_6.play("default")
 
 func spawn_special_counterclockwise() -> void:
 	var range_line_first = ranged_special_initial_2.instantiate()
 	add_child(range_line_first)
 	
+	await get_tree().create_timer(2.94).timeout
+	for i in range(20):
+		var range_special_audio = ranged_audio.instantiate()
+		add_child(range_special_audio)
+		await get_tree().create_timer(0.5).timeout
+	
 func spawn_special_clockwise() -> void:
 	var range_line = ranged_special_2.instantiate()
 	add_child(range_line)
 	
+	await get_tree().create_timer(2.94).timeout
+	for i in range(20):
+		var range_special_audio = ranged_audio.instantiate()
+		add_child(range_special_audio)
+		await get_tree().create_timer(0.5).timeout
 	#if end_degrees == 450.0:
 		#if second_await:
 			#await get_tree().create_timer(1).timeout
@@ -593,3 +584,6 @@ func arena_death_vfx():
 		#get_tree().get_current_scene().add_child(circle_ref)
 		#circle_ref.global_position = global_position
 		##circle_ref.global_position = temp_pos
+		
+func reset_smoothing():
+	camera.reset_smoothing()

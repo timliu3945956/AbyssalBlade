@@ -125,8 +125,9 @@ func trigger_area_attack():
 func transition():
 	if can_transition:
 		can_transition = false
+		owner.timeline += 1
 		await get_tree().create_timer(1).timeout
-		get_parent().change_state("Follow")
+		get_parent().change_state("Cleave2")
 
 func _on_shadow_state_timer_timeout() -> void:
 	owner.circle_animation.play("circle_disappear")

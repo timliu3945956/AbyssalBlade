@@ -7,15 +7,21 @@ func enter():
 	
 	GlobalCount.boss_defeated = true
 	GlobalCount.timer_active = false
+	owner.player.hurtbox.set_deferred("disabled", true)
+	owner.boss_room.static_outer_arena.set_deferred("disabled", false)
 	
-	#owner.boss_room_animation.stop()
-	#owner.top_bottom_animation_player.stop()
-	#owner.in_out_animation_player.stop()
-	#animation_player.stop()
-	if Global.player_data.first_play_2 == true:
-		Global.player_data.first_play_2 = false
-		Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
+	if Global.player_data_slots[Global.current_slot_index].first_play_2 == true:
+		player.set_process(false)
+		#Global.player_data_slots[Global.current_slot_index].first_play_2 = false
+		#Global.save_data(Global.current_slot_index)
+	var achievement = Steam.getAchievement("DefeatAnger")
+	if achievement.ret && !achievement.achieved:
+		Steam.setAchievement("DefeatAnger")
+		Steam.storeStats()
 	animation_player.play("death")
 	await animation_player.animation_finished
+	
+	owner.enrage_background.play("background_end")
 	queue_free()
 	owner.boss_killed.boss_slain()
+	AudioPlayer.fade_out_music(5)

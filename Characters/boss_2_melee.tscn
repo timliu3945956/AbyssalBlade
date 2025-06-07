@@ -1,24 +1,19 @@
-[gd_scene load_steps=341 format=3 uid="uid://cwrqxwbrtuknt"]
+[gd_scene load_steps=332 format=3 uid="uid://cwrqxwbrtuknt"]
 
 [ext_resource type="Script" path="res://Boss2States/boss_2_melee.gd" id="1_xl2xx"]
 [ext_resource type="PackedScene" uid="uid://cc4fmiv5lner" path="res://Hitbox and Hurtbox/hurtbox.tscn" id="2_acwm8"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_egurx"]
-[ext_resource type="PackedScene" uid="uid://crxlieqkkfsea" path="res://Healthbar/Healthbar.tscn" id="3_8kf78"]
 [ext_resource type="Texture2D" uid="uid://cbuagayfw7ecl" path="res://sprites/DenialBoss/boss_room_attacks_telegraphs/whole circle.png" id="3_853yu"]
 [ext_resource type="Shader" path="res://telegraphs/melee_slam_telegraph.gdshader" id="3_t5jx4"]
 [ext_resource type="Texture2D" uid="uid://cjfgmdk2up3i2" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Shadow/melee_idle_shadow.png" id="4_5uox6"]
-[ext_resource type="Texture2D" uid="uid://ck8t4j7qv8k85" path="res://Utilities/boss HP/bosshp_overlay.png" id="4_qhfpy"]
 [ext_resource type="Texture2D" uid="uid://661g8tc54emc" path="res://Utilities/Effects/particlefx/hit_effect_wind.png" id="5_s1li1"]
 [ext_resource type="Script" path="res://Healthbar/healthbar_shake.gd" id="5_yvew0"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="6_22ksq"]
-[ext_resource type="Texture2D" uid="uid://bbcb52n1uyxr4" path="res://sprites/boss_character/slash_sprite.png" id="6_igmlq"]
 [ext_resource type="Texture2D" uid="uid://cn7wrx7ociufm" path="res://Utilities/Effects/Dash_Wind_White_v5_spritesheet.png" id="6_khdkp"]
 [ext_resource type="Texture2D" uid="uid://c7evbhpau6igt" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Melee/melee_idle.png" id="6_lh1rk"]
 [ext_resource type="Script" path="res://Boss2States/FiniteStateMachine.gd" id="6_wpwcq"]
-[ext_resource type="Texture2D" uid="uid://dn7euw3xjp0i8" path="res://Utilities/Effects/spotlight_2_alpha.png" id="7_hmaxw"]
 [ext_resource type="Texture2D" uid="uid://b1u8ogctliohd" path="res://Utilities/cast bar/castbar_underlay.png" id="7_jyhmf"]
 [ext_resource type="Texture2D" uid="uid://df1qhfcaciuoy" path="res://Utilities/Effects/particlefx/Jump_Wind_White_v1_spritesheet.png" id="7_uwrip"]
-[ext_resource type="Texture2D" uid="uid://dy05uhybglneg" path="res://sprites/boss_character/hit 3.png" id="8_46c3v"]
 [ext_resource type="Texture2D" uid="uid://d1rf8l482ra4n" path="res://Utilities/cast bar/castbar_overlay.png" id="8_wfpvf"]
 [ext_resource type="Texture2D" uid="uid://8tcpsxk45f4" path="res://Utilities/Effects/windvfx/Wind_Current_White_v3_spritesheet.png" id="9_7l046"]
 [ext_resource type="Texture2D" uid="uid://dn11hs2yt87od" path="res://Utilities/Effects/windvfx/Wind_Current_White_v4_spritesheet.png" id="10_dvmg8"]
@@ -52,12 +47,14 @@
 [ext_resource type="Texture2D" uid="uid://cp4jsr54mc0p5" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Shadow/melee_pound_shadow.png" id="30_pd45t"]
 [ext_resource type="Texture2D" uid="uid://b8q2s356rtrmb" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Melee/melee_foretoldl.png" id="32_yrqw2"]
 [ext_resource type="Texture2D" uid="uid://ejm2458rncdd" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Shadow/melee_foretold_shadow.png" id="33_1x5m2"]
-[ext_resource type="AudioStream" uid="uid://b6i8e81glpvk2" path="res://audio/sfx/Boss2/darkness balance.mp3" id="37_h0762"]
 [ext_resource type="AudioStream" uid="uid://gxnsynp1vt77" path="res://audio/sfx/Boss2/darkness fail.wav" id="38_4qqft"]
-[ext_resource type="AudioStream" uid="uid://dltomqgfyaohk" path="res://audio/sfx/Boss2/jump.wav" id="39_s08me"]
 [ext_resource type="Script" path="res://Boss2States/boss_2_melee_foretold.gd" id="40_02dg0"]
-[ext_resource type="AudioStream" uid="uid://bowlpvdxljx20" path="res://audio/sfx/Boss/knockback slam.wav" id="50_gh2j7"]
-[ext_resource type="AudioStream" uid="uid://dvupn0ew37ddu" path="res://audio/sfx/Boss/normalattack(1).wav" id="52_syyo5"]
+[ext_resource type="AudioStream" uid="uid://dlpyq8gvalbn5" path="res://audio/sfx/0_confirm success.wav" id="48_24igv"]
+[ext_resource type="AudioStream" uid="uid://dm65e4jk6no5n" path="res://audio/sfx/Boss0/1_jump.wav" id="50_8jm6f"]
+[ext_resource type="AudioStream" uid="uid://dvi83340sv8yl" path="res://audio/sfx/Boss/2_fire stomp.wav" id="51_66ulq"]
+[ext_resource type="AudioStream" uid="uid://b14fp561moucg" path="res://audio/sfx/Boss/2_eruption.wav" id="52_xy8aq"]
+[ext_resource type="Texture2D" uid="uid://cnrhj37h7vbiy" path="res://Utilities/boss HP/bosshp_emblems.png" id="53_sbdve"]
+[ext_resource type="PackedScene" uid="uid://xnikvutjcb5h" path="res://Healthbar/BossHealthbar.tscn" id="54_hb0ce"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bllei"]
 shader = ExtResource("3_t5jx4")
@@ -1373,7 +1370,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqiqy"]
-size = Vector2(19, 26)
+size = Vector2(16, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mjwj"]
 atlas = ExtResource("5_s1li1")
@@ -1515,19 +1512,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_7kidm")
 width = 180
 height = 10
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xsdd3"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7yqdl"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_41bkf"]
-blend_mode = 1
-particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 1
-particles_anim_loop = true
 
 [sub_resource type="Animation" id="Animation_e72h2"]
 length = 0.001
@@ -4085,32 +4069,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7mu5"]
-texture = ExtResource("4_qhfpy")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-expand_margin_left = 8.0
-expand_margin_top = 58.0
-expand_margin_right = 8.0
-expand_margin_bottom = 58.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0uny"]
-bg_color = Color(0.941176, 0, 0, 1)
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc4t5"]
-bg_color = Color(0.172833, 0.172833, 0.172833, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0, 0, 0, 0.27451)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aho3r"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2fiem"]
 
 [sub_resource type="Gradient" id="Gradient_7s7n4"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -4147,9 +4106,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -450.0
-offset_top = -350.0
+offset_top = -450.0
 offset_right = -150.0
-offset_bottom = -50.0
+offset_bottom = -150.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 150)
@@ -4241,7 +4200,7 @@ collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 visible = false
-position = Vector2(-0.5, -11)
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_hqiqy")
 disabled = true
 
@@ -4252,8 +4211,11 @@ one_shot = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="FlashTimer" type="Timer" parent="."]
-wait_time = 0.105
+wait_time = 0.05
 one_shot = true
+
+[node name="VFXTimer" type="Timer" parent="."]
+wait_time = 0.4
 
 [node name="HitParticles2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
@@ -4275,7 +4237,7 @@ disabled = true
 
 [node name="AttackMeter" type="Node2D" parent="."]
 visible = false
-position = Vector2(0, -12)
+position = Vector2(0, 2)
 
 [node name="Label" type="Label" parent="AttackMeter"]
 anchors_preset = 8
@@ -4290,7 +4252,7 @@ offset_bottom = -32.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_22ksq")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 9
 text = "Cleave"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -4312,49 +4274,6 @@ texture_under = ExtResource("7_jyhmf")
 texture_over = ExtResource("8_wfpvf")
 texture_progress = SubResource("GradientTexture2D_6ndmm")
 texture_progress_offset = Vector2(160, 45)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -12)
-
-[node name="SlashParticles" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_xsdd3")
-position = Vector2(-6, 0)
-rotation = 1.5708
-scale = Vector2(0.25, 0.12)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("6_igmlq")
-gravity = Vector2(0, 0)
-color = Color(1, 1, 1, 0.662745)
-
-[node name="SlashGlow" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_7yqdl")
-position = Vector2(-6, 0)
-rotation = 1.5708
-scale = Vector2(0.42, 0.03)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("7_hmaxw")
-gravity = Vector2(0, 0)
-
-[node name="SwordParticles" type="CPUParticles2D" parent="Marker2D"]
-material = SubResource("CanvasItemMaterial_41bkf")
-position = Vector2(-6, 0)
-emitting = false
-amount = 1
-lifetime = 0.1
-one_shot = true
-local_coords = true
-texture = ExtResource("8_46c3v")
-gravity = Vector2(0, 0)
-anim_speed_min = 1.0
-anim_speed_max = 1.0
 
 [node name="JumpTimer" type="Timer" parent="."]
 one_shot = true
@@ -4431,8 +4350,8 @@ script = ExtResource("28_k36b1")
 script = ExtResource("29_vdidb")
 
 [node name="DarknessBalance" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("37_h0762")
-volume_db = -20.0
+stream = ExtResource("48_24igv")
+volume_db = -13.0
 bus = &"SFX"
 
 [node name="DarknessFail" type="AudioStreamPlayer2D" parent="."]
@@ -4441,55 +4360,47 @@ volume_db = -20.0
 bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("39_s08me")
-volume_db = -15.0
+stream = ExtResource("50_8jm6f")
+volume_db = -16.0
 bus = &"SFX"
 
 [node name="AutoAttackAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("52_syyo5")
-volume_db = -20.0
+stream = ExtResource("51_66ulq")
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="JumpLandAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
-stream = ExtResource("50_gh2j7")
-volume_db = -5.0
+stream = ExtResource("52_xy8aq")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("3_8kf78")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -125.0
-offset_top = 9.0
-offset_right = 375.0
-offset_bottom = 19.0
-grow_horizontal = 2
-scale = Vector2(0.5, 0.5)
-theme_override_styles/background = SubResource("StyleBoxTexture_w7mu5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_f0uny")
-max_value = 57000.0
-value = 500.0
+[node name="BosshpUnderlay" type="Sprite2D" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2fiem")
+position = Vector2(240, 11)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("53_sbdve")
+
+[node name="BossHealthbar" parent="CanvasLayer" instance=ExtResource("54_hb0ce")]
+offset_left = 80.0
+offset_top = -9.0
+offset_right = 880.0
+offset_bottom = 91.0
+max_value = 39000.0
 script = ExtResource("5_yvew0")
 shake_fade = 0.0
-metadata/_edit_use_anchors_ = true
 
-[node name="HealthDamageBar" parent="CanvasLayer/Healthbar" index="0"]
-theme_override_styles/background = SubResource("StyleBoxFlat_vc4t5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_aho3r")
-value = 60.0
-metadata/_edit_use_anchors_ = true
+[node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
+max_value = 35000.0
+value = 20000.0
 
-[node name="ManaDamageBar" parent="CanvasLayer/Healthbar" index="1"]
-visible = false
-
-[node name="HealthPercent" parent="CanvasLayer/Healthbar" index="4"]
-offset_top = -10.0
-offset_right = 23.0
-offset_bottom = -2.0
-metadata/_edit_use_anchors_ = true
+[node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]
+offset_left = 60.0
+offset_top = 34.0
+offset_right = 84.0
+offset_bottom = 42.0
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -4500,14 +4411,14 @@ offset_right = 20.0
 offset_bottom = 9.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("6_22ksq")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 9
 text = "The Heart"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="AttackMeter" type="Node2D" parent="CanvasLayer"]
-position = Vector2(408, 49.5)
+position = Vector2(427, 49)
 
 [node name="Label" type="Label" parent="CanvasLayer/AttackMeter"]
 anchors_preset = 8
@@ -4522,7 +4433,7 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("6_22ksq")
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 9
 text = "Shockwave"
 vertical_alignment = 1
 
@@ -4559,6 +4470,7 @@ vertical_alignment = 1
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="PainLine" to="." method="_on_pain_line_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="VFXTimer" to="." method="_on_vfx_timer_timeout"]
 
 [editable path="Hurtbox"]
-[editable path="CanvasLayer/Healthbar"]
+[editable path="CanvasLayer/BossHealthbar"]

@@ -1,0 +1,846 @@
+[gd_scene load_steps=73 format=3 uid="uid://chkduxlwu63ib"]
+
+[ext_resource type="Script" path="res://Menu/music_select.gd" id="1_rj540"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_l51nh"]
+[ext_resource type="Texture2D" uid="uid://bmop53n3hfmjy" path="res://Utilities/menu/lobby/music/filled_music_border_box.png" id="2_rawip"]
+[ext_resource type="Texture2D" uid="uid://dy0bqxuju24ts" path="res://Utilities/menu/lobby/music/music_long_button.png" id="4_4ni11"]
+[ext_resource type="Texture2D" uid="uid://t38wvgyw2c8x" path="res://Utilities/menu/lobby/music/music_long_button_CLICK.png" id="4_8ubdo"]
+[ext_resource type="Texture2D" uid="uid://d4mlm6qq468rh" path="res://Utilities/menu/lobby/music/big_disk_for_menu.png" id="4_c6opv"]
+[ext_resource type="Texture2D" uid="uid://dp7tlcgsnlsip" path="res://Utilities/menu/lobby/music/big_disk_WHITE_OVER.png" id="5_j5416"]
+[ext_resource type="Texture2D" uid="uid://c4qur5u0lj1so" path="res://Utilities/menu/lobby/music/soundcontrol_play.png" id="6_hrp2h"]
+[ext_resource type="Texture2D" uid="uid://dhn724o503jr6" path="res://Utilities/menu/lobby/music/music_gauge_underlay.png" id="6_txfrt"]
+[ext_resource type="Shader" uid="uid://5e5opcf2wu1d" path="res://Healthbar/abyss_gauge.tres" id="7_h3pjg"]
+[ext_resource type="StyleBox" uid="uid://pv40p6m33av5" path="res://UI/manabar_fill_blue_stylebox.tres" id="8_sxrco"]
+[ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="9_t2g6o"]
+[ext_resource type="Texture2D" uid="uid://bo6bbbp3asjfy" path="res://Utilities/menu/lobby/music/music_gauge.png" id="10_o2gh1"]
+[ext_resource type="FontFile" uid="uid://b0y1swh713a2c" path="res://Utilities/Font/type_writer2.ttf" id="14_hdso1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xfn1"]
+bg_color = Color(0, 0, 0, 0.431373)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4oggg"]
+texture = ExtResource("2_rawip")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h81ao"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ec1ya"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bch5e"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+modulate_color = Color(1, 1, 1, 0.705882)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nr40f"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1pl30"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6vrd4"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4pdj"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0vj5"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r3o1"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3eb5s"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1628p"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eo2qc"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_etqqf"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a44lx"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7240d"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkb7u"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mceph"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xlpdu"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5jrh"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i7k60"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wv0ik"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_512mf"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ttwqv"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrm78"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocgh6"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2js6a"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wqprv"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2l86u"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2asi0"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7pd0n"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swuqm"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2iqjh"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yrriq"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_10qq4"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfhm5"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcdpj"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iqf8p"]
+content_margin_left = 9.0
+texture = ExtResource("4_4ni11")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uwa0i"]
+content_margin_left = 9.0
+texture = ExtResource("4_8ubdo")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2rum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6h5s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ox5xa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpemw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6exc"]
+shader = ExtResource("7_h3pjg")
+shader_parameter/enabled = true
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h0xi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q8ru5"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ptmda"]
+offsets = PackedFloat32Array(0.277778, 0.393162, 0.529915, 0.683761)
+colors = PackedColorArray(0, 0, 0, 1, 0.0692787, 0.0876022, 0.957027, 1, 0.261188, 0.377886, 0.953031, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cqrb2"]
+gradient = SubResource("Gradient_ptmda")
+
+[sub_resource type="Curve" id="Curve_p66i8"]
+max_value = 2.0
+_data = [Vector2(0, 0.580696), 0.0, 0.0, 0, 0, Vector2(1, 0.272152), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ssho3"]
+curve = SubResource("Curve_p66i8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jl4n5"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 0, 1)
+gravity = Vector3(0, -20, 0)
+scale_min = 0.25
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_ssho3")
+color_ramp = SubResource("GradientTexture1D_cqrb2")
+turbulence_noise_strength = 2.06
+
+[sub_resource type="Animation" id="Animation_8q3ob"]
+length = 0.001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x2nfr"]
+resource_name = "spin"
+length = 16.6667
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 16.6667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eu87t"]
+_data = {
+"RESET": SubResource("Animation_8q3ob"),
+"spin": SubResource("Animation_x2nfr")
+}
+
+[sub_resource type="Animation" id="Animation_fkg4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton1/SoundPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton2/SoundPlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton3/SoundPlay:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton4/SoundPlay:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton5/SoundPlay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton6/SoundPlay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton8/SoundPlay:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton9/SoundPlay:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yjt60"]
+resource_name = "fade"
+length = 1.00001
+loop_mode = 2
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton1/SoundPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton2/SoundPlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton3/SoundPlay:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton4/SoundPlay:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton5/SoundPlay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton6/SoundPlay:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton8/SoundPlay:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton9/SoundPlay:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.313726)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53q8e"]
+_data = {
+"RESET": SubResource("Animation_fkg4i"),
+"fade": SubResource("Animation_yjt60")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rj540")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer"]
+offset_left = 315.0
+offset_top = 11.0
+offset_right = 370.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+text = "Soundtracks"
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xfn1")
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 313.0
+offset_top = 20.0
+offset_right = -14.25
+offset_bottom = -24.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(76.375, 101.75)
+theme_override_styles/panel = SubResource("StyleBoxTexture_4oggg")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h81ao")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 320
+theme_override_constants/margin_top = 27
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 27
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MusicButton1" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_ec1ya")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_nr40f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1pl30")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6vrd4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "ABYSSAL BLADE"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton1"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_i4pdj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_n0vj5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3r3o1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3eb5s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "FLEETING HOPE"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton2"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_1628p")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eo2qc")
+theme_override_styles/hover = SubResource("StyleBoxTexture_etqqf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a44lx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "DENIAL"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton3"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton4" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_7240d")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_mkb7u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mceph")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xlpdu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "ANGER"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton4"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton5" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_s5jrh")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_i7k60")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wv0ik")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_512mf")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "BARGAIN"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton5"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton6" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_ttwqv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_qrm78")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ocgh6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2js6a")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "DEPRESSION"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton6"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton7" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_wqprv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_2l86u")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2asi0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7pd0n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "YOU"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton7"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton8" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_swuqm")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_2iqjh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yrriq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_10qq4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "GRIEF"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton8"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="MusicButton9" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 20)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxTexture_dfhm5")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_bch5e")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_wcdpj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iqf8p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uwa0i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bch5e")
+text = "ACCEPTANCE"
+alignment = 0
+
+[node name="SoundPlay" type="Sprite2D" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MusicButton9"]
+z_index = 10
+position = Vector2(128, 10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_left = 442.0
+offset_top = 31.0
+offset_right = 467.0
+offset_bottom = 56.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_hrp2h")
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+z_index = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 431.625
+offset_top = -25.435
+offset_right = 463.625
+offset_bottom = -12.435
+grow_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.281428, 0.285774, 0.287634, 1)
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x2rum")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_e6h5s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ox5xa")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vpemw")
+text = "Back
+"
+alignment = 2
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2(113, 270)
+scale = Vector2(0.45, 0.45)
+
+[node name="Disk" type="Sprite2D" parent="CanvasLayer/Node2D"]
+position = Vector2(-3.8147e-06, 0)
+texture = ExtResource("4_c6opv")
+
+[node name="DiskWhite" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(113, 270)
+rotation = -3.14159
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_j5416")
+
+[node name="PlayLength" type="Node2D" parent="CanvasLayer"]
+position = Vector2(0, -51)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PlayLength"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = 140.0
+offset_right = 143.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SongName" type="Label" parent="CanvasLayer/PlayLength/CenterContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_l51nh")
+theme_override_font_sizes/font_size = 14
+text = "Denial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Underlay" type="Sprite2D" parent="CanvasLayer/PlayLength"]
+position = Vector2(113, 172)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_txfrt")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayLength"]
+clip_children = 2
+z_index = 1
+material = SubResource("ShaderMaterial_m6exc")
+offset_left = 41.0
+offset_top = 170.0
+offset_right = 185.0
+offset_bottom = 174.13
+theme_override_styles/background = SubResource("StyleBoxEmpty_6h0xi")
+theme_override_styles/fill = ExtResource("8_sxrco")
+value = 0.35
+show_percentage = false
+
+[node name="ManaBarFire" type="GPUParticles2D" parent="CanvasLayer/PlayLength/ProgressBar"]
+material = SubResource("CanvasItemMaterial_q8ru5")
+position = Vector2(72, 4)
+scale = Vector2(8.9973, -5.9245)
+amount = 1300
+process_material = SubResource("ParticleProcessMaterial_jl4n5")
+texture = ExtResource("9_t2g6o")
+
+[node name="Overlay" type="Sprite2D" parent="CanvasLayer/PlayLength"]
+z_index = 2
+position = Vector2(113, 172)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_o2gh1")
+
+[node name="Timestamp" type="Label" parent="CanvasLayer/PlayLength"]
+offset_left = 10.0
+offset_top = 161.0
+offset_right = 50.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("14_hdso1")
+theme_override_font_sizes/font_size = 5
+text = "0:00"
+vertical_alignment = 1
+
+[node name="TotalLength" type="Label" parent="CanvasLayer/PlayLength"]
+offset_left = 200.0
+offset_top = 161.0
+offset_right = 240.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("14_hdso1")
+theme_override_font_sizes/font_size = 5
+text = "0:00"
+vertical_alignment = 1
+
+[node name="SpinningDiskAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eu87t")
+}
+autoplay = "spin"
+
+[node name="ButtonFadeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_53q8e")
+}
+autoplay = "fade"
+
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

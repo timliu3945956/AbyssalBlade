@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=3 uid="uid://b0d1juf0gdjbf"]
+[gd_scene load_steps=250 format=3 uid="uid://b0d1juf0gdjbf"]
 
 [ext_resource type="Script" path="res://Other/depression_orb.gd" id="1_85ti5"]
 [ext_resource type="Texture2D" uid="uid://cgw021unycugm" path="res://Utilities/Effects/firevfx/Fireball_v6_Loop_A_spritesheet_RED.png" id="2_0fixo"]
@@ -11,10 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://dom30vo3b8a05" path="res://sprites/DenialBoss/boss_animations/jump away.png" id="8_isnaq"]
 [ext_resource type="Texture2D" uid="uid://d0yh0824alk1q" path="res://Utilities/Effects/particlefx/Impact_Wind_White_v6_spritesheet.png" id="9_grbol"]
 [ext_resource type="Texture2D" uid="uid://dm4yat7en0w6l" path="res://Utilities/Effects/particlefx/floaty_128.png" id="10_7vhdx"]
-[ext_resource type="AudioStream" uid="uid://3kwve0aa6rip" path="res://audio/sfx/Boss3/orb summon.mp3" id="12_h6pew"]
-[ext_resource type="AudioStream" uid="uid://bcj7uxhqm5n6s" path="res://audio/sfx/Boss3/orb change.mp3" id="13_lqalb"]
-[ext_resource type="AudioStream" uid="uid://dqerexs6ereii" path="res://audio/sfx/Boss3/orb explode.mp3" id="14_mlaeh"]
-[ext_resource type="AudioStream" uid="uid://dt4l8j2r23a2s" path="res://audio/sfx/Boss3/orb soak.mp3" id="15_q85c3"]
+[ext_resource type="AudioStream" uid="uid://dkh42koe41mod" path="res://audio/sfx/Boss/2_flame inbuement.wav" id="12_qha5c"]
+[ext_resource type="AudioStream" uid="uid://cmoqmkhpob13h" path="res://audio/sfx/Boss3/4_element change.wav" id="13_el8mg"]
+[ext_resource type="AudioStream" uid="uid://cpk27pxls05ki" path="res://audio/sfx/Boss3/4_soak elementy.wav" id="14_pln4y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ucf3r"]
 
@@ -1755,18 +1754,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("OrbExplodeAudio:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_klord"]
 resource_name = "orb_explode"
@@ -1782,18 +1769,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OrbExplodeAudio:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_0c735"]
@@ -2029,22 +2004,17 @@ shape = SubResource("CircleShape2D_3el4q")
 one_shot = true
 
 [node name="OrbSummonAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_h6pew")
-volume_db = -15.0
+stream = ExtResource("12_qha5c")
+volume_db = -8.0
 bus = &"SFX"
 
 [node name="OrbChangeAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_lqalb")
-volume_db = -15.0
-bus = &"SFX"
-
-[node name="OrbExplodeAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_mlaeh")
-volume_db = -15.0
+stream = ExtResource("13_el8mg")
+volume_db = -8.0
 bus = &"SFX"
 
 [node name="OrbSoakAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_q85c3")
+stream = ExtResource("14_pln4y")
 volume_db = -13.0
 bus = &"SFX"
 

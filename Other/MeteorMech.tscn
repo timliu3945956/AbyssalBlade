@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwp0q1hvekaus" path="res://Utilities/Effects/firevfx/Aura_Fire_v4_Loop_spritesheet.png" id="6_kjoao"]
 [ext_resource type="Texture2D" uid="uid://cjp0b8mgm01ow" path="res://Utilities/Effects/firevfx/Aura_Fire_v1_Loop_spritesheet.png" id="7_rigob"]
 [ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="8_w3bwg"]
-[ext_resource type="AudioStream" uid="uid://bi1ajp34kgjit" path="res://audio/sfx/Boss/meteor.wav" id="9_5va52"]
+[ext_resource type="AudioStream" uid="uid://dsw5q8vxndv0r" path="res://audio/sfx/Boss/2_drop meteor.wav" id="9_1kcsw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhtle"]
 shader = ExtResource("2_24xji")
@@ -1659,7 +1659,7 @@ tracks/11/path = NodePath("MeteorAudio:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1.81377),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -2664,7 +2664,7 @@ material = SubResource("CanvasItemMaterial_sdmny")
 position = Vector2(37.5, 37.5)
 scale = Vector2(0.695, 0.695)
 sprite_frames = SubResource("SpriteFrames_j2tk0")
-frame_progress = 0.670272
+frame_progress = 0.346261
 
 [node name="FireballDrop" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -2685,14 +2685,14 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-6.4373e-06, -1.76)
 scale = Vector2(0.278, 0.288)
 sprite_frames = SubResource("SpriteFrames_ypb6n")
-frame_progress = 0.0582632
+frame_progress = 0.329926
 
 [node name="AuraFire1" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -24.42)
 scale = Vector2(0.485, 0.435859)
 sprite_frames = SubResource("SpriteFrames_dummn")
-frame_progress = 0.772565
+frame_progress = 0.788902
 
 [node name="CampfireParticle" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -2727,5 +2727,5 @@ shape = SubResource("RectangleShape2D_24yc8")
 disabled = true
 
 [node name="MeteorAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_5va52")
-volume_db = -20.0
+stream = ExtResource("9_1kcsw")
+volume_db = -10.0

@@ -1,6 +1,8 @@
 extends CenterContainer
 
 @onready var player: CharacterBody2D = $Player
+@onready var cutscene_player: AnimationPlayer = $CutscenePlayer
+@onready var camera: Camera2D = $Player/Camera2D
 
 @onready var top_bottom_attack: AnimatedSprite2D = $ForegroundArena/VHRotation/TopBottomAttack/TopBottomAttack
 @onready var top_bottom_attack_2: AnimatedSprite2D = $ForegroundArena/VHRotation/TopBottomAttack/TopBottomAttack2
@@ -16,7 +18,7 @@ extends CenterContainer
 
 @onready var cleave_audio: AudioStreamPlayer2D = $cleave_audio
 @onready var generate_audio: AudioStreamPlayer2D = $generate_audio
-@onready var sac_mech_fail_audio: AudioStreamPlayer2D = $sac_mech_fail_audio
+#@onready var sac_mech_fail_audio: AudioStreamPlayer2D = $sac_mech_fail_audio
 @onready var invisible_attack_audio: AudioStreamPlayer2D = $invisible_attack_audio
 
 @onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
@@ -25,38 +27,37 @@ extends CenterContainer
 @onready var cutscene_camera: Camera2D = $CutsceneCamera
 @onready var camera_2d: Camera2D = $Player/Camera2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	#if Global.player_data.cutscene_viewed_boss_1 == false:
-		#start_cutscene()
-		#Global.player_data.cutscene_viewed_boss_1 = true
-		#Global.save_data(Global.SAVE_DIR + Global.SAVE_FILE_NAME)
-	#if first_time_enter:
-		#start_cutscene()
-		#first_time_enter = false
-	
-	#var boss_music = preload("res://audio/music/boss 2 music (loop-ready).wav")
-	AudioPlayer.stop_music()
-	#AudioPlayer.play_music(boss_music, -30)
-	GlobalCount.reset_count()
+@onready var static_outer_arena: CollisionPolygon2D = $StaticBody2D/CollisionPolygon2D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	static_outer_arena.disabled = true
+	AudioPlayer.stop_music()
+	GlobalCount.reset_count()
+	if GlobalCount.from_stage_select_enter:
+		GlobalCount.from_stage_select_enter = false
+		player.set_process(false)
+		player.set_physics_process(false)
+		GlobalCount.paused = true
+		cutscene_player.play("new_animation")
+		await cutscene_player.animation_finished
+		player.set_process(true)
+		player.set_physics_process(true)
+		GlobalCount.paused = false
+		
 func _process(delta: float) -> void:
 	if GlobalCount.timer_active:
 		GlobalCount.elapsed_time += delta
 
-func start_cutscene():
-	player.set_process_input(false)
-	player.set_physics_process(false)
-	cutscene_camera.make_current()
+func enable_collision():
+	static_outer_arena.set_deferred("disabled", false)
+	print("this is the current state of static body collision: ", static_outer_arena.disabled)
 	
 
+func start_cutscene():
+	cutscene_camera.make_current()
 	cutscene_animation_player.play("boss_intro")
 	await cutscene_animation_player.animation_finished
-	#cutscene_camera.current = false
 	camera_2d.make_current()
-	player.set_process_input(true)
-	player.set_physics_process(true)
 	
 
 func top_bottom_cleave():
@@ -80,14 +81,17 @@ func cleave_sound():
 func generate_sound():
 	generate_audio.play()
 	
-func sac_mech_fail_sound():
-	sac_mech_fail_audio.play()
+#func sac_mech_fail_sound():
+	#sac_mech_fail_audio.play()
 	
 func invisible_attack_sound():
 	invisible_attack_audio.play()
 	
 func camera_shake():
-	GlobalCount.camera.apply_shake(1.5, 15.0)
+	GlobalCount.camera.apply_shake(8.0, 15.0)
 	
 func camera_shake_phase_2():
 	GlobalCount.camera.apply_shake(5, 25.0)
+
+func reset_smoothing():
+	camera.reset_smoothing()

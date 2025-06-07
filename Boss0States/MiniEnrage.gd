@@ -9,7 +9,7 @@ func enter():
 	animation_player.play("mini_enrage")
 	owner.enrage_fire_pop.emitting = true
 	await get_tree().create_timer(0.4998).timeout
-	owner.chromatic_abberation_animation.play("chromatic_abberation")
+	#owner.chromatic_abberation_animation.play("chromatic_abberation")
 	owner.enrage_background.play("background_change")
 	await owner.enrage_background.animation_finished
 	#await animation_player.animation_finished

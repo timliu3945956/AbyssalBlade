@@ -1,4 +1,4 @@
-extends "res://Healthbar/healthbar.gd"
+extends "res://Healthbar/boss_healthbar.gd"
 
 @export var shake_fade: float
 
