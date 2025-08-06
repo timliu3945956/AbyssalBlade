@@ -1,4 +1,4 @@
-[gd_scene load_steps=596 format=3 uid="uid://cubcpgdntlnmq"]
+[gd_scene load_steps=595 format=3 uid="uid://cubcpgdntlnmq"]
 
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="1_7lwhd"]
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_skh0d"]
@@ -90,7 +90,6 @@
 [ext_resource type="Texture2D" uid="uid://drbre8wllyunu" path="res://Utilities/Effects/firevfx/Aura_V12_spritesheet_BLACK.png" id="67_0fb4t"]
 [ext_resource type="Texture2D" uid="uid://beugki6775564" path="res://sprites/character/Idle/idle_up.png" id="67_0vscs"]
 [ext_resource type="Shader" uid="uid://5e5opcf2wu1d" path="res://Healthbar/abyss_gauge.tres" id="70_62sx0"]
-[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="72_fekhr"]
 [ext_resource type="AudioStream" uid="uid://vc4bkwyhwndl" path="res://audio/sfx/Player/footsteps.wav" id="73_y783u"]
 [ext_resource type="Texture2D" uid="uid://bklv7rl8wis8x" path="res://Utilities/abyssal gauge/castbar_underlay.png" id="78_7ufbn"]
 [ext_resource type="AudioStream" uid="uid://btqfatlwx2hkh" path="res://audio/sfx/Player/player_light hit.wav" id="82_eybr5"]
@@ -116,7 +115,7 @@
 [ext_resource type="AudioStream" uid="uid://h2xay5ntoy0x" path="res://audio/sfx/Boss4/5_high pitch slice.wav" id="94_mqskt"]
 [ext_resource type="Texture2D" uid="uid://bvmpfm34h65p7" path="res://Utilities/abyssal gauge/castbar_CHAINED.png" id="102_yrwjb"]
 [ext_resource type="StyleBox" uid="uid://pv40p6m33av5" path="res://UI/manabar_fill_blue_stylebox.tres" id="104_v2ekl"]
-[ext_resource type="FontFile" uid="uid://b0y1swh713a2c" path="res://Utilities/Font/type_writer2.ttf" id="107_qml2j"]
+[ext_resource type="FontFile" uid="uid://b0y1swh713a2c" path="res://Utilities/Font/type_writer2.ttf" id="107_hmu1u"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8uxpl"]
 blend_mode = 2
@@ -7280,7 +7279,7 @@ bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0fvh0"]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 34
 script = ExtResource("1_skh0d")
@@ -7418,7 +7417,7 @@ frame_progress = 1.0
 position = Vector2(0, -7)
 
 [node name="ControllerCursor" type="Sprite2D" parent="Smoothing2D/CursorAim"]
-self_modulate = Color(1, 1, 1, 0.588235)
+self_modulate = Color(1, 1, 1, 0.745098)
 z_index = 2
 y_sort_enabled = true
 position = Vector2(32, -9.53674e-07)
@@ -7694,73 +7693,73 @@ libraries = {
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("82_eybr5")
-volume_db = -15.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="heavy hit" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("83_hawlx")
-volume_db = -10.0
+volume_db = 6.0
 bus = &"SFX"
 
 [node name="abyssal surge hit" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("62_31y55")
-volume_db = -12.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="swing" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("85_df88i")
-volume_db = -8.0
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="dash" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("29_niw14")
+volume_db = 13.0
 bus = &"SFX"
 
 [node name="transform" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("87_ceswk")
-volume_db = -3.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="untransform" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("88_qf8v3")
-volume_db = -13.0
+volume_db = 7.0
 bus = &"SFX"
 
 [node name="surge ready" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("89_qgqvw")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="charge" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("90_evafo")
-volume_db = -8.0
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("73_y783u")
-volume_db = -4.0
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("92_r5mr4")
-volume_db = -5.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="OrbSoakAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("93_irxmt")
-volume_db = -11.0
 bus = &"SFX"
 
 [node name="HighPitchSliceAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("94_mqskt")
-volume_db = -8.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="DashTrail" parent="." instance=ExtResource("29_kq4pg")]
@@ -7830,7 +7829,6 @@ texture = ExtResource("89_2rojd")
 
 [node name="AbyssModeChain" type="Sprite2D" parent="CanvasLayer/AbyssOverlay"]
 z_index = 2
-position = Vector2(-6, 0)
 texture = ExtResource("102_yrwjb")
 
 [node name="TransformFireBar" type="GPUParticles2D" parent="CanvasLayer"]
@@ -7930,7 +7928,6 @@ offset_top = 253.5
 offset_right = 376.0
 offset_bottom = 276.5
 scale = Vector2(0.305878, 0.305878)
-theme_override_fonts/font = ExtResource("72_fekhr")
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -7946,7 +7943,7 @@ process_mode = 3
 visible = false
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_fonts/font = ExtResource("107_qml2j")
+theme_override_fonts/font = ExtResource("107_hmu1u")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ef6r")
 text = "0:00:00"
@@ -8005,7 +8002,6 @@ offset_right = 20.0
 offset_bottom = -19.0
 grow_vertical = 0
 pivot_offset = Vector2(7.805, 5.06)
-theme_override_fonts/font = ExtResource("72_fekhr")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxTexture_0fvh0")
 text = "LMB"
@@ -8045,7 +8041,6 @@ offset_right = 19.5
 offset_bottom = -19.0
 grow_vertical = 0
 pivot_offset = Vector2(7.495, 4.195)
-theme_override_fonts/font = ExtResource("72_fekhr")
 theme_override_font_sizes/font_size = 5
 text = "RMB"
 horizontal_alignment = 1
@@ -8083,7 +8078,6 @@ offset_right = 33.0
 offset_bottom = 10.0
 grow_vertical = 0
 pivot_offset = Vector2(20.615, 4.755)
-theme_override_fonts/font = ExtResource("72_fekhr")
 theme_override_font_sizes/font_size = 5
 text = "Space"
 horizontal_alignment = 1
@@ -8116,7 +8110,6 @@ offset_right = 17.0
 offset_bottom = 10.0
 grow_vertical = 0
 pivot_offset = Vector2(4.625, 3.81)
-theme_override_fonts/font = ExtResource("72_fekhr")
 theme_override_font_sizes/font_size = 5
 text = "E"
 horizontal_alignment = 1
@@ -8149,7 +8142,6 @@ offset_right = 16.0
 offset_bottom = 10.0
 grow_vertical = 0
 pivot_offset = Vector2(4.92, 4.525)
-theme_override_fonts/font = ExtResource("72_fekhr")
 theme_override_font_sizes/font_size = 5
 text = "Q"
 horizontal_alignment = 1

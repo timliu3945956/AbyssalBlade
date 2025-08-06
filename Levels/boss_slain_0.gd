@@ -147,7 +147,7 @@ func format_time(time_in_seconds):
 	
 	var milliseconds = int((time_in_seconds - int(time_in_seconds)) * 100)
 	#print("milliseconds time: ", time_in_seconds - seconds)
-	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
+	return "%2d:%02d:%02d" % [minutes, seconds, milliseconds]
 
 func _on_retry_pressed() -> void:
 	TransitionScreen.transition()

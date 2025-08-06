@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://u1i6pshnxt8k"]
+
+[ext_resource type="Texture2D" uid="uid://c5igbyf1rs47" path="res://Utilities/menu/guide/hold_attack_tutorialpopup.png" id="1_lauwb"]
+[ext_resource type="Script" path="res://Menu/attack_tutorial_popup.gd" id="1_wmdfk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k1rgf"]
+texture = ExtResource("1_lauwb")
+
+[node name="AttackTutorialPopup" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wmdfk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_k1rgf")

@@ -26,7 +26,7 @@ func enter():
 	owner.vfx_timer.stop()
 	owner.boss_2_ranged.vfx_timer.stop()
 	
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	#owner.paused = false
 	

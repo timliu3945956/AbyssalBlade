@@ -25,12 +25,12 @@ func _on_flash_timer_timeout() -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.name == "HitBox":
+		EffectManager.damage_text(player.damage_amount, global_position + Vector2(0, -25))
 		flash()
 		if player.transformed:
 			spawn_attack_vfx("surge")
 		else:
 			spawn_attack_vfx("normal")
-		
 		player.attack_count += 1
 		if player.dash_gauge >= 3 and not player.transformed:
 			player.attack_count = 0
@@ -56,8 +56,8 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 				player.mana_bar_fire.process_material.color.a = 1.0
 				player.mana_bar_fire.emitting = true
 	elif area.name == "HeavyHitBox":
+		EffectManager.damage_text(player.damage_amount * 8, global_position + Vector2(0, -25))
 		flash()
-		
 		if player.swing.playing:
 			player.swing.stop()
 		

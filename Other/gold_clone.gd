@@ -15,13 +15,14 @@ var player: CharacterBody2D
 var boss: CharacterBody2D
 
 func _ready() -> void:
-	
+	sprite.material.set_shader_parameter("flash_modifier", 0)
 	gold_particles.emitting = true
 	spawn_clone_audio.play()
 	enrage_fire_pop.emitting = true
 	print("spawned clone")
 	boss.connect("gold_clone_aoe", Callable(self, "_on_gold_clone_hit"))
 	global_position = player.global_position
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -31,7 +32,7 @@ func flash():
 		flash_timer.start()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	collision.disabled = true
+	collision.call_deferred("set", "disabled", true)
 	gold_particles.emitting = false
 	#animation_player.play("fail")
 	flash()

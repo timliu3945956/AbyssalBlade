@@ -15,26 +15,26 @@ func enter():
 		1:
 			owner.boss_room_animation.play("cleave_vertical_telegraph")
 			if owner.timeline >= 6:
-				await get_tree().create_timer(1.5).timeout
+				await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 				owner.boss_room_animation_2.play("cleave_horizontal_telegraph")
 				
-				await get_tree().create_timer(1.0003).timeout
+				await TimeWait.wait_sec(1.0003)#await get_tree().create_timer(1.0003).timeout
 				animation_player.play("buff_attack")
 				await owner.boss_room_animation.animation_finished
 				print("Currently cleaving top")
 				#await get_tree().create_timer(0.4998).timeout
 				owner.boss_room_animation.play("cleave_vertical_attack")
 				#await owner.boss_room_animation.animation_finished
-				await get_tree().create_timer(1.0005).timeout
+				await TimeWait.wait_sec(1.0005)#await get_tree().create_timer(1.0005).timeout
 
 				
 				animation_player.play("buff_attack")
-				await get_tree().create_timer(0.4998).timeout
+				await TimeWait.wait_sec(0.4998)#await get_tree().create_timer(0.4998).timeout
 				
 				owner.boss_room_animation.play("cleave_horizontal_attack")
 				await owner.boss_room_animation.animation_finished
 			else:
-				await get_tree().create_timer(2.5003).timeout
+				await TimeWait.wait_sec(2.5003)#await get_tree().create_timer(2.5003).timeout
 				animation_player.play("buff_attack")
 				await owner.boss_room_animation.animation_finished
 				print("Currently cleaving top")
@@ -46,25 +46,25 @@ func enter():
 			owner.boss_room_animation.play("cleave_horizontal_telegraph")
 			if owner.timeline >= 6:
 				#changed to 2 seconds timeout
-				await get_tree().create_timer(1.5).timeout
+				await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 				owner.boss_room_animation_2.play("cleave_vertical_telegraph")
 
-				await get_tree().create_timer(1.0003).timeout
+				await TimeWait.wait_sec(1.0003)#await get_tree().create_timer(1.0003).timeout
 				animation_player.play("buff_attack")
 				await owner.boss_room_animation.animation_finished
 				print("Currently cleaving bottom")
 				#await get_tree().create_timer(0.4998).timeout
 				owner.boss_room_animation.play("cleave_horizontal_attack")
 				#await owner.boss_room_animation.animation_finished
-				await get_tree().create_timer(1.0005).timeout
+				await TimeWait.wait_sec(1.0005)#await get_tree().create_timer(1.0005).timeout
 				
 				animation_player.play("buff_attack")
-				await get_tree().create_timer(0.4998).timeout
+				await TimeWait.wait_sec(0.4998)#await get_tree().create_timer(0.4998).timeout
 				
 				owner.boss_room_animation.play("cleave_vertical_attack")
 				await owner.boss_room_animation.animation_finished
 			else:
-				await get_tree().create_timer(2.5003).timeout
+				await TimeWait.wait_sec(2.5003)#await get_tree().create_timer(2.5003).timeout
 				animation_player.play("buff_attack")
 				await owner.boss_room_animation.animation_finished
 				print("Currently cleaving bottom")
@@ -72,7 +72,7 @@ func enter():
 				await owner.boss_room_animation.animation_finished
 	
 	
-	await get_tree().create_timer(0.75).timeout
+	await TimeWait.wait_sec(0.75)#await get_tree().create_timer(0.75).timeout
 	#owner.boss_charge_animation.play("charge_cleave")
 	#owner.tether_animation_player.play("tether_left")
 	#owner.boss_clone_animation.play("clone_left")

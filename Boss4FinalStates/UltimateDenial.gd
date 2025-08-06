@@ -54,6 +54,7 @@ func spawn_shadow():
 	var shadow_clone = ShadowCloneScene.instantiate()
 	shadow_clone.position = owner.center_of_screen
 	shadow_clone.boss_room_center = owner.center_of_screen
+	shadow_clone.boss = owner
 	add_child(shadow_clone)
 	
 	shadow_clone.connect("action_completed", self._on_shadow_done)
@@ -81,7 +82,7 @@ func play_animation(slice_indices: Array) -> void:
 		var meter_name := "realization_" + str(number)
 		owner.attack_meter_animation.play(meter_name)
 		number += 1
-		await get_tree().create_timer(1.5).timeout
+		await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 		if player.global_position.x - owner.global_position.x > 0:
 			owner.sprite.flip_h = false
 		else:
@@ -94,7 +95,7 @@ func play_animation(slice_indices: Array) -> void:
 		owner.boss_room_animation.play(anim_name)
 		owner.flash_room_animation.play("flash_arena")
 		#print("ordered array:", ordered)
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	#animation_player.play("idle_right")
 	
@@ -106,6 +107,7 @@ func spawn_bosses() -> void:
 		var bc = BossCloneScene.instantiate()
 		bc.position = get_boss_position(index)
 		bc.boss_index = index
+		bc.boss = owner
 		get_parent().get_parent().get_parent().add_child(bc)
 		bc.connect("boss_hit", self._on_boss_clone_hit)
 		boss_clones.append(bc)
@@ -135,7 +137,7 @@ func cleanup_boss_clones() -> void:
 	for c in boss_clones:
 		if is_instance_valid(c):
 			c.play_sac_explode()
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	for c in boss_clones:
 		if is_instance_valid(c):
 			c.queue_free()

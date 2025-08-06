@@ -11,13 +11,15 @@ var select_dialogue: String = "MainMenu"
 func _ready() -> void:
 	GlobalCount.stage_select_pause = true
 	await get_tree().create_timer(2).timeout
-	AudioPlayer.play_music(wind_music.stream, -10)
+	AudioPlayer.play_music(wind_music.stream, 10)
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
 	DialogueManager.show_dialogue_balloon(dialogue_resource, select_dialogue)
 	await TransitionScreen.on_transition_finished
 	#----------------- FOR DEMO
 	#if select_dialogue == "DenialEnd":
+		#Global.player_data_slots[Global.current_slot_index].demo_done = true
+		#Global.save_data(Global.current_slot_index)
 		#get_tree().change_scene_to_file("res://Menu/Cutscene/DemoEndScreen.tscn")
 	#else:
 	GlobalCount.stage_select_pause = false

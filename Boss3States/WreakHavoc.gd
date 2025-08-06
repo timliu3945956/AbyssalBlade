@@ -11,22 +11,22 @@ func enter():
 	owner.attack_meter_animation.play("wreak_havoc")
 	if owner.crown_color == "white":
 		owner.boss_room.white_telegraph_start()
-		await get_tree().create_timer(2.1667).timeout
+		await TimeWait.wait_sec(2.1667)#await get_tree().create_timer(2.1667).timeout
 		animation_player.play("windup")
 		await animation_player.animation_finished
 		#await get_tree().create_timer(2.5).timeout
 		owner.boss_room.white_telegraph_end()
-		await get_tree().create_timer(0.3).timeout
+		await TimeWait.wait_sec(0.3)#await get_tree().create_timer(0.3).timeout
 		owner.unleash_crown_audio.play()
 	else:
 		owner.boss_room.black_telegraph_start()
-		await get_tree().create_timer(2.1667).timeout
+		await TimeWait.wait_sec(2.1667)#await get_tree().create_timer(2.1667).timeout
 		animation_player.play("windup")
 		await animation_player.animation_finished
 		#await get_tree().create_timer(2.5).timeout
 		
 		owner.boss_room.black_telegraph_end()
-		await get_tree().create_timer(0.3).timeout
+		await TimeWait.wait_sec(0.3)#await get_tree().create_timer(0.3).timeout
 		owner.unleash_crown_audio.play()
 	await owner.attack_meter_animation.animation_finished
 	

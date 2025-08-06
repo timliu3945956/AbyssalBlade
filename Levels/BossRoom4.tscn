@@ -1,4 +1,4 @@
-[gd_scene load_steps=611 format=3 uid="uid://doa158yen8l6f"]
+[gd_scene load_steps=615 format=3 uid="uid://doa158yen8l6f"]
 
 [ext_resource type="Script" path="res://Levels/boss_room_4.gd" id="1_utrd7"]
 [ext_resource type="Script" path="res://Levels/repeat_parallax.gd" id="2_h78ei"]
@@ -2065,7 +2065,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_tkoj3"]
 resource_name = "debuff"
-length = 5.00001
+length = 3.00001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2074,7 +2074,7 @@ tracks/0/path = NodePath("Boss4/AttackMeter:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -2098,7 +2098,7 @@ tracks/2/path = NodePath("Boss4/AttackMeter/TextureProgressBar:value")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 100.0]
@@ -2110,7 +2110,7 @@ tracks/3/path = NodePath("Boss4/CanvasLayer/AttackMeter:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -2134,7 +2134,7 @@ tracks/5/path = NodePath("Boss4/CanvasLayer/AttackMeter/TextureProgressBar:value
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 5),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 100.0]
@@ -3573,6 +3573,122 @@ _data = {
 "plunge_in_attack": SubResource("Animation_3hypo"),
 "plunge_in_telegraph": SubResource("Animation_xnh51"),
 "plunge_out_attack": SubResource("Animation_be3i4")
+}
+
+[sub_resource type="Animation" id="Animation_b7vfc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlungeArea2D/PlungeInTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlungeArea2D/PlungeInTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlungeArea2D/PlungeOutTelegraph:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlungeArea2D/PlungeOutTelegraph:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xhtsd"]
+resource_name = "plunge_in_telegraph"
+length = 1.91668
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlungeArea2D/PlungeInTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.91667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlungeArea2D/PlungeInTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667, 1.5, 1.91667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ktiox"]
+resource_name = "plunge_out_telegraph"
+length = 1.91668
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlungeArea2D/PlungeOutTelegraph:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.91667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlungeArea2D/PlungeOutTelegraph:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.416667, 1.5, 1.91667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsmgi"]
+_data = {
+"RESET": SubResource("Animation_b7vfc"),
+"plunge_in_telegraph": SubResource("Animation_xhtsd"),
+"plunge_out_telegraph": SubResource("Animation_ktiox")
 }
 
 [sub_resource type="Animation" id="Animation_wntrp"]
@@ -7494,11 +7610,14 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(3, 10),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"camera_shake_cutscene"
+}, {
+"args": [],
+"method": &"play_roar_audio"
 }]
 }
 tracks/7/type = "method"
@@ -7981,7 +8100,7 @@ tracks/45/keys = {
 "times": PackedFloat32Array(10.5833),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/46/type = "value"
 tracks/46/imported = false
@@ -8114,8 +8233,8 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2, 3, 4, 5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(2, 3, 4, 5, 6, 22.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"camera_shake_cutscene"
@@ -8131,6 +8250,9 @@ tracks/6/keys = {
 }, {
 "args": [],
 "method": &"camera_shake_cutscene"
+}, {
+"args": [],
+"method": &"bad_ending_achievement"
 }]
 }
 tracks/7/type = "method"
@@ -8214,10 +8336,10 @@ tracks/13/path = NodePath("PlayerCutsceneSprite/footsteps:playing")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.666667, 9, 9.66666, 10.3333, 11),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, true, true, true, true, true]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -10049,8 +10171,13 @@ collision_mask = 0
 
 [node name="PlungeInTelegraph" type="Sprite2D" parent="PlungeArea2D"]
 visible = false
-self_modulate = Color(1, 1, 1, 0.482353)
+self_modulate = Color(1, 1, 1, 0)
 texture = ExtResource("15_fnrwg")
+
+[node name="PlungeOutTelegraph" type="Sprite2D" parent="PlungeArea2D"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("16_eeyyp")
 
 [node name="PlungeIn" type="Sprite2D" parent="PlungeArea2D"]
 visible = false
@@ -10162,6 +10289,11 @@ libraries = {
 }
 autoplay = "RESET"
 
+[node name="PlungeTelegraphAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bsmgi")
+}
+
 [node name="EnrageBackground" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2ssf4")
@@ -10218,18 +10350,18 @@ texture_scale = 0.5
 
 [node name="PremonitionAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_c1wpc")
-volume_db = -12.0
 bus = &"SFX"
 
 [node name="PhaseTransitionAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1.52588e-05, 0)
 stream = ExtResource("26_j152p")
-volume_db = -17.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="SwordClashAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_qhhy1")
-volume_db = -17.0
+volume_db = -8.0
+bus = &"SFX"
 
 [node name="Portal" parent="." instance=ExtResource("37_c7gt4")]
 visible = false
@@ -10335,60 +10467,60 @@ vframes = 4
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("20_6qijc")
-volume_db = -5.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("30_yannp")
-volume_db = -4.0
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="wooshup" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 position = Vector2(0, -8)
 stream = ExtResource("39_pjout")
-volume_db = -8.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="BladeOfRuinAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("39_fuh5r")
-volume_db = -10.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="ConstantFireAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("40_tpww2")
-volume_db = -5.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="ConstantFireDestroyAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("40_tpww2")
-volume_db = -7.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="RoarAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("42_yb5p2")
-volume_db = -10.0
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="InbumentAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("43_n7np3")
-volume_db = 5.0
+volume_db = 14.0
 bus = &"SFX"
 
 [node name="HighPitchSliceAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("44_l178j")
-volume_db = -8.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="ShatterSwordAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("45_exsmt")
-volume_db = -3.0
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="KnockbackAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 position = Vector2(0, -18)
 scale = Vector2(2, 2)
 stream = ExtResource("46_xuk3n")
-volume_db = -5.0
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="RedParticlesBurst2" type="GPUParticles2D" parent="."]
@@ -10437,7 +10569,7 @@ grow_vertical = 2
 [node name="PhaseTransitionAudio2" type="AudioStreamPlayer2D" parent="RadiusDistortion"]
 position = Vector2(-1.52588e-05, 52)
 stream = ExtResource("26_j152p")
-volume_db = -20.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="BlackParticles" type="GPUParticles2D" parent="."]

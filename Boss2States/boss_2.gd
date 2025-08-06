@@ -103,7 +103,7 @@ extends CharacterBody2D
 
 
 @onready var boss_killed = get_node("../Portal")
-@onready var boss_death: bool = false
+#@onready var boss_death: bool = false
 
 # flash particles
 @onready var sprite = $Sprite2D
@@ -137,8 +137,8 @@ var circle_ref: Node2D
 var direction : Vector2
 var move_speed = 60 #120
 
-# Change healthbar value as well to change healthbar health: 37500
-var health_amount = 35000 : set = _set_health #37000
+# Change healthbar value as well to change healthbar health: 35000
+var health_amount = 37000 : set = _set_health #37000
 var center_of_screen = get_viewport_rect().size / 2
 
 var timeline: int = 0
@@ -156,6 +156,13 @@ var opposite_position = center_of_screen + Vector2(cos(deg_to_rad(90)),sin(deg_t
 
 signal main_boss_finished
 var _last_t : int
+
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
 
 #var pick_top_bottom = randi_range(1, 2)
 #var pick_ns_ew = randi_range(1, 2)
@@ -204,7 +211,7 @@ func _on_flash_timer_timeout() -> void:
 	sprite.material.set_shader_parameter("flash_modifier", 0)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	GlobalCount.healthbar.apply_shake(1, 10.0)
+	boss_healthbar.apply_shake(1, 10.0)
 	if area.name == "HitBox":
 		health_amount -= player.damage_amount
 		GlobalCount.dps_count += player.damage_amount
@@ -267,6 +274,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
+		GlobalCount.in_subtree_menu = false
+		player.pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
 		sprite.start_shake(1.8, 0.2)
 		player.high_pitch_slice_audio.play()
 		boss_death_anim.play("death")
@@ -331,6 +343,11 @@ func remove_states():
 	canvas_layer.queue_free()
 	attack_meter.queue_free()
 	boss_room.area_2d.queue_free()
+	boss_room.sword_drop_telegraph.queue_free()
+	boss_room.sword_drop.queue_free()
+	boss_room.area_2d.queue_free()
+	boss_room.marker_2d_2.queue_free()
+	boss_room.phase_transition_audio.queue_free()
 
 func camera_shake():
 	GlobalCount.camera.apply_shake(8.0, 15.0)

@@ -8,7 +8,10 @@ extends Node2D
 @onready var ranged_lightning_special_2: AnimatedSprite2D = $Marker2D/Marker2D/RangedLightningSpecial2
 @onready var animated_sprite_2d_4: AnimatedSprite2D = $Marker2D/Sprite2D2/AnimatedSprite2D4
 
+var boss
+
 func _ready():
+	boss.boss_died.connect(_on_boss_died)
 	animation_player.play("ranged_line")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -16,3 +19,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		animation_player.play("attack_anim")
 	else:
 		queue_free()
+
+func _on_boss_died():
+	queue_free()

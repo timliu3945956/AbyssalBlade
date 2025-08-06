@@ -31,36 +31,32 @@ func enter():
 			
 	#animation_player.play("alternate_slam_disappear")
 	player.beam_circle_meteor()
-	await get_tree().create_timer(2.6656).timeout
+	await TimeWait.wait_sec(2.6656)#await get_tree().create_timer(2.6656).timeout
 	while circle_count < 8 and owner.boss_death == false:
 		animation_player.play("alternate_slam")
 		
-		await get_tree().create_timer(0.3332).timeout
+		await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 		owner.beam_circle()
-		#await get_tree().create_timer(0.8336).timeout #1.5 seconds in between circle hit
 		circle()
 		circle_count += 1
 		if circle_count < 8:
 			player.beam_circle_meteor()
 			
-		await get_tree().create_timer(0.6664).timeout
+		await TimeWait.wait_sec(0.6664)#await get_tree().create_timer(0.6664).timeout
 		animation_player.play("idle_right")
-		await get_tree().create_timer(1.9992).timeout
-		# Animation of slam_down
-		
-		#await get_tree().create_timer(2.1652).timeout #1.5 seconds in between circle hit
+		await TimeWait.wait_sec(1.9992)#await get_tree().create_timer(1.9992).timeout
 		
 	if owner.boss_death == false:
 		var smoke_finish_tween = get_tree().create_tween()
 		smoke_finish_tween.tween_property(owner.alternate_smoke, "modulate:a", 0, 0.5)
-		#animation_player.play("oscillate_end")
-		await get_tree().create_timer(0.5).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 		can_transition = true
 
 func circle():
 	if is_instance_valid(player):
 		var circleAOE = CircleAOE.instantiate()
 		circleAOE.position = player.position
+		circleAOE.boss = owner
 		add_child(circleAOE)
 		circleAOE.set_y_sort_enabled(false)
 	
@@ -68,28 +64,4 @@ func transition():
 	if can_transition:
 		can_transition = false
 		owner.timeline += 1
-		#if owner.timeline == 6:
-			#match owner.choose_top_down:
-				#1:
-					#owner.boss_room_animation.play("top_transition")
-				#2:
-					#owner.boss_room_animation.play("bottom_transition")
-			##owner.boss_room_animation.play("top_transition")
-			#await owner.boss_room_animation.animation_finished
-			
-			#animation_player.play("mini_enrage")
-			#await get_tree().create_timer(0.5833).timeout
-			#match owner.choose_top_down:
-				#1:
-					#owner.smoke_top_1.play("smoke")
-					#owner.smoke_top_2.play("smoke")
-					#owner.boss_room_animation.play("top_charge")
-					#spawn_shadow_audio.play()
-				#2:
-					#owner.smoke_bottom_1.play("smoke")
-					#owner.smoke_bottom_2.play("smoke")
-					#owner.boss_room_animation.play("bottom_charge")
-					#spawn_shadow_audio.play()
-			##owner.boss_room_animation.play("top_charge")
-			#await animation_player.animation_finished
 		get_parent().change_state("Transition")

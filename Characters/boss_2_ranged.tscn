@@ -1,4 +1,4 @@
-[gd_scene load_steps=306 format=3 uid="uid://d0sevkr6je28w"]
+[gd_scene load_steps=307 format=3 uid="uid://d0sevkr6je28w"]
 
 [ext_resource type="Script" path="res://Boss2States/boss_2_ranged.gd" id="1_l4tbm"]
 [ext_resource type="Shader" path="res://Characters/flash.gdshader" id="2_23mnv"]
@@ -51,6 +51,7 @@
 [ext_resource type="AudioStream" uid="uid://b14fp561moucg" path="res://audio/sfx/Boss/2_eruption.wav" id="49_llyih"]
 [ext_resource type="Texture2D" uid="uid://cnrhj37h7vbiy" path="res://Utilities/boss HP/bosshp_emblems.png" id="50_iipep"]
 [ext_resource type="PackedScene" uid="uid://xnikvutjcb5h" path="res://Healthbar/BossHealthbar.tscn" id="51_olwuu"]
+[ext_resource type="Script" path="res://Healthbar/healthbar_shake_boss_2.gd" id="52_ccqt2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_owd55"]
 shader = ExtResource("2_23mnv")
@@ -3662,23 +3663,21 @@ script = ExtResource("28_ew0xu")
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("46_qcye0")
-volume_db = -16.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="AutoAttackAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("47_6ub2w")
-volume_db = -16.0
 bus = &"SFX"
 
 [node name="LineAOEAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("38_luavx")
-volume_db = -20.0
 bus = &"SFX"
 
 [node name="JumpLandAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("49_llyih")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -3695,9 +3694,11 @@ offset_top = 6.0
 offset_right = 880.0
 offset_bottom = 106.0
 max_value = 39000.0
+script = ExtResource("52_ccqt2")
+shake_fade = 0.0
 
 [node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
-max_value = 35000.0
+max_value = 37000.0
 value = 20000.0
 
 [node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]

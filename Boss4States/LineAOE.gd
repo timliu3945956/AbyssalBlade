@@ -28,7 +28,7 @@ func enter():
 	await owner.attack_meter_animation.animation_finished
 	var store_position = player.position
 	dash_position = player.global_position
-	await get_tree().create_timer(0.6666).timeout
+	await TimeWait.wait_sec(0.6666)#await get_tree().create_timer(0.6666).timeout
 	move_boss_to_player(store_position, owner)
 	dash_toward_player()
 	owner.dash.play()
@@ -37,39 +37,39 @@ func enter():
 	#else:
 		#owner.cleave_direction = Vector2.RIGHT.rotated(owner.sword_marker_main.rotation + deg_to_rad(-90))
 	print("direction of cleave Vector2D: ", owner.cleave_direction)
-	await get_tree().create_timer(0.29).timeout
+	await TimeWait.wait_sec(0.29)#await get_tree().create_timer(0.29).timeout
 	owner.octahit_audio.play()
 	owner.camera_shake()
-	await get_tree().create_timer(0.10).timeout
+	await TimeWait.wait_sec(0.10)#await get_tree().create_timer(0.10).timeout
 	attack_towards_player(owner.cleave_direction)
-	await get_tree().create_timer(0.45).timeout
+	await TimeWait.wait_sec(0.45)#await get_tree().create_timer(0.45).timeout
 	owner.blade_of_ruin_audio.play()
-	await get_tree().create_timer(0.6).timeout
+	await TimeWait.wait_sec(0.6)#await get_tree().create_timer(0.6).timeout
 	
 	owner.spawn_cleave()
 	owner.cleave_sword_anim.play("RESET")
 	owner.sword_sprite.self_modulate.a = 0
 	owner.static_sword.self_modulate.a = 0
 	owner.animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
-	await get_tree().create_timer(0.7).timeout
+	await TimeWait.wait_sec(0.7)#await get_tree().create_timer(0.7).timeout
 	
 	owner.attack_meter_animation.play("triple_cleave")
 	await owner.attack_meter_animation.animation_finished
 	
 	owner.spawn_triple_cleave()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	owner.spawn_triple_cleave()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	owner.state_machine.travel("downattack_stand")
 	
 	owner.spawn_triple_cleave()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	owner.state_machine.travel("downattack_stand")
 	
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	owner.state_machine.travel("downattack_stand")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	owner.attack_sequence += 1
 	can_transition = true
 	

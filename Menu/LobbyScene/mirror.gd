@@ -1,11 +1,16 @@
 extends Node2D
 
-const ROMAN := ["", "I", "II", "III", "IV", "V"]
+const ROMAN := ["", "I", "II", "III", "IV", "V", ""]
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var stage_select: Control = $"../Player/CanvasLayer/StageSelect"
 @onready var player: CharacterBody2D = $"../Player"
-@onready var color_rect: ColorRect = $"../Player/CanvasLayer/ColorRect"
+
+@onready var voronoi_background_red: Sprite2D = $Sprite2D3/Voronoi_BackgroundRed
+@onready var voronoi_background_gold: Sprite2D = $Sprite2D3/Voronoi_BackgroundGold
+#@onready var color_rect: ColorRect = $"../Player/CanvasLayer/ColorRect"
+@onready var color_rect: ColorRect = $Sprite2D3/ColorRect
+
 @onready var collision_shape_2d: CollisionShape2D = $InteractionArea/CollisionShape2D
 @onready var click = preload("res://audio/sfx/Menu/click.mp3")
 
@@ -19,6 +24,10 @@ const ROMAN := ["", "I", "II", "III", "IV", "V"]
 
 @onready var stage_labels : Array = $StageNumbers.get_children()
 @onready var symbol_change_audio: AudioStreamPlayer2D = $SymbolChangeAudio
+@onready var portal_color_anim: AnimationPlayer = $PortalColorAnim
+@onready var blue_door: AnimatedSprite2D = $BlueDoor
+@onready var gold_door: Sprite2D = $GoldDoor
+
 
 var tween: Tween
 var current_index : int = 0
@@ -30,27 +39,25 @@ func _ready() -> void:
 	if saved_index == -1:
 		saved_index = 0
 	_show_immediately(saved_index)
-	#if Global.player_data_slots[Global.current_slot_index].last_shown_stage == -1:
-		#target_idx = 0
-	#else:
-		#target_idx = Global.player_data_slots[Global.current_slot_index].last_shown_stage
-	#
-	#stage_label.text = ROMAN[target_idx]
 	
-func _calc_current_stage() -> int:
-	var stage := 0
-	if !Global.player_data_slots[Global.current_slot_index].first_play_1:
-		stage = 1
-	if !Global.player_data_slots[Global.current_slot_index].first_play_2:
-		stage = 2
-	if !Global.player_data_slots[Global.current_slot_index].first_play_3:
-		stage = 3
-	if !Global.player_data_slots[Global.current_slot_index].first_play_4:
-		stage = 4
-	return stage
+	#portal_color_anim.play("RESET")
+	#await get_tree().process_frame
+	var shader_material_red := voronoi_background_red.material as ShaderMaterial
+	var shader_material_gold := voronoi_background_gold.material as ShaderMaterial
+	var color_rect_material := color_rect.material as ShaderMaterial
+	await get_tree().process_frame                                                      
+	if Global.player_data_slots[Global.current_slot_index].gold_portal:
+		shader_material_red.set_shader_parameter("alpha", 0.0)
+		shader_material_gold.set_shader_parameter("alpha", 1.0)
+		color_rect_material.set_shader_parameter("effect_color", Color(0.831, 0.741, 0.612))
+		color_rect_material.set_shader_parameter("radius", 1.3)
+		blue_door.visible = false
+		gold_door.visible = true
+	else:
+		portal_color_anim.play("RESET")
 	
 func _on_interact():
-	AudioPlayer.play_FX(click, -10)
+	AudioPlayer.play_FX(click, 10)
 	collision_shape_2d.disabled = true
 	stage_select.visible = true
 	GlobalCount.stage_select_pause = true
@@ -61,6 +68,17 @@ func _on_interact():
 	transform_fire_bar.visible = false
 	manabar.visible = false
 	dash_meter.visible = false
+	
+	stage_select._focus_seeded = true
+	stage_select._prev_move = Vector2.ZERO
+	
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+		if stage_select._last_pressed_idx == -1:
+			stage_select._last_pressed_idx = 0
+			
+		var btn = stage_select.stage_buttons[stage_select._last_pressed_idx]
+		btn.grab_focus()
+		btn.button_pressed = true
 
 func number_change(new_index : int) -> void:
 	if new_index == current_index:
@@ -76,6 +94,12 @@ func number_change(new_index : int) -> void:
 	tween.tween_property(old_label, "modulate:a", 0.0, 0.5)
 	symbol_change_audio.play()
 	tween.parallel().tween_property(new_label, "modulate:a", 1.0, 0.5)
+	
+	if new_index == 6:
+		portal_color_anim.play("portal_gold")
+		Global.player_data_slots[Global.current_slot_index].gold_portal = true
+		Global.save_data(Global.current_slot_index)
+		
 	
 	await tween.finished
 	old_label.visible = false

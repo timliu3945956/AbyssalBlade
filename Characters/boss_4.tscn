@@ -97,7 +97,6 @@
 [ext_resource type="Texture2D" uid="uid://bels82fhcaq50" path="res://sprites/GriefBoss/boss sprite/grief_enrage.png" id="73_n6uab"]
 [ext_resource type="Texture2D" uid="uid://shhjwiwkiro7" path="res://sprites/GriefBoss/shadow/shadow_grief_enrage.png" id="74_8t8cx"]
 [ext_resource type="Texture2D" uid="uid://dd3f7oaseks8l" path="res://sprites/GriefBoss/gold clone/fleeting_hope.png" id="76_v1wh2"]
-[ext_resource type="AudioStream" uid="uid://d0ywjf7uvrum8" path="res://audio/music/Infinity Chasers (Fractal Dreamers).mp3" id="87_0xq7h"]
 [ext_resource type="AudioStream" uid="uid://bnln32nhaqj0h" path="res://audio/sfx/Boss4/5_blade of ruin.wav" id="89_p726s"]
 [ext_resource type="AudioStream" uid="uid://d22ta1sbci8jn" path="res://audio/sfx/Boss4/5_ghost slash.wav" id="90_4fln3"]
 [ext_resource type="AudioStream" uid="uid://dao2m40hbhw4x" path="res://audio/sfx/Boss4/5_unleash blessing.wav" id="91_b12g0"]
@@ -105,6 +104,7 @@
 [ext_resource type="AudioStream" uid="uid://cb2sw6scvwf6n" path="res://audio/sfx/Boss/eruption bait.wav" id="93_5jubh"]
 [ext_resource type="AudioStream" uid="uid://de2cgjvhjgqws" path="res://audio/sfx/Boss4/5_ravage.wav" id="95_cwo1m"]
 [ext_resource type="AudioStream" uid="uid://dm65e4jk6no5n" path="res://audio/sfx/Boss0/1_jump.wav" id="97_n6vgg"]
+[ext_resource type="AudioStream" uid="uid://df8w87ujbufkp" path="res://audio/music/YOU.wav" id="100_sylu6"]
 
 [sub_resource type="Animation" id="Animation_jjtis"]
 length = 0.001
@@ -6849,6 +6849,7 @@ collision_mask = 16
 visible = false
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_fh7ks")
+debug_color = Color(1, 0, 0, 0.298039)
 
 [node name="AttackMeter" type="Node2D" parent="."]
 visible = false
@@ -6956,62 +6957,62 @@ script = ExtResource("52_xjywb")
 
 [node name="BladeOfRuinAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("89_p726s")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="OctahitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("90_4fln3")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="HopeSafeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("91_b12g0")
-volume_db = -9.0
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="OblivionAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("92_pi6ks")
-volume_db = -12.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="ConstantFireAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("67_m43up")
-volume_db = -10.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="EruptionAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("93_5jubh")
-volume_db = 5.0
+volume_db = 18.0
 bus = &"SFX"
 
 [node name="RavageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("95_cwo1m")
-volume_db = -11.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="PremonitionMarkerAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("69_vm6kf")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("97_n6vgg")
-volume_db = -16.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="PremonitionSymbolAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("70_lheyr")
-volume_db = -12.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="dash" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("71_lt3x3")
-volume_db = 3.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("87_0xq7h")
+stream = ExtResource("100_sylu6")
 volume_db = -30.0
 bus = &"Music"
 
@@ -7051,6 +7052,7 @@ offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5

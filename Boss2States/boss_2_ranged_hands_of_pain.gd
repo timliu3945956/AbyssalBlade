@@ -8,7 +8,7 @@ var pain_counter = 0
 func enter():
 	super.enter()
 	animation_player.play("idle_left")
-	await get_tree().create_timer(8).timeout
+	await TimeWait.wait_sec(8)#await get_tree().create_timer(8).timeout
 	can_transition = true
 	
 func transition():

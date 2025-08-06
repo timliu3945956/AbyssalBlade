@@ -18,6 +18,7 @@ extends Control
 #@onready var menu_music: AudioStreamPlayer2D = $MenuMusic
 
 @onready var description_container: Control = $Description
+@onready var layout_label: Label = $LayoutLabel
 
 #@onready var guide_player: VideoStreamPlayer = $Video/Panel/VideoStreamPlayer
 #@onready var guide_player: VideoStreamPlayer = $Video/Panel/AspectRatioContainer/VideoStreamPlayer
@@ -36,6 +37,31 @@ const ACTION_TO_DESC := {
 	"transform": "Surge"
 }
 
+const ACTION_ICONS_PS := {
+	"up": 			preload("res://UI/controller icons/Up.png"),
+	"down": 		preload("res://UI/controller icons/Down.png"),
+	"left": 		preload("res://UI/controller icons/Left.png"),
+	"right": 		preload("res://UI/controller icons/Right.png"),
+	"dash": 		preload("res://UI/PS icons/X.png"),
+	"attack":		preload("res://UI/PS icons/R1.png"),
+	"heavyattack":	preload("res://UI/PS icons/R2.png"),
+	"charge":		preload("res://UI/PS icons/L1.png"),
+	"transform":	preload("res://UI/PS icons/L2.png")
+}
+
+const ACTION_ICONS := {
+	"up": 			preload("res://UI/controller icons/Up.png"),
+	"down": 		preload("res://UI/controller icons/Down.png"),
+	"left": 		preload("res://UI/controller icons/Left.png"),
+	"right": 		preload("res://UI/controller icons/Right.png"),
+	"dash": 		preload("res://UI/controller icons/A.png"),
+	"attack":		preload("res://UI/controller icons/RB.png"),
+	"heavyattack":	preload("res://UI/controller icons/RT.png"),
+	"charge":		preload("res://UI/controller icons/LB.png"),
+	"transform":	preload("res://UI/controller icons/LT.png")
+}
+var _action_buttons: Dictionary
+
 var _desc_panels: Dictionary
 
 var is_remapping = false
@@ -48,21 +74,20 @@ var input_actions = {
 	"left": "Move Left",
 	"right": "Move Right",
 	"dash": "Dash",
-	"attack": "Slash",
-	"heavyattack": "Cleave",
+	"attack": "Light Atk",
+	"heavyattack": "Heavy Atk",
 	"charge": "Charge",
 	"transform": "Surge"
 }
 
 const GUIDE_STREAMS := {
-	"Move": preload("res://Utilities/menu/tutorial videos/guide_move.ogv"),
-	"Dash": preload("res://Utilities/menu/tutorial videos/guide_dash.ogv"),
-	"Attack": preload("res://Utilities/menu/tutorial videos/guide_slash.ogv"),
-	"HeavyAttack": preload("res://Utilities/menu/tutorial videos/guide_cleave.ogv"),
-	"Charge": preload("res://Utilities/menu/tutorial videos/guide_charge.ogv"),
-	"Surge": preload("res://Utilities/menu/tutorial videos/guide_surge.ogv")
+	"Move": preload("res://Utilities/menu/tutorial videos/tutorial_move_2.ogv"),
+	"Dash": preload("res://Utilities/menu/tutorial videos/tutorial_dash.ogv"),
+	"Attack": preload("res://Utilities/menu/tutorial videos/tutorial_light-attack.ogv"),
+	"HeavyAttack": preload("res://Utilities/menu/tutorial videos/tutorial_heavy-attack.ogv"),
+	"Charge": preload("res://Utilities/menu/tutorial videos/tutorial_charge.ogv"),
+	"Surge": preload("res://Utilities/menu/tutorial videos/tutorial_surge.ogv")
 }
-
 var _current_guide_key : String = ""
 const DEFAULT_GUIDE_KEY := "Move"
 signal closed
@@ -77,11 +102,20 @@ func _ready() -> void:
 	sfx_slider.value = min(audio_settings.sfx_volume, 1.0) * 100
 	music_slider.value = min(audio_settings.music_volume, 1.0) * 100
 	
-	_create_action_list()
+	#_create_action_list()
 	_cache_description_panels()
 	
 	_show_description(DEFAULT_GUIDE_KEY)
 	_play_guide(DEFAULT_GUIDE_KEY)
+	
+	InputManager.InputSourceChanged.connect(_on_source_changed)
+	_refresh_layout_label()
+	
+func _refresh_layout_label() -> void:
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+		layout_label.text = "Controller"
+	else:
+		layout_label.text = "Mouse + Keyboard"
 	
 func _load_keybindings_from_settings():
 	var keybindings = ConfigFileHandler.load_keybindings()
@@ -95,6 +129,7 @@ func _create_action_list():
 		
 	for action in input_actions:
 		var button = input_button_scene.instantiate()
+		_action_buttons[action] = button
 		var action_label = button.find_child("LabelAction")
 		var input_label = button.find_child("LabelInput")
 		
@@ -122,11 +157,17 @@ func _create_action_list():
 		#mouse + keyboard focus -> show panel
 		button.mouse_entered.connect(_on_button_hovered.bind(button))
 		button.focus_entered.connect(_on_button_hovered.bind(button))
-		
-		#button.mouse_exited.connect(_hide_all_panels)
-		
-		#
 		button.pressed.connect(_on_input_button_pressed.bind(button, action))
+		
+	for action in input_actions:
+		_refresh_display_for(action)
+		
+	#if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+	await get_tree().process_frame
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+		_grab_first_action_button()
+	else:
+		get_viewport().gui_release_focus()
 		
 func _on_button_hovered(button: Button) -> void:
 	var key : String = button.get_meta("desc_key")
@@ -159,7 +200,9 @@ func _play_guide(desc_key: String) -> void:
 		#guide_player.visible = false
 		
 func _on_input_button_pressed(button, action):
-	AudioPlayer.play_FX(click, 0)
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+		return
+	AudioPlayer.play_FX(click, 10)
 	if !is_remapping:
 		is_remapping = true
 		action_to_remap = action
@@ -201,17 +244,22 @@ func _input(event):
 		#else:
 			#print("No previous scene to return to.")
 		
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GlobalCount.in_subtree_menu:
 		
-		AudioPlayer.play_FX(back_button, -10)
+		AudioPlayer.play_FX(back_button, 5)
 		accept_event()
 		emit_signal("closed")
+		GlobalCount.stage_select_pause = false
 		GlobalCount.in_subtree_menu = false
 		queue_free()
 		
 			
 func _update_action_list(button, event):
-	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
+	for act in _action_buttons.keys():
+		if _action_buttons[act] == button:
+			_refresh_display_for(act)
+			break
+	#button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)")
 	
 func _cache_description_panels() -> void:
 	_desc_panels.clear()
@@ -233,8 +281,9 @@ func _on_reset_button_pressed():
 	
 func _on_back_pressed() -> void:
 	GlobalCount.in_subtree_menu = false
+	GlobalCount.stage_select_pause = false
 	guide_player.stop()
-	AudioPlayer.play_FX(back_button, -10)
+	AudioPlayer.play_FX(back_button, 5)
 	emit_signal("closed")
 	#AudioPlayer.play_FX(back_button, 10)
 	#TransitionScreen.transition()
@@ -259,3 +308,56 @@ func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
 func _on_music_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		ConfigFileHandler.save_audio_setting("music_volume", music_slider.value / 100)
+		
+func _refresh_display_for(action: String) -> void:
+	var btn : Button = _action_buttons.get(action)
+	if btn == null:
+		return
+	
+	var label : Label = btn.find_child("LabelInput", true, false)
+	var icon : Sprite2D = btn.find_child("ControllerIcon", true, false)
+	if label == null or icon == null:
+		return
+	var pad = InputManager.activeInputSource == InputManager.InputSource.CONTROLLER
+	
+	if pad:
+		if InputManager.usingPlayStationPad:
+			label.visible = false
+			icon.texture = ACTION_ICONS_PS.get(action, null)
+			icon.visible = true
+		else:
+			label.visible = false
+			icon.texture = ACTION_ICONS.get(action, null)
+			icon.visible = true
+	else:
+		icon.visible = false
+		var evts = InputMap.action_get_events(action)
+		if evts.size() > 0:
+			label.text = evts[0].as_text().trim_suffix(" (Physical)")
+		else:
+			label.text = ""
+		label.visible = true
+		
+func _on_source_changed(src) -> void:
+	_refresh_layout_label()
+	for act in input_actions:
+		_refresh_display_for(act)
+		
+	if is_remapping:
+		return
+		
+	if src == InputManager.InputSource.CONTROLLER:
+		_grab_first_action_button()
+	else:
+		_release_action_focus()
+		
+func _grab_first_action_button() -> void:
+	for child in action_list.get_children():
+		if child is Button and child.visible and child.focus_mode != Control.FOCUS_NONE and not child.disabled:
+			child.grab_focus()
+			return
+
+func _release_action_focus() -> void:
+	var owner := get_viewport().gui_get_focus_owner()
+	if owner and action_list.is_ancestor_of(owner):
+		owner.release_focus()

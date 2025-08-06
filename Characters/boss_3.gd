@@ -43,7 +43,7 @@ extends CharacterBody2D
 
 
 @onready var boss_killed = get_node("../Portal")
-@onready var boss_death: bool = false
+
 
 @onready var enrage_fire: GPUParticles2D = $EnrageFire
 @onready var enrage_fire_pop: GPUParticles2D = $EnrageFirePop
@@ -65,10 +65,13 @@ extends CharacterBody2D
 @onready var white_black_swords: Sprite2D = $SwordAnim/WhiteBlackSwords
 @onready var black_swords: AnimatedSprite2D = $SwordAnim/BlackSwords
 @onready var white_swords: AnimatedSprite2D = $SwordAnim/WhiteSwords
+@onready var dual_color_swords: AnimatedSprite2D = $SwordAnim/DualColorSwords
+
 @onready var black_fire_spawn: AnimatedSprite2D = $SwordAnim/BlackFireSpawn
 @onready var black_fire_spawn_2: AnimatedSprite2D = $SwordAnim/BlackFireSpawn2
 @onready var white_fire_spawn: AnimatedSprite2D = $SwordAnim/WhiteFireSpawn
 @onready var white_fire_spawn_2: AnimatedSprite2D = $SwordAnim/WhiteFireSpawn2
+
 
 @onready var knockback_effect: AnimatedSprite2D = $Devour/KnockbackEffect
 
@@ -99,6 +102,8 @@ extends CharacterBody2D
 @onready var first_purple_vfx: AnimatedSprite2D = $PurpleOrbDebuff/FirstPurpleVFX
 @onready var second_purple_vfx: AnimatedSprite2D = $PurpleOrbDebuff/SecondPurpleVFX
 @onready var purple_orb_vfx_timer: Timer = $PurpleOrbDebuff/PurpleOrbVFXTimer
+@onready var purple_orb_debuff: Node2D = $PurpleOrbDebuff
+
 
 # flash particles
 @onready var sprite = $Sprite2D
@@ -137,10 +142,11 @@ var left_color: String
 var right_color: String
 var oppressive_debuff_count: int = 0
 var oppressive_current_count: int
+var oppressive_barrage_count: int = 0
 var crown_color: String
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 60000 : set = _set_health #61000
+var health_amount = 61000 : set = _set_health #61000
 var center_of_screen = get_viewport_rect().size / 2 
 
 var timeline: int = 0
@@ -148,7 +154,20 @@ var timeline: int = 0
 var DepressionPillar = preload("res://Other/DepressionPillar.tscn")
 var DepressionPillar2 = preload("res://Other/DepressionPillar2.tscn")
 
+var pillar
+var pillar_2
+var pillar_3
+var pillar_4
+var orb
+
 var _last_t : int
+
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
 
 func _ready():
 	randomize()
@@ -167,6 +186,7 @@ func _ready():
 	white_swords.modulate.a = 0
 	black_white_swords.modulate.a = 0
 	white_black_swords.modulate.a = 0
+	dual_color_swords.modulate.a = 0
 	
 	red_crown.modulate.a = 0
 	black_crown.modulate.a = 0
@@ -274,6 +294,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
+		GlobalCount.in_subtree_menu = false
+		player.pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
 		sprite.start_shake(1.8, 0.2)
 		player.high_pitch_slice_audio.play()
 		boss_death_anim.play("death")
@@ -321,6 +346,22 @@ func remove_state():
 	crown_aura_white.queue_free()
 	crown_aura_red.queue_free()
 	node_2d.queue_free()
+	if is_instance_valid(pillar):
+		pillar.queue_free()
+	if is_instance_valid(pillar_2):
+		pillar_2.queue_free()
+	if is_instance_valid(pillar_3):
+		pillar_3.queue_free()
+	if is_instance_valid(pillar_4):
+		pillar_4.queue_free()
+	if is_instance_valid(orb):
+		orb.queue_free()
+	var orb = boss_room.get_node_or_null("orb")
+	if orb:
+		orb.queue_free()
+	devour_meter.queue_free()
+	purple_orb_debuff.queue_free()
+	boss_room.phase_transition_audio.queue_free()
 	
 func camera_shake():
 	GlobalCount.camera.apply_shake(8.0, 15.0)

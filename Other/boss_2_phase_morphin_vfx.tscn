@@ -1144,7 +1144,7 @@ frame_progress = 1.0
 
 [node name="SplitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_b4enm")
-volume_db = -20.0
+volume_db = -3.0
 bus = &"SFX"
 
 [connection signal="animation_looped" from="ChargeupEnergy1" to="." method="_on_chargeup_energy_1_animation_looped"]

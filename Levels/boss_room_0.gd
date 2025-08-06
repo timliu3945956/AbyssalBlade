@@ -15,6 +15,11 @@ extends CenterContainer
 @onready var arena_attack: AnimatedSprite2D = $ForegroundArena/Sprite2D/ArenaAttack
 @onready var arena_attack_2: AnimatedSprite2D = $ForegroundArena/Sprite2D/ArenaAttack2
 @onready var aoe_particles: GPUParticles2D = $ForegroundArena/Sprite2D/AOEParticles
+@onready var area_attacks: Area2D = $AreaAttacks
+@onready var cleave_clone_ysort_left: CharacterBody2D = $CleaveCloneYsortLeft
+@onready var cleave_clone_y_sort_right: CharacterBody2D = $CleaveCloneYSortRight
+@onready var summon_clone_particle_left: GPUParticles2D = $SummonCloneParticleLeft
+@onready var summon_clone_particle_right: GPUParticles2D = $SummonCloneParticleRight
 
 @onready var cleave_audio: AudioStreamPlayer2D = $cleave_audio
 @onready var generate_audio: AudioStreamPlayer2D = $generate_audio
@@ -43,6 +48,7 @@ func _ready() -> void:
 		player.set_process(true)
 		player.set_physics_process(true)
 		GlobalCount.paused = false
+	GlobalCount.in_subtree_menu = false
 		
 func _process(delta: float) -> void:
 	if GlobalCount.timer_active:

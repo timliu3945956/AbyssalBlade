@@ -26,18 +26,18 @@ func enter():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(owner.devour_meter, "modulate:a", 1, 0.5)
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	#orb_spawn()
 	#await get_tree().create_timer(2).timeout
 	pillar_spawn(owner.center_of_screen + Vector2(-59, -59))
 	pillar_spawn_2(owner.center_of_screen + Vector2(59, 59))
 	pillar_spawn_3(owner.center_of_screen + Vector2(59, -59))
 	pillar_spawn_4(owner.center_of_screen + Vector2(-59, 59))
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	await spawn_orbs()
 	
-	await get_tree().create_timer(3).timeout
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
 	owner.devour_meter.visible = false
 
 	can_transition = true
@@ -54,7 +54,7 @@ func spawn_orbs():
 		#owner.orb_buff_vfx()
 		
 		orb_spawn()
-		await get_tree().create_timer(1).timeout
+		await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 		var orb_count = wave_info["orb_count"]
 		var repeat_times = wave_info["repeat"]
 		var spawn_order = wave_info["order"]
@@ -74,9 +74,9 @@ func spawn_orbs():
 				print(spawn_index)
 				
 			print("spawned", orb_count, "orbs in repetition #", r)
-			await get_tree().create_timer(1.5).timeout
+			await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 			
-		await get_tree().create_timer(3).timeout #4
+		await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout #4
 		#spawn_count += 1
 		#if spawn_count < 4:
 			#orb_spawn()
@@ -87,10 +87,10 @@ func get_boss_position(index):
 	return owner.center_of_screen + Vector2(cos(angle), sin(angle)) * offset_distance
 	
 func orb_spawn():
-	var orb = DepressionOrb.instantiate()
-	orb.position = owner.center_of_screen
-	orb.player = owner.player
-	get_parent().get_parent().get_parent().devour_orb_spawn.add_child(orb)
+	owner.orb = DepressionOrb.instantiate()
+	owner.orb.position = owner.center_of_screen
+	owner.orb.player = owner.player
+	get_parent().get_parent().get_parent().add_child(owner.orb)
 	
 func pillar_spawn(pillar_position: Vector2):
 	owner.pillar = owner.DestructivePillar.instantiate()

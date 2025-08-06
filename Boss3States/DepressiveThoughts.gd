@@ -16,51 +16,51 @@ func enter():
 	
 	pillar_spawn(owner.center_of_screen + Vector2(-59, -59))
 	pillar_spawn_2(owner.center_of_screen + Vector2(59, 59))
-	await get_tree().create_timer(3).timeout
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
 	
 	animation_player.play("depressive")
 	orb_spawn()
-	await get_tree().create_timer(10).timeout
+	await TimeWait.wait_sec(10)#await get_tree().create_timer(10).timeout
 	
 	animation_player.play("depressive")
 	orb_spawn()
-	await get_tree().create_timer(10).timeout
+	await TimeWait.wait_sec(10)#await get_tree().create_timer(10).timeout
 	
 	#mechanic ends here
 	
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	
 
 	can_transition = true
 	
 func orb_spawn():
-	var orb = DepressionOrb.instantiate()
-	orb.position = owner.center_of_screen
-	orb.player = owner.player
-	get_parent().get_parent().get_parent().add_child(orb)
+	owner.orb = DepressionOrb.instantiate()
+	owner.orb.position = owner.center_of_screen
+	owner.orb.player = owner.player
+	get_parent().get_parent().get_parent().add_child(owner.orb)
 	
 func pillar_spawn(pillar_position: Vector2):
-	var pillar = DepressionPillar.instantiate()
-	pillar.position = pillar_position
-	pillar.player = player
+	owner.pillar = DepressionPillar.instantiate()
+	owner.pillar.position = pillar_position
+	owner.pillar.player = player
 	if pick_random_timer == 1:
-		pillar.timer_set = 13.0
+		owner.pillar.timer_set = 13.0
 	else:
-		pillar.timer_set = 23.0
-	pillar.collision_set = false
-	get_parent().get_parent().get_parent().add_child(pillar)
+		owner.pillar.timer_set = 23.0
+	owner.pillar.collision_set = false
+	get_parent().get_parent().get_parent().add_child(owner.pillar)
 
 func pillar_spawn_2(pillar_position: Vector2):
-	var pillar_2 = DepressionPillar2.instantiate()
-	pillar_2.position = pillar_position
-	pillar_2.player = player
+	owner.pillar_2 = DepressionPillar2.instantiate()
+	owner.pillar_2.position = pillar_position
+	owner.pillar_2.player = player
 	if pick_random_timer == 1:
-		pillar_2.timer_set = 23.0
+		owner.pillar_2.timer_set = 23.0
 	else:
-		pillar_2.timer_set = 13.0
-	pillar_2.collision_set = false
-	get_parent().get_parent().get_parent().add_child(pillar_2)
+		owner.pillar_2.timer_set = 13.0
+	owner.pillar_2.collision_set = false
+	get_parent().get_parent().get_parent().add_child(owner.pillar_2)
 
 func transition():
 	if can_transition:

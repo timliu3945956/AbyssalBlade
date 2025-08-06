@@ -23,26 +23,29 @@ func enter():
 		owner.boss_room.spawn_special_counterclockwise()
 	else:
 		owner.boss_room.spawn_special_clockwise()
-	await get_tree().create_timer(5).timeout
+	#await get_tree().create_timer(5, true, false, false).timeout
+	await TimeWait.wait_sec(5)
 	
 	owner.boss_2_animation.play("expanding_circles")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5) #await get_tree().create_timer(0.5).timeout
 	animation_player.play("attack")
 	if player.global_position.x - owner.global_position.x > 0:
 		owner.sprite.flip_h = false
 	else:
 		owner.sprite.flip_h = true
+	#await get_tree().create_timer(4).timeout
 	await owner.boss_2_animation.animation_finished
 	
 	owner.boss_2_animation.play("expanding_circles")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5) #await get_tree().create_timer(0.5).timeout
 	animation_player.play("attack")
 	if player.global_position.x - owner.global_position.x > 0:
 		owner.sprite.flip_h = false
 	else:
 		owner.sprite.flip_h = true
+	#await get_tree().create_timer(4).timeout
 	await owner.boss_2_animation.animation_finished
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2) #await get_tree().create_timer(2).timeout
 	
 	can_transition = true
 	

@@ -53,11 +53,11 @@ func enter():
 	owner.boss_room_animation.play("explosions")
 	if owner.enraged:
 		player.beam_circle_meteor()
-		await get_tree().create_timer(2.6656).tiemout
+		await TimeWait.wait_sec(2.6656)#await get_tree().create_timer(2.6656).timeout
 		animation_player.play("alternate_slam")
-		await get_tree().create_timer(0.3332).timeout
+		await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 	else:
-		await get_tree().create_timer(2.9988).timeout
+		await TimeWait.wait_sec(2.9988)#await get_tree().create_timer(2.9988).timeout
 	if owner.enraged:
 		while circle_count < 6 and owner.boss_death == false:
 			owner.beam_circle()
@@ -65,56 +65,47 @@ func enter():
 			circle()
 			circle_count += 1
 			player.beam_circle_meteor()
-			await get_tree().create_timer(2.6656).timeout
+			await TimeWait.wait_sec(2.6656)#await get_tree().create_timer(2.6656).timeout
 			animation_player.play("alternate_slam")
-			await get_tree().create_timer(0.3332).timeout
-			
+			await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 	else:
-		await owner.boss_room_animation.animation_finished
+		await TimeWait.wait_sec(18.9912)
+		#await get_tree().create_timer(18.9912).timeout
+		#await owner.boss_room_animation.animation_finished
+		
+	if owner.enraged:
+		owner.beam_circle()
+		circle()
+		await animation_player.animation_finished
 	
-	#await owner.boss_room_animation.animation_finished
 	
-	# Timing for jump slam ---------------------------------------
-	#var jump_slam_length = animation_player.get_animation("jump_slam_knockback").length
-	#animation_player.play("jump_slam_disappear")
-	#await animation_player.animation_finished
 	if owner.boss_death == false:
 		boss.sprite.visible = true
-		# Sync up with slam down animation
-		#animation_player.play("jump_slam_knockback")
-		#await get_tree().create_timer(0.8333).timeout
-		#owner.in_out_animation_player.play("knockback_attack")
-		#await animation_player.animation_finished
-		
-		
-		#animation_player.play("jump_slam_reappear")
-		#await animation_player.animation_finished
-		
-		if owner.explosion_count == 0:
-			animation_player.play("jump_slam_knockback")
-		else:
-			smoke.play("smoke")
-			animation_player.play("jump_slam_knockback_reappear")
-		await get_tree().create_timer(1.5833).timeout
+		#if owner.explosion_count == 0:
+		animation_player.play("jump_slam_knockback")
+		#else:
+			#smoke.play("smoke")
+			#animation_player.play("jump_slam_knockback_reappear")
+		await TimeWait.wait_sec(1.5833)#await get_tree().create_timer(1.5833).timeout
 		jump_effect.play("jump_effect")
-		await get_tree().create_timer(0.4167).timeout
+		await TimeWait.wait_sec(0.4167)#await get_tree().create_timer(0.4167).timeout
 		knockback_effect.play("knockback_effect")
-		await get_tree().create_timer(0.25).timeout
+		await TimeWait.wait_sec(0.25)#await get_tree().create_timer(0.25).timeout
 		
 		#meteor here
-		await get_tree().create_timer(1).timeout
+		await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 		animation_player.play("idle_right")
 		#player.beam_circle_meteor()
 		owner.boss_room_animation.play("meteor")
-		await get_tree().create_timer(2.6668).timeout
+		await TimeWait.wait_sec(2.6668)#await get_tree().create_timer(2.6668).timeout
 		animation_player.play("alternate_slam")
-		await get_tree().create_timer(0.3332).timeout
+		await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 		#owner.beam_circle()
 		
 		owner.meteor.closest_square_position(player.position)
-		await get_tree().create_timer(1.4004).timeout
+		await TimeWait.wait_sec(1.4004)#await get_tree().create_timer(1.4004).timeout
 		animation_player.play("idle_right")
-		await get_tree().create_timer(0.9996).timeout
+		await TimeWait.wait_sec(0.9996)#await get_tree().create_timer(0.9996).timeout
 		#owner.in_out_animation_player.play("knockback_attack")
 		#await animation_player.animation_finished
 		
@@ -127,14 +118,14 @@ func enter():
 			owner.boss_room_animation.play("enrage_cast")
 			await owner.boss_room_animation.animation_finished
 			animation_player.play("mini_enrage")
-			await get_tree().create_timer(0.4).timeout
+			await TimeWait.wait_sec(0.4)#await get_tree().create_timer(0.4).timeout
 			owner.camera_shake_phase_2()
 			owner.enrage_background.play("background_change")
 			owner.enrage_fire.emitting = true
 			owner.enrage_fire.visible = true
 			owner.enrage_fire_pop.emitting = true
 			owner.enraged = true
-			await get_tree().create_timer(0.5).timeout
+			await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 			animation_player.play("idle_right")
 		
 		owner.explosion_count += 1
@@ -143,6 +134,7 @@ func enter():
 func circle():
 	var circleAOE = CircleAOE.instantiate()
 	circleAOE.position = player.position
+	circleAOE.boss = owner
 	add_child(circleAOE)
 	
 func disappear():

@@ -6,7 +6,7 @@ signal ControllerDisconnected(deviceId)
 var connectedControllers = {}
 var activeController = -1
 
-@export var analogDeadzone = 0.2
+@export var analogDeadzone = 0.4 #0.3
 @export var triggerThreshold = 0.5
 
 func _ready() -> void:
@@ -78,12 +78,12 @@ func GetControllerStickInput(deviceid = -1, leftstick = true):
 		return Vector2.ZERO
 	return inputVector
 	
-func IsControllerButtonPressed(button, deviceid):
+func IsControllerButtonPressed(button, deviceid = -1):
 	if deviceid == -1:
 		deviceid = activeController
 	if deviceid == -1 or not connectedControllers.has(deviceid):
 		return false
-	return Input.is_joy_button_pressed(deviceid, button)
+	return Input.is_joy_button_pressed(button, deviceid)
 	
 func IsControllerTriggerPressed(deviceid, leftTrigger = true):
 	if deviceid == -1:
@@ -97,3 +97,14 @@ func IsControllerTriggerPressed(deviceid, leftTrigger = true):
 	value = (value + 1) / 2
 	
 	return value if value > triggerThreshold else 0.0
+	
+func is_playstation(id: int) -> bool:
+	if not connectedControllers.has(id):
+		return false
+	var name = connectedControllers[id].name.to_lower()
+	
+	return name.find("playstation") != -1 \
+		or name.find("ps4") != -1 \
+		or name.find("ps5") != -1 \
+		or name.find("dualsense") != -1 \
+		or name.find("dualshock") != -1

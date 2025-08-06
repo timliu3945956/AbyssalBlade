@@ -65,12 +65,12 @@ extends CharacterBody2D
 @onready var mini_enrage: Node2D = $FiniteStateMachine/MiniEnrage
 @onready var cleave_attacks: Node2D = $FiniteStateMachine/CleaveAttacks
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var tether_rotate: Marker2D = $TetherRotate
 
 
 @onready var boss_jump_timer: Timer = $BossJumpTimer
 
 @onready var boss_killed = get_node("../Portal")
-@onready var boss_death: bool = false
 
 @onready var enrage_fire: GPUParticles2D = $EnrageFire
 @onready var enrage_fire_pop: GPUParticles2D = $EnrageFirePop
@@ -98,7 +98,6 @@ extends CharacterBody2D
 @onready var boss_healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar
 @onready var boss_death_animation: AnimationPlayer = $"../BossDeathAnimation"
 
-
 var hit_particle = preload("res://Other/hit_particles.tscn")
 
 var direction : Vector2
@@ -106,7 +105,7 @@ var move_speed = 60 #120
 var spit_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 40000 : set = _set_health #39000
+var health_amount = 40000 : set = _set_health #40000
 var center_of_screen = get_viewport_rect().size / 2
 
 var timeline: int = 0
@@ -116,6 +115,13 @@ var pick_cleave = randi_range(1, 2)
 var spit_enrage: bool = false #false
 
 var _last_t : int
+
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
 
 func _ready():
 	randomize()
@@ -223,6 +229,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
+		GlobalCount.in_subtree_menu = false
+		player.pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
 		sprite.start_shake(1.8, 0.2)
 		player.high_pitch_slice_audio.play()
 		boss_death_anim.play("death")
@@ -265,6 +276,13 @@ func remove_state():
 	canvas_layer.queue_free()
 	attack_meter.queue_free()
 	boss_room_animation.queue_free()
+	boss_room.area_attacks.queue_free()
+	boss_room.cleave_clone_ysort_left.queue_free()
+	boss_room.cleave_clone_y_sort_right.queue_free()
+	boss_room.summon_clone_particle_left.queue_free()
+	boss_room.summon_clone_particle_right.queue_free()
+	tether_rotate.queue_free()
+	phase_2_audio.queue_free()
 	
 func spit_attack_visual():
 	spit_attack_white.play("default")

@@ -35,7 +35,7 @@ func transition():
 					Global.save_data(Global.current_slot_index)
 		
 		#var boss_music = preload("res://audio/music/boss 1 music (loop-ready).wav")
-		AudioPlayer.play_music(owner.boss_music.stream, -25)
+		AudioPlayer.play_music(owner.boss_music.stream, -10)
 		get_parent().change_state("Follow") #Follow
 		
 

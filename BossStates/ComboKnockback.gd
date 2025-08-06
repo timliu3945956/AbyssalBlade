@@ -14,81 +14,26 @@ func enter():
 	#var jump_slam_length = animation_player.get_animation("jump_slam_knockback").length
 	
 	var jump_slam_length = animation_player.get_animation("jump_slam_knockback").length
-	
-	#owner.light_animation_player.play("knockback_indicator")
-	#await get_tree().create_timer(1).timeout
-	
+		
 	animation_player.play("jump_slam_knockback")
-	await get_tree().create_timer(1.5833).timeout
+	await TimeWait.wait_sec(1.5833)#await get_tree().create_timer(1.5833).timeout
 	jump_effect.play("jump_effect")
-	await get_tree().create_timer(0.4167).timeout
+	await TimeWait.wait_sec(0.4167)#await get_tree().create_timer(0.4167).timeout
 	knockback_effect.play("knockback_effect")
-	#await get_tree().create_timer(0.25).timeout
-	#owner.in_out_animation_player.play("knockback_attack")
-	#await owner.in_out_animation_player.animation_finished
 	
-	await get_tree().create_timer(0.3333).timeout
+	await TimeWait.wait_sec(0.3333)#await get_tree().create_timer(0.3333).timeout
 	animation_player.play("idle_right")
-	await get_tree().create_timer(0.6667).timeout
-	#animation_player.play("idle_right")
-	#player.beam_circle_meteor()
+	await TimeWait.wait_sec(0.6667)#await get_tree().create_timer(0.6667).timeout
 	owner.boss_room_animation.play("meteor")
-	await get_tree().create_timer(2.6668).timeout
+	await TimeWait.wait_sec(2.6668)#await get_tree().create_timer(2.6668).timeout
 	animation_player.play("alternate_slam")
-	await get_tree().create_timer(0.3332).timeout
-	#owner.beam_circle()
+	await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 	
 	owner.meteor.closest_square_position(player.position)
-	await get_tree().create_timer(1.4004).timeout
+	await TimeWait.wait_sec(1.4004)#await get_tree().create_timer(1.4004).timeout
 	animation_player.play("idle_right")
-	await get_tree().create_timer(0.9996).timeout
-	
-	# ///////////////////////////////////////////// combo knockback turned into regular knockback
-	#animation_player.play("jump_slam_knockback")
-	#await get_tree().create_timer(1.5833).timeout
-	#jump_effect.play("jump_effect")
-	#await get_tree().create_timer(0.4167).timeout
-	#knockback_effect.play("knockback_effect")
-	#await get_tree().create_timer(0.25).timeout
-	#
-	#owner.in_out_animation_player.play("knockback_attack")
-	#await animation_player.animation_finished
-	##await knockback_effect.animation_finished
-	##await owner.in_out_animation_player.animation_finished
-	#
-	#animation_player.play("jump_slam_knockback")
-	#await get_tree().create_timer(1.5833).timeout
-	#jump_effect.play("jump_effect")
-	#await get_tree().create_timer(0.4167).timeout
-	#knockback_effect.play("knockback_effect")
-	#await get_tree().create_timer(0.25).timeout
-	#
-	#owner.in_out_animation_player.play("knockback_attack")
-	#await animation_player.animation_finished
-	##await knockback_effect.animation_finished
-	##await owner.in_out_animation_player.animation_finished
-	#
-	#animation_player.play("jump_slam_knockback")
-	#await get_tree().create_timer(1.5833).timeout
-	#jump_effect.play("jump_effect")
-	#await get_tree().create_timer(0.4167).timeout
-	
-	#owner.camera_shake_phase_2()
-	#owner.enrage_background.play("background_change")
-	#owner.enrage_fire.emitting = true
-	#owner.enrage_fire.visible = true
-	#owner.enrage_fire_pop.emitting = true
-	#owner.enraged = true
-	##await owner.enrage_background.animation_finished
-	##knockback_effect.play("knockback_effect")
-	##await get_tree().create_timer(0.25).timeout
-	##
-	##owner.in_out_animation_player.play("knockback_attack")
-	##await animation_player.animation_finished
-	#animation_player.play("idle_right")
-	#
-	#await get_tree().create_timer(0.5).timeout
-	
+	await TimeWait.wait_sec(0.9996)#await get_tree().create_timer(0.9996).timeout
+		
 	can_transition = true
 	
 func apply_knockback():

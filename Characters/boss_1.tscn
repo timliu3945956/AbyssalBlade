@@ -6528,7 +6528,7 @@ size = Vector2(6, 4)
 radius = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyq4i"]
-size = Vector2(23, 30)
+size = Vector2(23, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iaslv"]
 radius = 51.9546
@@ -6545,7 +6545,7 @@ width = 180
 height = 10
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gncu7"]
-radius = 68.0294
+radius = 75.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4bqpx"]
 
@@ -6784,8 +6784,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
-position = Vector2(0.5, -4)
+position = Vector2(0.5, -2)
 shape = SubResource("RectangleShape2D_hyq4i")
 debug_color = Color(0.752995, 0.146677, 0.221587, 0.42)
 
@@ -6879,7 +6878,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 shape = SubResource("CircleShape2D_gncu7")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
@@ -6958,13 +6956,14 @@ shake_fade = 0.0
 value = 50.0
 
 [node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
-max_value = 47000.0
+max_value = 49000.0
 
 [node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]
 offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5
@@ -7021,13 +7020,13 @@ texture_progress_offset = Vector2(160, 45)
 [node name="SlashAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("72_s88ew")
-volume_db = -15.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="KnockbackSlamAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("30_es1sn")
-volume_db = -10.0
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -7044,12 +7043,12 @@ trail_lifetime = 0.1
 [node name="KnockbackAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("76_s5rco")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("65_ts6be")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]

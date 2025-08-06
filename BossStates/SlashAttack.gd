@@ -17,7 +17,7 @@ func enter():
 	#await get_tree().create_timer(2.2491).timeout
 	#attack_fire.play("fire")
 	owner.slash_count += 1
-	await get_tree().create_timer(2.2491).timeout
+	await TimeWait.wait_sec(2.2491)#await get_tree().create_timer(2.2491).timeout
 	attack_fire.play("fire")
 	await animation_player.animation_finished
 	
@@ -56,13 +56,13 @@ func enter():
 					owner.in_out_animation_player.play("attack_in")
 				2:
 					owner.in_out_animation_player.play("attack_out")
-			await get_tree().create_timer(1.8326).timeout
+			await TimeWait.wait_sec(1.8326)#await get_tree().create_timer(1.8326).timeout
 			match owner.choose_top_down:
 					1:
 						owner.boss_room_animation.play("top_attack")
 					2:
 						owner.boss_room_animation.play("bottom_attack")
-			await get_tree().create_timer(0.3332).timeout
+			await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 			animation_player.play("alternate_slam")
 			
 			await animation_player.animation_finished
@@ -78,13 +78,13 @@ func enter():
 					owner.in_out_animation_player.play("attack_in")
 				2:
 					owner.in_out_animation_player.play("attack_out")
-			await get_tree().create_timer(1.8326).timeout
+			await TimeWait.wait_sec(1.8326)#await get_tree().create_timer(1.8326).timeout
 			match owner.choose_top_down:
 					1:
 						owner.boss_room_animation.play("top_attack")
 					2:
 						owner.boss_room_animation.play("bottom_attack")
-			await get_tree().create_timer(0.3332).timeout
+			await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 			#owner.boss_room_animation.stop()
 			animation_player.play("alternate_slam")
 			
@@ -97,15 +97,15 @@ func enter():
 			animation_player.play("idle_right")
 			#player.beam_circle_meteor()
 			owner.boss_room_animation.play("meteor")
-			await get_tree().create_timer(2.6668).timeout
+			await TimeWait.wait_sec(2.6668)#await get_tree().create_timer(2.6668).timeout
 			animation_player.play("alternate_slam")
-			await get_tree().create_timer(0.3332).timeout
+			await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 			#owner.beam_circle()
 			
 			owner.meteor.closest_square_position(player.position)
-			await get_tree().create_timer(1.4004).timeout
+			await TimeWait.wait_sec(1.4004)#await get_tree().create_timer(1.4004).timeout
 			animation_player.play("idle_right")
-			await get_tree().create_timer(0.9996).timeout
+			await TimeWait.wait_sec(0.9996)#await get_tree().create_timer(0.9996).timeout
 			owner.timeline += 1
 	#print(owner.slash_count)
 		

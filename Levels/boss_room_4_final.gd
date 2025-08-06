@@ -139,13 +139,15 @@ extends CenterContainer
 @onready var end_music: AudioStreamPlayer2D = $EndMusic
 @onready var arena_reappear: Sprite2D = $ArenaReappear
 @onready var parallax_background: ParallaxBackground = $ParallaxBackground
+@onready var rotate_laser: Marker2D = $RotateLaser
 
 @onready var devour_circle: Sprite2D = $Devour/DevourCircle
 @onready var ground_aura_1: AnimatedSprite2D = $Devour/DevourCircle/GroundAura1
 @onready var ground_aura_2: AnimatedSprite2D = $Devour/DevourCircle/GroundAura2
 @onready var devour_circle_animation: AnimationPlayer = $Devour/DevourCircleAnimation
 @onready var devour_orb_spawn: Node2D = $DevourOrbSpawn
-
+@onready var devour: Node2D = $Devour
+@onready var change_platform_audio: AudioStreamPlayer2D = $ChangePlatformAudio
 
 var boss_stage_textures := {
 	"denial": preload("res://sprites/tilesets/UpdatedStages/arena_v09.png"),
@@ -164,8 +166,8 @@ var ranged_special_2 = preload("res://Other/ranged_special_part_2.tscn")
 var ranged_special_initial_2 = preload("res://Other/ranged_special_initial_2.tscn")
 var ranged_audio = preload("res://Other/ranged_special_audio.tscn")
 var range_special_audio
-var range_line = ranged_special_2.instantiate()
-var range_line_first = ranged_special_initial_2.instantiate()
+var range_line
+var range_line_first
 var spawn_clone: Node = null
 
 func _ready() -> void:
@@ -173,11 +175,20 @@ func _ready() -> void:
 	AudioPlayer.stop_music()
 	GlobalCount.camera = player.camera
 	
+	GlobalCount.stage_select_pause = true
+	GlobalCount.in_subtree_menu = true
 	GlobalCount.paused = true
 	player.set_process(false)
 	player.set_physics_process(false)
-	enrage_background.play("flash_screen_start")
-	await enrage_background.animation_finished
+	#enrage_background.play("flash_screen_start")
+	#await enrage_background.animation_finished
+	#GlobalCount.stage_select_pause = false
+	#GlobalCount.in_subtree_menu = false
+	#player.set_process(true)
+	#player.set_physics_process(true)
+	#GlobalCount.paused = false
+
+func after_cutscene_func():
 	GlobalCount.stage_select_pause = false
 	GlobalCount.in_subtree_menu = false
 	player.set_process(true)
@@ -388,29 +399,35 @@ func outer_melee_special_vfx():
 
 func spawn_special_counterclockwise() -> void:
 	range_line_first = ranged_special_initial_2.instantiate()
+	range_line_first.boss = boss_4
 	add_child(range_line_first)
 	
-	await get_tree().create_timer(2.94).timeout
+	#await get_tree().create_timer(2.95, true, false, false).timeout
+	await TimeWait.wait_sec(2.95)
 	for i in range(20):
 		if boss_4.boss_death:
 			break
 		range_special_audio = ranged_audio.instantiate()
 		add_child(range_special_audio)
-		await get_tree().create_timer(0.5).timeout
+		#await get_tree().create_timer(0.5, true, false, false).timeout
+		await TimeWait.wait_sec(0.5)
 		if boss_4.boss_death:
 			break
 	
 func spawn_special_clockwise() -> void:
 	range_line = ranged_special_2.instantiate()
+	range_line.boss = boss_4
 	add_child(range_line)
 	
-	await get_tree().create_timer(2.94).timeout
+	#await get_tree().create_timer(2.95, true, false, false).timeout
+	await TimeWait.wait_sec(2.95)
 	for i in range(20):
 		if boss_4.boss_death:
 			break
 		range_special_audio = ranged_audio.instantiate()
 		add_child(range_special_audio)
-		await get_tree().create_timer(0.5).timeout
+		#await get_tree().create_timer(0.5, true, false, false).timeout
+		await TimeWait.wait_sec(0.5)
 		if boss_4.boss_death:
 			break
 		
@@ -430,7 +447,7 @@ func tween_camera():
 	tween.tween_property(camera, "offset", Vector2(0, 0), 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func phase_music():
-	AudioPlayer.play_music(boss_music.stream, -30)
+	AudioPlayer.play_music(boss_music.stream, -10)
 	
 func white_left_vfx():
 	white_bubble_left.play("white")
@@ -450,12 +467,12 @@ func black_right_vfx():
 	
 func ground_aura():
 	ground_aura_1.play("default")
-	await get_tree().create_timer(0.93).timeout
+	await TimeWait.wait_sec(0.93)#await get_tree().create_timer(0.93).timeout
 	ground_aura_2.play("default")
 	
 func play_white_sparkle():
 	sparkle_burst.play("default")
 	
 func play_end_music():
-	AudioPlayer.play_music(end_music.stream, -15)
+	AudioPlayer.play_music(end_music.stream, -10)
 	

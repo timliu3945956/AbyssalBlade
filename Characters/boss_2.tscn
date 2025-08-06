@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://d06ntphj2uuf7" path="res://sprites/BargainingBoss/MainBoss/new animations/Shadow/bargain_idle_shadow.png" id="9_7lq6k"]
 [ext_resource type="Texture2D" uid="uid://crxm8dobq2dl6" path="res://sprites/BargainingBoss/MainBoss/bargaining_idle.png" id="9_nthv0"]
 [ext_resource type="Texture2D" uid="uid://d0yh0824alk1q" path="res://Utilities/Effects/particlefx/Impact_Wind_White_v6_spritesheet.png" id="10_gc360"]
-[ext_resource type="Script" path="res://Healthbar/healthbar_shake.gd" id="11_28k1y"]
 [ext_resource type="Script" path="res://Characters/boss_shake.gd" id="12_72pdx"]
 [ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="12_kscs2"]
 [ext_resource type="Texture2D" uid="uid://df1qhfcaciuoy" path="res://Utilities/Effects/particlefx/Jump_Wind_White_v1_spritesheet.png" id="12_v4hho"]
@@ -68,7 +67,6 @@
 [ext_resource type="Texture2D" uid="uid://vort86grfwmo" path="res://sprites/BargainingBoss/MainBoss/newest animation/Shadow/bargain_jump_shadow.png" id="49_lqnhm"]
 [ext_resource type="AudioStream" uid="uid://c4en3br1j23jc" path="res://audio/sfx/Boss2/randomAOE.wav" id="51_rvq6j"]
 [ext_resource type="Texture2D" uid="uid://bn4a2ch3yfd52" path="res://sprites/BargainingBoss/MainBoss/newest animation/Main/bargain_phase.png" id="52_j2wkr"]
-[ext_resource type="AudioStream" uid="uid://bf7yov1q5ap7e" path="res://audio/music/boss 3 music (loop-ready).wav" id="53_548h5"]
 [ext_resource type="Texture2D" uid="uid://dcxbxos7tmnms" path="res://sprites/BargainingBoss/MainBoss/newest animation/Main/bargain_slamdown.png" id="54_ohss3"]
 [ext_resource type="Texture2D" uid="uid://bjnhob4kyg3o3" path="res://sprites/BargainingBoss/MainBoss/newest animation/Shadow/bargain_slamdown_shadow.png" id="55_fsqtu"]
 [ext_resource type="Texture2D" uid="uid://hvfempevix05" path="res://sprites/BargainingBoss/MainBoss/newest animation/Main/bargain_buff.png" id="57_23t04"]
@@ -84,7 +82,9 @@
 [ext_resource type="Script" path="res://Boss2States/boss_2_heartmind.gd" id="80_e680u"]
 [ext_resource type="AudioStream" uid="uid://2sq0y4ay0nq1" path="res://audio/sfx/Boss2/3_lightning dash_01.wav" id="80_jgoch"]
 [ext_resource type="Texture2D" uid="uid://cnrhj37h7vbiy" path="res://Utilities/boss HP/bosshp_emblems.png" id="81_3w3v5"]
+[ext_resource type="AudioStream" uid="uid://bvww5ln7jyalh" path="res://audio/music/BARGAIN.wav" id="82_r6pmb"]
 [ext_resource type="PackedScene" uid="uid://xnikvutjcb5h" path="res://Healthbar/BossHealthbar.tscn" id="82_xh6p3"]
+[ext_resource type="Script" path="res://Healthbar/healthbar_shake_boss_2.gd" id="85_fh2bw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0irj"]
 atlas = ExtResource("2_dwd84")
@@ -2762,10 +2762,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4mna"]
-size = Vector2(36, 35)
+size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p37t7"]
-radius = 68.0074
+radius = 74.0
 
 [sub_resource type="Gradient" id="Gradient_0j3p6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -5624,8 +5624,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
-position = Vector2(0, -14.5)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_a4mna")
 debug_color = Color(1, 0, 0.0156863, 0.266667)
 
@@ -5635,7 +5634,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 shape = SubResource("CircleShape2D_p37t7")
 
 [node name="AttackMeter" type="Node2D" parent="."]
@@ -5752,46 +5750,45 @@ script = ExtResource("58_wrhrf")
 
 [node name="ChainTilesAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("75_yx6wg")
-volume_db = -15.0
 bus = &"SFX"
 
 [node name="CleaveAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("76_rchhg")
-volume_db = -12.0
+volume_db = 4.0
 bus = &"SFX"
 
 [node name="LineAOEAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("51_rvq6j")
-volume_db = -20.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="BeamAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("78_p7arc")
-volume_db = -12.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="EnrageAttackAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("75_yx6wg")
-volume_db = -13.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="DischargeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("78_m8j1d")
-volume_db = -15.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("79_ctsfc")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("80_jgoch")
-volume_db = -20.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("53_548h5")
+stream = ExtResource("82_r6pmb")
 volume_db = -20.0
 bus = &"Music"
 
@@ -5809,17 +5806,18 @@ offset_top = -9.0
 offset_right = 880.0
 offset_bottom = 91.0
 max_value = 39000.0
-script = ExtResource("11_28k1y")
+script = ExtResource("85_fh2bw")
 shake_fade = 0.0
 
 [node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
-max_value = 35000.0
+max_value = 37000.0
 
 [node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]
 offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5

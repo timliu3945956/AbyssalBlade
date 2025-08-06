@@ -22,7 +22,7 @@ func enter():
 		red_sword_tween.tween_property(owner.red_swords, "modulate:a", 0, 0.5)
 		blk_white_sword_tween.tween_property(owner.white_black_swords, "modulate:a", 1, 0.5)
 		owner.boss_room.white_black_telegraph_start()
-		await get_tree().create_timer(3.5).timeout
+		await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 		owner.boss_room.white_black_telegraph_end()
 		
 	elif owner.oppressive_pick == 2:
@@ -33,7 +33,7 @@ func enter():
 		red_sword_tween.tween_property(owner.red_swords, "modulate:a", 0, 0.5)
 		blk_white_sword_tween.tween_property(owner.black_white_swords, "modulate:a", 1, 0.5)
 		owner.boss_room.black_white_telegraph_start()
-		await get_tree().create_timer(3.5).timeout
+		await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 		owner.boss_room.black_white_telegraph_end()
 		
 	await owner.attack_meter_animation.animation_finished
@@ -52,7 +52,7 @@ func enter():
 		owner.sword_animation_player.play("black_white_oppressive")
 	await owner.boss_room_animation.animation_finished
 	
-	await get_tree().create_timer(0.3).timeout
+	await TimeWait.wait_sec(0.3)#await get_tree().create_timer(0.3).timeout
 	if owner.oppressive_debuff_count > owner.oppressive_current_count + 1:
 		player.kill_player()
 		print("killing player, owner.oppressive_current_count")

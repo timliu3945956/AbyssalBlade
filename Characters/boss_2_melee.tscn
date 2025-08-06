@@ -7,7 +7,6 @@
 [ext_resource type="Shader" path="res://telegraphs/melee_slam_telegraph.gdshader" id="3_t5jx4"]
 [ext_resource type="Texture2D" uid="uid://cjfgmdk2up3i2" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Shadow/melee_idle_shadow.png" id="4_5uox6"]
 [ext_resource type="Texture2D" uid="uid://661g8tc54emc" path="res://Utilities/Effects/particlefx/hit_effect_wind.png" id="5_s1li1"]
-[ext_resource type="Script" path="res://Healthbar/healthbar_shake.gd" id="5_yvew0"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="6_22ksq"]
 [ext_resource type="Texture2D" uid="uid://cn7wrx7ociufm" path="res://Utilities/Effects/Dash_Wind_White_v5_spritesheet.png" id="6_khdkp"]
 [ext_resource type="Texture2D" uid="uid://c7evbhpau6igt" path="res://sprites/BargainingBoss/MeleeBoss/new animations/Melee/melee_idle.png" id="6_lh1rk"]
@@ -55,6 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://b14fp561moucg" path="res://audio/sfx/Boss/2_eruption.wav" id="52_xy8aq"]
 [ext_resource type="Texture2D" uid="uid://cnrhj37h7vbiy" path="res://Utilities/boss HP/bosshp_emblems.png" id="53_sbdve"]
 [ext_resource type="PackedScene" uid="uid://xnikvutjcb5h" path="res://Healthbar/BossHealthbar.tscn" id="54_hb0ce"]
+[ext_resource type="Script" path="res://Healthbar/healthbar_shake_boss_2.gd" id="55_vdwkm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bllei"]
 shader = ExtResource("3_t5jx4")
@@ -4351,28 +4351,28 @@ script = ExtResource("29_vdidb")
 
 [node name="DarknessBalance" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("48_24igv")
-volume_db = -13.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="DarknessFail" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("38_4qqft")
-volume_db = -20.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("50_8jm6f")
-volume_db = -16.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="AutoAttackAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("51_66ulq")
-volume_db = -15.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="JumpLandAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("52_xy8aq")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -4389,11 +4389,11 @@ offset_top = -9.0
 offset_right = 880.0
 offset_bottom = 91.0
 max_value = 39000.0
-script = ExtResource("5_yvew0")
+script = ExtResource("55_vdwkm")
 shake_fade = 0.0
 
 [node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
-max_value = 35000.0
+max_value = 37000.0
 value = 20000.0
 
 [node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]

@@ -11,11 +11,11 @@ func enter():
 	owner.sword_animation_player.play("swords_idle")
 	red_sword_tween = get_tree().create_tween()
 	red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.3)
-	await get_tree().create_timer(14.8).timeout
+	await TimeWait.wait_sec(14.8)#await get_tree().create_timer(14.8).timeout
 	
 	await owner.attack_meter_animation.animation_finished
 	animation_player.play("windup")
-	await get_tree().create_timer(0.1333).timeout
+	await TimeWait.wait_sec(0.1333)#await get_tree().create_timer(0.1333).timeout
 	owner.unleash_crown_audio.play()
 	await animation_player.animation_finished
 	animation_player.play("oppressive")

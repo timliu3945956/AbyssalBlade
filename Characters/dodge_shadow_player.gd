@@ -32,8 +32,10 @@ var total_time_per_step: float = 2.9988
 var time_started_movement: float = 0.0
 var time_taken_to_move: float = 0.0
 var idle_duration: float = 0.0
+var boss
 
 func _ready() -> void:
+	boss.boss_died.connect(_on_boss_died)
 	randomize()
 	smoke.play("smoke")
 	sprite_2d.material.set_shader_parameter("fade_alpha", 0.5)
@@ -42,6 +44,9 @@ func _ready() -> void:
 	setup_movement_sequence()
 	current_target_index = 0
 	move_to_next_target()
+	
+func _on_boss_died():
+	queue_free()
 	
 func calculate_slice_positions():
 	var center = boss_room_center
@@ -76,9 +81,9 @@ func move_to_next_target():
 		emit_signal("action_completed", selected_indices)
 		smoke.play("smoke")
 		spawn_shadow_audio.play()
-		await get_tree().create_timer(0.0833).timeout
+		await TimeWait.wait_sec(0.0833)#await get_tree().create_timer(0.0833).timeout
 		sprite_2d.material.set_shader_parameter("fade_alpha", 0)
-		await get_tree().create_timer(0.4495).timeout
+		await TimeWait.wait_sec(0.4495)#await get_tree().create_timer(0.4495).timeout
 		queue_free()
 		
 func _physics_process(delta: float) -> void:

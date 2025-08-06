@@ -1,4 +1,5 @@
 extends State
+@onready var collision_shape_2d_2: CollisionShape2D = $"../../Hurtbox/CollisionShape2D2"
 
 var can_transition: bool = false
 
@@ -8,26 +9,20 @@ func enter():
 	
 	owner.state_machine.travel("swordraise_start")
 	owner.enrage_sword_spawn()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	owner.attack_meter_animation.play("enrage")
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
 	
-	await get_tree().create_timer(3).timeout
-	#owner.state_machine.travel("enrage_repeat_end")
-	await get_tree().create_timer(3).timeout
-	#owner.state_machine.travel("enrage_repeat_end 2")
-	#owner.sword_animation_player.play("sword_grow_particle")
-	
-	#owner.state_machine.travel("swordraise_finish")
 	await owner.attack_meter_animation.animation_finished
+	owner.player.untransform_audio.volume_db = -80
 	
-	#if owner.health_amount >= (owner.healthbar.max_value / 2):
-		#owner.animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
-		#owner.state_machine.travel("downattack_stand")
-		#owner.spawn_enrage_attack()
-	#else:
 	if Global.player_data_slots[Global.current_slot_index].first_play_5 == true:
 		Global.player_data_slots[Global.current_slot_index].first_play_5 = false
 		Global.save_data(Global.current_slot_index)
+		
+	owner.player.hurtbox_collision.call_deferred("set", "disabled", true)
+	collision_shape_2d_2.call_deferred("set", "disabled", true)
 	AudioPlayer.stop_music()
 	GlobalCount.stage_select_pause = true
 	GlobalCount.in_subtree_menu = true
@@ -38,7 +33,3 @@ func enter():
 	GlobalCount.boss_4_final_player_mana = player.mana
 	await owner.cutscene_player.animation_finished
 	owner.cutscene_player.play("idle_cutscene")
-	
-#func transition():
-	#if can_transition:
-		#can_transition = false

@@ -140,6 +140,15 @@ extends CenterContainer
 
 @onready var area_2d: Area2D = $Area2D
 
+@onready var sword_drop_telegraph: Sprite2D = $SwordDropTelegraph
+@onready var sword_drop: Sprite2D = $SwordDrop
+
+@onready var marker_2d_2: Marker2D = $ForegroundArena/Marker2D2
+@onready var phase_transition_audio: AudioStreamPlayer2D = $PhaseTransitionAudio
+
+
+
+
 
 
 @onready var outer_collision: CollisionPolygon2D = $Area2D/OuterCollision
@@ -183,6 +192,7 @@ func _ready() -> void:
 		player.set_process(true)
 		player.set_physics_process(true)
 		GlobalCount.paused = false
+	GlobalCount.in_subtree_menu = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -308,43 +318,25 @@ func enrage_attack():
 
 func spawn_special_counterclockwise() -> void:
 	var range_line_first = ranged_special_initial_2.instantiate()
+	range_line_first.boss = boss_2
 	add_child(range_line_first)
 	
-	await get_tree().create_timer(2.94).timeout
+	await TimeWait.wait_sec(2.95)#await get_tree().create_timer(2.94).timeout
 	for i in range(20):
 		var range_special_audio = ranged_audio.instantiate()
 		add_child(range_special_audio)
-		await get_tree().create_timer(0.5).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 func spawn_special_clockwise() -> void:
 	var range_line = ranged_special_2.instantiate()
+	range_line.boss = boss_2
 	add_child(range_line)
 	
-	await get_tree().create_timer(2.94).timeout
+	await TimeWait.wait_sec(2.95)#await get_tree().create_timer(2.95).timeout
 	for i in range(20):
 		var range_special_audio = ranged_audio.instantiate()
 		add_child(range_special_audio)
-		await get_tree().create_timer(0.5).timeout
-	#if end_degrees == 450.0:
-		#if second_await:
-			#await get_tree().create_timer(1).timeout
-		#while (deg < end_degrees):
-			#if deg == 0.0:
-				#var range_line_first = ranged_special_initial_2.instantiate()
-				#range_line_first.rotation_degrees = -deg
-				#add_child(range_line_first)
-				#if timeout_first > 0:
-					#await get_tree().create_timer(timeout_first).timeout
-			#else:
-				#var range_line = ranged_special_2.instantiate()
-				#range_line.rotation_degrees = -deg
-				#add_child(range_line)
-				#if timeout > 0:
-					#await get_tree().create_timer(timeout).timeout
-			#deg += step
-			#if deg == 180.0 and second_await:
-				#boss_2_melee.find_child("FiniteStateMachine").change_state("Foretold")
-	#await get_tree().create_timer(2).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 
 func _on_triangle_telegraph_long_animation_player_animation_finished(anim_name: StringName) -> void:
 	print("triangle: ", anim_name)

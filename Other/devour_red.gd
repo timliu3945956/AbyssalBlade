@@ -18,6 +18,7 @@ var boss: CharacterBody2D
 var tween: Tween
 
 func _ready():
+	boss.boss_died.connect(_on_boss_died)
 	#orb_color_change_timer.start()
 	animation_player.play("orb_red_start")
 	fire_orb_red.play("default")
@@ -83,3 +84,7 @@ func _on_orb_player_hurtbox_area_entered(area: Area2D) -> void:
 	
 func camera_shake():
 	GlobalCount.camera.apply_shake(5, 25.0)
+	
+func _on_boss_died():
+	if is_instance_valid(self):
+		queue_free()

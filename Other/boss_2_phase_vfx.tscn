@@ -2736,7 +2736,7 @@ one_shot = true
 
 [node name="SplitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_1yxkr")
-volume_db = -20.0
+volume_db = -5.0
 bus = &"SFX"
 
 [connection signal="animation_looped" from="Orbs" to="." method="_on_orbs_animation_looped"]

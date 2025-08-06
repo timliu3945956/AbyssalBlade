@@ -33,26 +33,26 @@ func enter():
 	
 	
 	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
+	await TimeWait.wait_sec(0.4996)#await get_tree().create_timer(0.4996).timeout
 	animation_player.play("discharge")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	#player.position
 	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
+	await TimeWait.wait_sec(0.4996)#await get_tree().create_timer(0.4996).timeout
 	animation_player.play("discharge_repeat")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	spawn_line_attacks(owner.to_local(player.global_position))
-	await get_tree().create_timer(0.4996).timeout
+	await TimeWait.wait_sec(0.4996)#await get_tree().create_timer(0.4996).timeout
 	animation_player.play("discharge_last")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	line_aoe_audio.play()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	if center_of_screen.x - owner.position.x > 0:
 		animation_player.play("idle_right")
 	else:

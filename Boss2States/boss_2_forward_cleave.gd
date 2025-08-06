@@ -13,15 +13,6 @@ func enter():
 	super.enter()
 	owner.direction = Vector2.ZERO
 	set_physics_process(true)
-	#randomize()
-	#animation_player.play("idle_right")
-	#animation_player.play("disappear")
-	#owner.smoke.play("smoke")
-	#await get_tree().create_timer(0.6).timeout
-	#
-	#owner.position = 
-	#animation_player.play("appear")
-	#owner.smoke.play("smoke")
 	
 	owner.attack_meter_animation.play("cleave")
 	if owner.cleave_count % 2 == 0:
@@ -34,7 +25,7 @@ func enter():
 	await animation_player.animation_finished
 	
 	animation_player.play("cleave_charge")
-	await get_tree().create_timer(2.25).timeout
+	await TimeWait.wait_sec(2.25)#await get_tree().create_timer(2.25).timeout
 	match owner.cleave_count:
 		0:
 			owner.dash_particles.texture = preload("res://sprites/BargainingBoss/MainBoss/newest animation/Main/bargain_swordraise_single.png")
@@ -69,7 +60,7 @@ func enter():
 	owner.dash_audio.play()
 	#owner.jump_audio.play()
 	
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 
 	owner.dash_particles.emitting = false
 	owner.cleave_rotate()

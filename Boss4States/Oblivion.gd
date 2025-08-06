@@ -13,27 +13,27 @@ func enter():
 	#owner.boss_room.spawn_shield()
 	owner.oblivion_ball_animation.play("oblivion")
 		
-	await get_tree().create_timer(4).timeout
+	await TimeWait.wait_sec(4)#await get_tree().create_timer(4).timeout
 	#owner.oblivion_audio.play()
 	#await get_tree().create_timer(0.2).timeout
 	#if is_instance_valid(owner.boss_room.spawn_clone):
 		#owner.hope_safe_audio.play()
 	#await get_tree().create_timer(0.3).timeout
 	owner.state_machine.travel("swordraise_finish")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
-	await get_tree().create_timer(0.2).timeout
+	await TimeWait.wait_sec(0.2)#await get_tree().create_timer(0.2).timeout
 	owner.oblivion_audio.play()
 	if is_instance_valid(owner.boss_room.spawn_clone):
 		owner.hope_safe_audio.play()
-	await get_tree().create_timer(0.0333).timeout
+	await TimeWait.wait_sec(0.0333)#await get_tree().create_timer(0.0333).timeout
 	owner.boss_room.spawn_shield()
 	await owner.attack_meter_animation.animation_finished
 	
 	owner.clone_signal()
 	owner.boss_room.check_clone_alive()
 	
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	owner.oblivion_count += 1
 	can_transition = true
 	

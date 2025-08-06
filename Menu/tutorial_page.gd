@@ -35,18 +35,18 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		interact_collision.disabled = false
-		AudioPlayer.play_FX(click_vfx, 0)
+		AudioPlayer.play_FX(click_vfx, 10)
 		GlobalCount.paused = false
 		accept_event()
 		queue_free()
 
 func _on_button_pressed(key: String) -> void:
-	AudioPlayer.play_FX(click_vfx, 0)
+	AudioPlayer.play_FX(click_vfx, 10)
 	for k in _labels:
 		_labels[k].visible = (k == key)
 
 func _on_back_pressed() -> void:
 	interact_collision.disabled = false
-	AudioPlayer.play_FX(click_vfx, 0)
+	AudioPlayer.play_FX(click_vfx, 10)
 	GlobalCount.paused = false
 	queue_free()

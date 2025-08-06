@@ -1,4 +1,4 @@
-[gd_scene load_steps=917 format=3 uid="uid://yeecxvgj4gf8"]
+[gd_scene load_steps=919 format=3 uid="uid://yeecxvgj4gf8"]
 
 [ext_resource type="Script" path="res://Levels/boss_room_4_final.gd" id="1_ngkbv"]
 [ext_resource type="Texture2D" uid="uid://dfmo4htgdudjr" path="res://sprites/tilesets/grief parallax/1.png" id="2_vtwo8"]
@@ -64,8 +64,8 @@
 [ext_resource type="AudioStream" uid="uid://o7qkmgjbvmdx" path="res://audio/sfx/Boss2/3_thunder strike.wav" id="53_wtvff"]
 [ext_resource type="AudioStream" uid="uid://dnf3eomq73dg" path="res://audio/sfx/Boss3/4_manifest energy.wav" id="54_0tqyc"]
 [ext_resource type="AudioStream" uid="uid://dlpyq8gvalbn5" path="res://audio/sfx/0_confirm success.wav" id="55_hh4db"]
-[ext_resource type="AudioStream" uid="uid://b7t7uiuuacd3k" path="res://audio/music/Punishing Gray Raven OST - Holy Moonlight.mp3" id="56_j4437"]
 [ext_resource type="AudioStream" uid="uid://vpcl07uot6n2" path="res://audio/music/ACCEPTANCE.wav" id="57_wny77"]
+[ext_resource type="AudioStream" uid="uid://ec5axc2g2qng" path="res://audio/music/GRIEF.wav" id="59_jcuy4"]
 [ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="61_3ubem"]
 [ext_resource type="Texture2D" uid="uid://cjnremj7sj82s" path="res://sprites/DenialBoss/boss_animations/idle.png" id="61_vpd8h"]
 [ext_resource type="Texture2D" uid="uid://dqnrr8o050ttn" path="res://sprites/AngerBoss/Idle/boss_idle.png" id="62_d4cn3"]
@@ -14186,8 +14186,8 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_0cw01"]
 resource_name = "expanding_circles"
-length = 4.0
-step = 0.0833
+length = 4.00001
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14267,7 +14267,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1, 2, 3, 3.9996),
+"times": PackedFloat32Array(1, 2, 3, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -15878,6 +15878,20 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"after_cutscene_func"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2ssf4"]
 _data = {
@@ -16339,13 +16353,13 @@ shader_parameter/feather = 0.135
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qrriy"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ed0m1"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ah4gx"]
 noise = SubResource("FastNoiseLite_qrriy")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r2l7m"]
 shader = ExtResource("70_st7wf")
 shader_parameter/dissolve_value = 0.0
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_ed0m1")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_ah4gx")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgljs"]
 particles_animation = true
@@ -16357,14 +16371,14 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.724138, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2gx35"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jo6cv"]
 gradient = SubResource("Gradient_w4dwn")
 
 [sub_resource type="Curve" id="Curve_t04ht"]
 _data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.238924), -1.04308, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_kno4f"]
+[sub_resource type="CurveTexture" id="CurveTexture_7uk56"]
 curve = SubResource("Curve_t04ht")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n5xhc"]
@@ -16374,14 +16388,14 @@ emission_sphere_radius = 5.0
 gravity = Vector3(0, -40, 0)
 scale_min = 0.4
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_kno4f")
-color_ramp = SubResource("GradientTexture1D_2gx35")
+scale_curve = SubResource("CurveTexture_7uk56")
+color_ramp = SubResource("GradientTexture1D_jo6cv")
 turbulence_enabled = true
 turbulence_noise_speed_random = 4.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jek16"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8tqgx"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6uqj8"]
 noise = SubResource("FastNoiseLite_jek16")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ao2i7"]
@@ -16392,7 +16406,7 @@ shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 3)
 shader_parameter/sine_speed = Vector2(0, 1.5)
 shader_parameter/dissolve_value = 0.0
-shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_8tqgx")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_6uqj8")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j7guq"]
 blend_mode = 2
@@ -18883,6 +18897,203 @@ length = 1.58334
 loop_mode = 1
 step = 0.0833333
 
+[sub_resource type="Animation" id="Animation_xte0f"]
+resource_name = "repeat_boss_death"
+length = 2.00001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/FlashScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/FlashScreen:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D6/ColorRect2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D6/ColorRect2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Player/CanvasLayer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ArenaReappear:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ArenaReappear:material:shader_parameter/fade_alpha")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ParallaxBackground/ParallaxLayer5/Sprite2D:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("87_4axfd")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ParallaxBackground/ParallaxLayer4/Sprite2D:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("88_kjqxc")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ParallaxBackground/ParallaxLayer3/Sprite2D:texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("89_04k86")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ParallaxBackground/ParallaxLayer2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ParallaxBackground/ParallaxLayer/Sprite2D:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("90_2gsrh")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ParallaxBackground/ParallaxLayer6/Sprite2D:texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("91_a2u3n")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MiddleLight:enabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("EndSceneMiddleLight:enabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_hmah1"]
 resource_name = "repeat_cutscene"
 length = 24.0
@@ -19300,6 +19511,7 @@ _data = {
 "cutscene_destroy_blade": SubResource("Animation_g78oh"),
 "cutscene_take_blade": SubResource("Animation_oiiqy"),
 "idle_cutscene": SubResource("Animation_vexkd"),
+"repeat_boss_death": SubResource("Animation_xte0f"),
 "repeat_cutscene": SubResource("Animation_hmah1")
 }
 
@@ -19421,10 +19633,52 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_rlmin"]
+resource_name = "death_after"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D6/ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D6/ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/CanvasLayer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4kk6t"]
 _data = {
 "RESET": SubResource("Animation_uax6o"),
-"death": SubResource("Animation_df7k0")
+"death": SubResource("Animation_df7k0"),
+"death_after": SubResource("Animation_rlmin")
 }
 
 [node name="BossRoom4Final" type="CenterContainer"]
@@ -21865,6 +22119,7 @@ autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_2ssf4")
 }
+autoplay = "flash_screen_start"
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -21996,46 +22251,45 @@ texture = SubResource("GradientTexture2D_28gou")
 
 [node name="invisible_attack_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("50_b1nla")
-volume_db = -10.0
+volume_db = 5.0
+bus = &"SFX"
 
 [node name="in_out_alternate_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("51_1f1w3")
-volume_db = -10.0
+volume_db = 7.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("34_yxsfh")
-volume_db = -5.0
+volume_db = 12.0
+bus = &"SFX"
 
 [node name="ExpandingCircleAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("53_wtvff")
-volume_db = -16.0
 bus = &"SFX"
 
 [node name="ChangePlatformAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("54_0tqyc")
-volume_db = -12.0
 bus = &"SFX"
 
 [node name="DingAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("55_hh4db")
-volume_db = -8.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="BossMusicAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("56_j4437")
+stream = ExtResource("59_jcuy4")
 volume_db = -25.0
 bus = &"Music"
 
 [node name="ConstantFireAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("74_i1ejk")
-volume_db = -15.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="EndMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("57_wny77")
 volume_db = -20.0
-stream_paused = true
 bus = &"Music"
 
 [node name="DenialSprite" type="Sprite2D" parent="."]
@@ -22228,6 +22482,7 @@ bus = &"SFX"
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("71_smgo5")
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="wooshup" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
@@ -22257,7 +22512,7 @@ bus = &"SFX"
 
 [node name="InbumentAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("76_0u0mj")
-volume_db = 5.0
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="HighPitchSliceAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
@@ -22278,11 +22533,13 @@ bus = &"SFX"
 
 [node name="BlessingAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("84_0grkl")
-volume_db = -8.0
+volume_db = 3.0
+bus = &"SFX"
 
 [node name="SwordBlessingAudio" type="AudioStreamPlayer2D" parent="PlayerCutsceneSprite"]
 stream = ExtResource("86_xqgcc")
-volume_db = -15.0
+volume_db = 3.0
+bus = &"SFX"
 
 [node name="CutsceneCamera" type="Camera2D" parent="."]
 script = ExtResource("84_ylntv")

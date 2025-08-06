@@ -32,34 +32,34 @@ func enter():
 	red_sword_tween = get_tree().create_tween()
 	red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.3)
 	if barrage_random_1 == 1:
-		owner.barrage_symbol_animation.play("barrage_in")
+		owner.barrage_symbol_animation.play("barrage_in_red")
 	else:
-		owner.barrage_symbol_animation.play("barrage_out")
+		owner.barrage_symbol_animation.play("barrage_out_red")
 	await owner.barrage_symbol_animation.animation_finished
 	if barrage_random_2 == 1:
-		owner.barrage_symbol_animation.play("barrage_in")
+		owner.barrage_symbol_animation.play("barrage_in_red")
 	else:
-		owner.barrage_symbol_animation.play("barrage_out")
+		owner.barrage_symbol_animation.play("barrage_out_red")
 	await owner.barrage_symbol_animation.animation_finished
 	
 	if owner.barrage_third_pick == 1:
 		if owner.barrage_count % 2 == 0:
-			owner.barrage_symbol_animation.play("barrage_+")
+			owner.barrage_symbol_animation.play("barrage_+_red")
 		else:
-			owner.barrage_symbol_animation.play("barrage_x")
+			owner.barrage_symbol_animation.play("barrage_x_red")
 	else:
 		if owner.barrage_count % 2 == 0:
-			owner.barrage_symbol_animation.play("barrage_x")
+			owner.barrage_symbol_animation.play("barrage_x_red")
 		else:
-			owner.barrage_symbol_animation.play("barrage_+")
-	await get_tree().create_timer(1.5).timeout
+			owner.barrage_symbol_animation.play("barrage_+_red")
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(owner.black_smoke_symbol_anim, "self_modulate:a", 0, 0.5)
 	red_sword_tween = get_tree().create_tween()
 	red_sword_tween.tween_property(owner.red_swords, "modulate:a", 0, 0.5)
 	
 	animation_player.play("barrage")
-	await get_tree().create_timer(0.35).timeout
+	await TimeWait.wait_sec(0.35)#await get_tree().create_timer(0.35).timeout
 	owner.barrage_audio.play()
 	await owner.barrage_symbol_animation.animation_finished
 	
@@ -68,10 +68,10 @@ func enter():
 		owner.boss_room_animation.play("barrage_in")
 	else:
 		owner.boss_room_animation.play("barrage_out")
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	animation_player.play("barrage")
-	await get_tree().create_timer(0.35).timeout
+	await TimeWait.wait_sec(0.35)#await get_tree().create_timer(0.35).timeout
 	owner.barrage_audio.play()
 	await owner.boss_room_animation.animation_finished
 	
@@ -79,10 +79,10 @@ func enter():
 		owner.boss_room_animation2.play("barrage_in")
 	else:
 		owner.boss_room_animation2.play("barrage_out")
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	animation_player.play("barrage")
-	await get_tree().create_timer(0.35).timeout
+	await TimeWait.wait_sec(0.35)#await get_tree().create_timer(0.35).timeout
 	owner.barrage_audio.play()
 	await owner.boss_room_animation2.animation_finished
 	
@@ -96,7 +96,7 @@ func enter():
 			owner.boss_room_animation.play("barrage_x")
 		else:
 			owner.boss_room_animation.play("barrage_+")
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	owner.barrage_count += 1
 	can_transition = true

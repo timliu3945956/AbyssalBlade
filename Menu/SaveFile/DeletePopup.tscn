@@ -3,18 +3,17 @@
 [ext_resource type="Script" path="res://Menu/SaveFile/delete_popup.gd" id="1_jw27k"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_tpvht"]
 [ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="2_wf501"]
+[ext_resource type="Script" path="res://Levels/button_release.gd" id="4_82qvu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjee7"]
 texture = ExtResource("2_wf501")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aam2d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xjwu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usatg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2mmj"]
 bg_color = Color(0, 0, 0, 0.313726)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2mmj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usatg"]
 bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oemvf"]
@@ -63,13 +62,13 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_aam2d")
 [node name="Label" type="Label" parent="MarginContainer/Panel"]
 layout_mode = 2
 offset_left = 36.5
-offset_top = 22.5
+offset_top = 27.5
 offset_right = 91.5
-offset_bottom = 32.5
+offset_bottom = 50.5
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_tpvht")
 theme_override_font_sizes/font_size = 9
-text = "Are you sure?"
+text = "Delete save slot"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -81,44 +80,52 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = -8.0
+offset_top = 4.0
 offset_right = 46.0
-offset_bottom = 33.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 6
 
 [node name="YesButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+focus_neighbor_top = NodePath("../NoButton")
+focus_neighbor_bottom = NodePath("../NoButton")
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_tpvht")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6xjwu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k2mmj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_usatg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k2mmj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oemvf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cj7is")
 text = "Yes"
+script = ExtResource("4_82qvu")
 
 [node name="NoButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+focus_neighbor_top = NodePath("../YesButton")
+focus_neighbor_bottom = NodePath("../YesButton")
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_tpvht")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6xjwu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_k2mmj")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_usatg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_k2mmj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_oemvf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cj7is")
 text = "No"
+script = ExtResource("4_82qvu")
 
+[connection signal="mouse_exited" from="MarginContainer/Panel/VBoxContainer/YesButton" to="MarginContainer/Panel/VBoxContainer/YesButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="mouse_exited" from="MarginContainer/Panel/VBoxContainer/NoButton" to="MarginContainer/Panel/VBoxContainer/NoButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

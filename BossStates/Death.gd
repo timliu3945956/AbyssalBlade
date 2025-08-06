@@ -18,10 +18,18 @@ func enter():
 	if achievement.ret && !achievement.achieved:
 		Steam.setAchievement("DefeatAnger")
 		Steam.storeStats()
+		
+	if GlobalCount.abyss_mode:
+		var achievementAbyssMode = Steam.getAchievement("DefeatAngerAbyss")
+		if achievementAbyssMode.ret && !achievementAbyssMode.achieved:
+			Steam.setAchievement("DefeatAngerAbyss")
+			Steam.storeStats()
+	SteamGlobal._check_completionist()
+	
 	animation_player.play("death")
 	await animation_player.animation_finished
 	
 	owner.enrage_background.play("background_end")
 	queue_free()
 	owner.boss_killed.boss_slain()
-	AudioPlayer.fade_out_music(5)
+	AudioPlayer.fade_out_music(3)

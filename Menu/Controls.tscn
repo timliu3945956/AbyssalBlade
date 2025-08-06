@@ -236,46 +236,64 @@ theme_override_constants/separation = 3
 
 [node name="InputButton" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../InputButton9")
+focus_neighbor_bottom = NodePath("../InputButton2")
 
 [node name="InputButton2" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton")
+focus_neighbor_bottom = NodePath("../InputButton3")
 
 [node name="InputButton3" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton2")
+focus_neighbor_bottom = NodePath("../InputButton4")
 
 [node name="InputButton4" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton3")
+focus_neighbor_bottom = NodePath("../InputButton5")
 
 [node name="InputButton5" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton4")
+focus_neighbor_bottom = NodePath("../InputButton6")
 
 [node name="InputButton6" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton5")
+focus_neighbor_bottom = NodePath("../InputButton7")
 
 [node name="InputButton7" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton6")
+focus_neighbor_bottom = NodePath("../InputButton8")
 
 [node name="InputButton8" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton7")
+focus_neighbor_bottom = NodePath("../InputButton9")
 
 [node name="InputButton9" parent="MarginContainer/ActionList" instance=ExtResource("4_5yax4")]
 layout_mode = 2
 size_flags_horizontal = 9
 size_flags_vertical = 9
+focus_neighbor_top = NodePath("../InputButton8")
+focus_neighbor_bottom = NodePath("../InputButton")
 
 [node name="Back" type="Button" parent="."]
 z_index = 2
@@ -291,6 +309,7 @@ offset_right = -65.0
 offset_bottom = -22.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 theme_override_colors/font_pressed_color = Color(0.281428, 0.285774, 0.287634, 1)
 theme_override_fonts/font = ExtResource("5_82x5m")
 theme_override_font_sizes/font_size = 9
@@ -313,7 +332,7 @@ theme_override_font_sizes/font_size = 9
 text = "Controls"
 vertical_alignment = 1
 
-[node name="MouseKeyboardLabel" type="Label" parent="."]
+[node name="LayoutLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

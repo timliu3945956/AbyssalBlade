@@ -13,12 +13,6 @@ class_name PlayerData
 @export var abyss_best_time_boss_4 = 0.0
 @export var abyss_best_time_boss_5 = 0.0
 
-#@export var cutscene_viewed_boss_1 = false
-#@export var cutscene_viewed_boss_2 = false
-#@export var cutscene_viewed_boss_3 = false
-#@export var cutscene_viewed_boss_4 = false
-#@export var cutscene_viewed_boss_5 = false
-
 @export var clear_count_1 = 0.0
 @export var clear_count_2 = 0.0
 @export var clear_count_3 = 0.0
@@ -53,3 +47,6 @@ class_name PlayerData
 @export var deaths: int = 0
 @export var surge_count: int = 0
 @export var last_shown_stage: int = -1
+@export var demo_done: bool = false
+@export var abyss_mode_popup: bool = true
+@export var gold_portal: bool = false

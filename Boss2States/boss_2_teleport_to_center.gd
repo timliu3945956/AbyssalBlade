@@ -13,12 +13,12 @@ func enter():
 	else:
 		animation_player.play("idle_left")
 	#animation_player.play("teleport_out")
-	await get_tree().create_timer(0.3332).timeout
+	await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 	#smoke.play("smoke")
 	#await smoke.animation_finished
 	animation_player.play("disappear")
 	owner.smoke.play("smoke")
-	await get_tree().create_timer(0.6).timeout
+	await TimeWait.wait_sec(0.6)#await get_tree().create_timer(0.6).timeout
 	owner.position = center_of_screen
 	
 	animation_player.play("appear")
@@ -27,7 +27,7 @@ func enter():
 	#animation_player.play("teleport_in")
 	#await animation_player.animation_finished
 	#await smoke.animation_finished
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	if owner.boss_death == false:
 		can_transition = true
 	

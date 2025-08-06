@@ -9,7 +9,7 @@ func enter():
 	owner.morph_animation.play("morph_in")
 	animation_player.play("idle_left")
 	
-	await get_tree().create_timer(4).timeout #1 second added
+	await TimeWait.wait_sec(4)#await get_tree().create_timer(4).timeout #1 second added
 	
 	#owner.paused = false
 	can_transition = true

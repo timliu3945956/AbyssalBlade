@@ -3,7 +3,6 @@
 #	You: You found balance between heart and mind.
 #	You: I thought it was impossible.
 #	You: But watching you... maybe I was wrong.
-GlobalCount.stage_select_pause = true
 if not Global.player_data_slots[Global.current_slot_index].first_play_3
 	You: You found balance between heart and mind.
 	You: I thought it was impossible.

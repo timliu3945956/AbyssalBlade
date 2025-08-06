@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://jb4ociv1b20e"]
+[gd_scene load_steps=6 format=3 uid="uid://jb4ociv1b20e"]
 
 [ext_resource type="Texture2D" uid="uid://xm3v58p528l2" path="res://Utilities/logo/godot_logo.png" id="1_xcaay"]
 [ext_resource type="Script" path="res://Menu/splash_screen_manager.gd" id="1_y58ed"]
 [ext_resource type="Texture2D" uid="uid://bkrtliddv26ir" path="res://Utilities/logo/vifer_games_logo.png" id="2_ice46"]
+[ext_resource type="VideoStream" path="res://Utilities/logo/AB_Logo Animation.ogv" id="4_c1tfl"]
 [ext_resource type="AudioStream" uid="uid://nmnvta3c27qu" path="res://audio/music/ABYSSAL BLADE.wav" id="4_s84o0"]
 
 [node name="SplashScreenManager" type="Control"]
@@ -49,7 +50,14 @@ layout_mode = 2
 texture = ExtResource("2_ice46")
 expand_mode = 1
 
+[node name="ViferLogoVideo" type="VideoStreamPlayer" parent="."]
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+stream = ExtResource("4_c1tfl")
+expand = true
+bus = &"SFX"
+
 [node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_s84o0")
-volume_db = -30.0
 bus = &"Music"

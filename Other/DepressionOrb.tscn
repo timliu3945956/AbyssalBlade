@@ -2005,17 +2005,17 @@ one_shot = true
 
 [node name="OrbSummonAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_qha5c")
-volume_db = -8.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="OrbChangeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_el8mg")
-volume_db = -8.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="OrbSoakAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_pln4y")
-volume_db = -13.0
+volume_db = 4.0
 bus = &"SFX"
 
 [connection signal="timeout" from="OrbColorChangeTimer" to="." method="_on_orb_color_change_timer_timeout"]

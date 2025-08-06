@@ -896,13 +896,12 @@ autoplay = "idle"
 [node name="SpawnCloneAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("11_gffco")
-volume_db = -15.0
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="GlassShatterAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("11_oc85u")
-volume_db = -20.0
 bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

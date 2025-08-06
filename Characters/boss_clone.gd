@@ -13,12 +13,17 @@ var is_correct_boss = false
 @onready var spawn_shadow_audio: AudioStreamPlayer2D = $SpawnShadowAudio
 
 @onready var sac_particles: GPUParticles2D = $SacParticles
+var boss
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	boss.boss_died.connect(_on_boss_died)
 	animation_player.play("sac_idle")
 	spawn_shadow_audio.play()
 	sac_particles.emitting = true
+	
+func _on_boss_died():
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -9,12 +9,12 @@ var focused: bool = false
 		
 
 
-func _input(event):
-	if event is InputEventJoypadButton or (event is InputEventJoypadMotion):
-		if !focused:
-			focused = true
-			grab_focus()
-	else:
-		if focused:
-			focused = false
-			release_focus()
+#func _input(event):
+	#if event is InputEventJoypadButton or (event is InputEventJoypadMotion):
+		#if !focused:
+			#focused = true
+			#grab_focus()
+	#else:
+		#if focused:
+			#focused = false
+			#release_focus()

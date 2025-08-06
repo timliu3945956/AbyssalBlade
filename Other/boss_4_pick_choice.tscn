@@ -114,6 +114,7 @@ texture = ExtResource("4_ab8kh")
 
 [node name="BackAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_8xqg1")
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="MarginContainer/HBoxContainer/TakeButton" to="." method="_on_take_button_mouse_entered"]

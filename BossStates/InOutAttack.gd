@@ -26,7 +26,7 @@ func enter():
 #
 	#animation_player.play("charge_outof")
 	#await animation_player.animation_finished
-	await get_tree().create_timer(2.1658).timeout
+	await TimeWait.wait_sec(2.1658)#await get_tree().create_timer(2.1658).timeout
 	animation_player.play("alternate_slam")
 	#await owner.boss_room_animation.animation_finished
 	await animation_player.animation_finished

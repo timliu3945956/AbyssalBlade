@@ -1331,7 +1331,7 @@ shape = SubResource("CircleShape2D_enuw0")
 
 [node name="OrbSoakAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_xqbkq")
-volume_db = -15.0
+volume_db = 1.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="OrbHitbox" to="." method="_on_orb_hitbox_area_entered"]

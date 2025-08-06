@@ -938,7 +938,7 @@ size = Vector2(60, 6)
 size = Vector2(56, 36)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tsfs"]
-radius = 66.0681
+radius = 85.0059
 
 [sub_resource type="Gradient" id="Gradient_f4ri2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -4181,7 +4181,6 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_ibri1")
 debug_color = Color(1, 0.00857738, 0.0416929, 0.42)
@@ -4191,7 +4190,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 shape = SubResource("CircleShape2D_1tsfs")
 
 [node name="AttackMeter" type="Node2D" parent="."]
@@ -4336,22 +4334,22 @@ script = ExtResource("23_m3e3w")
 
 [node name="spit_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("56_fp71c")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("57_8yrj1")
-volume_db = -10.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="land_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("58_4a1o8")
-volume_db = -10.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="phase_2_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("50_nthx4")
-volume_db = -10.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
@@ -4375,7 +4373,7 @@ offset_bottom = 91.0
 max_value = 42000.0
 value = 0.0
 script = ExtResource("8_miugu")
-shake_fade = null
+shake_fade = 0.0
 
 [node name="HealthDamageBar" parent="CanvasLayer/BossHealthbar" index="0"]
 value = 50.0
@@ -4389,6 +4387,7 @@ offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5

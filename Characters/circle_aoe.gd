@@ -6,8 +6,10 @@ extends Node2D
 @onready var eruption_audio: AudioStreamPlayer2D = $EruptionAudio
 
 var CircleEffect = preload("res://circle_effect.tscn")
+var boss
 
 func _ready():
+	boss.boss_died.connect(_on_boss_died)
 	animator.frame = 0
 	animator.play("CircleAOE")
 	#var tween = get_tree().create_tween()
@@ -22,8 +24,13 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	var circleEffect = CircleEffect.instantiate()
 	var bossroom = get_tree().current_scene
 	circleEffect.position = position
+	circleEffect.boss = boss
 	bossroom.add_child(circleEffect)
+	
 	eruption_audio.play()
 	
 func knockback_circle():
 	await get_tree().create_timer(2).timeout
+	
+func _on_boss_died():
+	queue_free()

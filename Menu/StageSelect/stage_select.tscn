@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://ibpjmyob8k7h"]
+[gd_scene load_steps=145 format=3 uid="uid://ibpjmyob8k7h"]
 
 [ext_resource type="Script" path="res://Menu/StageSelect/stage_select.gd" id="1_0j2ci"]
 [ext_resource type="Texture2D" uid="uid://to83d02684o8" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/stageselect_empty.png" id="3_cdla0"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://copaqaaya6wey" path="res://Utilities/menu/stage select/stage_select_revamp/title/stageselect_bargain.png" id="13_wdr2w"]
 [ext_resource type="Texture2D" uid="uid://1lydioxspdea" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/personal_best_postgame_text.png" id="14_g88fi"]
 [ext_resource type="Texture2D" uid="uid://nhb2lsxp50le" path="res://Utilities/menu/stage select/stage_select_revamp/title/stageselect_depression.png" id="15_q4vxi"]
+[ext_resource type="Texture2D" uid="uid://b6i3qs5gxkgcx" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode_hover.png" id="17_0okir"]
 [ext_resource type="Texture2D" uid="uid://ft6dlv6lc40w" path="res://Utilities/menu/stage select/stage_select_revamp/title/stageselect_acceptance.png" id="17_pwb51"]
+[ext_resource type="Texture2D" uid="uid://e5qbbc1o17d2" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode_select.png" id="19_cprwy"]
 [ext_resource type="Texture2D" uid="uid://cvbu1n24qphyy" path="res://Utilities/menu/stage select/stage_select_revamp/description/leaderboard_text.png" id="19_lkx5u"]
 [ext_resource type="Texture2D" uid="uid://ccmny0m10vilx" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/defeat_boss_first_text.png" id="20_4efd7"]
 [ext_resource type="Texture2D" uid="uid://d13rr3l6qbmh5" path="res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode.png" id="21_jjc6a"]
@@ -24,6 +26,7 @@
 [ext_resource type="Script" path="res://Menu/fade_button_5.gd" id="32_2qxyl"]
 [ext_resource type="Texture2D" uid="uid://n6l4xkahjysf" path="res://Utilities/menu/stage select/new assets/STAGE_4_BUTTON.png" id="33_n5cns"]
 [ext_resource type="Script" path="res://Menu/fade_button_3.gd" id="35_ywoew"]
+[ext_resource type="Texture2D" uid="uid://cursbtbyi2y84" path="res://Utilities/menu/stage select/stage_select_revamp/button_select_start_HOVER.png" id="36_0wrv5"]
 [ext_resource type="Texture2D" uid="uid://c243lw11x70d2" path="res://Utilities/menu/stage select/stage_select_revamp/button_select_start.png" id="40_70xbg"]
 [ext_resource type="Texture2D" uid="uid://ctlpi8ibkevlp" path="res://Utilities/menu/stage select/stage_select_revamp/STAGE 1 select.png" id="40_w0c7c"]
 [ext_resource type="Texture2D" uid="uid://6navfvw2mf1s" path="res://Utilities/menu/stage select/stage_select_revamp/STAGE 5 unclick.png" id="41_dqx7d"]
@@ -239,6 +242,26 @@ texture = ExtResource("20_4efd7")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpew0"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r82h"]
+texture = ExtResource("17_0okir")
+modulate_color = Color(1, 1, 1, 0.376471)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxfug"]
+texture = ExtResource("21_jjc6a")
+modulate_color = Color(1, 1, 1, 0.313726)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4s83w"]
+texture = ExtResource("19_cprwy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2wi2d"]
+texture = ExtResource("17_0okir")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w1t3n"]
+texture = ExtResource("19_cprwy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cpi8x"]
+texture = ExtResource("21_jjc6a")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7sr0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_su3oa"]
@@ -349,20 +372,20 @@ modulate_color = Color(1, 1, 1, 0.705882)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txxqx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y0af0"]
-texture = ExtResource("40_70xbg")
+texture = ExtResource("36_0wrv5")
+modulate_color = Color(1, 1, 1, 0.376471)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tuxwt"]
 texture = ExtResource("40_70xbg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rk5et"]
-texture = ExtResource("41_ktr3q")
+texture = ExtResource("36_0wrv5")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yky23"]
 texture = ExtResource("40_70xbg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nxc8"]
 texture = ExtResource("41_ktr3q")
-modulate_color = Color(1, 1, 1, 0.705882)
 
 [sub_resource type="Animation" id="Animation_a8fse"]
 length = 0.001
@@ -838,8 +861,9 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_opvf3")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_b6hsv")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_dtd2r")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xpew0")
+disabled = true
 
-[node name="DescLead" type="TextureButton" parent="AbyssMode"]
+[node name="DescLead" type="Button" parent="AbyssMode"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -850,11 +874,15 @@ offset_right = -2.23
 offset_bottom = -0.5
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath("../../PanelContainer/MarginContainer/VBoxContainer/Stage1Button")
+focus_neighbor_right = NodePath("../../Play")
+theme_override_styles/focus = SubResource("StyleBoxTexture_3r82h")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_uxfug")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_4s83w")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2wi2d")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_w1t3n")
+theme_override_styles/normal = SubResource("StyleBoxTexture_cpi8x")
 action_mode = 0
-texture_normal = ExtResource("21_jjc6a")
-texture_disabled = ExtResource("21_jjc6a")
-ignore_texture_size = true
-stretch_mode = 5
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 z_index = 4
@@ -886,17 +914,13 @@ z_index = 2
 custom_minimum_size = Vector2(0, 32.5)
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Stage2Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Stage2Button")
-focus_neighbor_bottom = NodePath(".")
+focus_neighbor_right = NodePath("../../../../Play")
 theme_override_styles/focus = SubResource("StyleBoxTexture_su3oa")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_h5nep")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_nn51e")
 theme_override_styles/hover = SubResource("StyleBoxTexture_2fame")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5svv5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_o7u8m")
-toggle_mode = true
 action_mode = 0
 script = ExtResource("6_5flcn")
 
@@ -904,17 +928,13 @@ script = ExtResource("6_5flcn")
 custom_minimum_size = Vector2(0, 32.5)
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_left = NodePath("../Stage1Button")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath("../Stage1Button")
-focus_neighbor_bottom = NodePath(".")
+focus_neighbor_right = NodePath("../../../../Play")
 theme_override_styles/focus = SubResource("StyleBoxTexture_jsnrc")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_susnw")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_eq6m2")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ldg2r")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_we1ep")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gih2s")
-toggle_mode = true
 action_mode = 0
 script = ExtResource("8_tvbuk")
 
@@ -922,13 +942,13 @@ script = ExtResource("8_tvbuk")
 custom_minimum_size = Vector2(0, 32.5)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../../../../Play")
 theme_override_styles/focus = SubResource("StyleBoxTexture_v6qgw")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_fjmin")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_a73jy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7i06a")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_0li28")
 theme_override_styles/normal = SubResource("StyleBoxTexture_cb471")
-toggle_mode = true
 action_mode = 0
 script = ExtResource("35_ywoew")
 
@@ -936,13 +956,13 @@ script = ExtResource("35_ywoew")
 custom_minimum_size = Vector2(0, 32.5)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../../../../Play")
 theme_override_styles/focus = SubResource("StyleBoxTexture_evamm")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_ao3y2")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_q5ryn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_u8adq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_w6hj8")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kgirl")
-toggle_mode = true
 action_mode = 0
 script = ExtResource("48_lae7t")
 
@@ -950,13 +970,13 @@ script = ExtResource("48_lae7t")
 custom_minimum_size = Vector2(91, 32.5)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../../../../Play")
 theme_override_styles/focus = SubResource("StyleBoxTexture_4ggcb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_wm0n6")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_3l570")
 theme_override_styles/hover = SubResource("StyleBoxTexture_36qbm")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_06kyp")
 theme_override_styles/normal = SubResource("StyleBoxTexture_nim0f")
-toggle_mode = true
 action_mode = 0
 script = ExtResource("32_2qxyl")
 
@@ -1272,6 +1292,7 @@ offset_left = 325.475
 offset_top = 204.86
 offset_right = 378.975
 offset_bottom = 226.36
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/Stage1Button")
 theme_override_fonts/font = ExtResource("6_2ynpa")
 theme_override_font_sizes/font_size = 15
 theme_override_styles/focus = SubResource("StyleBoxTexture_y0af0")
@@ -1279,6 +1300,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_tuxwt")
 theme_override_styles/hover = SubResource("StyleBoxTexture_rk5et")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_yky23")
 theme_override_styles/normal = SubResource("StyleBoxTexture_0nxc8")
+toggle_mode = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1287,6 +1309,8 @@ libraries = {
 
 [connection signal="mouse_entered" from="AbyssMode/DescLead2" to="." method="_on_desc_lead_2_mouse_entered"]
 [connection signal="mouse_exited" from="AbyssMode/DescLead2" to="." method="_on_desc_lead_2_mouse_exited"]
+[connection signal="focus_entered" from="AbyssMode/DescLead" to="." method="_on_desc_lead_focus_entered"]
+[connection signal="focus_exited" from="AbyssMode/DescLead" to="." method="_on_desc_lead_focus_exited"]
 [connection signal="mouse_entered" from="AbyssMode/DescLead" to="." method="_on_desc_lead_mouse_entered"]
 [connection signal="mouse_exited" from="AbyssMode/DescLead" to="." method="_on_desc_lead_mouse_exited"]
 [connection signal="pressed" from="AbyssMode/DescLead" to="." method="_on_abyss_toggle_pressed"]

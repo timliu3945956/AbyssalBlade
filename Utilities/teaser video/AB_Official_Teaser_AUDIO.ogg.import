@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kd4my5kgvq8p"
+path="res://.godot/imported/AB_Official_Teaser_AUDIO.ogg-e9a3b5ad42c2bb4949d5184bd1d64e32.oggvorbisstr"
+
+[deps]
+
+source_file="res://Utilities/teaser video/AB_Official_Teaser_AUDIO.ogg"
+dest_files=["res://.godot/imported/AB_Official_Teaser_AUDIO.ogg-e9a3b5ad42c2bb4949d5184bd1d64e32.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -37,17 +37,17 @@ func enter():
 	# Line AOEs 2x
 	animation_player.play("disappear")
 	owner.smoke.play("smoke")
-	await get_tree().create_timer(0.6).timeout
+	await TimeWait.wait_sec(0.6)#await get_tree().create_timer(0.6).timeout
 	
 	owner.position = center_of_screen
 	animation_player.play("appear")
 	owner.smoke.play("smoke")
 	
 	spawn_line_attacks(player.position)
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	spawn_line_attacks(player.position)
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	#spawn_line_attacks(player.position)
 	#await get_tree().create_timer(2).timeout
@@ -58,46 +58,27 @@ func enter():
 	
 	# Chain Tiles
 	start_triangle_mechanic()
-	await get_tree().create_timer(5).timeout
+	await TimeWait.wait_sec(5)#await get_tree().create_timer(5).timeout
 	
 	# Line AOEs 2x
 	animation_player.play("disappear")
 	owner.smoke.play("smoke")
-	await get_tree().create_timer(0.6).timeout
+	await TimeWait.wait_sec(0.6)#await get_tree().create_timer(0.6).timeout
 	
 	owner.position = center_of_screen
 	animation_player.play("appear")
 	owner.smoke.play("smoke")
 	
 	spawn_line_attacks(player.position)
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	spawn_line_attacks(player.position)
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
-	#spawn_line_attacks(player.position)
-	#await get_tree().create_timer(2).timeout
-	#spawn_line_attacks(player.position)
-	#await get_tree().create_timer(2).timeout
-	
-	#Add Boss Slam here
-	
-	# Chain Tiles
 	
 	start_triangle_mechanic()
-	await get_tree().create_timer(5).timeout
+	await TimeWait.wait_sec(5)#await get_tree().create_timer(5).timeout
 	
-	#move_boss_to_random_vertex(owner)
-	#await get_tree().create_timer(2).timeout
-	#
-	#owner.cleave_rotate()
-	#owner.cleave_telegraph.play("cleave")
-	#await owner.cleave_telegraph.animation_finished
-	#
-	#owner.boss_attack_animation.play("cleave_anim")
-	#owner.attack_vfx_animation.play("cleave_vfx")
-	#owner.cleave_vfx()
-	#await owner.attack_vfx_animation.animation_finished
 	if owner.boss_death == false:
 		can_transition = true
 	

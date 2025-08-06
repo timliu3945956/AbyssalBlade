@@ -107,6 +107,6 @@ vertical_alignment = 1
 
 [node name="PremonitionSymbolAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_656xv")
-volume_db = -12.0
+volume_db = 3.0
 autoplay = true
 bus = &"SFX"

@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://coosvuumqd0u0"]
+[gd_scene load_steps=5 format=3 uid="uid://coosvuumqd0u0"]
 
 [ext_resource type="Script" path="res://Menu/LobbyScene/interaction_manager.gd" id="1_qld0b"]
+[ext_resource type="Texture2D" uid="uid://dtdfr1rylmuam" path="res://UI/controller icons/X.png" id="2_gd3k4"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_n8u3x"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjb6w"]
+texture = ExtResource("2_gd3k4")
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_qld0b")
+
+[node name="ControllerButton" type="Label" parent="."]
+z_index = 20
+offset_left = -3.6
+offset_top = -16.0
+offset_right = 5.4
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_mjb6w")
 
 [node name="Label" type="Label" parent="."]
 z_index = 20

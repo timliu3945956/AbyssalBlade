@@ -23,12 +23,12 @@ func enter():
 	else:
 		owner.sprite.flip_h = true
 		owner.sprite_shadow.flip_h = true
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	owner.beam_rotation.rotation = owner.beam_rotation.global_position.angle_to_point(player.global_position)
 	owner.beam_animation_player.play("beam_telegraph")
 	var beam_rotation = player.global_position - global_position #was using global position
-	await get_tree().create_timer(0.7501).timeout
+	await TimeWait.wait_sec(0.7501)#await get_tree().create_timer(0.7501).timeout
 	if center_of_arena.x - owner.position.x > 0:
 		owner.sprite.flip_h = false
 		owner.sprite_shadow.flip_h = false
@@ -37,19 +37,19 @@ func enter():
 		owner.sprite_shadow.flip_h = true
 		
 	animation_player.play("beam")
-	await get_tree().create_timer(0.15).timeout
+	await TimeWait.wait_sec(0.15)#await get_tree().create_timer(0.15).timeout
 	auto_attack_audio.play()
 	await owner.beam_animation_player.animation_finished
 	
 	beam(beam_rotation)
-	await get_tree().create_timer(0.979).timeout
+	await TimeWait.wait_sec(0.979)#await get_tree().create_timer(0.979).timeout
 	#await get_tree().create_timer(0.033).timeout
 	owner.auto_attack_count += 1
 	var elapsed := (Time.get_ticks_msec() - start_ms) / 1000.0
 	print("ranged elapsed time since start of attack", elapsed)
 	if elapsed < CYCLE:
 		print("ranged amount missing in time", CYCLE - elapsed)
-		await get_tree().create_timer(CYCLE - elapsed).timeout
+		await TimeWait.wait_sec(CYCLE - elapsed)#await get_tree().create_timer(CYCLE - elapsed).timeout
 	
 	can_transition = true
 	

@@ -34,6 +34,8 @@ extends CenterContainer
 @onready var glass_break_vfx: AnimatedSprite2D = $GlassBreakVFX
 @onready var star_flash_vfx: AnimatedSprite2D = $StarFlashVFX
 
+@onready var roar_audio: AudioStreamPlayer2D = $PlayerCutsceneSprite/RoarAudio
+
 
 
 # BOSS 3 ONREADY
@@ -85,6 +87,7 @@ func _ready() -> void:
 		player.set_physics_process(true)
 		GlobalCount.stage_select_pause = false
 		GlobalCount.in_subtree_menu = false
+	GlobalCount.in_subtree_menu = false
 
 func _process(delta: float) -> void:
 	if GlobalCount.timer_active:
@@ -366,3 +369,13 @@ func tween_camera():
 func tween_camera_start():
 	var tween = get_tree().create_tween()
 	tween.tween_property(cutscene_camera, "offset", cutscene_camera.offset + Vector2(0, -45), 2.0)
+	
+func play_roar_audio():
+	AudioPlayer.play_FX(roar_audio.stream, 3)
+	
+func bad_ending_achievement():
+	var achievement_bad_ending = Steam.getAchievement("BadEnding")
+	if achievement_bad_ending.ret && !achievement_bad_ending.achieved:
+		Steam.setAchievement("BadEnding")
+		Steam.storeStats()
+	SteamGlobal._check_completionist()

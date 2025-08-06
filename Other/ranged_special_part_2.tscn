@@ -2316,7 +2316,7 @@ scale = Vector2(1.5, 1)
 texture = SubResource("CompressedTexture2D_rp33u")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Marker2D"]
-self_modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, -1.00136e-05)
 clip_children = 2
 material = SubResource("ShaderMaterial_l5c5x")
 rotation = 1.57079

@@ -13,7 +13,7 @@ func enter():
 	else:
 		animation_player.play("idle_left")
 	animation_player.play("teleport_out")
-	await get_tree().create_timer(0.3332).timeout
+	await TimeWait.wait_sec(0.3332)#await get_tree().create_timer(0.3332).timeout
 	smoke.play("smoke")
 	await smoke.animation_finished
 	

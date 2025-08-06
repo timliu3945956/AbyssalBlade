@@ -5,7 +5,7 @@ extends CanvasLayer
 @export var next_action: StringName = &"ui_accept"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = &"ui_select" #ui_cancel
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -89,12 +89,17 @@ var dialogue_line: DialogueLine:
 
 
 func _ready() -> void:
+	InputManager.InputSourceChanged.connect(_on_source_changed)
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
+		
+func _on_source_changed(src) -> void:
+	if src == InputManager.InputSource.CONTROLLER:
+		balloon.grab_focus()
 
 
 func _unhandled_input(_event: InputEvent) -> void:

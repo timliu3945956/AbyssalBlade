@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://tth66cksp6e0"]
+[gd_scene load_steps=5 format=3 uid="uid://tth66cksp6e0"]
 
 [ext_resource type="Script" path="res://Menu/Cutscene/demo_end_screen.gd" id="1_egkhu"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_k7vue"]
+[ext_resource type="VideoStream" path="res://Utilities/teaser video/AB_Teaser_Ver_5.ogv" id="2_xt5fm"]
+[ext_resource type="AudioStream" uid="uid://kd4my5kgvq8p" path="res://Utilities/teaser video/AB_Official_Teaser_AUDIO.ogg" id="3_g5tes"]
 
 [node name="DemoEndScreen" type="CanvasLayer"]
 script = ExtResource("1_egkhu")
@@ -14,21 +16,37 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TeaserVideo" type="VideoStreamPlayer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_xt5fm")
+volume_db = -72.61
+autoplay = true
+expand = true
+
+[node name="TeaserAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g5tes")
+volume_db = 15.0
+autoplay = true
+
 [node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -115.0
-offset_top = -27.0
+offset_top = -8.0
 offset_right = 115.0
-offset_bottom = 27.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_k7vue")
-text = "Thanks for playing the demo
-
-Wishlist on Steam"
+text = "Thanks for playing the demo"
 horizontal_alignment = 1
-autowrap_mode = 3
+
+[connection signal="finished" from="TeaserVideo" to="." method="_on_video_stream_player_finished"]

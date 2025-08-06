@@ -59,6 +59,7 @@ func _on_orb_hitbox_area_entered(area: Area2D) -> void:
 		randomize()
 		gold_orb_collect.rotation_degrees = randi_range(0, 360)
 		gold_orb_collect.play("default")
+		await get_tree().process_frame
 		GlobalEvents.emit_signal("orb_collected")
 		await gold_orb_collect.animation_finished
 	queue_free()

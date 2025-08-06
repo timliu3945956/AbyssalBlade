@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var attack_meter_animation = get_node("../AttackMeterAnimation")
 @onready var boss_room_animation = get_node("../BossRoomAnimationPlayer")
 @onready var boss_room_animation2 = get_node("../BossRoomAnimationPlayer2")
+@onready var plunge_telegraph_animation = get_node("../PlungeTelegraphAnimationPlayer")
 @onready var enrage_animation = get_node("../EnrageBackground")
 @onready var cutscene_player = get_node("../CutscenePlayer")
 @onready var sword_animation_player: AnimationPlayer = $SwordAnimationPlayer
@@ -35,7 +36,7 @@ extends CharacterBody2D
 @onready var vfx_timer: Timer = $VFXTimer
 
 @onready var boss_killed = get_node("../Portal")
-@onready var boss_death: bool = false
+#@onready var boss_death: bool = false
 
 @onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
@@ -88,9 +89,9 @@ var enrage_attack = preload("res://Other/EnrageWipe.tscn")
 var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_fade.tscn")
 var circle_ref: Node2D
 
-var health_amount = 58000 : set = _set_health #65000
+var health_amount = 58000 : set = _set_health #58000
 var direction : Vector2
-var move_speed = 42.5 #120
+var move_speed = 52.5 #42.5
 
 var gold_count: int = 0
 var attack_sequence: int = 0
@@ -105,6 +106,13 @@ var pick_direction: int = randi_range(1, 2)
 var spawn_sword
 
 var play_ravage
+
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
 
 func _ready() -> void:
 	smoke.rotation = randf_range(0.0, TAU)

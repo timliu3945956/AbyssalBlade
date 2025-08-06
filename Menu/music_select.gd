@@ -3,47 +3,47 @@ extends Control
 const MUSIC: = {
 	"1": {
 		stream = preload("res://audio/music/ABYSSAL BLADE.wav"),
-		db = -30.0,
+		db = -10.0,
 		name = "ABYSSAL BLADE"
 	},
 	"2": {
 		stream = preload("res://audio/music/FLEETING HOPE.wav"),
-		db = -22.0,
+		db = -10.0,
 		name = "FLEETING HOPE"
 	},
 	"3": {
 		stream = preload("res://audio/music/DENIAL.wav"),
-		db = -30.0,
+		db = -10.0,
 		name = "DENIAL"
 	},
 	"4": {
 		stream = preload("res://audio/music/ANGER.wav"),
-		db = -25.0,
+		db = -10.0,
 		name = "ANGER"
 	},
 	"5": {
-		stream = preload("res://audio/music/boss 3 music (loop-ready).wav"),
-		db = -30.0,
+		stream = preload("res://audio/music/BARGAIN.wav"),
+		db = -10.0,
 		name = "BARGAIN"
 	},
 	"6": {
 		stream = preload("res://audio/music/DEPRESSION.wav"),
-		db = -25.0,
+		db = -10.0,
 		name = "DEPRESSION"
 	},
 	"7": {
-		stream = preload("res://audio/music/Infinity Chasers (Fractal Dreamers).mp3"),
-		db = -40.0,
+		stream = preload("res://audio/music/YOU.wav"),
+		db = -10.0,
 		name = "YOU"
 	},
 	"8": {
-		stream = preload("res://audio/music/Punishing Gray Raven OST - Holy Moonlight.mp3"),
-		db = -30.0,
+		stream = preload("res://audio/music/GRIEF.wav"),
+		db = -10.0,
 		name = "GRIEF"
 	},
 	"9": {
 		stream = preload("res://audio/music/ACCEPTANCE.wav"),
-		db = -20.0,
+		db = -10.0,
 		name = "ACCEPTANCE"
 	}
 }
@@ -97,8 +97,8 @@ func _ready() -> void:
 				child.text = MUSIC[index].name
 				
 			child.get_node("SoundPlay").visible = false
-			if not locked:
-				child.focus_entered.connect(_show_icon_on.bind(child))
+			#if not locked:
+				#child.focus_entered.connect(_show_icon_on.bind(child))
 	AudioPlayer.track_started.connect(_on_track_started)
 	AudioPlayer.progress_changed.connect(_on_progress_changed)
 	AudioPlayer.track_finished.connect(_on_track_finished)
@@ -116,7 +116,7 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		interact_collision.disabled = false
-		AudioPlayer.play_FX(click_vfx, 0)
+		AudioPlayer.play_FX(click_vfx, 10)
 		player.canvas_layer.visible = true
 		GlobalCount.paused = false
 		accept_event()
@@ -126,7 +126,7 @@ func _on_music_button_pressed(index:String, btn: Button) -> void:
 	_show_icon_on(btn)
 	
 	AudioPlayer.last_music_button = index
-	AudioPlayer.play_FX(click_vfx, 0)
+	AudioPlayer.play_FX(click_vfx, 10)
 	AudioPlayer.stop_music(false)
 	progress_bar.value = 0
 	#anim_player.play("change_songs")
@@ -209,7 +209,7 @@ func _is_locked(idx: String) -> bool:
 
 func _on_back_pressed() -> void:
 	interact_collision.disabled = false
-	AudioPlayer.play_FX(click_vfx, 0)
+	AudioPlayer.play_FX(click_vfx, 10)
 	GlobalCount.paused = false
 	player.canvas_layer.visible = true
 	queue_free()

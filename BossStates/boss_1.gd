@@ -51,7 +51,7 @@ extends CharacterBody2D
 @onready var boss_death_anim = get_node("../BossDeathAnimation")
 @onready var boss_killed = get_node("../Portal")
 @onready var enrage_background: AnimationPlayer = get_node("../EnrageBackground")
-@onready var boss_death: bool = false
+#@onready var boss_death: bool = false
 
 @onready var smoke_1: AnimatedSprite2D = get_parent().get_node("SwordDrop1,1/smoke1")
 @onready var smoke_2: AnimatedSprite2D = get_parent().get_node("SwordDrop1,2/smoke2")
@@ -94,6 +94,7 @@ extends CharacterBody2D
 @onready var chain_slash_audio: AudioStreamPlayer2D = $ChainSlashAudio
 @onready var spawn_shadow_audio: AudioStreamPlayer2D = $SpawnShadowAudio
 
+
 @onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
 
 # flash particles
@@ -110,7 +111,7 @@ extends CharacterBody2D
 var beam_bar = preload("res://Utilities/cast bar/BeamCircle/beam_fade.tscn")
 var hit_particle = preload("res://Other/hit_particles.tscn")
 var circle_ref: Node2D
-var enraged: bool = false
+var enraged: bool = false #false
 
 var direction : Vector2
 var move_speed = 60 #120
@@ -119,13 +120,20 @@ var explosion_count: int = 0
 var top_down_charge_count: int = 0
 
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 47000 : set = _set_health #47000
+var health_amount = 49000 : set = _set_health #49000
 var center_of_screen = get_viewport_rect().size / 2 
 
 var choose_top_down = randi_range(1, 2)
 var timeline: int = 0
 
 var _last_t : int
+
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
 
 func _ready():
 	set_physics_process(false)
@@ -282,6 +290,11 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
+		GlobalCount.in_subtree_menu = false
+		player.pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
 		sprite.start_shake(1.8, 0.2)
 		player.high_pitch_slice_audio.play()
 		boss_death_anim.play("death")
@@ -323,7 +336,26 @@ func remove_state():
 	boss_room_animation.queue_free()
 	top_bottom_animation_player.queue_free()
 	in_out_animation_player.queue_free()
-	
+	alternate_smoke.queue_free()
+	boss_room.in_out_attack.queue_free()
+	boss_room.sword_drop_1_1.queue_free()
+	boss_room.sword_drop_1_2.queue_free()
+	boss_room.sword_drop_1_3.queue_free()
+	boss_room.sword_drop_1_4.queue_free()
+	boss_room.sword_drop_2_1.queue_free()
+	boss_room.sword_drop_2_2.queue_free()
+	boss_room.sword_drop_2_3.queue_free()
+	boss_room.sword_drop_2_4.queue_free()
+	boss_room.sword_drop_3_1.queue_free()
+	boss_room.sword_drop_3_2.queue_free()
+	boss_room.sword_drop_3_3.queue_free()
+	boss_room.sword_drop_3_4.queue_free()
+	boss_room.sword_drop_4_1.queue_free()
+	boss_room.sword_drop_4_2.queue_free()
+	boss_room.sword_drop_4_3.queue_free()
+	boss_room.sword_drop_4_4.queue_free()
+	boss_room.arrow_marker.queue_free()
+	boss_room.phase_transition_audio.queue_free()
 
 func camera_shake():
 	GlobalCount.camera.apply_shake(8.0, 15.0)

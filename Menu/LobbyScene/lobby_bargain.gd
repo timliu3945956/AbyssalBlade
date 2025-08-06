@@ -14,8 +14,9 @@ func _ready() -> void:
 	
 func _on_interact():
 	interact_collision.disabled = true
-	AudioPlayer.play_FX(click_vfx, 0)
+	AudioPlayer.play_FX(click_vfx, 10)
 	GlobalCount.stage_select_pause = true
+	GlobalCount.in_subtree_menu = true
 	GlobalCount.paused = true
 	player.set_process(false)
 	player.canvas_layer.visible = false
@@ -25,5 +26,7 @@ func _on_interact():
 	player.canvas_layer.visible = true
 	player.set_process(true)
 	interact_collision.disabled = false
-	GlobalCount.stage_select_pause = false
 	GlobalCount.paused = false
+	GlobalCount.stage_select_pause = false
+	GlobalCount.in_subtree_menu = false
+	

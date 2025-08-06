@@ -9,7 +9,7 @@ func enter():
 	await owner.boss_charge_animation.animation_finished
 	#await animation_player.animation_finished
 	animation_player.play("buff_attack")
-	await get_tree().create_timer(0.4998).timeout
+	await TimeWait.wait_sec(0.4998)#await get_tree().create_timer(0.4998).timeout
 	owner.enrage_fire.emitting = true
 	
 	owner.boss_room_animation.play("arena_aoe")

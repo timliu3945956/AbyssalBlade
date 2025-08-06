@@ -31,7 +31,7 @@ func enter():
 	animation_player.play("jump")
 	await animation_player.animation_finished
 	owner.boss_attack_animation.play("chain_impact_combo")
-	await get_tree().create_timer(2.8333).timeout
+	await TimeWait.wait_sec(2.8333)#await get_tree().create_timer(2.8333).timeout
 	owner.position = owner.center_of_screen + Vector2(100, 0)
 	if owner.center_of_screen.x - owner.position.x > 0:
 		owner.sprite.flip_h = false
@@ -73,7 +73,7 @@ func enter():
 	animation_player.play("dash_stop")
 	owner.dash_audio.play()
 	owner.jump_audio.play()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	owner.dash_particles.emitting = false
 	
 	
@@ -83,13 +83,13 @@ func enter():
 	
 	owner.attack_meter_animation.play("malice")
 	animation_player.play("idle_right")
-	await get_tree().create_timer(2.25).timeout
+	await TimeWait.wait_sec(2.25)#await get_tree().create_timer(2.25).timeout
 	animation_player.play("buff")
 	await owner.attack_meter_animation.animation_finished
-	await get_tree().create_timer(0.1667).timeout
+	await TimeWait.wait_sec(0.1667)#await get_tree().create_timer(0.1667).timeout
 	owner.boss_attack_animation_2.play("malice_reverse")
 	animation_player.play("idle_right")
-	await get_tree().create_timer(1.5).timeout #instead of 2, 1.5 seconds await
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout #instead of 2, 1.5 seconds await
 	
 	if owner.boss_death == false:
 		can_transition = true

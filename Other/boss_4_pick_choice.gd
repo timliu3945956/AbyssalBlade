@@ -4,13 +4,31 @@ extends Control
 @onready var destroy_blade_label: Sprite2D = $MarginContainer/HBoxContainer/DestroyButton/DestroyBladeLabel
 @onready var cutscene_player: AnimationPlayer = $"../../CutscenePlayer"
 @onready var back_audio: AudioStreamPlayer2D = $BackAudio
+@onready var take_button: Button = $MarginContainer/HBoxContainer/TakeButton
+@onready var destroy_button: Button = $MarginContainer/HBoxContainer/DestroyButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	take_button.focus_entered.connect(_on_take_button_mouse_entered)
+	take_button.focus_exited.connect(_on_take_button_mouse_exited)
+	destroy_button.focus_entered.connect(_on_destroy_button_mouse_entered)
+	destroy_button.focus_exited.connect(_on_destroy_button_mouse_exited)
+	
+	take_button.focus_neighbor_right = destroy_button.get_path()
+	destroy_button.focus_neighbor_left = take_button.get_path()
+	
+	get_viewport().gui_release_focus()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if get_viewport().gui_get_focus_owner() != null:
+		return
+		
+	if event.is_action_pressed("ui_left"):
+		take_button.grab_focus()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_right"):
+		destroy_button.grab_focus()
+		get_viewport().set_input_as_handled()
 
 func _on_take_button_pressed() -> void:
 	back_audio.play()
@@ -23,10 +41,6 @@ func _on_take_button_pressed() -> void:
 	take_blade_label.visible = false
 	cutscene_player.play("cutscene_take_blade")
 	await cutscene_player.animation_finished
-	var achievement_bad_ending = Steam.getAchievement("BadEnding")
-	if achievement_bad_ending.ret && !achievement_bad_ending.achieved:
-		Steam.setAchievement("BadEnding")
-		Steam.storeStats()
 	
 
 func _on_destroy_button_pressed() -> void:

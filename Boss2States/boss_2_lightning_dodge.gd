@@ -10,11 +10,8 @@ var last_removed_angle_2 := -1.0
 func enter():
 	super.enter()
 	owner.direction = Vector2.ZERO
-	#animation_player.play("disappear")
-	#owner.smoke.play("smoke")
-	#await get_tree().create_timer(0.6).timeout
 	animation_player.play("idle_left")
-	await get_tree().create_timer(0.75).timeout
+	await TimeWait.wait_sec(0.75)#await get_tree().create_timer(0.75).timeout
 	if owner.cleave_count == 2:
 		if owner.center_of_screen.x - owner.position.x > 0:
 			owner.dash_particles.texture = preload("res://sprites/BargainingBoss/MainBoss/newest animation/Main/bargain_dashfinish.png")
@@ -28,76 +25,60 @@ func enter():
 		tween.tween_property(owner, "position", move_position, 0.5)
 		animation_player.play("dash_stop")
 		owner.dash_audio.play()
-		#owner.jump_audio.play()
-		await get_tree().create_timer(0.5).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 		owner.dash_particles.emitting = false
-	#await get_tree().create_timer(0.25).timeout
-	#animation_player.play("dash_stop")
-	#await get_tree().create_timer(0.25).timeout
-	
-	#animation_player.play("appear")
-	#owner.smoke.play("smoke")
 	owner.attack_meter_animation.play("discharge")
 	animation_player.play("idle_right")
-	#animation_player.play("cleave_chargeup")
-	#await animation_player.animation_finished #0.4167
-	#animation_player.play("cleave_charge")
-	#await get_tree().create_timer(1.5833).timeout
-	await get_tree().create_timer(2.25).timeout
+	await TimeWait.wait_sec(2.25)#await get_tree().create_timer(2.25).timeout
 	animation_player.play("buff")
 	owner.boss_attack_animation.play("sword_telegraph")
-	await get_tree().create_timer(0.5834).timeout
+	await TimeWait.wait_sec(0.5834)#await get_tree().create_timer(0.5834).timeout
 	owner.sword_animation.play("sword_drop")
-	await get_tree().create_timer(0.1666).timeout
+	await TimeWait.wait_sec(0.1666)#await get_tree().create_timer(0.1666).timeout
 	owner.camera_shake()
-	#await owner.attack_meter_animation.animation_finished
 	
-	await get_tree().create_timer(0.5).timeout
-	#animation_player.play("cleave_reverse")
-	
-	#owner.boss_attack_animation.play("sword_drop")
-	#await owner.boss_attack_animation.animation_finished
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	animation_player.play("idle_right")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_repeat") # 1.5 seconds
 	#await get_tree().create_timer(1).timeout
 	lightning() # 2 seconds
 	
-	await get_tree().create_timer(1.52).timeout
+	await TimeWait.wait_sec(1.52)#await get_tree().create_timer(1.52).timeout
 	animation_player.play("discharge_last") # 1.5 seconds
 	await animation_player.animation_finished
 	owner.sword_animation.play("sword_end")

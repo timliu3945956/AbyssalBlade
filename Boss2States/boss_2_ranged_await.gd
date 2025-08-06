@@ -8,9 +8,9 @@ func enter():
 	owner.direction = Vector2.ZERO
 	
 	animation_player.play("fade_out")
-	await get_tree().create_timer(22.3335).timeout
+	await TimeWait.wait_sec(22.3335)#await get_tree().create_timer(22.3335).timeout
 	animation_player.play("fade_in")
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	can_transition = true
 
 func transition():

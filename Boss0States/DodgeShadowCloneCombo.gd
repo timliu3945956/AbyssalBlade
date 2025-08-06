@@ -66,6 +66,7 @@ func clone(slice_indices: Array, is_wrong_shadow = false):
 	var clone = ShadowCloneScene.instantiate()
 	clone.position = owner.center_of_screen
 	clone.boss_room_center = owner.center_of_screen
+	clone.boss = owner
 	add_child(clone)
 	clone.set_slice_indices(slice_indices)
 	clone.is_wrong_shadow = is_wrong_shadow
@@ -89,7 +90,7 @@ func play_animations():
 		owner.boss_room_animation.play(animation_name)
 		owner.flash_room_animation.play("flash_arena")
 		
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	owner.animation_player.play("jump_slam")
 	owner.boss_jump_timer.start()

@@ -24,13 +24,13 @@ func enter():
 	
 	owner.state_machine.travel("invisible")
 	spawn_dash()
-	await get_tree().create_timer(0.3333).timeout
+	await TimeWait.wait_sec(0.3333)#await get_tree().create_timer(0.3333).timeout
 	
 	spawn_clones()
 	owner.premonition_symbol_audio.play()
 	#owner.premonition_marker_audio.play()
 	
-	await get_tree().create_timer(3).timeout
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
 	#for _i in 4:
 	owner.attack_meter_animation.play("premonition_1")
 	await owner.attack_meter_animation.animation_finished
@@ -50,16 +50,16 @@ func enter():
 	
 	player.vfx_timer.stop()
 	owner.attack_meter_animation.play("vanquish_attack")
-	await get_tree().create_timer(3.4).timeout
+	await TimeWait.wait_sec(3.4)#await get_tree().create_timer(3.4).timeout
 	owner.blade_of_ruin_audio.play()
 	await owner.attack_meter_animation.animation_finished
 	trigger_clone_attack()
-	await get_tree().create_timer(1.0).timeout
-	await get_tree().create_timer(0.3333).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1.0).timeout
+	await TimeWait.wait_sec(0.3333)#await get_tree().create_timer(0.3333).timeout
 	owner.animation_tree.set("parameters/Idle/blend_position", Vector2.DOWN)
 	owner.state_machine.travel("visible")
 	owner.smoke.play("smoke")
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	can_transition = true
 	

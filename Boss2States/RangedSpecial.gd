@@ -18,77 +18,18 @@ func enter():
 	animation_player.play("idle_right")
 	await owner.attack_meter_animation.animation_finished
 	animation_player.play("jump_away")
-	await get_tree().create_timer(2).timeout #one second add
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout #one second add
 	owner.boss_room_animation.play("ranged_lines")
-	await get_tree().create_timer(8).timeout
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(8)#await get_tree().create_timer(8).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	if direction == 1:
 		owner.boss_room.spawn_special_counterclockwise()
 	else:
 		owner.boss_room.spawn_special_clockwise()
-	await get_tree().create_timer(5.25).timeout
+	await TimeWait.wait_sec(5.25)#await get_tree().create_timer(5.25).timeout
 	owner.boss_2_melee.find_child("FiniteStateMachine").change_state("Foretold")
-	await get_tree().create_timer(8.75).timeout #1 second added
+	await TimeWait.wait_sec(8.75)#await get_tree().create_timer(8.75).timeout #1 second added
 	owner.ranged_special_finish()
-	##animation_player.play("jump_away")
-	##await animation_player.animation_finished
-	#
-	#owner.boss_room_animation.play("ranged_lines")
-	## seconds 1, 3, 5, 7
-	#await get_tree().create_timer(0.5).timeout #0.5
-	#animation_player.play("special_stomp") #0.5s
-	#await animation_player.animation_finished
-	#animation_player.play("idle_left")
-	#await get_tree().create_timer(0.9167).timeout
-	#animation_player.play("special_stomp") #2.5s
-	#await animation_player.animation_finished
-	#animation_player.play("idle_left")
-	#await get_tree().create_timer(0.9167).timeout
-	#animation_player.play("special_stomp") #4.5s
-	#await animation_player.animation_finished
-	#animation_player.play("idle_left")
-	#await get_tree().create_timer(0.9167).timeout
-	#animation_player.play("special_stomp") #6.5s
-	#await animation_player.animation_finished
-	#animation_player.play("idle_left")
-	#await owner.boss_room_animation.animation_finished
-	#
-	##animation_player.play("jump_land")
-	##await animation_player.animation_finished
-	#
-	#owner.attack_meter_animation.play("ranged_special_2")
-	#animation_player.play("idle_left")
-	#await owner.attack_meter_animation.animation_finished
-	#
-	#animation_player.play("jump_away")
-	#await animation_player.animation_finished
-	#
-	#owner.boss_room.spawn_special_part_2(0, 180, 15, 0.5)
-	## await
-	#await get_tree().create_timer(3).timeout
-	#spawn_line_attacks(owner.to_local(player.global_position))
-	#await get_tree().create_timer(1.5004).timeout
-	##line_aoe_audio.play()
-	#await get_tree().create_timer(0.9996).timeout
-	## await
-	#spawn_line_attacks(owner.to_local(player.global_position))
-	#await get_tree().create_timer(1.5004).timeout
-	##line_aoe_audio.play()
-	#await get_tree().create_timer(0.9996).timeout
-	##await
-	#spawn_line_attacks(owner.to_local(player.global_position))
-	#await get_tree().create_timer(1.5004).timeout
-	##line_aoe_audio.play()
-	#await get_tree().create_timer(0.9996).timeout
-	#print("finished ranged_lines animation")
-	#owner.position = owner.center_of_screen + Vector2(50, 0)
-	#animation_player.play("jump_land")
-	#owner.ranged_special_finish()
-	##await get_tree().create_timer(2).timeout
-	#await animation_player.animation_finished
-	#
-	#animation_player.play("idle_left")
-	#await get_tree().create_timer(1.5833).timeout
 	
 	can_transition = true
 
@@ -106,7 +47,7 @@ func spawn_line_attacks(player_position: Vector2):
 		attack_instance.rotation = rotation_angle
 		
 		add_child(attack_instance)
-	await get_tree().create_timer(0.9996).timeout
+	await TimeWait.wait_sec(0.9996)#await get_tree().create_timer(0.9996).timeout
 	line_aoe_audio.play()
 
 func transition():

@@ -1,149 +1,144 @@
 extends CanvasLayer
 
-signal finished
+@export var next_scene : PackedScene
+@export var batch_per_frame : int = 2
+@export var grace_before_start := 1.0
+@export var grace_after_done := 0.5
 
-@export var load_scene : PackedScene = preload("res://Menu/SplashScreenManager.tscn")
-@export var compile_parent_path : NodePath = ^"CompileParent"
-@export var extra_scenes_to_scan : Array[PackedScene] = []
-@export var frames_per_material : int = 1
-@export var log_to_console : bool = true
+const LIST_PATH := "res://shader_precompile_list.txt"
+const SENTINEL := "user://shader_warmup_done.flag"
 
-var _materials := {}
-var _gpu_particles : Array[Material] = []
-var _compile_parent : Node2D
-var _dummy_sprite : Sprite2D
-# Called when the node enters the scene tree for the first time.
+@onready var cover : ColorRect = $ColorRect
+@onready var pool : Node = $CompileParent
+
+var _scene_queue : Array[String]
+var _material_cache : Dictionary
+var _live_compiles : int = 0
+var _is_compat = ProjectSettings.get_setting("rendering/renderer/name") == "compatibility"
+
 func _ready() -> void:
-	_compile_parent = try_get_node2d(compile_parent_path)
-	if _compile_parent == null:
-		_compile_parent = Node2D.new()
-	if _compile_parent.get_parent() == null:
-		add_child(_compile_parent)
+	cover.visible = true
+	_material_cache = {}
+	_load_list()
+	await get_tree().create_timer(grace_before_start).timeout
+	set_physics_process(true)
 	
-	if extra_scenes_to_scan.is_empty():
-		extra_scenes_to_scan = _gather_all_scenes()
-	
-	_scan_tree(get_tree().root)
-	for ps in extra_scenes_to_scan:
-		var inst := ps.instantiate()
-		#add_child(inst)
-		_scan_tree(inst)
-		inst.queue_free()
+func _physics_process(_delta: float) -> void:
+	#if _scene_queue.is_empty():
+		#return
+	if not _scene_queue.is_empty():
+		var to_do = min(batch_per_frame, _scene_queue.size())
+		for i in range(to_do):
+			_compile_scene(_scene_queue.pop_back())
 		
+	if _scene_queue.is_empty() and _live_compiles == 0:
+		_finish()
+		
+func _load_list() -> void:
+	if FileAccess.file_exists(SENTINEL):
+		print("[Shader-prep] Cache already primed, skipping warm-up.")
+		call_deferred("_switch_scene")
+		return
+		
+	var f := FileAccess.open(LIST_PATH, FileAccess.READ)
+	if f == null:
+		push_error("[Shader-prep] ERROR: Can't open %s" % LIST_PATH)
+		_scene_queue = []
+		return
+		
+	_scene_queue = []
+	while not f.eof_reached():
+		var line := f.get_line().strip_edges()
+		if line != "":
+			_scene_queue.append(line)
+	f.close()
+	_scene_queue.shuffle()
+	print("[Shader-prep] Will compile", _scene_queue.size(), "scenes")
 	
+func _compile_scene(path: String) -> void:
+	var ps : PackedScene = load(path)
+	if ps == null: return
+	
+	var root : Node = ps.instantiate()
+	_scan_node_tree(root)
+	root.queue_free()
+	
+func _scan_node_tree(n : Node) -> void:
+	if n is GPUParticles2D:
+		_push_material(n.process_material)
+	elif n is Node2D:
+		_push_material(n.material)
+	elif n is MultiMeshInstance2D:
+		_push_material(n.material)
+		
+	for p in n.get_property_list():
+		if not (p.usage & PROPERTY_USAGE_STORAGE):
+			continue
+		if p.type != TYPE_OBJECT:
+			continue
+		var val = n.get(p.name)
+		if val is ShaderMaterial \
+		or val is ParticleProcessMaterial \
+		or val is CanvasItemMaterial:
+			_push_material(val)
+	
+	for child in n.get_children():
+		_scan_node_tree(child)
 			
-	_dummy_sprite = Sprite2D.new()
-	_dummy_sprite.texture = _white_px()
-	_compile_parent.add_child(_dummy_sprite)
+func _push_material(mat: Resource) -> void: #owner: Node,
+	if mat == null: return
 	
-	await _prime_materials()
-	await _prime_gpu_particles()
-	if log_to_console:
-		print("[Precompiler] Found %d materials, %d GPU-particles"
-			% [_materials.size(), _gpu_particles.size()])
-	emit_signal("finished")
-	print("SHADER PRECOMPILATION DONE HERE")
-	#ProjectSettings.set_setting("rendering/shaders/pipeline_cache/save_cache", false)
-	#ProjectSettings.save()
-	_dummy_sprite.queue_free()
-	_compile_parent.queue_free()
-	
-	TransitionScreen.transition()
-	await TransitionScreen.on_transition_finished
-	get_tree().change_scene_to_packed(load_scene)
-	
-func _gather_all_scenes() -> Array[PackedScene]:
-	var scenes : Array[PackedScene] = []
-	var dir := DirAccess.open("res://")
-	if dir == null:
-		push_error("Precompiler: cannot open project root")
-		return scenes
-	dir.list_dir_begin()
-	var file := dir.get_next()
-	while file != "":
-		var path := dir.get_current_dir() + "/" + file
-		if file.ends_with(".tscn"):
-			var ps := ResourceLoader.load(path)
-			if ps is PackedScene:
-				scenes.append(ps)
-		elif DirAccess.dir_exists_absolute(path):
-			scenes += _gather_sub_scenes(path)
-		file = dir.get_next()
-	dir.list_dir_end()
-	return scenes
-	
-func _gather_sub_scenes(start_path : String) -> Array[PackedScene]:
-	var subs : Array[PackedScene] = []
-	var sub_dir := DirAccess.open(start_path)
-	sub_dir.list_dir_begin()
-	var entry := sub_dir.get_next()
-	while entry != "":
-		var path := start_path + "/" + entry
-		if path.ends_with(".tscn"):
-			var ps := ResourceLoader.load(path)
-			if ps is PackedScene:
-				subs.append(ps)
-		#elif DirAccess.dir_exists_absolute(path):
-			#subs += _gather_sub_scenes(path)
-		entry = sub_dir.get_next()
-	sub_dir.list_dir_end()
-	return subs
-
-func _scan_tree(node : Node) -> void:
-	match node:
-		Sprite2D, AnimatedSprite2D, NinePatchRect, CanvasItem:
-			if node.material: _materials[node.material] = true
-		CPUParticles2D:
-			if node.process_material: _materials[node.process_material] = true
-		GPUParticles2D:
-			if node.process_material:
-				var mat : Material = node.process_material
-				if mat not in _gpu_particles:
-					_gpu_particles.append(mat)
-			
-	for c in node.get_children():
-		_scan_tree(c)
-		
-func _prime_materials() -> void:
-	var index := 0
-	for mat in _materials.keys():
-		_dummy_sprite.material = mat
-		await get_tree().process_frame
-		if log_to_console:
-			print("[Precompiler] Material %d / %d – %s"
-				  % [index, _materials.size(), mat.resource_path])
-		for _frame in range(frames_per_material):
-			await get_tree().process_frame
-		index += 1
-		
-func _prime_gpu_particles() -> void:
-	var index := 0
-	for src in _gpu_particles:
-		var p := GPUParticles2D.new()
-		p.process_material = src
-		p.amount = 1
-		#var p := src.duplicate()
-		_compile_parent.add_child(p)
-		p.emitting = true
-		
-		await get_tree().process_frame
-		#await get_tree().process_frame
-		p.emitting = false
-		await get_tree().process_frame
-		
-		p.queue_free()
-		index += 1
-		if log_to_console:
-			print("[Precompiler] GPU-Particles %d / %d primed"
-				  % [index, _gpu_particles.size()])
-
-func _white_px() -> Texture2D:
-	var img := Image.create(1, 1, false, Image.FORMAT_RGBA8)
-	img.fill(Color.WHITE)
-	return ImageTexture.create_from_image(img)
-	
-func try_get_node2d(path: NodePath) -> Node2D:
-	if has_node(path):
-		return get_node(path) as Node2D
+	var key
+	if mat is Shader:
+		var shim := ShaderMaterial.new()
+		shim.shader = mat
+		mat = shim
+		key = "shader:" + str(mat.shader)
 	else:
-		return null
+		key = mat.resource_path if mat.resource_path != "" else mat.get_instance_id()
+	#var key = mat.resource_path if mat.resource_path != "" else mat.get_instance_id()
+	
+	if _material_cache.has(key): return
+	
+	#print(" scheduling:", key)
+	_material_cache[key] = true
+	
+	var dummy : Node
+	if mat is ParticleProcessMaterial:
+		if _is_compat:
+			dummy = CPUParticles2D.new()
+		else:
+			dummy = GPUParticles2D.new()
+		dummy.process_material = mat
+		dummy.one_shot = true
+		dummy.emitting = true
+	else:
+		var s := Sprite2D.new()
+		s.texture = PlaceholderTexture2D.new()
+		s.material = mat
+		dummy = s
+	
+	pool.add_child(dummy)
+	_live_compiles += 1
+	await get_tree().process_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
+	dummy.queue_free()
+	_live_compiles -= 1
+	#print(" compiled:", mat)
+	
+func _finish() -> void:
+	print("[Shader-prep] Done. Compiled", _material_cache.size(), "unique materials.")
+	set_physics_process(false)
+	
+	await get_tree().create_timer(grace_after_done).timeout
+	FileAccess.open(SENTINEL, FileAccess.WRITE).close()
+	call_deferred("_switch_scene")
+	
+func _switch_scene() -> void:
+	if next_scene == null:
+		push_error("next_scene is not assigned!")
+		return
+	TransitionScreen.transition_splash()
+	await TransitionScreen.on_transition_finished
+	get_tree().change_scene_to_packed(next_scene)

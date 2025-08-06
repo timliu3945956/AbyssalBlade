@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1j8ohebdou7y"]
+[gd_scene load_steps=3 format=3 uid="uid://b1j8ohebdou7y"]
 
 [ext_resource type="Script" path="res://Menu/LoadScreen/load_game_screen.gd" id="1_2nurc"]
+[ext_resource type="PackedScene" uid="uid://jb4ociv1b20e" path="res://Menu/SplashScreenManager.tscn" id="2_k5gxf"]
 
 [node name="LoadGameScreen" type="CanvasLayer"]
 script = ExtResource("1_2nurc")
+next_scene = ExtResource("2_k5gxf")
+batch_per_frame = 10
 
 [node name="CompileParent" type="Node2D" parent="."]
 position = Vector2(233, 132)

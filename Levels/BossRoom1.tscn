@@ -22109,17 +22109,18 @@ texture = SubResource("GradientTexture2D_ev46e")
 
 [node name="in_out_alternate_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("53_b6e15")
-volume_db = -10.0
+volume_db = 7.0
 bus = &"SFX"
 
 [node name="top_down_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("54_jkcof")
-volume_db = -10.0
+volume_db = 7.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("45_cbt37")
-volume_db = -5.0
+volume_db = 12.0
+bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("56_do50p")
@@ -22129,7 +22130,7 @@ bus = &"Music"
 [node name="PhaseTransitionAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1.52588e-05, 0)
 stream = ExtResource("57_cm5kv")
-volume_db = -17.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="Portal" parent="." instance=ExtResource("54_8wpp7")]
@@ -22334,7 +22335,7 @@ vframes = 4
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="Sprite2D"]
 stream = ExtResource("45_cbt37")
-volume_db = -5.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]

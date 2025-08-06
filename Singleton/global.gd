@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_DIR = "user://saves/"
+const SAVE_DIR = "user://savefiles/" #savefiles #savefiles_DEMO
 const SECURITY_KEY = "089SADFH"
 
 #var player_data = PlayerData.new()
@@ -20,7 +20,6 @@ func _ready():
 		load_data(i) #SAVE_DIR + SAVE_FILE_NAME
 	print("data loaded")
 	
-		
 func verify_save_directory(path : String):
 	DirAccess.make_dir_absolute(path)
 	
@@ -79,7 +78,10 @@ func save_data(slot_index: int):
 			"first_cutscene": player_data.first_cutscene,
 			"deaths": player_data.deaths,
 			"surge_count": player_data.surge_count,
-			"last_shown_stage": player_data.last_shown_stage
+			"last_shown_stage": player_data.last_shown_stage,
+			"demo_done": player_data.demo_done,
+			"abyss_mode_popup": player_data.abyss_mode_popup,
+			"gold_portal": player_data.gold_portal
 		}
 	}
 	print(data)
@@ -118,12 +120,6 @@ func load_data(slot_index: int):
 		player_data.abyss_best_time_boss_4 = data.player_data.abyss_best_time_boss_4
 		player_data.abyss_best_time_boss_5 = data.player_data.abyss_best_time_boss_5
 		
-		#player_data.cutscene_viewed_boss_1 = data.player_data.cutscene_boss_1
-		#player_data.cutscene_viewed_boss_2 = data.player_data.cutscene_boss_2
-		#player_data.cutscene_viewed_boss_3 = data.player_data.cutscene_boss_3
-		#player_data.cutscene_viewed_boss_4 = data.player_data.cutscene_boss_4
-		#player_data.cutscene_viewed_boss_5 = data.player_data.cutscene_boss_5
-		
 		player_data.clear_count_1 = data.player_data.clear_count_1
 		player_data.clear_count_2 = data.player_data.clear_count_2
 		player_data.clear_count_3 = data.player_data.clear_count_3
@@ -156,11 +152,32 @@ func load_data(slot_index: int):
 		player_data.deaths = data.player_data.deaths
 		player_data.surge_count = data.player_data.surge_count
 		player_data.last_shown_stage = data.player_data.last_shown_stage
+		player_data.demo_done = data.player_data.demo_done
 		
+		player_data.abyss_mode_popup = data.player_data.abyss_mode_popup
+		player_data.gold_portal = data.player_data.gold_portal
 		
 		player_data_slots[slot_index] = player_data
 	else:
 		printerr("Cannot open non_existent file at %s!" % [path])
+		
+func abyss_stage_for(slot:int) -> int:
+	var stage := 0
+	var data = Global.player_data_slots[slot]
+	if data.abyss_best_time_boss_1 > 0.0: stage = 1
+	if data.abyss_best_time_boss_2 > 0.0: stage = 2
+	if data.abyss_best_time_boss_3 > 0.0: stage = 3
+	if data.abyss_best_time_boss_4 > 0.0: stage = 4
+	return stage
+	
+func story_stage_for(slot:int) -> int:
+	var stage := 0
+	var data = Global.player_data_slots[slot]
+	if !data.first_play_1: stage = 1
+	if !data.first_play_2: stage = 2
+	if !data.first_play_3: stage = 3
+	if !data.first_play_4: stage = 4
+	return stage
 
 func slot_exists(slot_index: int) -> bool:
 	return FileAccess.file_exists(get_slot_save_path(slot_index))

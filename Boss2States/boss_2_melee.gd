@@ -71,10 +71,10 @@ var spit_count: int = 0
 var auto_attack_count: int = 0
 var jump_position_count: int = 0
 # Change healthbar value as well to change healthbar health: 37500
-var health_amount = 35000 : set = _set_health
+var health_amount = 37000 : set = _set_health
 
 var center_of_screen = get_viewport_rect().size / 2 
-var max_health = 35000
+var max_health = 37000
 var allowed_diff = max_health * 0.05
 var foretold_count: int = 0
 var timeline: int = 0
@@ -137,7 +137,7 @@ func _on_flash_timer_timeout() -> void:
 	sprite.material.set_shader_parameter("flash_modifier", 0)
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	GlobalCount.healthbar.apply_shake(1, 10.0)
+	boss_healthbar.apply_shake(1, 10.0)
 	if area.name == "HitBox":
 		
 		health_amount -= player.damage_amount #additional *4

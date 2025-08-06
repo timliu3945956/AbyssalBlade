@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://b4g2hassu4ba3"]
+[gd_scene load_steps=161 format=3 uid="uid://b4g2hassu4ba3"]
 
 [ext_resource type="Script" path="res://Levels/main_menu.gd" id="1_7i8tt"]
 [ext_resource type="Texture2D" uid="uid://dwit6e7rxu4or" path="res://Utilities/menu/mainmenu_background_revamp.png" id="2_gvcrf"]
@@ -13,19 +13,23 @@
 [ext_resource type="Texture2D" uid="uid://2mw87c66lm1t" path="res://Utilities/Effects/noise_combined.png" id="8_uywjc"]
 [ext_resource type="Texture2D" uid="uid://d31ig1l5f2p7o" path="res://Utilities/Effects/spotlight_2.png" id="9_qjeek"]
 [ext_resource type="Texture2D" uid="uid://dn7euw3xjp0i8" path="res://Utilities/Effects/spotlight_2_alpha.png" id="9_yawbd"]
-[ext_resource type="Script" path="res://Levels/start_game.gd" id="12_jc6nj"]
 [ext_resource type="Texture2D" uid="uid://cxmekaehfpedg" path="res://Utilities/menu/stage select/stage_select_revamp/Stage_Select_none.png" id="13_roogh"]
+[ext_resource type="Script" path="res://Levels/button_release.gd" id="14_6u7vh"]
 [ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="15_jawbx"]
+[ext_resource type="Texture2D" uid="uid://ynq3dy0ypy81" path="res://Utilities/menu/hover_long.png" id="15_px73f"]
 [ext_resource type="Texture2D" uid="uid://umvxlbmxo43u" path="res://Utilities/menu/save file/Save_File_unclick.png" id="16_2dhqb"]
 [ext_resource type="Shader" path="res://Characters/black_white.gdshader" id="18_kr68v"]
 [ext_resource type="Texture2D" uid="uid://dd22ho856sejm" path="res://sprites/cutscene_sprites/abyss_blade_0.png" id="19_2xcpp"]
 [ext_resource type="Texture2D" uid="uid://bh5jnt5lx4ccs" path="res://Utilities/menu/save file/Save_File_overlay_select.png" id="19_o1xbj"]
 [ext_resource type="Shader" path="res://Utilities/menu/save file/highlight_shader.gdshader" id="20_lessf"]
+[ext_resource type="Texture2D" uid="uid://bbomojqmq6kft" path="res://Utilities/Effects/particlefx/floaty_128_alpha.png" id="20_wkuoe"]
 [ext_resource type="AudioStream" uid="uid://nmnvta3c27qu" path="res://audio/music/ABYSSAL BLADE.wav" id="21_28cw7"]
 [ext_resource type="Texture2D" uid="uid://q0nl6rg2m840" path="res://Menu/SaveFile/delete_save_file_button.png" id="21_f5skb"]
 [ext_resource type="Texture2D" uid="uid://c1p04mafu6cm2" path="res://Menu/SaveFile/delete_save_file_select.png" id="22_yro0o"]
 [ext_resource type="PackedScene" uid="uid://ddmnx3w5hrhi5" path="res://Menu/SaveFile/DeletePopup.tscn" id="23_os7do"]
 [ext_resource type="Texture2D" uid="uid://cl3mhpbsxu6c7" path="res://Menu/credits-scene/skip_button.png" id="23_y1ca4"]
+[ext_resource type="Script" path="res://Menu/sub_menu_control.gd" id="26_p3fwv"]
+[ext_resource type="Texture2D" uid="uid://4l07r1p38ohs" path="res://UI/controller icons/Menu.png" id="28_6f2iq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4sg4"]
 atlas = ExtResource("2_xu00i")
@@ -379,7 +383,8 @@ shader_parameter/noise_img = ExtResource("8_uywjc")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3bnv0"]
 texture = ExtResource("15_jawbx")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qs3qh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_208ny"]
+bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7vgt"]
 bg_color = Color(0, 0, 0, 0.313726)
@@ -391,6 +396,9 @@ bg_color = Color(0, 0, 0, 0.313726)
 bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5fwv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1b70"]
+bg_color = Color(0, 0, 0, 0.313726)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucdg7"]
 
@@ -405,6 +413,12 @@ texture = ExtResource("13_roogh")
 content_margin_left = 13.0
 content_margin_top = 2.0
 texture = ExtResource("16_2dhqb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrod7"]
+content_margin_left = 13.0
+content_margin_top = 2.0
+texture = ExtResource("16_2dhqb")
+modulate_color = Color(1, 1, 1, 0.705882)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47ri7"]
 content_margin_left = 13.0
@@ -422,13 +436,7 @@ content_margin_left = 13.0
 content_margin_top = 2.0
 texture = ExtResource("16_2dhqb")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nrod7"]
-content_margin_left = 13.0
-content_margin_top = 2.0
-texture = ExtResource("16_2dhqb")
-modulate_color = Color(1, 1, 1, 0.705882)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lc3je"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ydet"]
 shader = ExtResource("18_kr68v")
 shader_parameter/fade_alpha = 0.4
 
@@ -444,6 +452,38 @@ shader_parameter/Position = 0.448
 shader_parameter/Position_Min = 0.25
 shader_parameter/Position_Max = 0.5
 shader_parameter/Alpha = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i7dtq"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_7i5kc"]
+offsets = PackedFloat32Array(0, 0.20979, 0.724138, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vsoi5"]
+gradient = SubResource("Gradient_7i5kc")
+
+[sub_resource type="Curve" id="Curve_x0vrj"]
+_data = [Vector2(0, 0.72231), 0.0, 0.0, 0, 0, Vector2(1, 0.238924), -1.04308, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bfxe4"]
+curve = SubResource("Curve_x0vrj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6klbs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector3(40, 0, 0)
+scale_min = 0.4
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_bfxe4")
+color_ramp = SubResource("GradientTexture1D_vsoi5")
+turbulence_enabled = true
+turbulence_noise_speed_random = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rlcu1"]
 content_margin_left = 13.0
@@ -470,6 +510,10 @@ content_margin_left = 13.0
 content_margin_top = 2.0
 texture = ExtResource("16_2dhqb")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbcam"]
+shader = ExtResource("18_kr68v")
+shader_parameter/fade_alpha = 0.4
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yitnk"]
 content_margin_left = 13.0
 content_margin_top = 2.0
@@ -494,6 +538,10 @@ texture = ExtResource("16_2dhqb")
 content_margin_left = 13.0
 content_margin_top = 2.0
 texture = ExtResource("16_2dhqb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5fwo"]
+shader = ExtResource("18_kr68v")
+shader_parameter/fade_alpha = 0.4
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxiyf"]
 content_margin_top = 1.0
@@ -915,15 +963,12 @@ theme_override_constants/separation = 9
 
 [node name="Start Game" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Exit")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Settings")
 theme_override_colors/font_hover_pressed_color = Color(0.720467, 0.720468, 0.720467, 1)
-theme_override_colors/font_hover_color = Color(0.724643, 0.724643, 0.724643, 1)
-theme_override_colors/font_pressed_color = Color(0.74558, 0.74558, 0.74558, 1)
-theme_override_colors/font_focus_color = Color(0.753984, 0.753984, 0.753984, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lpx32")
@@ -932,19 +977,20 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_6q4nb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_jckk1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m8607")
 text = "Start"
-script = ExtResource("12_jc6nj")
+script = ExtResource("14_6u7vh")
+
+[node name="HoverStart" type="Sprite2D" parent="VBoxContainer/Start Game"]
+position = Vector2(53.5, 11)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_px73f")
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Start Game")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Credits")
 theme_override_colors/font_hover_pressed_color = Color(0.74978, 0.74978, 0.74978, 1)
-theme_override_colors/font_hover_color = Color(0.74978, 0.74978, 0.74978, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.753984, 0.753984, 0.753984, 1)
-theme_override_colors/font_focus_color = Color(0.716296, 0.716296, 0.716296, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lsvvc")
@@ -953,16 +999,20 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_xf3ub")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_h7ahb")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2oj31")
 text = "Settings"
+script = ExtResource("14_6u7vh")
+
+[node name="HoverSettings" type="Sprite2D" parent="VBoxContainer/Settings"]
+position = Vector2(53.5, 11)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_px73f")
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Settings")
-focus_neighbor_bottom = NodePath("../Exit")
 theme_override_colors/font_hover_pressed_color = Color(0.737193, 0.737193, 0.737193, 1)
-theme_override_colors/font_hover_color = Color(0.74558, 0.74558, 0.74558, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.77084, 0.770839, 0.770839, 1)
-theme_override_colors/font_focus_color = Color(0.741385, 0.741385, 0.741385, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3mddb")
@@ -972,15 +1022,21 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_bqusd")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_62wgr")
 text = "Credits
 "
+script = ExtResource("14_6u7vh")
+
+[node name="HoverCredits" type="Sprite2D" parent="VBoxContainer/Credits"]
+position = Vector2(53.5, 11)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_px73f")
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_bottom = NodePath("../Start Game")
 theme_override_colors/font_hover_pressed_color = Color(0.77084, 0.770839, 0.770839, 1)
-theme_override_colors/font_hover_color = Color(0.775063, 0.775063, 0.775063, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.787759, 0.787759, 0.787759, 1)
-theme_override_colors/font_focus_color = Color(0.796243, 0.796243, 0.796243, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7itt6")
@@ -989,6 +1045,12 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ecocb")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_wvghq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ska17")
 text = "Exit"
+script = ExtResource("14_6u7vh")
+
+[node name="HoverExit" type="Sprite2D" parent="VBoxContainer/Exit"]
+position = Vector2(53.5, 11)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("15_px73f")
 
 [node name="ExitPanel" type="Control" parent="."]
 visible = false
@@ -1046,34 +1108,40 @@ theme_override_constants/separation = 10
 [node name="YesButton" type="Button" parent="ExitPanel/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+focus_neighbor_top = NodePath("../NoButton")
+focus_neighbor_bottom = NodePath("../NoButton")
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qs3qh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_208ny")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_c7vgt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jb2rh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p1tq7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5fwv4")
 text = "Yes"
+script = ExtResource("14_6u7vh")
 
 [node name="NoButton" type="Button" parent="ExitPanel/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
+focus_neighbor_top = NodePath("../YesButton")
+focus_neighbor_bottom = NodePath("../YesButton")
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_qs3qh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_m1b70")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_c7vgt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jb2rh")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p1tq7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5fwv4")
 text = "No"
+script = ExtResource("14_6u7vh")
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -1182,10 +1250,8 @@ custom_minimum_size = Vector2(268.5, 48.5)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../../../Back")
+focus_neighbor_top = NodePath("../Save3")
 focus_neighbor_bottom = NodePath("../Save2")
-focus_next = NodePath("../Save2")
-focus_previous = NodePath("../../../../Back")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
@@ -1193,6 +1259,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxTexture_hm11k")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nrod7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_47ri7")
 theme_override_styles/hover = SubResource("StyleBoxTexture_upglx")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5rm7q")
@@ -1268,7 +1335,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SwordSprite1" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save1"]
-material = SubResource("ShaderMaterial_lc3je")
+material = SubResource("ShaderMaterial_6ydet")
 position = Vector2(93, 24)
 rotation = 1.57079
 scale = Vector2(0.7, 0.7)
@@ -1278,6 +1345,8 @@ texture = ExtResource("19_2xcpp")
 clip_children = 2
 rotation = -1.57079
 
+[node name="GoldGemCount1" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save1/SwordSprite1/GemCount1"]
+
 [node name="ColorRect" type="ColorRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save1/SwordSprite1/GemCount1"]
 material = SubResource("ShaderMaterial_lsgrt")
 offset_left = 16.0
@@ -1286,6 +1355,17 @@ offset_right = 26.0
 offset_bottom = 33.0
 rotation = 1.57079
 
+[node name="GoldParticles1" type="GPUParticles2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save1"]
+visible = false
+modulate = Color(0.85098, 0.745098, 0.611765, 1)
+material = SubResource("CanvasItemMaterial_i7dtq")
+position = Vector2(77, 24)
+rotation = -1.5708
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_6klbs")
+texture = ExtResource("20_wkuoe")
+lifetime = 3.0
+
 [node name="Save2" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(268.5, 48.5)
 layout_mode = 2
@@ -1293,8 +1373,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Save1")
 focus_neighbor_bottom = NodePath("../Save3")
-focus_next = NodePath("../Save3")
-focus_previous = NodePath("../Save1")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
@@ -1302,6 +1380,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxTexture_rlcu1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nrod7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_x3nbr")
 theme_override_styles/hover = SubResource("StyleBoxTexture_afikx")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tsl7t")
@@ -1377,7 +1456,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SwordSprite2" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save2"]
-material = SubResource("ShaderMaterial_lc3je")
+material = SubResource("ShaderMaterial_hbcam")
 position = Vector2(93, 24)
 rotation = 1.57079
 scale = Vector2(0.7, 0.7)
@@ -1387,6 +1466,8 @@ texture = ExtResource("19_2xcpp")
 clip_children = 2
 rotation = -1.57079
 
+[node name="GoldGemCount2" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save2/SwordSprite2/GemCount2"]
+
 [node name="ColorRect" type="ColorRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save2/SwordSprite2/GemCount2"]
 material = SubResource("ShaderMaterial_lsgrt")
 offset_left = 16.0
@@ -1395,15 +1476,24 @@ offset_right = 26.0
 offset_bottom = 33.0
 rotation = 1.57079
 
+[node name="GoldParticles2" type="GPUParticles2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save2"]
+visible = false
+modulate = Color(0.85098, 0.745098, 0.611765, 1)
+material = SubResource("CanvasItemMaterial_i7dtq")
+position = Vector2(77, 24)
+rotation = -1.5708
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_6klbs")
+texture = ExtResource("20_wkuoe")
+lifetime = 3.0
+
 [node name="Save3" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(268.5, 48.5)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../Save2")
-focus_neighbor_bottom = NodePath("../../../../Back")
-focus_next = NodePath("../../../../Back")
-focus_previous = NodePath("../Save2")
+focus_neighbor_bottom = NodePath("../Save1")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
@@ -1411,6 +1501,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 theme_override_styles/focus = SubResource("StyleBoxTexture_yitnk")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_nrod7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_n33uq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_6gkbf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_eisee")
@@ -1486,7 +1577,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SwordSprite3" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save3"]
-material = SubResource("ShaderMaterial_lc3je")
+material = SubResource("ShaderMaterial_p5fwo")
 position = Vector2(93, 24)
 rotation = 1.57079
 scale = Vector2(0.7, 0.7)
@@ -1496,6 +1587,8 @@ texture = ExtResource("19_2xcpp")
 clip_children = 2
 rotation = -1.57079
 
+[node name="GoldGemCount3" type="Sprite2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save3/SwordSprite3/GemCount3"]
+
 [node name="ColorRect" type="ColorRect" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save3/SwordSprite3/GemCount3"]
 material = SubResource("ShaderMaterial_lsgrt")
 offset_left = 16.0
@@ -1504,7 +1597,19 @@ offset_right = 26.0
 offset_bottom = 33.0
 rotation = 1.57079
 
+[node name="GoldParticles3" type="GPUParticles2D" parent="Control/PanelContainer/MarginContainer/VBoxContainer/Save3"]
+visible = false
+modulate = Color(0.85098, 0.745098, 0.611765, 1)
+material = SubResource("CanvasItemMaterial_i7dtq")
+position = Vector2(77, 24)
+rotation = -1.5708
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_6klbs")
+texture = ExtResource("20_wkuoe")
+lifetime = 3.0
+
 [node name="ManageSaveFile" type="Control" parent="Control"]
+z_index = 2
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -1578,17 +1683,23 @@ texture = ExtResource("22_yro0o")
 [node name="DeletePopup" parent="Control" instance=ExtResource("23_os7do")]
 layout_mode = 1
 
-[node name="SubMenuButton" type="Button" parent="Control"]
+[node name="SubMenuControl" type="Control" parent="Control"]
 z_index = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("26_p3fwv")
+
+[node name="SubMenuButton" type="Button" parent="Control/SubMenuControl"]
 custom_minimum_size = Vector2(17, 17)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 95.0
-offset_top = -35.0
+offset_top = 195.0
 offset_right = 112.0
-offset_bottom = -18.0
+offset_bottom = 212.0
 grow_vertical = 0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_0618k")
@@ -1601,12 +1712,17 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_6m2qa")
 theme_override_styles/normal = SubResource("StyleBoxTexture_gl7gj")
 text = "F"
 
-[node name="Label" type="Label" parent="Control/SubMenuButton"]
+[node name="ControllerInteractButton" type="Sprite2D" parent="Control/SubMenuControl"]
+position = Vector2(105, 243)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("28_6f2iq")
+
+[node name="Label2" type="Label" parent="Control/SubMenuControl"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 3.5
-offset_right = 56.0
-offset_bottom = 13.5
+offset_left = 111.0
+offset_top = 238.5
+offset_right = 151.0
+offset_bottom = 248.5
 theme_override_fonts/font = ExtResource("3_0618k")
 theme_override_font_sizes/font_size = 9
 text = "Sub-Menu"
@@ -1631,6 +1747,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4gc48")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4gc48")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4gc48")
 text = "Back"
+script = ExtResource("14_6u7vh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1665,16 +1782,23 @@ libraries = {
 }
 
 [connection signal="pressed" from="PressAnyButton" to="." method="_on_press_any_button_pressed"]
+[connection signal="mouse_exited" from="VBoxContainer/Start Game" to="VBoxContainer/Start Game" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Start Game" to="." method="_on_start_game_pressed"]
+[connection signal="mouse_exited" from="VBoxContainer/Settings" to="VBoxContainer/Settings" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_exited" from="VBoxContainer/Credits" to="VBoxContainer/Credits" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_exited" from="VBoxContainer/Exit" to="VBoxContainer/Exit" method="_on_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_exited" from="ExitPanel/Panel/VBoxContainer/YesButton" to="ExitPanel/Panel/VBoxContainer/YesButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="ExitPanel/Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="mouse_exited" from="ExitPanel/Panel/VBoxContainer/NoButton" to="ExitPanel/Panel/VBoxContainer/NoButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="ExitPanel/Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Save1" to="." method="_on_save_1_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Save2" to="." method="_on_save_2_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Save3" to="." method="_on_save_3_pressed"]
-[connection signal="pressed" from="Control/SubMenuButton" to="." method="_on_sub_menu_button_pressed"]
+[connection signal="pressed" from="Control/SubMenuControl/SubMenuButton" to="." method="_on_sub_menu_button_pressed"]
+[connection signal="mouse_exited" from="Control/Back" to="Control/Back" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/Back" to="." method="_on_back_pressed"]
 
 [editable path="Control/DeletePopup"]

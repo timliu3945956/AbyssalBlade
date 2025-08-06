@@ -54,6 +54,7 @@ func clone(slice_index):
 	clone.position = owner.center_of_screen
 	clone.boss_room_center = owner.center_of_screen
 	clone.set_target_slice(slice_index)
+	clone.boss = owner
 	add_child(clone)
 	return clone
 	
@@ -77,6 +78,7 @@ func spawn_bosses():
 		var boss_clone = BossCloneScene.instantiate()
 		boss_clone.position = get_boss_position(index)
 		boss_clone.boss_index = index
+		boss_clone.boss = owner
 		get_parent().get_parent().get_parent().add_child(boss_clone)
 		boss_clones.append(boss_clone)
 		boss_clone.connect("boss_hit", self._on_boss_clone_hit)
@@ -107,7 +109,7 @@ func cleanup_boss_clones():
 		if is_instance_valid(clone):
 			clone.play_sac_explode()
 			
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	for clone in boss_clones:
 		if is_instance_valid(clone):
@@ -117,9 +119,9 @@ func cleanup_boss_clones():
 func trigger_area_attack():
 	print("playing raid wide aoe")
 	animation_player.play("buff_attack")
-	await get_tree().create_timer(0.4165).timeout
+	await TimeWait.wait_sec(0.4165)#await get_tree().create_timer(0.4165).timeout
 	cleanup_boss_clones()
-	await get_tree().create_timer(0.0833).timeout
+	await TimeWait.wait_sec(0.0833)#await get_tree().create_timer(0.0833).timeout
 	owner.boss_room_animation.play("arena_aoe")
 	await owner.boss_room_animation.animation_finished
 	trigger_aoe_count += 1
@@ -128,7 +130,7 @@ func transition():
 	if can_transition:
 		can_transition = false
 		owner.timeline += 1
-		await get_tree().create_timer(1).timeout
+		await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 		get_parent().change_state("Cleave2")
 
 #func _on_shadow_state_timer_timeout() -> void:

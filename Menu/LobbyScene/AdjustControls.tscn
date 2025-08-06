@@ -3,11 +3,10 @@
 [ext_resource type="Script" path="res://Menu/LobbyScene/adjust_controls.gd" id="1_8t32v"]
 [ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="1_ena5d"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_ho3cc"]
+[ext_resource type="Script" path="res://Levels/button_release.gd" id="4_6rqyj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_irr5u"]
 texture = ExtResource("1_ena5d")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xc4ws"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_346ln"]
 bg_color = Color(0, 0, 0, 0.313726)
@@ -55,14 +54,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -35.0
-offset_top = -32.0
+offset_top = -25.0
 offset_right = 35.0
-offset_bottom = -22.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_ho3cc")
 theme_override_font_sizes/font_size = 9
-text = "Adjust Controls?"
+text = "View Tutorial?"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -74,12 +73,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = -8.0
+offset_top = 4.0
 offset_right = 46.0
-offset_bottom = 33.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 6
 
 [node name="YesButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
@@ -90,12 +89,13 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_ho3cc")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xc4ws")
+theme_override_styles/focus = SubResource("StyleBoxFlat_346ln")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_346ln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0c2hb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t7bva")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eubhr")
 text = "Yes"
+script = ExtResource("4_6rqyj")
 
 [node name="NoButton" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
@@ -106,12 +106,15 @@ theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_ho3cc")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xc4ws")
+theme_override_styles/focus = SubResource("StyleBoxFlat_346ln")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_346ln")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0c2hb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t7bva")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_eubhr")
 text = "No"
+script = ExtResource("4_6rqyj")
 
+[connection signal="mouse_exited" from="CanvasLayer/Panel/VBoxContainer/YesButton" to="CanvasLayer/Panel/VBoxContainer/YesButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/VBoxContainer/NoButton" to="CanvasLayer/Panel/VBoxContainer/NoButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

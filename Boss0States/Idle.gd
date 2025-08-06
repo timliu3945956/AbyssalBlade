@@ -39,7 +39,7 @@ func transition():
 					print("boss_2 attempts: ", Global.player_data_slots[Global.current_slot_index].attempt_count_3)
 		
 		#var boss_music = preload("res://audio/music/boss 2 music (loop-ready).wav")
-		AudioPlayer.play_music(owner.boss_music.stream, -30)
+		AudioPlayer.play_music(owner.boss_music.stream, -10)
 		get_parent().change_state("Follow") #Follow
 
 func _on_player_detection_body_entered(_body: Node2D) -> void:

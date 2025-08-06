@@ -1,4 +1,4 @@
-[gd_scene load_steps=697 format=3 uid="uid://bwne8paly25sq"]
+[gd_scene load_steps=700 format=3 uid="uid://bwne8paly25sq"]
 
 [ext_resource type="PackedScene" uid="uid://cubcpgdntlnmq" path="res://Characters/player.tscn" id="1_81if0"]
 [ext_resource type="Shader" path="res://Levels/combustible_voronoi.gdshader" id="1_cwakg"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://nk0unab6anko" path="res://sprites/tilesets/depression_arena_WITHOUTUNDER.png" id="27_yyd6t"]
 [ext_resource type="Shader" path="res://Characters/boss_distortion.gdshader" id="29_d6v3g"]
 [ext_resource type="Texture2D" uid="uid://dvut5xsgjlt1q" path="res://Utilities/Effects/firevfx/Aura_Fire_v3_Loop_spritesheet_WHITE.png" id="30_ggrij"]
+[ext_resource type="Texture2D" uid="uid://0811qlcxbngf" path="res://sprites/DepressionBoss/telegraphs/barrage_X_middleemptySLIT.png" id="33_4jbvm"]
 [ext_resource type="Material" uid="uid://d0m07etyam3f" path="res://Material/BossRoom1.tres" id="34_rn8dw"]
 [ext_resource type="Script" path="res://Levels/boss_slain.gd" id="34_sd3nx"]
 [ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="35_xh50y"]
@@ -2223,6 +2224,9 @@ animations = [{
 "name": &"new_animation",
 "speed": 60.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwupt"]
+shader = ExtResource("7_lbb6a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0q2m"]
 shader = ExtResource("7_lbb6a")
@@ -6108,7 +6112,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_jmaao"]
 resource_name = "engulfing_curse"
-length = 3.00001
+length = 5.00001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -6117,7 +6121,7 @@ tracks/0/path = NodePath("Boss3/CanvasLayer/AttackMeter:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -6141,7 +6145,7 @@ tracks/2/path = NodePath("Boss3/CanvasLayer/AttackMeter/TextureProgressBar:value
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 100.0]
@@ -6153,7 +6157,7 @@ tracks/3/path = NodePath("Boss3/AttackMeter:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -6177,7 +6181,7 @@ tracks/5/path = NodePath("Boss3/AttackMeter/TextureProgressBar:value")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 100.0]
@@ -6640,6 +6644,83 @@ tracks/5/keys = {
 "values": [0.0, 100.0]
 }
 
+[sub_resource type="Animation" id="Animation_rw07k"]
+resource_name = "oppressive_barrage"
+length = 6.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss3/CanvasLayer/AttackMeter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boss3/CanvasLayer/AttackMeter/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Oppressive Barrage"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss3/CanvasLayer/AttackMeter/TextureProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boss3/AttackMeter:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boss3/AttackMeter/Label:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Oppressive Barrage"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boss3/AttackMeter/TextureProgressBar:value")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
 [sub_resource type="Animation" id="Animation_ey4n7"]
 resource_name = "surge"
 length = 5.00001
@@ -6831,6 +6912,7 @@ _data = {
 "looming_desolation": SubResource("Animation_jkvjf"),
 "looming_havoc": SubResource("Animation_pikip"),
 "oppressive": SubResource("Animation_4jsj1"),
+"oppressive_barrage": SubResource("Animation_rw07k"),
 "surge": SubResource("Animation_ey4n7"),
 "wreak_havoc": SubResource("Animation_5rso0")
 }
@@ -8243,6 +8325,18 @@ tracks/116/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/117/type = "value"
+tracks/117/imported = false
+tracks/117/enabled = true
+tracks/117/path = NodePath("BarrageBlack/XNoMiddleCollision:disabled")
+tracks/117/interp = 1
+tracks/117/loop_wrap = true
+tracks/117/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_u43rv"]
 resource_name = "barrage_+"
@@ -9646,7 +9740,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:enabled")
+tracks/0/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -9658,7 +9752,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:energy")
+tracks/1/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -9670,7 +9764,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleTexture:self_modulate")
+tracks/2/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopTexture:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -9682,7 +9776,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:enabled")
+tracks/3/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:enabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -9694,7 +9788,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:energy")
+tracks/4/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:energy")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -9706,7 +9800,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopTexture:self_modulate")
+tracks/5/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftTexture:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -9718,7 +9812,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:enabled")
+tracks/6/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:enabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -9730,7 +9824,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:energy")
+tracks/7/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:energy")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -9742,7 +9836,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftTexture:self_modulate")
+tracks/8/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightTexture:self_modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -9754,7 +9848,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:enabled")
+tracks/9/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:enabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -9766,7 +9860,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:energy")
+tracks/10/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:energy")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -9778,7 +9872,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightTexture:self_modulate")
+tracks/11/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomTexture:self_modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -9790,43 +9884,43 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:enabled")
+tracks/12/path = NodePath("BarrageBlack/LeftCollision:disabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.66667),
+"times": PackedFloat32Array(0, 0.0833302),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [false, true]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:energy")
+tracks/13/path = NodePath("BarrageBlack/RightCollision:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
+"times": PackedFloat32Array(0, 0.0833302),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomTexture:self_modulate")
+tracks/14/path = NodePath("BarrageBlack/TopCollision:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0, 0.0833302),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("BarrageBlack/MiddleCollision:disabled")
+tracks/15/path = NodePath("BarrageBlack/BottomCollision:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -9835,53 +9929,58 @@ tracks/15/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/16/type = "value"
+tracks/16/type = "method"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("BarrageBlack/LeftCollision:disabled")
+tracks/16/path = NodePath(".")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 0.0833302),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
-tracks/17/type = "value"
+tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("BarrageBlack/RightCollision:disabled")
+tracks/17/path = NodePath(".")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 0.0833302),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_black_vfx"
+}]
 }
-tracks/18/type = "value"
+tracks/18/type = "method"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("BarrageBlack/TopCollision:disabled")
+tracks/18/path = NodePath(".")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 0.0833302),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"left_black_vfx"
+}]
 }
-tracks/19/type = "value"
+tracks/19/type = "method"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("BarrageBlack/BottomCollision:disabled")
+tracks/19/path = NodePath(".")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 0.0833302),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"right_black_vfx"
+}]
 }
 tracks/20/type = "method"
 tracks/20/imported = false
@@ -9894,7 +9993,7 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"middle_black_vfx"
+"method": &"bottom_black_vfx"
 }]
 }
 tracks/21/type = "method"
@@ -9904,62 +10003,6 @@ tracks/21/path = NodePath(".")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_black_vfx"
-}]
-}
-tracks/22/type = "method"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath(".")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"left_black_vfx"
-}]
-}
-tracks/23/type = "method"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath(".")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"right_black_vfx"
-}]
-}
-tracks/24/type = "method"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath(".")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bottom_black_vfx"
-}]
-}
-tracks/25/type = "method"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath(".")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -11126,7 +11169,7 @@ tracks/0/path = NodePath("BarrageOppositeBlackVFX/TopLeft/TopLeftLight:enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.23517e-08, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11162,7 +11205,7 @@ tracks/3/path = NodePath("BarrageOppositeBlackVFX/TopRight/TopRightLight:enabled
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(-3.39746e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11198,7 +11241,7 @@ tracks/6/path = NodePath("BarrageOppositeBlackVFX/BottomLeft/BottomLeftLight:ena
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(-3.39746e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11234,7 +11277,7 @@ tracks/9/path = NodePath("BarrageOppositeBlackVFX/BottomRight/BottomRightLight:e
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(-3.39746e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11266,43 +11309,43 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:enabled")
+tracks/12/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:enabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.66667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": []
+"values": [true, false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:energy")
+tracks/13/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:energy")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": []
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleTexture:self_modulate")
+tracks/14/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopTexture:self_modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": []
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:enabled")
+tracks/15/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:enabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -11314,7 +11357,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopLight:energy")
+tracks/16/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:energy")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -11326,7 +11369,7 @@ tracks/16/keys = {
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("BarrageOppositeBlackVFX/Barrage+/TopTexture:self_modulate")
+tracks/17/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftTexture:self_modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -11338,7 +11381,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:enabled")
+tracks/18/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:enabled")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -11350,7 +11393,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftLight:energy")
+tracks/19/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:energy")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -11362,7 +11405,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("BarrageOppositeBlackVFX/Barrage+/LeftTexture:self_modulate")
+tracks/20/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightTexture:self_modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -11374,7 +11417,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:enabled")
+tracks/21/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:enabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -11386,7 +11429,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightLight:energy")
+tracks/22/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:energy")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -11398,7 +11441,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("BarrageOppositeBlackVFX/Barrage+/RightTexture:self_modulate")
+tracks/23/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomTexture:self_modulate")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -11410,50 +11453,56 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:enabled")
+tracks/24/path = NodePath("BarrageBlack/OuterArenaCollision:disabled")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0, 0.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomLight:energy")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("BarrageOppositeBlackVFX/Barrage+/BottomTexture:self_modulate")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0, 0.16667, 0.5, 0.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("BarrageBlack/OuterArenaCollision:disabled")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
 "times": PackedFloat32Array(0, 0.0833299),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/25/type = "method"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath(".")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_left_black_vfx"
+}]
+}
+tracks/26/type = "method"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath(".")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_right_black_vfx"
+}]
+}
+tracks/27/type = "method"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath(".")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bot_left_black_vfx"
+}]
 }
 tracks/28/type = "method"
 tracks/28/imported = false
@@ -11466,7 +11515,7 @@ tracks/28/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"top_left_black_vfx"
+"method": &"bot_right_black_vfx"
 }]
 }
 tracks/29/type = "method"
@@ -11480,7 +11529,7 @@ tracks/29/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"top_right_black_vfx"
+"method": &"top_black_vfx"
 }]
 }
 tracks/30/type = "method"
@@ -11494,7 +11543,7 @@ tracks/30/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"bot_left_black_vfx"
+"method": &"left_black_vfx"
 }]
 }
 tracks/31/type = "method"
@@ -11508,7 +11557,7 @@ tracks/31/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"bot_right_black_vfx"
+"method": &"right_black_vfx"
 }]
 }
 tracks/32/type = "method"
@@ -11522,7 +11571,7 @@ tracks/32/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"top_black_vfx"
+"method": &"bottom_black_vfx"
 }]
 }
 tracks/33/type = "method"
@@ -11532,48 +11581,6 @@ tracks/33/path = NodePath(".")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"left_black_vfx"
-}]
-}
-tracks/34/type = "method"
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/path = NodePath(".")
-tracks/34/interp = 1
-tracks/34/loop_wrap = true
-tracks/34/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"right_black_vfx"
-}]
-}
-tracks/35/type = "method"
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/path = NodePath(".")
-tracks/35/interp = 1
-tracks/35/loop_wrap = true
-tracks/35/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bottom_black_vfx"
-}]
-}
-tracks/36/type = "method"
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/path = NodePath(".")
-tracks/36/interp = 1
-tracks/36/loop_wrap = true
-tracks/36/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -11593,7 +11600,7 @@ tracks/0/path = NodePath("BarrageOppositeBlackVFX/TopLeft/TopLeftLight:enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11629,7 +11636,7 @@ tracks/3/path = NodePath("BarrageOppositeBlackVFX/TopRight/TopRightLight:enabled
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11701,7 +11708,7 @@ tracks/9/path = NodePath("BarrageOppositeBlackVFX/BottomRight/BottomRightLight:e
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.666667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -11730,53 +11737,58 @@ tracks/11/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:enabled")
+tracks/12/path = NodePath(".")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
-tracks/13/type = "value"
+tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleLight:energy")
+tracks/13/path = NodePath(".")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.166667, 0.499997, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_left_black_vfx"
+}]
 }
-tracks/14/type = "value"
+tracks/14/type = "method"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("BarrageOppositeBlackVFX/Barrage+/MiddleTexture:self_modulate")
+tracks/14/path = NodePath(".")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(-3.33786e-06, 0.166667, 0.499997, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0.156863), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"top_right_black_vfx"
+}]
 }
-tracks/15/type = "value"
+tracks/15/type = "method"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("BarrageBlack/XCollision:disabled")
+tracks/15/path = NodePath(".")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.0833302),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"bot_left_black_vfx"
+}]
 }
 tracks/16/type = "method"
 tracks/16/imported = false
@@ -11789,7 +11801,7 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"middle_black_vfx"
+"method": &"bot_right_black_vfx"
 }]
 }
 tracks/17/type = "method"
@@ -11803,64 +11815,20 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"top_left_black_vfx"
+"method": &"camera_shake"
 }]
 }
-tracks/18/type = "method"
+tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath(".")
+tracks/18/path = NodePath("BarrageBlack/XNoMiddleCollision:disabled")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"top_right_black_vfx"
-}]
-}
-tracks/19/type = "method"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath(".")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_left_black_vfx"
-}]
-}
-tracks/20/type = "method"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath(".")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"bot_right_black_vfx"
-}]
-}
-tracks/21/type = "method"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath(".")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"camera_shake"
-}]
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_wufx1"]
@@ -17656,7 +17624,7 @@ trail_enabled = true
 
 [node name="Voronoi_Background" type="Sprite2D" parent="."]
 visible = false
-z_index = -1
+z_index = -1026
 material = SubResource("ShaderMaterial_w3k4h")
 texture = SubResource("GradientTexture2D_auxh0")
 
@@ -18304,7 +18272,7 @@ frame_progress = 1.0
 
 [node name="Barrage+" type="Sprite2D" parent="BarrageOppositeBlackVFX"]
 clip_children = 2
-material = SubResource("ShaderMaterial_fbst8")
+material = SubResource("ShaderMaterial_vwupt")
 texture = ExtResource("10_a7yvr")
 
 [node name="MiddleLight" type="PointLight2D" parent="BarrageOppositeBlackVFX/Barrage+"]
@@ -18385,6 +18353,7 @@ range_z_max = 0
 texture = SubResource("GradientTexture2D_rsk6k")
 
 [node name="BottomTexture" type="Sprite2D" parent="BarrageOppositeBlackVFX/Barrage+"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_3y26n")
 position = Vector2(0, 118)
@@ -19140,9 +19109,14 @@ visible = false
 polygon = PackedVector2Array(-60, -117, -60, -116, -61, -116, -61, -115, -62, -115, -62, -114, -63, -114, -63, -113, -64, -113, -64, -112, -65, -112, -65, -111, -66, -111, -66, -110, -67, -110, -67, -109, -68, -109, -68, -108, -69, -108, -69, -107, -70, -107, -70, -106, -71, -106, -71, -105, -72, -105, -72, -104, -73, -104, -73, -103, -74, -103, -74, -102, -75, -102, -75, -101, -76, -101, -76, -100, -77, -100, -77, -99, -78, -99, -78, -98, -79, -98, -79, -97, -80, -97, -80, -96, -81, -96, -81, -95, -82, -95, -82, -94, -83, -94, -83, -93, -84, -93, -84, -92, -85, -92, -85, -91, -86, -91, -86, -90, -87, -90, -87, -89, -88, -89, -88, -88, -89, -88, -89, -87, -90, -87, -90, -86, -91, -86, -91, -85, -92, -85, -92, -84, -93, -84, -93, -83, -94, -83, -94, -82, -95, -82, -95, -81, -96, -81, -96, -80, -97, -80, -97, -79, -98, -79, -98, -78, -99, -78, -99, -77, -100, -77, -100, -76, -101, -76, -101, -75, -102, -75, -102, -74, -103, -74, -103, -73, -104, -73, -104, -72, -105, -72, -105, -71, -106, -71, -106, -70, -107, -70, -107, -69, -108, -69, -108, -68, -109, -68, -109, -67, -110, -67, -110, -66, -111, -66, -111, -65, -112, -65, -112, -64, -113, -64, -113, -63, -114, -63, -114, -62, -115, -62, -115, -61, -116, -61, -116, -60, -117, -60, -117, -58, -116, -58, -116, -57, -115, -57, -115, -56, -114, -56, -114, -55, -113, -55, -113, -54, -112, -54, -112, -53, -111, -53, -111, -52, -110, -52, -110, -51, -109, -51, -109, -50, -108, -50, -108, -49, -107, -49, -107, -48, -106, -48, -106, -47, -105, -47, -105, -46, -104, -46, -104, -45, -103, -45, -103, -44, -102, -44, -102, -43, -101, -43, -101, -42, -100, -42, -100, -41, -99, -41, -99, -40, -98, -40, -98, -39, -97, -39, -97, -38, -96, -38, -96, -37, -95, -37, -95, -36, -94, -36, -94, -35, -93, -35, -93, -34, -92, -34, -92, -33, -91, -33, -91, -32, -90, -32, -90, -31, -89, -31, -89, -30, -88, -30, -88, -29, -87, -29, -87, -28, -86, -28, -86, -27, -85, -27, -85, -26, -84, -26, -84, -25, -83, -25, -83, -24, -82, -24, -82, -23, -81, -23, -81, -22, -80, -22, -80, -21, -79, -21, -79, -20, -78, -20, -78, -19, -77, -19, -77, -18, -76, -18, -76, -17, -75, -17, -75, -16, -74, -16, -74, -15, -73, -15, -73, -14, -72, -14, -72, -13, -71, -13, -71, -12, -70, -12, -70, -11, -69, -11, -69, -10, -68, -10, -68, -9, -67, -9, -67, -8, -66, -8, -66, -7, -65, -7, -65, -6, -64, -6, -64, -5, -63, -5, -63, -4, -62, -4, -62, -3, -61, -3, -61, -2, -60, -2, -60, -1, -59, -1, -59, 1, -60, 1, -60, 2, -61, 2, -61, 3, -62, 3, -62, 4, -63, 4, -63, 5, -64, 5, -64, 6, -65, 6, -65, 7, -66, 7, -66, 8, -67, 8, -67, 9, -68, 9, -68, 10, -69, 10, -69, 11, -70, 11, -70, 12, -71, 12, -71, 13, -72, 13, -72, 14, -73, 14, -73, 15, -74, 15, -74, 16, -75, 16, -75, 17, -76, 17, -76, 18, -77, 18, -77, 19, -78, 19, -78, 20, -79, 20, -79, 21, -80, 21, -80, 22, -81, 22, -81, 23, -82, 23, -82, 24, -83, 24, -83, 25, -84, 25, -84, 26, -85, 26, -85, 27, -86, 27, -86, 28, -87, 28, -87, 29, -88, 29, -88, 30, -89, 30, -89, 31, -90, 31, -90, 32, -91, 32, -91, 33, -92, 33, -92, 34, -93, 34, -93, 35, -94, 35, -94, 36, -95, 36, -95, 37, -96, 37, -96, 38, -97, 38, -97, 39, -98, 39, -98, 40, -99, 40, -99, 41, -100, 41, -100, 42, -101, 42, -101, 43, -102, 43, -102, 44, -103, 44, -103, 45, -104, 45, -104, 46, -105, 46, -105, 47, -106, 47, -106, 48, -107, 48, -107, 49, -108, 49, -108, 50, -109, 50, -109, 51, -110, 51, -110, 52, -111, 52, -111, 53, -112, 53, -112, 54, -113, 54, -113, 55, -114, 55, -114, 56, -115, 56, -115, 57, -116, 57, -116, 58, -117, 58, -117, 60, -116, 60, -116, 61, -115, 61, -115, 62, -114, 62, -114, 63, -113, 63, -113, 64, -112, 64, -112, 65, -111, 65, -111, 66, -110, 66, -110, 67, -109, 67, -109, 68, -108, 68, -108, 69, -107, 69, -107, 70, -106, 70, -106, 71, -105, 71, -105, 72, -104, 72, -104, 73, -103, 73, -103, 74, -102, 74, -102, 75, -101, 75, -101, 76, -100, 76, -100, 77, -99, 77, -99, 78, -98, 78, -98, 79, -97, 79, -97, 80, -96, 80, -96, 81, -95, 81, -95, 82, -94, 82, -94, 83, -93, 83, -93, 84, -92, 84, -92, 85, -91, 85, -91, 86, -90, 86, -90, 87, -89, 87, -89, 88, -88, 88, -88, 89, -87, 89, -87, 90, -86, 90, -86, 91, -85, 91, -85, 92, -84, 92, -84, 93, -83, 93, -83, 94, -82, 94, -82, 95, -81, 95, -81, 96, -80, 96, -80, 97, -79, 97, -79, 98, -78, 98, -78, 99, -77, 99, -77, 100, -76, 100, -76, 101, -75, 101, -75, 102, -74, 102, -74, 103, -73, 103, -73, 104, -72, 104, -72, 105, -71, 105, -71, 106, -70, 106, -70, 107, -69, 107, -69, 108, -68, 108, -68, 109, -67, 109, -67, 110, -66, 110, -66, 111, -65, 111, -65, 112, -64, 112, -64, 113, -63, 113, -63, 114, -62, 114, -62, 115, -61, 115, -61, 116, -60, 116, -60, 117, -58, 117, -58, 116, -57, 116, -57, 115, -56, 115, -56, 114, -55, 114, -55, 113, -54, 113, -54, 112, -53, 112, -53, 111, -52, 111, -52, 110, -51, 110, -51, 109, -50, 109, -50, 108, -49, 108, -49, 107, -48, 107, -48, 106, -47, 106, -47, 105, -46, 105, -46, 104, -45, 104, -45, 103, -44, 103, -44, 102, -43, 102, -43, 101, -42, 101, -42, 100, -41, 100, -41, 99, -40, 99, -40, 98, -39, 98, -39, 97, -38, 97, -38, 96, -37, 96, -37, 95, -36, 95, -36, 94, -35, 94, -35, 93, -34, 93, -34, 92, -33, 92, -33, 91, -32, 91, -32, 90, -31, 90, -31, 89, -30, 89, -30, 88, -29, 88, -29, 87, -28, 87, -28, 86, -27, 86, -27, 85, -26, 85, -26, 84, -25, 84, -25, 83, -24, 83, -24, 82, -23, 82, -23, 81, -22, 81, -22, 80, -21, 80, -21, 79, -20, 79, -20, 78, -19, 78, -19, 77, -18, 77, -18, 76, -17, 76, -17, 75, -16, 75, -16, 74, -15, 74, -15, 73, -14, 73, -14, 72, -13, 72, -13, 71, -12, 71, -12, 70, -11, 70, -11, 69, -10, 69, -10, 68, -9, 68, -9, 67, -8, 67, -8, 66, -7, 66, -7, 65, -6, 65, -6, 64, -5, 64, -5, 63, -4, 63, -4, 62, -3, 62, -3, 61, -2, 61, -2, 60, -1, 60, -1, 59, 1, 59, 1, 60, 2, 60, 2, 61, 3, 61, 3, 62, 4, 62, 4, 63, 5, 63, 5, 64, 6, 64, 6, 65, 7, 65, 7, 66, 8, 66, 8, 67, 9, 67, 9, 68, 10, 68, 10, 69, 11, 69, 11, 70, 12, 70, 12, 71, 13, 71, 13, 72, 14, 72, 14, 73, 15, 73, 15, 74, 16, 74, 16, 75, 17, 75, 17, 76, 18, 76, 18, 77, 19, 77, 19, 78, 20, 78, 20, 79, 21, 79, 21, 80, 22, 80, 22, 81, 23, 81, 23, 82, 24, 82, 24, 83, 25, 83, 25, 84, 26, 84, 26, 85, 27, 85, 27, 86, 28, 86, 28, 87, 29, 87, 29, 88, 30, 88, 30, 89, 31, 89, 31, 90, 32, 90, 32, 91, 33, 91, 33, 92, 34, 92, 34, 93, 35, 93, 35, 94, 36, 94, 36, 95, 37, 95, 37, 96, 38, 96, 38, 97, 39, 97, 39, 98, 40, 98, 40, 99, 41, 99, 41, 100, 42, 100, 42, 101, 43, 101, 43, 102, 44, 102, 44, 103, 45, 103, 45, 104, 46, 104, 46, 105, 47, 105, 47, 106, 48, 106, 48, 107, 49, 107, 49, 108, 50, 108, 50, 109, 51, 109, 51, 110, 52, 110, 52, 111, 53, 111, 53, 112, 54, 112, 54, 113, 55, 113, 55, 114, 56, 114, 56, 115, 57, 115, 57, 116, 58, 116, 58, 117, 60, 117, 60, 116, 61, 116, 61, 115, 62, 115, 62, 114, 63, 114, 63, 113, 64, 113, 64, 112, 65, 112, 65, 111, 66, 111, 66, 110, 67, 110, 67, 109, 68, 109, 68, 108, 69, 108, 69, 107, 70, 107, 70, 106, 71, 106, 71, 105, 72, 105, 72, 104, 73, 104, 73, 103, 74, 103, 74, 102, 75, 102, 75, 101, 76, 101, 76, 100, 77, 100, 77, 99, 78, 99, 78, 98, 79, 98, 79, 97, 80, 97, 80, 96, 81, 96, 81, 95, 82, 95, 82, 94, 83, 94, 83, 93, 84, 93, 84, 92, 85, 92, 85, 91, 86, 91, 86, 90, 87, 90, 87, 89, 88, 89, 88, 88, 89, 88, 89, 87, 90, 87, 90, 86, 91, 86, 91, 85, 92, 85, 92, 84, 93, 84, 93, 83, 94, 83, 94, 82, 95, 82, 95, 81, 96, 81, 96, 80, 97, 80, 97, 79, 98, 79, 98, 78, 99, 78, 99, 77, 100, 77, 100, 76, 101, 76, 101, 75, 102, 75, 102, 74, 103, 74, 103, 73, 104, 73, 104, 72, 105, 72, 105, 71, 106, 71, 106, 70, 107, 70, 107, 69, 108, 69, 108, 68, 109, 68, 109, 67, 110, 67, 110, 66, 111, 66, 111, 65, 112, 65, 112, 64, 113, 64, 113, 63, 114, 63, 114, 62, 115, 62, 115, 61, 116, 61, 116, 60, 117, 60, 117, 58, 116, 58, 116, 57, 115, 57, 115, 56, 114, 56, 114, 55, 113, 55, 113, 54, 112, 54, 112, 53, 111, 53, 111, 52, 110, 52, 110, 51, 109, 51, 109, 50, 108, 50, 108, 49, 107, 49, 107, 48, 106, 48, 106, 47, 105, 47, 105, 46, 104, 46, 104, 45, 103, 45, 103, 44, 102, 44, 102, 43, 101, 43, 101, 42, 100, 42, 100, 41, 99, 41, 99, 40, 98, 40, 98, 39, 97, 39, 97, 38, 96, 38, 96, 37, 95, 37, 95, 36, 94, 36, 94, 35, 93, 35, 93, 34, 92, 34, 92, 33, 91, 33, 91, 32, 90, 32, 90, 31, 89, 31, 89, 30, 88, 30, 88, 29, 87, 29, 87, 28, 86, 28, 86, 27, 85, 27, 85, 26, 84, 26, 84, 25, 83, 25, 83, 24, 82, 24, 82, 23, 81, 23, 81, 22, 80, 22, 80, 21, 79, 21, 79, 20, 78, 20, 78, 19, 77, 19, 77, 18, 76, 18, 76, 17, 75, 17, 75, 16, 74, 16, 74, 15, 73, 15, 73, 14, 72, 14, 72, 13, 71, 13, 71, 12, 70, 12, 70, 11, 69, 11, 69, 10, 68, 10, 68, 9, 67, 9, 67, 8, 66, 8, 66, 7, 65, 7, 65, 6, 64, 6, 64, 5, 63, 5, 63, 4, 62, 4, 62, 3, 61, 3, 61, 2, 60, 2, 60, 1, 59, 1, 59, -1, 60, -1, 60, -2, 61, -2, 61, -3, 62, -3, 62, -4, 63, -4, 63, -5, 64, -5, 64, -6, 65, -6, 65, -7, 66, -7, 66, -8, 67, -8, 67, -9, 68, -9, 68, -10, 69, -10, 69, -11, 70, -11, 70, -12, 71, -12, 71, -13, 72, -13, 72, -14, 73, -14, 73, -15, 74, -15, 74, -16, 75, -16, 75, -17, 76, -17, 76, -18, 77, -18, 77, -19, 78, -19, 78, -20, 79, -20, 79, -21, 80, -21, 80, -22, 81, -22, 81, -23, 82, -23, 82, -24, 83, -24, 83, -25, 84, -25, 84, -26, 85, -26, 85, -27, 86, -27, 86, -28, 87, -28, 87, -29, 88, -29, 88, -30, 89, -30, 89, -31, 90, -31, 90, -32, 91, -32, 91, -33, 92, -33, 92, -34, 93, -34, 93, -35, 94, -35, 94, -36, 95, -36, 95, -37, 96, -37, 96, -38, 97, -38, 97, -39, 98, -39, 98, -40, 99, -40, 99, -41, 100, -41, 100, -42, 101, -42, 101, -43, 102, -43, 102, -44, 103, -44, 103, -45, 104, -45, 104, -46, 105, -46, 105, -47, 106, -47, 106, -48, 107, -48, 107, -49, 108, -49, 108, -50, 109, -50, 109, -51, 110, -51, 110, -52, 111, -52, 111, -53, 112, -53, 112, -54, 113, -54, 113, -55, 114, -55, 114, -56, 115, -56, 115, -57, 116, -57, 116, -58, 117, -58, 117, -60, 116, -60, 116, -61, 115, -61, 115, -62, 114, -62, 114, -63, 113, -63, 113, -64, 112, -64, 112, -65, 111, -65, 111, -66, 110, -66, 110, -67, 109, -67, 109, -68, 108, -68, 108, -69, 107, -69, 107, -70, 106, -70, 106, -71, 105, -71, 105, -72, 104, -72, 104, -73, 103, -73, 103, -74, 102, -74, 102, -75, 101, -75, 101, -76, 100, -76, 100, -77, 99, -77, 99, -78, 98, -78, 98, -79, 97, -79, 97, -80, 96, -80, 96, -81, 95, -81, 95, -82, 94, -82, 94, -83, 93, -83, 93, -84, 92, -84, 92, -85, 91, -85, 91, -86, 90, -86, 90, -87, 89, -87, 89, -88, 88, -88, 88, -89, 87, -89, 87, -90, 86, -90, 86, -91, 85, -91, 85, -92, 84, -92, 84, -93, 83, -93, 83, -94, 82, -94, 82, -95, 81, -95, 81, -96, 80, -96, 80, -97, 79, -97, 79, -98, 78, -98, 78, -99, 77, -99, 77, -100, 76, -100, 76, -101, 75, -101, 75, -102, 74, -102, 74, -103, 73, -103, 73, -104, 72, -104, 72, -105, 71, -105, 71, -106, 70, -106, 70, -107, 69, -107, 69, -108, 68, -108, 68, -109, 67, -109, 67, -110, 66, -110, 66, -111, 65, -111, 65, -112, 64, -112, 64, -113, 63, -113, 63, -114, 62, -114, 62, -115, 61, -115, 61, -116, 60, -116, 60, -117, 58, -117, 58, -116, 57, -116, 57, -115, 56, -115, 56, -114, 55, -114, 55, -113, 54, -113, 54, -112, 53, -112, 53, -111, 52, -111, 52, -110, 51, -110, 51, -109, 50, -109, 50, -108, 49, -108, 49, -107, 48, -107, 48, -106, 47, -106, 47, -105, 46, -105, 46, -104, 45, -104, 45, -103, 44, -103, 44, -102, 43, -102, 43, -101, 42, -101, 42, -100, 41, -100, 41, -99, 40, -99, 40, -98, 39, -98, 39, -97, 38, -97, 38, -96, 37, -96, 37, -95, 36, -95, 36, -94, 35, -94, 35, -93, 34, -93, 34, -92, 33, -92, 33, -91, 32, -91, 32, -90, 31, -90, 31, -89, 30, -89, 30, -88, 29, -88, 29, -87, 28, -87, 28, -86, 27, -86, 27, -85, 26, -85, 26, -84, 25, -84, 25, -83, 24, -83, 24, -82, 23, -82, 23, -81, 22, -81, 22, -80, 21, -80, 21, -79, 20, -79, 20, -78, 19, -78, 19, -77, 18, -77, 18, -76, 17, -76, 17, -75, 16, -75, 16, -74, 15, -74, 15, -73, 14, -73, 14, -72, 13, -72, 13, -71, 12, -71, 12, -70, 11, -70, 11, -69, 10, -69, 10, -68, 9, -68, 9, -67, 8, -67, 8, -66, 7, -66, 7, -65, 6, -65, 6, -64, 5, -64, 5, -63, 4, -63, 4, -62, 3, -62, 3, -61, 2, -61, 2, -60, 1, -60, 1, -59, -1, -59, -1, -60, -2, -60, -2, -61, -3, -61, -3, -62, -4, -62, -4, -63, -5, -63, -5, -64, -6, -64, -6, -65, -7, -65, -7, -66, -8, -66, -8, -67, -9, -67, -9, -68, -10, -68, -10, -69, -11, -69, -11, -70, -12, -70, -12, -71, -13, -71, -13, -72, -14, -72, -14, -73, -15, -73, -15, -74, -16, -74, -16, -75, -17, -75, -17, -76, -18, -76, -18, -77, -19, -77, -19, -78, -20, -78, -20, -79, -21, -79, -21, -80, -22, -80, -22, -81, -23, -81, -23, -82, -24, -82, -24, -83, -25, -83, -25, -84, -26, -84, -26, -85, -27, -85, -27, -86, -28, -86, -28, -87, -29, -87, -29, -88, -30, -88, -30, -89, -31, -89, -31, -90, -32, -90, -32, -91, -33, -91, -33, -92, -34, -92, -34, -93, -35, -93, -35, -94, -36, -94, -36, -95, -37, -95, -37, -96, -38, -96, -38, -97, -39, -97, -39, -98, -40, -98, -40, -99, -41, -99, -41, -100, -42, -100, -42, -101, -43, -101, -43, -102, -44, -102, -44, -103, -45, -103, -45, -104, -46, -104, -46, -105, -47, -105, -47, -106, -48, -106, -48, -107, -49, -107, -49, -108, -50, -108, -50, -109, -51, -109, -51, -110, -52, -110, -52, -111, -53, -111, -53, -112, -54, -112, -54, -113, -55, -113, -55, -114, -56, -114, -56, -115, -57, -115, -57, -116, -58, -116, -58, -117)
 disabled = true
 
+[node name="XNoMiddleCollision" type="CollisionPolygon2D" parent="BarrageBlack"]
+visible = false
+polygon = PackedVector2Array(-59, -117, -59, -116, -60, -116, -60, -115, -61, -115, -61, -114, -62, -114, -62, -113, -63, -113, -63, -112, -64, -112, -64, -111, -65, -111, -65, -110, -66, -110, -66, -109, -67, -109, -67, -108, -68, -108, -68, -107, -69, -107, -69, -106, -70, -106, -70, -105, -71, -105, -71, -104, -72, -104, -72, -103, -73, -103, -73, -102, -74, -102, -74, -101, -75, -101, -75, -100, -76, -100, -76, -99, -77, -99, -77, -98, -78, -98, -78, -97, -79, -97, -79, -96, -80, -96, -80, -95, -81, -95, -81, -94, -82, -94, -82, -93, -83, -93, -83, -92, -84, -92, -84, -91, -85, -91, -85, -90, -86, -90, -86, -89, -87, -89, -87, -88, -88, -88, -88, -87, -89, -87, -89, -86, -90, -86, -90, -85, -91, -85, -91, -84, -92, -84, -92, -83, -93, -83, -93, -82, -94, -82, -94, -81, -95, -81, -95, -80, -96, -80, -96, -79, -97, -79, -97, -78, -98, -78, -98, -77, -99, -77, -99, -76, -100, -76, -100, -75, -101, -75, -101, -74, -102, -74, -102, -73, -103, -73, -103, -72, -104, -72, -104, -71, -105, -71, -105, -70, -106, -70, -106, -69, -107, -69, -107, -68, -108, -68, -108, -67, -109, -67, -109, -66, -110, -66, -110, -65, -111, -65, -111, -64, -112, -64, -112, -63, -113, -63, -113, -62, -114, -62, -114, -61, -115, -61, -115, -60, -116, -60, -116, -59, -117, -59, -117, -58, -116, -58, -116, -57, -115, -57, -115, -56, -114, -56, -114, -55, -113, -55, -113, -54, -112, -54, -112, -53, -111, -53, -111, -52, -110, -52, -110, -51, -109, -51, -109, -50, -108, -50, -108, -49, -107, -49, -107, -48, -106, -48, -106, -47, -105, -47, -105, -46, -104, -46, -104, -45, -103, -45, -103, -44, -102, -44, -102, -43, -101, -43, -101, -42, -100, -42, -100, -41, -99, -41, -99, -40, -98, -40, -98, -39, -97, -39, -97, -38, -96, -38, -96, -37, -95, -37, -95, -36, -94, -36, -94, -35, -93, -35, -93, -34, -92, -34, -92, -33, -91, -33, -91, -32, -90, -32, -90, -31, -89, -31, -89, -30, -88, -30, -88, -29, -87, -29, -87, -28, -86, -28, -86, -27, -85, -27, -85, -26, -84, -26, -84, -25, -83, -25, -83, -24, -82, -24, -82, -23, -81, -23, -81, -22, -80, -22, -80, -21, -79, -21, -79, -20, -78, -20, -78, -19, -77, -19, -77, -18, -76, -18, -76, -17, -75, -17, -75, -16, -74, -16, -74, -15, -73, -15, -73, -14, -72, -14, -72, -13, -71, -13, -71, -12, -70, -12, -70, -11, -69, -11, -69, -10, -68, -10, -68, -9, -67, -9, -67, -8, -66, -8, -66, -7, -65, -7, -65, -6, -64, -6, -64, -5, -63, -5, -63, -4, -62, -4, -62, -3, -61, -3, -61, -2, -60, -2, -60, -1, -59, -1, -59, 1, -60, 1, -60, 2, -61, 2, -61, 3, -62, 3, -62, 4, -63, 4, -63, 5, -64, 5, -64, 6, -65, 6, -65, 7, -66, 7, -66, 8, -67, 8, -67, 9, -68, 9, -68, 10, -69, 10, -69, 11, -70, 11, -70, 12, -71, 12, -71, 13, -72, 13, -72, 14, -73, 14, -73, 15, -74, 15, -74, 16, -75, 16, -75, 17, -76, 17, -76, 18, -77, 18, -77, 19, -78, 19, -78, 20, -79, 20, -79, 21, -80, 21, -80, 22, -81, 22, -81, 23, -82, 23, -82, 24, -83, 24, -83, 25, -84, 25, -84, 26, -85, 26, -85, 27, -86, 27, -86, 28, -87, 28, -87, 29, -88, 29, -88, 30, -89, 30, -89, 31, -90, 31, -90, 32, -91, 32, -91, 33, -92, 33, -92, 34, -93, 34, -93, 35, -94, 35, -94, 36, -95, 36, -95, 37, -96, 37, -96, 38, -97, 38, -97, 39, -98, 39, -98, 40, -99, 40, -99, 41, -100, 41, -100, 42, -101, 42, -101, 43, -102, 43, -102, 44, -103, 44, -103, 45, -104, 45, -104, 46, -105, 46, -105, 47, -106, 47, -106, 48, -107, 48, -107, 49, -108, 49, -108, 50, -109, 50, -109, 51, -110, 51, -110, 52, -111, 52, -111, 53, -112, 53, -112, 54, -113, 54, -113, 55, -114, 55, -114, 56, -115, 56, -115, 57, -116, 57, -116, 58, -117, 58, -117, 59, -116, 59, -116, 60, -115, 60, -115, 61, -114, 61, -114, 62, -113, 62, -113, 63, -112, 63, -112, 64, -111, 64, -111, 65, -110, 65, -110, 66, -109, 66, -109, 67, -108, 67, -108, 68, -107, 68, -107, 69, -106, 69, -106, 70, -105, 70, -105, 71, -104, 71, -104, 72, -103, 72, -103, 73, -102, 73, -102, 74, -101, 74, -101, 75, -100, 75, -100, 76, -99, 76, -99, 77, -98, 77, -98, 78, -97, 78, -97, 79, -96, 79, -96, 80, -95, 80, -95, 81, -94, 81, -94, 82, -93, 82, -93, 83, -92, 83, -92, 84, -91, 84, -91, 85, -90, 85, -90, 86, -89, 86, -89, 87, -88, 87, -88, 88, -87, 88, -87, 89, -86, 89, -86, 90, -85, 90, -85, 91, -84, 91, -84, 92, -83, 92, -83, 93, -82, 93, -82, 94, -81, 94, -81, 95, -80, 95, -80, 96, -79, 96, -79, 97, -78, 97, -78, 98, -77, 98, -77, 99, -76, 99, -76, 100, -75, 100, -75, 101, -74, 101, -74, 102, -73, 102, -73, 103, -72, 103, -72, 104, -71, 104, -71, 105, -70, 105, -70, 106, -69, 106, -69, 107, -68, 107, -68, 108, -67, 108, -67, 109, -66, 109, -66, 110, -65, 110, -65, 111, -64, 111, -64, 112, -63, 112, -63, 113, -62, 113, -62, 114, -61, 114, -61, 115, -60, 115, -60, 116, -59, 116, -59, 117, -58, 117, -58, 116, -57, 116, -57, 115, -56, 115, -56, 114, -55, 114, -55, 113, -54, 113, -54, 112, -53, 112, -53, 111, -52, 111, -52, 110, -51, 110, -51, 109, -50, 109, -50, 108, -49, 108, -49, 107, -48, 107, -48, 106, -47, 106, -47, 105, -46, 105, -46, 104, -45, 104, -45, 103, -44, 103, -44, 102, -43, 102, -43, 101, -42, 101, -42, 100, -41, 100, -41, 99, -40, 99, -40, 98, -39, 98, -39, 97, -38, 97, -38, 96, -37, 96, -37, 95, -36, 95, -36, 94, -35, 94, -35, 93, -34, 93, -34, 92, -33, 92, -33, 91, -32, 91, -32, 90, -31, 90, -31, 89, -30, 89, -30, 88, -29, 88, -29, 87, -28, 87, -28, 86, -27, 86, -27, 85, -26, 85, -26, 84, -25, 84, -25, 83, -24, 83, -24, 82, -23, 82, -23, 81, -22, 81, -22, 80, -21, 80, -21, 79, -20, 79, -20, 78, -19, 78, -19, 77, -18, 77, -18, 76, -17, 76, -17, 75, -16, 75, -16, 74, -15, 74, -15, 73, -14, 73, -14, 72, -13, 72, -13, 71, -12, 71, -12, 70, -11, 70, -11, 69, -10, 69, -10, 68, -9, 68, -9, 67, -8, 67, -8, 66, -7, 66, -7, 65, -6, 65, -6, 64, -5, 64, -5, 63, -4, 63, -4, 62, -3, 62, -3, 61, -2, 61, -2, 60, -1, 60, -1, 59, 1, 59, 1, 60, 2, 60, 2, 61, 3, 61, 3, 62, 4, 62, 4, 63, 5, 63, 5, 64, 6, 64, 6, 65, 7, 65, 7, 66, 8, 66, 8, 67, 9, 67, 9, 68, 10, 68, 10, 69, 11, 69, 11, 70, 12, 70, 12, 71, 13, 71, 13, 72, 14, 72, 14, 73, 15, 73, 15, 74, 16, 74, 16, 75, 17, 75, 17, 76, 18, 76, 18, 77, 19, 77, 19, 78, 20, 78, 20, 79, 21, 79, 21, 80, 22, 80, 22, 81, 23, 81, 23, 82, 24, 82, 24, 83, 25, 83, 25, 84, 26, 84, 26, 85, 27, 85, 27, 86, 28, 86, 28, 87, 29, 87, 29, 88, 30, 88, 30, 89, 31, 89, 31, 90, 32, 90, 32, 91, 33, 91, 33, 92, 34, 92, 34, 93, 35, 93, 35, 94, 36, 94, 36, 95, 37, 95, 37, 96, 38, 96, 38, 97, 39, 97, 39, 98, 40, 98, 40, 99, 41, 99, 41, 100, 42, 100, 42, 101, 43, 101, 43, 102, 44, 102, 44, 103, 45, 103, 45, 104, 46, 104, 46, 105, 47, 105, 47, 106, 48, 106, 48, 107, 49, 107, 49, 108, 50, 108, 50, 109, 51, 109, 51, 110, 52, 110, 52, 111, 53, 111, 53, 112, 54, 112, 54, 113, 55, 113, 55, 114, 56, 114, 56, 115, 57, 115, 57, 116, 58, 116, 58, 117, 59, 117, 59, 116, 60, 116, 60, 115, 61, 115, 61, 114, 62, 114, 62, 113, 63, 113, 63, 112, 64, 112, 64, 111, 65, 111, 65, 110, 66, 110, 66, 109, 67, 109, 67, 108, 68, 108, 68, 107, 69, 107, 69, 106, 70, 106, 70, 105, 71, 105, 71, 104, 72, 104, 72, 103, 73, 103, 73, 102, 74, 102, 74, 101, 75, 101, 75, 100, 76, 100, 76, 99, 77, 99, 77, 98, 78, 98, 78, 97, 79, 97, 79, 96, 80, 96, 80, 95, 81, 95, 81, 94, 82, 94, 82, 93, 83, 93, 83, 92, 84, 92, 84, 91, 85, 91, 85, 90, 86, 90, 86, 89, 87, 89, 87, 88, 88, 88, 88, 87, 89, 87, 89, 86, 90, 86, 90, 85, 91, 85, 91, 84, 92, 84, 92, 83, 93, 83, 93, 82, 94, 82, 94, 81, 95, 81, 95, 80, 96, 80, 96, 79, 97, 79, 97, 78, 98, 78, 98, 77, 99, 77, 99, 76, 100, 76, 100, 75, 101, 75, 101, 74, 102, 74, 102, 73, 103, 73, 103, 72, 104, 72, 104, 71, 105, 71, 105, 70, 106, 70, 106, 69, 107, 69, 107, 68, 108, 68, 108, 67, 109, 67, 109, 66, 110, 66, 110, 65, 111, 65, 111, 64, 112, 64, 112, 63, 113, 63, 113, 62, 114, 62, 114, 61, 115, 61, 115, 60, 116, 60, 116, 59, 117, 59, 117, 58, 116, 58, 116, 57, 115, 57, 115, 56, 114, 56, 114, 55, 113, 55, 113, 54, 112, 54, 112, 53, 111, 53, 111, 52, 110, 52, 110, 51, 109, 51, 109, 50, 108, 50, 108, 49, 107, 49, 107, 48, 106, 48, 106, 47, 105, 47, 105, 46, 104, 46, 104, 45, 103, 45, 103, 44, 102, 44, 102, 43, 101, 43, 101, 42, 100, 42, 100, 41, 99, 41, 99, 40, 98, 40, 98, 39, 97, 39, 97, 38, 96, 38, 96, 37, 95, 37, 95, 36, 94, 36, 94, 35, 93, 35, 93, 34, 92, 34, 92, 33, 91, 33, 91, 32, 90, 32, 90, 31, 89, 31, 89, 30, 88, 30, 88, 29, 87, 29, 87, 28, 86, 28, 86, 27, 85, 27, 85, 26, 84, 26, 84, 25, 83, 25, 83, 24, 82, 24, 82, 23, 81, 23, 81, 22, 80, 22, 80, 21, 79, 21, 79, 20, 78, 20, 78, 19, 77, 19, 77, 18, 76, 18, 76, 17, 75, 17, 75, 16, 74, 16, 74, 15, 73, 15, 73, 14, 72, 14, 72, 13, 71, 13, 71, 12, 70, 12, 70, 11, 69, 11, 69, 10, 68, 10, 68, 9, 67, 9, 67, 8, 66, 8, 66, 7, 65, 7, 65, 6, 64, 6, 64, 5, 63, 5, 63, 4, 62, 4, 62, 3, 61, 3, 61, 2, 60, 2, 60, 1, 59, 1, 59, -1, 60, -1, 60, -2, 61, -2, 61, -3, 62, -3, 62, -4, 63, -4, 63, -5, 64, -5, 64, -6, 65, -6, 65, -7, 66, -7, 66, -8, 67, -8, 67, -9, 68, -9, 68, -10, 69, -10, 69, -11, 70, -11, 70, -12, 71, -12, 71, -13, 72, -13, 72, -14, 73, -14, 73, -15, 74, -15, 74, -16, 75, -16, 75, -17, 76, -17, 76, -18, 77, -18, 77, -19, 78, -19, 78, -20, 79, -20, 79, -21, 80, -21, 80, -22, 81, -22, 81, -23, 82, -23, 82, -24, 83, -24, 83, -25, 84, -25, 84, -26, 85, -26, 85, -27, 86, -27, 86, -28, 87, -28, 87, -29, 88, -29, 88, -30, 89, -30, 89, -31, 90, -31, 90, -32, 91, -32, 91, -33, 92, -33, 92, -34, 93, -34, 93, -35, 94, -35, 94, -36, 95, -36, 95, -37, 96, -37, 96, -38, 97, -38, 97, -39, 98, -39, 98, -40, 99, -40, 99, -41, 100, -41, 100, -42, 101, -42, 101, -43, 102, -43, 102, -44, 103, -44, 103, -45, 104, -45, 104, -46, 105, -46, 105, -47, 106, -47, 106, -48, 107, -48, 107, -49, 108, -49, 108, -50, 109, -50, 109, -51, 110, -51, 110, -52, 111, -52, 111, -53, 112, -53, 112, -54, 113, -54, 113, -55, 114, -55, 114, -56, 115, -56, 115, -57, 116, -57, 116, -58, 117, -58, 117, -59, 116, -59, 116, -60, 115, -60, 115, -61, 114, -61, 114, -62, 113, -62, 113, -63, 112, -63, 112, -64, 111, -64, 111, -65, 110, -65, 110, -66, 109, -66, 109, -67, 108, -67, 108, -68, 107, -68, 107, -69, 106, -69, 106, -70, 105, -70, 105, -71, 104, -71, 104, -72, 103, -72, 103, -73, 102, -73, 102, -74, 101, -74, 101, -75, 100, -75, 100, -76, 99, -76, 99, -77, 98, -77, 98, -78, 97, -78, 97, -79, 96, -79, 96, -80, 95, -80, 95, -81, 94, -81, 94, -82, 93, -82, 93, -83, 92, -83, 92, -84, 91, -84, 91, -85, 90, -85, 90, -86, 89, -86, 89, -87, 88, -87, 88, -88, 87, -88, 87, -89, 86, -89, 86, -90, 85, -90, 85, -91, 84, -91, 84, -92, 83, -92, 83, -93, 82, -93, 82, -94, 81, -94, 81, -95, 80, -95, 80, -96, 79, -96, 79, -97, 78, -97, 78, -98, 77, -98, 77, -99, 76, -99, 76, -100, 75, -100, 75, -101, 74, -101, 74, -102, 73, -102, 73, -103, 72, -103, 72, -104, 71, -104, 71, -105, 70, -105, 70, -106, 69, -106, 69, -107, 68, -107, 68, -108, 67, -108, 67, -109, 66, -109, 66, -110, 65, -110, 65, -111, 64, -111, 64, -112, 63, -112, 63, -113, 62, -113, 62, -114, 61, -114, 61, -115, 60, -115, 60, -116, 59, -116, 59, -117, 58, -117, 58, -116, 57, -116, 57, -115, 56, -115, 56, -114, 55, -114, 55, -113, 54, -113, 54, -112, 53, -112, 53, -111, 52, -111, 52, -110, 51, -110, 51, -109, 50, -109, 50, -108, 49, -108, 49, -107, 48, -107, 48, -106, 47, -106, 47, -105, 46, -105, 46, -104, 45, -104, 45, -103, 44, -103, 44, -102, 43, -102, 43, -101, 42, -101, 42, -100, 41, -100, 41, -99, 40, -99, 40, -98, 39, -98, 39, -97, 38, -97, 38, -96, 37, -96, 37, -95, 36, -95, 36, -94, 35, -94, 35, -93, 34, -93, 34, -92, 33, -92, 33, -91, 32, -91, 32, -90, 31, -90, 31, -89, 30, -89, 30, -88, 29, -88, 29, -87, 28, -87, 28, -86, 27, -86, 27, -85, 26, -85, 26, -84, 25, -84, 25, -83, 24, -83, 24, -82, 23, -82, 23, -81, 22, -81, 22, -80, 21, -80, 21, -79, 20, -79, 20, -78, 19, -78, 19, -77, 18, -77, 18, -76, 17, -76, 17, -75, 16, -75, 16, -74, 15, -74, 15, -73, 14, -73, 14, -72, 13, -72, 13, -71, 12, -71, 12, -70, 11, -70, 11, -69, 10, -69, 10, -68, 9, -68, 9, -67, 8, -67, 8, -66, 7, -66, 7, -65, 6, -65, 6, -64, 5, -64, 5, -63, 4, -63, 4, -62, 3, -62, 3, -61, 2, -61, 2, -60, 1, -60, 1, -59, 0, -59, 0, -58, 1, -58, 1, -57, 2, -57, 2, -56, 3, -56, 3, -55, 4, -55, 4, -54, 5, -54, 5, -53, 6, -53, 6, -52, 7, -52, 7, -51, 8, -51, 8, -50, 9, -50, 9, -49, 10, -49, 10, -48, 11, -48, 11, -47, 12, -47, 12, -46, 13, -46, 13, -45, 14, -45, 14, -44, 15, -44, 15, -43, 16, -43, 16, -42, 17, -42, 17, -41, 18, -41, 18, -40, 19, -40, 19, -39, 20, -39, 20, -38, 21, -38, 21, -37, 22, -37, 22, -36, 23, -36, 23, -35, 24, -35, 24, -34, 25, -34, 25, -33, 26, -33, 26, -32, 27, -32, 27, -31, 28, -31, 28, -30, 29, -30, 29, -29, 30, -29, 30, -28, 31, -28, 31, -27, 32, -27, 32, -26, 33, -26, 33, -25, 34, -25, 34, -24, 35, -24, 35, -23, 36, -23, 36, -22, 37, -22, 37, -21, 38, -21, 38, -20, 39, -20, 39, -19, 40, -19, 40, -18, 41, -18, 41, -17, 42, -17, 42, -16, 43, -16, 43, -15, 44, -15, 44, -14, 45, -14, 45, -13, 46, -13, 46, -12, 47, -12, 47, -11, 48, -11, 48, -10, 49, -10, 49, -9, 50, -9, 50, -8, 51, -8, 51, -7, 52, -7, 52, -6, 53, -6, 53, -5, 54, -5, 54, -4, 55, -4, 55, -3, 56, -3, 56, -2, 57, -2, 57, -1, 58, -1, 58, 1, 57, 1, 57, 2, 56, 2, 56, 3, 55, 3, 55, 4, 54, 4, 54, 5, 53, 5, 53, 6, 52, 6, 52, 7, 51, 7, 51, 8, 50, 8, 50, 9, 49, 9, 49, 10, 48, 10, 48, 11, 47, 11, 47, 12, 46, 12, 46, 13, 45, 13, 45, 14, 44, 14, 44, 15, 43, 15, 43, 16, 42, 16, 42, 17, 41, 17, 41, 18, 40, 18, 40, 19, 39, 19, 39, 20, 38, 20, 38, 21, 37, 21, 37, 22, 36, 22, 36, 23, 35, 23, 35, 24, 34, 24, 34, 25, 33, 25, 33, 26, 32, 26, 32, 27, 31, 27, 31, 28, 30, 28, 30, 29, 29, 29, 29, 30, 28, 30, 28, 31, 27, 31, 27, 32, 26, 32, 26, 33, 25, 33, 25, 34, 24, 34, 24, 35, 23, 35, 23, 36, 22, 36, 22, 37, 21, 37, 21, 38, 20, 38, 20, 39, 19, 39, 19, 40, 18, 40, 18, 41, 17, 41, 17, 42, 16, 42, 16, 43, 15, 43, 15, 44, 14, 44, 14, 45, 13, 45, 13, 46, 12, 46, 12, 47, 11, 47, 11, 48, 10, 48, 10, 49, 9, 49, 9, 50, 8, 50, 8, 51, 7, 51, 7, 52, 6, 52, 6, 53, 5, 53, 5, 54, 4, 54, 4, 55, 3, 55, 3, 56, 2, 56, 2, 57, 1, 57, 1, 58, -1, 58, -1, 57, -2, 57, -2, 56, -3, 56, -3, 55, -4, 55, -4, 54, -5, 54, -5, 53, -6, 53, -6, 52, -7, 52, -7, 51, -8, 51, -8, 50, -9, 50, -9, 49, -10, 49, -10, 48, -11, 48, -11, 47, -12, 47, -12, 46, -13, 46, -13, 45, -14, 45, -14, 44, -15, 44, -15, 43, -16, 43, -16, 42, -17, 42, -17, 41, -18, 41, -18, 40, -19, 40, -19, 39, -20, 39, -20, 38, -21, 38, -21, 37, -22, 37, -22, 36, -23, 36, -23, 35, -24, 35, -24, 34, -25, 34, -25, 33, -26, 33, -26, 32, -27, 32, -27, 31, -28, 31, -28, 30, -29, 30, -29, 29, -30, 29, -30, 28, -31, 28, -31, 27, -32, 27, -32, 26, -33, 26, -33, 25, -34, 25, -34, 24, -35, 24, -35, 23, -36, 23, -36, 22, -37, 22, -37, 21, -38, 21, -38, 20, -39, 20, -39, 19, -40, 19, -40, 18, -41, 18, -41, 17, -42, 17, -42, 16, -43, 16, -43, 15, -44, 15, -44, 14, -45, 14, -45, 13, -46, 13, -46, 12, -47, 12, -47, 11, -48, 11, -48, 10, -49, 10, -49, 9, -50, 9, -50, 8, -51, 8, -51, 7, -52, 7, -52, 6, -53, 6, -53, 5, -54, 5, -54, 4, -55, 4, -55, 3, -56, 3, -56, 2, -57, 2, -57, 1, -58, 1, -58, -1, -57, -1, -57, -2, -56, -2, -56, -3, -55, -3, -55, -4, -54, -4, -54, -5, -53, -5, -53, -6, -52, -6, -52, -7, -51, -7, -51, -8, -50, -8, -50, -9, -49, -9, -49, -10, -48, -10, -48, -11, -47, -11, -47, -12, -46, -12, -46, -13, -45, -13, -45, -14, -44, -14, -44, -15, -43, -15, -43, -16, -42, -16, -42, -17, -41, -17, -41, -18, -40, -18, -40, -19, -39, -19, -39, -20, -38, -20, -38, -21, -37, -21, -37, -22, -36, -22, -36, -23, -35, -23, -35, -24, -34, -24, -34, -25, -33, -25, -33, -26, -32, -26, -32, -27, -31, -27, -31, -28, -30, -28, -30, -29, -29, -29, -29, -30, -28, -30, -28, -31, -27, -31, -27, -32, -26, -32, -26, -33, -25, -33, -25, -34, -24, -34, -24, -35, -23, -35, -23, -36, -22, -36, -22, -37, -21, -37, -21, -38, -20, -38, -20, -39, -19, -39, -19, -40, -18, -40, -18, -41, -17, -41, -17, -42, -16, -42, -16, -43, -15, -43, -15, -44, -14, -44, -14, -45, -13, -45, -13, -46, -12, -46, -12, -47, -11, -47, -11, -48, -10, -48, -10, -49, -9, -49, -9, -50, -8, -50, -8, -51, -7, -51, -7, -52, -6, -52, -6, -53, -5, -53, -5, -54, -4, -54, -4, -55, -3, -55, -3, -56, -2, -56, -2, -57, -1, -57, -1, -58, 0, -58, 0, -59, -1, -59, -1, -60, -2, -60, -2, -61, -3, -61, -3, -62, -4, -62, -4, -63, -5, -63, -5, -64, -6, -64, -6, -65, -7, -65, -7, -66, -8, -66, -8, -67, -9, -67, -9, -68, -10, -68, -10, -69, -11, -69, -11, -70, -12, -70, -12, -71, -13, -71, -13, -72, -14, -72, -14, -73, -15, -73, -15, -74, -16, -74, -16, -75, -17, -75, -17, -76, -18, -76, -18, -77, -19, -77, -19, -78, -20, -78, -20, -79, -21, -79, -21, -80, -22, -80, -22, -81, -23, -81, -23, -82, -24, -82, -24, -83, -25, -83, -25, -84, -26, -84, -26, -85, -27, -85, -27, -86, -28, -86, -28, -87, -29, -87, -29, -88, -30, -88, -30, -89, -31, -89, -31, -90, -32, -90, -32, -91, -33, -91, -33, -92, -34, -92, -34, -93, -35, -93, -35, -94, -36, -94, -36, -95, -37, -95, -37, -96, -38, -96, -38, -97, -39, -97, -39, -98, -40, -98, -40, -99, -41, -99, -41, -100, -42, -100, -42, -101, -43, -101, -43, -102, -44, -102, -44, -103, -45, -103, -45, -104, -46, -104, -46, -105, -47, -105, -47, -106, -48, -106, -48, -107, -49, -107, -49, -108, -50, -108, -50, -109, -51, -109, -51, -110, -52, -110, -52, -111, -53, -111, -53, -112, -54, -112, -54, -113, -55, -113, -55, -114, -56, -114, -56, -115, -57, -115, -57, -116, -58, -116, -58, -117)
+disabled = true
+
 [node name="Sprite2D" type="Sprite2D" parent="BarrageBlack"]
 visible = false
-texture = ExtResource("13_2curr")
+texture = ExtResource("33_4jbvm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarrageBlack"]
 visible = false
@@ -19259,18 +19233,17 @@ randomness = 0.17
 
 [node name="BarrageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("36_qfdlt")
-volume_db = -15.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="CreateCrownAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("37_ltkg3")
-volume_db = -17.0
 bus = &"SFX"
 
 [node name="PhaseTransitionAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1.52588e-05, 0)
 stream = ExtResource("38_w0pkp")
-volume_db = -17.0
+volume_db = 2.0
 bus = &"SFX"
 
 [node name="Portal" parent="." instance=ExtResource("37_1fn87")]
@@ -19475,7 +19448,7 @@ vframes = 4
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="Sprite2D"]
 stream = ExtResource("43_28gls")
-volume_db = -5.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="CutscenePlayer" type="AnimationPlayer" parent="."]

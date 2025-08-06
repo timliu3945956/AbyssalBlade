@@ -820,12 +820,12 @@ explosiveness = 0.71
 
 [node name="sac_pop_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_ymheb")
-volume_db = -10.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_egbdh")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

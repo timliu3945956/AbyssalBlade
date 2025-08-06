@@ -40,6 +40,8 @@ extends CharacterBody2D
 @onready var boss_healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar
 @onready var healthbar: TextureProgressBar = $CanvasLayer/BossHealthbar/Healthbar
 @onready var health_damage_bar: TextureProgressBar = $CanvasLayer/BossHealthbar/HealthDamageBar
+@onready var health_percent: Label = $CanvasLayer/BossHealthbar/HealthPercent
+
 
 @onready var sprite: Sprite2D = $Sprite
 @onready var sprite_shadow: Sprite2D = $SpriteShadow
@@ -53,9 +55,6 @@ extends CharacterBody2D
 @onready var protean_rotate: Marker2D = $DestructiveProtean/ProteanRotate
 @onready var spit_attack_white: AnimatedSprite2D = $DestructiveProtean/ProteanRotate/ProteanVFX/SpitAttackWhite
 @onready var spit_attack_red: AnimatedSprite2D = $DestructiveProtean/ProteanRotate/ProteanVFX/SpitAttackRed
-
-
-@onready var boss_death: bool = false
 
 #@onready var boss_music: AudioStreamPlayer2D = $BackgroundMusic
 
@@ -153,6 +152,7 @@ var pillar
 var pillar_2
 var pillar_3
 var pillar_4
+var orb
 var spawn_enrage_attack = enrage_attack.instantiate()
 var circle_ref: Node2D
 
@@ -167,11 +167,18 @@ var move_speed = 42.5 #120
 
 var _last_t : int
 
+signal boss_died
+var boss_death := false:
+	set(value):
+		boss_death = value
+		if boss_death:
+			emit_signal("boss_died")
+
 func _ready() -> void:
 	boss_healthbar.init_health(58000)
 	healthbar.value = GlobalCount.boss_4_final_health
 	health_damage_bar.value = GlobalCount.boss_4_final_health
-	
+	health_percent.text = "%.1f%%" % ((healthbar.value / 58000) * 100)
 	devour_meter.modulate.a = 0
 	_last_t = Time.get_ticks_usec()
 
@@ -266,25 +273,33 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 					player.mana_bar_fire.emitting = true
 		
 	if health_amount <= 0:
-		player.set_process(false)
-		player.set_physics_process(false)
+		if Global.player_data_slots[Global.current_slot_index].first_play_6:
+			player.set_process(false)
+			player.set_physics_process(false)
+		
+		GlobalCount.in_subtree_menu = false
+		player.pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
 		sprite.start_shake(1.8, 0.2)
 		player.high_pitch_slice_audio.play()
+		#if !Global.player_data_slots[Global.current_slot_index].first_play_6:
+			#boss_death_anim.play("death_after")
+		#else:
 		boss_death_anim.play("death")
 		boss_death = true
-		AudioPlayer.fade_out_music(3)
-		HitStopManager.hit_stop_boss_death_final()
-		#player.hurtbox_slash_collision.call_deferred("set", "disabled", true)
-		#player.hurtbox_collision.call_deferred("set", "disabled", true)
+		GlobalCount.stage_select_pause = true
+		GlobalCount.in_subtree_menu = true
+		#AudioPlayer.fade_out_music(3)
 		
+		#if !Global.player_data_slots[Global.current_slot_index].first_play_6:
+			#HitStopManager.hit_stop_boss_death()
+		#else:
+		HitStopManager.hit_stop_boss_death_final()
 		hurtbox.call_deferred("set", "disabled", true)
 		
-		#boss_room_animation.queue_free()
-		#top_bottom_animation_player.queue_free()
-		#in_out_animation_player.queue_free()
 		animation_player.stop()
-		
-		
 		remove_state()
 		find_child("FiniteStateMachine").change_state("Death")
 		
@@ -320,13 +335,11 @@ func remove_state():
 	bargain_shadow.queue_free()
 	depression_shadow.queue_free()
 	boss_shadow_animation.queue_free()
+	gpu_particles_2d.queue_free()
+	gpu_particles_2d_2.queue_free()
 	
 	if is_instance_valid(spawn_enrage_attack):
 		spawn_enrage_attack.queue_free()
-	if is_instance_valid(boss_room.range_line):
-		boss_room.range_line.queue_free()
-	if is_instance_valid(boss_room.range_line_first):
-		boss_room.range_line.queue_free()
 	if is_instance_valid(boss_room.telegraphs):
 		boss_room.telegraphs.queue_free()
 	if is_instance_valid(boss_room.boss_1_collision_vfx):
@@ -345,6 +358,8 @@ func remove_state():
 		pillar_3.queue_free()
 	if is_instance_valid(pillar_4):
 		pillar_4.queue_free()
+	if is_instance_valid(orb):
+		orb.queue_free()
 		
 	boss_room.circle_0_light.queue_free()
 	boss_room.circle_1_light.queue_free()
@@ -371,12 +386,16 @@ func remove_state():
 	boss_room.sword_drop_4_3.queue_free()
 	boss_room.sword_drop_4_4.queue_free()
 	boss_room.devour_orb_spawn.queue_free()
+	boss_room.devour.queue_free()
 	
 	if is_instance_valid(meteor):
 		meteor.queue_free()
 	if is_instance_valid(boss_room.shadow_particle):
 		boss_room.shadow_particle.queue_free()
-	
+		
+	boss_room.rotate_laser.queue_free()
+	final_attack_aura.queue_free()
+	boss_room.change_platform_audio.queue_free()
 
 func spawn_attack_vfx(attack_type: String):
 	var particle_vfx = hit_particle.instantiate()

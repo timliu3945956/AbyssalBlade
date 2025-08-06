@@ -10,27 +10,27 @@ func enter():
 	match choose_in_out:
 		1:
 			owner.boss_room_animation.play("attack_in_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 			await owner.boss_room_animation.animation_finished
 			owner.boss_room_animation.play("attack_out_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 			await owner.boss_room_animation.animation_finished
 			owner.boss_room_animation.play("attack_in_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 		2:
 			owner.boss_room_animation.play("attack_out_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 			await owner.boss_room_animation.animation_finished
 			owner.boss_room_animation.play("attack_in_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 			await owner.boss_room_animation.animation_finished
 			owner.boss_room_animation.play("attack_out_combo")
-			await get_tree().create_timer(1.1662).timeout
+			await TimeWait.wait_sec(1.1662)#await get_tree().create_timer(1.1662).timeout
 			animation_player.play("alternate_slam")
 			
 	#await owner.boss_room_animation.animation_finished

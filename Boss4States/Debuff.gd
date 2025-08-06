@@ -13,7 +13,7 @@ func enter():
 	player.spawn_debuffs()
 	player.debuff_bar.debuff_finished.connect(owner.boss_room._on_debuff_finished)
 	
-	await get_tree().create_timer(2, Timer.TIMER_PROCESS_PHYSICS).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2, Timer.TIMER_PROCESS_PHYSICS).timeout
 	owner.debuff_count += 1
 	can_transition = true
 	

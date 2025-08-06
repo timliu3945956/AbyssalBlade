@@ -22,6 +22,7 @@ signal ended
 var viewSize # The size of the window
 ## Speed of scrolling
 @export var speed: float = 40
+var speed_mult := 1.0
 var regularSpeed # To keep track of the original speed
 var done = false # True if all the credits have been scrolled off the screen
 #				 # (don't change this value, to end just use "end" function)
@@ -72,8 +73,15 @@ var playlistIndex = 0
 
 @export var hint_lifetime : float = 3.0
 @export var fade_time : float = 0.4
-@onready var skip_hint: Label = $SkipHint
+#@onready var skip_hint: Label = $SkipHint
+@onready var skip_hint: Control = $SkipHintControl
+@onready var skip_hint_keyboard: Label = $SkipHintControl/SkipHint
+@onready var skip_controller_button: Sprite2D = $SkipHintControl/SkipControllerButton
+
 @onready var hint_timer : Timer = Timer.new()
+
+const SKIP_TEX_XBOX : Texture2D = preload("res://UI/controller icons/Menu.png")
+const SKIP_TEX_PS : Texture2D = preload("res://UI/PS icons/Menu.png")
 
 func _ready():
 	viewSize = get_viewport().size
@@ -193,6 +201,22 @@ func _ready():
 	add_child(hint_timer)
 	hint_timer.one_shot = true
 	hint_timer.timeout.connect(_on_hint_timer_timeout)
+	_apply_skip_prompt(InputManager.activeInputSource)
+	InputManager.InputSourceChanged.connect(_on_input_source_changed)
+	
+func _apply_skip_prompt(source:int) -> void:
+	var using_pad = source == InputManager.InputSource.CONTROLLER
+	skip_hint_keyboard.visible = not using_pad
+	skip_controller_button.visible = using_pad
+	
+	if using_pad:
+		if InputManager.usingPlayStationPad:
+			skip_controller_button.texture = SKIP_TEX_PS
+		else:
+			skip_controller_button.texture = SKIP_TEX_XBOX
+	
+func _on_input_source_changed(source:int) -> void:
+	_apply_skip_prompt(source)
 	
 func _position_container_offscreen() -> void:
 	var vp_h := get_viewport().get_visible_rect().size.y
@@ -208,6 +232,7 @@ func _process(delta):
 		#is_first_frame = false
 	
 	if not done:
+		speed = regularSpeed * speed_mult
 		# If the scroll is not yet ended, keep to scroll it
 		if scrollingContainer.position.y+scrollingContainer.size.y > 0:
 			scrollingContainer.position.y -= speed*delta
@@ -238,21 +263,24 @@ func _on_musicPlayer_finished():
 
 func _input(event):
 	if not done:
-		if event.is_echo():
-			return
+		#if event.is_echo():
+			#return
 		if event.is_pressed() and not skip_hint.visible:
 			_show_skip_hint()
-			return
-		if event.is_action_pressed(skipControl) and skip_hint.visible and not hint_timer.is_stopped():
-			AudioPlayer.play_FX(back_button, -10)
+			#return
+		elif event.is_action_pressed(skipControl) and skip_hint.visible and not hint_timer.is_stopped():
+			AudioPlayer.play_FX(back_button, 5)
 			end()
 		# If there is still text scrolling and controls are enabled,
 		# let the gamer speed it up, slow it down, stop it or reverse it
 		if enableControls:
-			if event.is_action_pressed(slowDownControl):
-				speed -= 10 * event.get_action_strength(slowDownControl)
-			if event.is_action_pressed(speedUpControl):
-				speed += 10 * event.get_action_strength(speedUpControl)
+			if event.is_action_pressed(speedUpControl) or event.is_action_pressed("interact"):
+				speed_mult = 7.0
+			elif event.is_action_released(speedUpControl) or event.is_action_released("interact"):
+				speed_mult = 1.0
+				#speed -= 10 * event.get_action_strength(speedUpControl)
+			#if event.is_action_pressed(slowDownControl):
+				#speed += 10 * event.get_action_strength(slowDownControl)
 		# If skip is enable, let the gamer skip the credits
 		#if enableSkip:
 			#if event.is_action_pressed(skipControl):
@@ -277,12 +305,16 @@ func end():
 	# If there is a next scene to load, then load it,
 	# otherwise if quitOnEnd is enabled, just quit
 	if nextScene != null:
-		# warning-ignore:return_value_discarded
-		
 		#get_tree().change_scene_to_file(nextScene.get_path())
-		TransitionScreen.transition_main_menu()
+		TransitionScreen.transition_credits()
+		AudioPlayer.fade_out_music(2.5)
 		await TransitionScreen.on_transition_finished
-		get_tree().change_scene_to_file(nextScene.get_path())
+		if Global.player_data_slots[Global.current_slot_index].abyss_mode_popup and not Global.player_data_slots[Global.current_slot_index].first_play_6:
+			Global.player_data_slots[Global.current_slot_index].abyss_mode_popup = false
+			Global.save_data(Global.current_slot_index)
+			get_tree().change_scene_to_file("res://Menu/LobbyScene/AbyssModeUnlock.tscn")
+		else:
+			get_tree().change_scene_to_file(nextScene.get_path())
 	elif quitOnEnd:
 		get_tree().quit()
 	elif destroyOnEnd:

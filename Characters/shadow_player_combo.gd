@@ -43,8 +43,10 @@ var idle_duration: float = 2.0
 var attack_duration: float = 0.4165
 #var attack_timer = null
 var idle_timer = null
+var boss
 
 func _ready() -> void:
+	boss.boss_died.connect(_on_boss_died)
 	randomize()
 	smoke.play("smoke")
 	sprite_2d.material.set_shader_parameter("fade_alpha", 0.5)
@@ -53,6 +55,9 @@ func _ready() -> void:
 	#setup_movement_sequence()
 	#current_target_index = 0
 	#move_to_next_target()
+	
+func _on_boss_died():
+	queue_free()
 	
 func calculate_slice_positions():
 	var center = boss_room_center
@@ -93,9 +98,9 @@ func move_to_next_target():
 		emit_signal("action_completed", selected_indices)
 		smoke.play("smoke")
 		spawn_shadow_audio.play()
-		await get_tree().create_timer(0.0833).timeout
+		await TimeWait.wait_sec(0.0833)#await get_tree().create_timer(0.0833).timeout
 		sprite_2d.material.set_shader_parameter("fade_alpha", 0)
-		await get_tree().create_timer(0.4495).timeout
+		await TimeWait.wait_sec(0.4495)#await get_tree().create_timer(0.4495).timeout
 		queue_free()
 		
 func _physics_process(delta: float) -> void:
@@ -163,13 +168,9 @@ func _on_idle_timer_timeout():
 	attack()
 
 func attack():
-	#animation_tree.set("parameters/Attack/blend_position", target_position - position)
-	#animation_tree.set("parameters/Idle/blend_position", target_position - position)
-	#state_machine.travel("Attack")
-	#await get_tree().create_timer(0.4165).timeout
 	animation_tree.set("parameters/BossAttack/blend_position", target_position.x - position.x)
 	state_machine.travel("BossAttack")
-	await get_tree().create_timer(0.95).timeout
+	await TimeWait.wait_sec(0.95)#await get_tree().create_timer(0.95).timeout
 	
 	var current_time = Time.get_ticks_msec() / 1000.0
 	time_taken_for_attack = current_time - (time_started_movement + time_taken_to_move)

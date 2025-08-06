@@ -10,7 +10,7 @@ func enter():
 	animation_player.play("idle")
 	owner.attack_meter_animation.play("surge")
 	#start_phase_change_vfx()
-	await get_tree().create_timer(4.5).timeout
+	await TimeWait.wait_sec(4.5)#await get_tree().create_timer(4.5).timeout
 	animation_player.play("barrage")
 	await owner.attack_meter_animation.animation_finished
 	owner.camera_shake()
@@ -18,7 +18,7 @@ func enter():
 	owner.enrage_fire_pop.emitting = true
 	owner.enrage_background.play("background_change")
 	#phase2 anim
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	can_transition = true #phase 2 changes
 	
 	

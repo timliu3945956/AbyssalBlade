@@ -27,26 +27,16 @@ func enter():
 		animation_player.play("dash_stop")
 		owner.dash_audio.play()
 		#owner.jump_audio.play()
-		await get_tree().create_timer(0.5).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 		owner.dash_particles.emitting = false
 	
-	#owner.attack_meter_animation.play("beam")
-	#await get_tree().create_timer(1).timeout
-	#var boss_room_2 = get_parent().get_parent().get_parent()
 	owner.attack_meter_animation.play("beam")
 	if owner.to_local(player.global_position).x - owner.position.x > 0:
 		animation_player.play("idle_right")
 	else:
 		animation_player.play("idle_left")
-	#player.beam_circle()
-	#animation_player.play("beam_chargeup")
-	await get_tree().create_timer(3).timeout
-	#animation_player.play("beam_charge")
-	#await get_tree().create_timer(1.5).timeout
-	#beam_circle()
-	#await owner.attack_meter_animation.animation_finished
-	
-	#owner.beam_timer.start()
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
+
 	owner.telegraph_player.play("beam")
 	owner.beam_rotation = player.global_position - global_position
 	owner.beam_aim.rotation = owner.beam_aim.global_position.angle_to_point(player.global_position)
@@ -58,11 +48,11 @@ func enter():
 		owner.sprite_shadow.flip_h = false
 	#await get_tree().create_timer(0.5).timeout
 	animation_player.play("beam")
-	await get_tree().create_timer(0.45).timeout
+	await TimeWait.wait_sec(0.45)#await get_tree().create_timer(0.45).timeout
 	beam_audio.play()
-	await get_tree().create_timer(0.05).timeout
+	await TimeWait.wait_sec(0.05)#await get_tree().create_timer(0.05).timeout
 	beam()
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	
 	owner.beam_count += 1
 	if owner.boss_death == false:
@@ -80,24 +70,7 @@ func beam_circle():
 	#owner.beam_circle_timer.start()
 	owner.circle_ref.position = owner.to_local(player.global_position)
 	add_child(owner.circle_ref)
-	
-##
 
-#func _process(delta):
-	#if beam_circle_timer.time_left > 0:
-		#circle_ref.position = player.position
-#func _on_beam_timer_timeout() -> void:
-	#var old_position = position
-	#remove_child(owner.circle_ref)
-	##boss_2.add_child(circle_ref)
-	##circle_ref.global_position = old_global_pos
-	#
-	##get_tree().get_root().add_child(circle_ref)
-	#var boss_room = get_node("../Boss2")
-	#boss_room.add_child(circle_ref)
-	#print(circle_ref.position)
-	#circle_ref.position = old_position
-	
 func transition():
 	if can_transition:
 		can_transition = false

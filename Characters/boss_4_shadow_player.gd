@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var move_speed : float = 85 #42.5
-@export var total_time_per_step: float = 2.1
+@export var total_time_per_step: float = 2.05 #2.1
 @export var attack_duration: float = 0.4165
 @export var idle_per_slice: float = 0.60
 
@@ -44,7 +44,10 @@ var time_taken_for_attack: float = 0.0
 var idle_duration: float = 0.0
 var idle_timer: Timer = null
 
+var boss
+
 func _ready() -> void:
+	boss.boss_died.connect(_on_boss_died)
 	randomize()
 	smoke.play("smoke")
 	sprite_2d.material.set_shader_parameter("fade_alpha", 0.5)
@@ -109,7 +112,7 @@ func _perform_attack(cur_slice: int) -> void:
 	animation_tree.set("parameters/Attack/blend_position", target_position - position)
 	state_machine.travel("Attack")
 	
-	await get_tree().create_timer(attack_duration).timeout #attack_duration
+	await TimeWait.wait_sec(attack_duration)#await get_tree().create_timer(attack_duration).timeout #attack_duration
 	
 	selected_indices.append(cur_slice)
 	
@@ -122,7 +125,7 @@ func _attack_state() -> void:
 	animation_tree.set("parameters/Attack/blend_position", target_position - position)
 	state_machine.travel("Attack")
 
-	await get_tree().create_timer(attack_duration).timeout
+	await TimeWait.wait_sec(attack_duration)#await get_tree().create_timer(attack_duration).timeout
 	var cur_slice = movement_indices[current_target_index]
 	selected_indices.append(cur_slice)
 
@@ -177,7 +180,10 @@ func _emit_and_vanish() -> void:
 	emit_signal("action_completed", selected_indices, start_slice, walk_dir, visit_order)
 	smoke.play("smoke")
 	spawn_shadow_audio.play()
-	await get_tree().create_timer(0.0833).timeout
+	await TimeWait.wait_sec(0.0833)#await get_tree().create_timer(0.0833).timeout
 	sprite_2d.material.set_shader_parameter("fade_alpha", 0.0)
-	await get_tree().create_timer(0.45).timeout
+	await TimeWait.wait_sec(0.45)#await get_tree().create_timer(0.45).timeout
+	queue_free()
+	
+func _on_boss_died():
 	queue_free()

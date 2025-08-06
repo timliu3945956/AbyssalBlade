@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://ceugei330tv36"]
+[gd_scene load_steps=31 format=3 uid="uid://ceugei330tv36"]
 
 [ext_resource type="Script" path="res://Menu/portal.gd" id="1_qsh2g"]
 [ext_resource type="Texture2D" uid="uid://cso0eyg870jcl" path="res://Utilities/menu/CIRCLE_BLUE_PORTAL.png" id="2_gkb5g"]
 [ext_resource type="PackedScene" uid="uid://bxy4myh6jps2d" path="res://Menu/LobbyScene/InteractionArea/interaction_area.tscn" id="2_kup10"]
 [ext_resource type="Texture2D" uid="uid://iwj6df8frwo5" path="res://Utilities/Effects/floaty_128.png" id="3_m7b8o"]
-[ext_resource type="Texture2D" uid="uid://drniwyp024pw7" path="res://Utilities/menu/settings_and_controls.png" id="7_webo7"]
+[ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="5_om0yv"]
+[ext_resource type="Texture2D" uid="uid://2augut3g45bm" path="res://Utilities/menu/star_emblem.png" id="6_q8lu4"]
 [ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="8_dfhrv"]
+[ext_resource type="Script" path="res://Levels/button_release.gd" id="8_ip6bi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rw8vc"]
 
@@ -59,7 +61,7 @@ height = 28.0
 bg_color = Color(0, 0, 0, 0.431373)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nhl0"]
-texture = ExtResource("7_webo7")
+texture = ExtResource("5_om0yv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_87e3j"]
 
@@ -68,6 +70,24 @@ texture = ExtResource("7_webo7")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gh1hg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0keo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an4qu"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esmi3"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k2wo"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkc62"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wp6c"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb6d4"]
+bg_color = Color(0, 0, 0, 0.313726)
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_qsh2g")
@@ -108,18 +128,87 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wltmv")
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_6nhl0")
+
+[node name="Star" type="Sprite2D" parent="CanvasLayer/Panel"]
+visible = false
+position = Vector2(281, 99)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_q8lu4")
+
+[node name="ClearTimeLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -36.36
-offset_top = -42.2075
-offset_right = 36.36
-offset_bottom = 42.2075
+offset_left = -37.0
+offset_top = -35.0
+offset_right = 7.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6nhl0")
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+text = "Clear Time:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -18.0
+offset_right = 7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+text = "Best Time:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ClearTime" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -35.0
+offset_right = 39.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+text = "0:00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BestTime" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 117.0
+offset_right = 279.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("8_dfhrv")
+theme_override_font_sizes/font_size = 9
+text = "0:00:00"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
@@ -128,10 +217,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -20.0
-offset_right = 23.0
-offset_bottom = 20.0
+offset_left = -46.0
+offset_top = -1.0
+offset_right = 46.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -139,7 +228,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 15
+theme_override_constants/separation = 6
 
 [node name="NextStage" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
 visible = false
@@ -157,6 +246,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
 text = "Next Stage"
 
 [node name="Retry" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(92, 15)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
@@ -164,13 +254,15 @@ theme_override_colors/font_focus_color = Color(0.419813, 0.419813, 0.419813, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_dfhrv")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_87e3j")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_6t6xv")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_gh1hg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_an4qu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_esmi3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6k2wo")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
 text = "Retry"
+script = ExtResource("8_ip6bi")
 
 [node name="Lobby" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(92, 15)
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
 theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
@@ -178,12 +270,15 @@ theme_override_colors/font_focus_color = Color(0.419813, 0.419813, 0.419813, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("8_dfhrv")
 theme_override_font_sizes/font_size = 9
-theme_override_styles/focus = SubResource("StyleBoxEmpty_87e3j")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_6t6xv")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_gh1hg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mkc62")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1wp6c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cb6d4")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_g0keo")
 text = "Lobby"
+script = ExtResource("8_ip6bi")
 
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/NextStage" to="." method="_on_next_stage_pressed"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Retry" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Retry" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Lobby" to="CanvasLayer/Panel/MarginContainer/VBoxContainer/Lobby" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/VBoxContainer/Lobby" to="." method="_on_lobby_pressed"]

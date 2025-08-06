@@ -1277,12 +1277,11 @@ explosiveness = 0.71
 
 [node name="StructureBreakAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_j7ppp")
-volume_db = -11.0
 bus = &"SFX"
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_1vfr0")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

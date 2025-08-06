@@ -60,7 +60,7 @@ extends Control
 
 @onready var personal_best_label: Label = $DescriptionContainer/PersonalBestLabel
 #@onready var leaderboard_panel: Panel = $DescriptionContainer/Leaderboard
-@onready var desc_lead: TextureButton = $AbyssMode/DescLead
+@onready var desc_lead: Button = $AbyssMode/DescLead #Texture
 @onready var desc_lead_2: Button = $AbyssMode/DescLead2
 
 @onready var abyss_mode: Control = $AbyssMode
@@ -78,6 +78,7 @@ extends Control
 @onready var manabar: ProgressBar = $"../Manabar"
 @onready var dash_meter: ProgressBar = $"../DashMeter"
 
+var _last_pressed_idx : int = -1
 
 var titles : Array[Label]
 #var descs : Array[Label]
@@ -88,6 +89,9 @@ var clear_counts: Array[Label]
 #var panel_mode : PanelMode = PanelMode.DESCRIPTION
 var current_stage: int = -1
 
+const FOCUS_ALPHA := 96.0 / 255.0
+const TEX_ABYSS_OFF_FOCUS : Texture2D = preload("res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode_hover.png")
+const TEX_ABYSS_ON_FOCUS : Texture2D = preload("res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode_select.png")
 const TEX_ABYSS_OFF : Texture2D = preload("res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode.png")
 const TEX_ABYSS_ON : Texture2D = preload("res://Utilities/menu/stage select/stage_select_revamp/buttons/button_abyssmode_select.png")
 const TEX_PB_PRE : Texture2D = preload("res://Utilities/menu/stage select/stage_select_revamp/buttons/personal_best_pregame_text.png")
@@ -102,6 +106,9 @@ var which_load = 0
 var last_focused_button: Button
 var hint_tween : Tween
 var abyss_selected := false
+
+var _prev_move := Vector2.ZERO
+var _focus_seeded := false
 
 func _ready() -> void:
 	_base_clear_time_pos = panel_container_2.position
@@ -171,6 +178,23 @@ func _ready() -> void:
 	_update_clear_time_position(campaign_done)
 	abyss_mode_times.visible = campaign_done
 	
+	for i in stage_buttons.size():
+		stage_buttons[i].focus_entered.connect(func(): _on_stage_focus(i))
+		
+	InputManager.InputSourceChanged.connect(_on_input_source_changed)
+	_on_input_source_changed(InputManager.activeInputSource)
+	#visibility_changed.connect(_on_stage_select_shown)
+	
+#func _on_stage_select_shown() -> void:
+	#if !visible:
+		#return
+		#
+	#if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
+		#stage_1_button.grab_focus()
+		#_focus_seeded = true
+		#
+	#_prev_move = Vector2.ZERO
+	
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		var click_pos = event.position
@@ -178,7 +202,7 @@ func _input(event):
 			self.visible = false
 	if TransitionScreen.is_transitioning:
 		return
-	if event.is_action_pressed("pause") and not GlobalCount.first_time_play and not GlobalCount.in_subtree_menu:
+	if event.is_action_pressed("ui_cancel") and not GlobalCount.first_time_play and not GlobalCount.in_subtree_menu and self.visible:
 		print("PRESSING STAGE SELECT")
 		GlobalCount.stage_select_pause = false
 		GlobalCount.paused = false
@@ -188,13 +212,18 @@ func _input(event):
 		transform_fire_bar.visible = true
 		manabar.visible = true
 		dash_meter.visible = true
-		AudioPlayer.play_FX(back_button, -10)
+		AudioPlayer.play_FX(back_button, 5)
 		
 		accept_event()
 			
 func _process(delta: float) -> void:
-	pass
-
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER and not _focus_seeded and get_viewport().gui_get_focus_owner() == null and self.visible:
+		var mv = InputManager.GetMovementVector()
+		if mv != Vector2.ZERO and _prev_move == Vector2.ZERO:
+			stage_1_button.grab_focus()
+			_focus_seeded = true
+		_prev_move = mv
+		
 func format_time(time_in_seconds):
 	if time_in_seconds <= 0.0:
 		return "-:--:--"
@@ -221,11 +250,26 @@ func _show_stage(index: int) -> void:
 	background.visible = index == -1
 	play.visible = index != -1
 	
+func _on_input_source_changed(source: int) -> void:
+	if source == InputManager.InputSource.CONTROLLER:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		#if get_viewport().gui_get_focus_owner() == null:
+			#if current_stage == -1:
+				#stage_1_button.grab_focus()
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if get_viewport().gui_get_focus_owner():
+			get_viewport().gui_get_focus_owner().release_focus()
+			
+		_focus_seeded = false
+	
+#_on_stage_button_pressed
 func _on_stage_button_pressed(idx: int) -> void:
+	_last_pressed_idx = idx
 	if current_stage == idx:
 		return
 		
-	AudioPlayer.play_FX(select_stage_fx, 0)
+	AudioPlayer.play_FX(select_stage_fx, 10)
 	which_load = idx + 1
 	current_stage = idx
 	
@@ -234,6 +278,18 @@ func _on_stage_button_pressed(idx: int) -> void:
 	
 	_refresh_toggle_state()
 	_show_stage(idx)
+	
+func _on_stage_focus(idx: int) -> void:
+	if InputManager.activeInputSource != InputManager.InputSource.CONTROLLER:
+		return
+		
+	if current_stage == idx:
+		return
+	
+	#_refresh_toggle_state()
+	stage_buttons[idx].button_pressed = true
+	_on_stage_button_pressed(idx)
+	#stage_buttons[idx].button_pressed = true
 	
 func _all_stages_cleared() -> bool:
 	for i in range(5):
@@ -251,7 +307,7 @@ func _on_abyss_toggle_pressed() -> void:
 	if desc_lead.disabled:
 		return
 		
-	AudioPlayer.play_FX(select_stage_fx, 0)
+	AudioPlayer.play_FX(select_stage_fx, 10)
 	
 	abyss_selected = !abyss_selected
 	_apply_abyss_skin(abyss_selected)
@@ -271,12 +327,36 @@ func _abyss_stage_unlocked(stage_idx: int) -> bool:
 	var prev_time = Global.player_data_slots[Global.current_slot_index][prev_time_key]
 	return prev_time > 0.0
 
-func _apply_tb_skin(tex: Texture2D) -> void:
-	desc_lead.texture_normal = tex
-	desc_lead.texture_pressed = tex
-	desc_lead.texture_hover = tex
-	desc_lead.texture_focused = tex
-	desc_lead.texture_disabled = tex
+#func _apply_tb_skin(tex: Texture2D, focus_tex: Texture2D, focus_alpha: float = FOCUS_ALPHA) -> void:
+	#desc_lead.texture_normal = tex
+	#desc_lead.texture_pressed = tex
+	#desc_lead.texture_hover = focus_tex if focus_tex else tex
+	#desc_lead.texture_disabled = tex
+	#desc_lead.texture_focused = focus_tex if focus_tex else tex
+	#
+	#var sb := StyleBoxTexture.new()
+	#sb.texture = focus_tex
+	#sb.modulate_color = Color(1, 1, 1, focus_alpha)
+	#desc_lead.add_theme_stylebox_override("focus", sb)
+	
+func _sb_from_tex(tex: Texture2D, alpha: float = 1.0) -> StyleBoxTexture:
+	var sb := StyleBoxTexture.new()
+	sb.texture = tex
+	sb.modulate_color.a = alpha
+	return sb
+	
+func _apply_btn_skin(normal_tex: Texture2D, focus_tex: Texture2D) -> void:
+	var sb_normal := _sb_from_tex(normal_tex)
+	var sb_focus := _sb_from_tex(focus_tex, FOCUS_ALPHA)
+	var sb_hover := _sb_from_tex(focus_tex)
+	
+	for slot in ["normal", "pressed", "hover_pressed", "disabled"]:
+		desc_lead.add_theme_stylebox_override(slot, sb_normal)
+		
+	desc_lead.add_theme_stylebox_override("focus", sb_focus)
+	desc_lead.add_theme_stylebox_override("hover", sb_hover)
+	
+
 	
 func _refresh_toggle_state() -> void:
 	if current_stage == -1 or !_campaign_beaten():
@@ -302,6 +382,7 @@ func _refresh_toggle_state() -> void:
 		desc_lead.modulate.a = 0.3
 	
 	_apply_abyss_skin( unlocked && abyss_selected )
+	_set_nav_links(_campaign_beaten())
 	
 	if hint_tween and hint_tween.is_running():
 		hint_tween.kill()
@@ -315,6 +396,17 @@ func _refresh_toggle_state() -> void:
 		#_apply_abyss_skin(false)
 		unlock_text.modulate.a = 0.0
 		
+func _set_nav_links(campaign_done: bool) -> void:
+	var none := NodePath("")
+	
+	if campaign_done:
+		var to_desc : NodePath = desc_lead.get_path()
+		
+		for b in stage_buttons:
+			b.focus_neighbor_right = to_desc
+		
+		play.focus_neighbor_left = to_desc
+		
 func _apply_personal_best_plate(campaign_done: bool) -> void:
 	var sb := StyleBoxTexture.new()
 	if campaign_done:
@@ -324,12 +416,14 @@ func _apply_personal_best_plate(campaign_done: bool) -> void:
 	personal_best_label.add_theme_stylebox_override("normal", sb)
 	
 func _apply_abyss_skin(enabled: bool) -> void:
-	var tex
+	#var tex
 	if enabled:
-		tex = TEX_ABYSS_ON
+		_apply_btn_skin(TEX_ABYSS_ON, TEX_ABYSS_ON_FOCUS)
+		#tex = TEX_ABYSS_ON
 	else:
-		tex = TEX_ABYSS_OFF
-	_apply_tb_skin(tex)
+		_apply_btn_skin(TEX_ABYSS_OFF, TEX_ABYSS_OFF_FOCUS)
+		#tex = TEX_ABYSS_OFF
+	#_apply_tb_skin(tex)
 
 func _stage_cleared(idx: int) -> bool:
 	match idx:
@@ -374,27 +468,34 @@ func _set_abyss_particles(active: bool) -> void:
 				p.restart()
 
 func _on_back_pressed() -> void:
-	AudioPlayer.play_FX(back_button, -10)
+	AudioPlayer.play_FX(back_button, 5)
 	self.visible = false
+	
+	_focus_seeded = false
+	_prev_move = Vector2.ZERO
+	
+	if _last_pressed_idx != -1:
+		stage_buttons[_last_pressed_idx].button_pressed = false
+		stage_buttons[_last_pressed_idx].release_focus()
 
 func _on_play_pressed() -> void:
 	GlobalCount.abyss_mode = abyss_selected
 	AudioPlayer.fade_out_music(2.0)
 	match which_load:
 		1:
-			AudioPlayer.play_FX(game_start_fx, -10)
+			AudioPlayer.play_FX(game_start_fx, 0)
 			LoadManager.load_scene("res://Levels/BossRoom0.tscn")
 		2:
-			AudioPlayer.play_FX(game_start_fx, -10)
+			AudioPlayer.play_FX(game_start_fx, 0)
 			LoadManager.load_scene("res://Levels/BossRoom1.tscn")
 		3:
-			AudioPlayer.play_FX(game_start_fx, -10)
+			AudioPlayer.play_FX(game_start_fx, 0)
 			LoadManager.load_scene("res://Levels/BossRoom2.tscn")
 		4:
-			AudioPlayer.play_FX(game_start_fx, -10)
+			AudioPlayer.play_FX(game_start_fx, 0)
 			LoadManager.load_scene("res://Levels/BossRoom3.tscn")
 		5:
-			AudioPlayer.play_FX(game_start_fx, -10)
+			AudioPlayer.play_FX(game_start_fx, 0)
 			LoadManager.load_scene("res://Levels/BossRoom4.tscn")
 			
 func check_button_focus() -> void:
@@ -419,3 +520,11 @@ func _on_desc_lead_mouse_entered() -> void:
 func _on_desc_lead_mouse_exited() -> void:
 	desc_lead.modulate.a = 0.706
 	desc_lead.release_focus()
+
+
+func _on_desc_lead_focus_entered() -> void:
+	_on_desc_lead_2_mouse_entered()
+
+
+func _on_desc_lead_focus_exited() -> void:
+	_on_desc_lead_2_mouse_exited()

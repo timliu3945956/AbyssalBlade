@@ -2,10 +2,21 @@ extends Node
 
 var config = ConfigFile.new()
 const SETTINGS_FILE_PATH = "user://settings.ini"
-const DEFAULT_WINDOW_MODE := "fullscreen"
+const DEFAULT_WINDOW_MODE := "exclusive_fullscreen"
 
 const ASPECT := Vector2(16, 9)
 const WINDOWED_SCALE := 0.80
+
+func _apply_bus_volume(bus_name: String, linear: float) -> void:
+	var idx := AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(idx, linear_to_db(clamp(linear, 0.0, 1.0)))
+	
+func apply_saved_audio() -> void:
+	var audio = load_audio_settings()
+	_apply_bus_volume("Master", audio["master_volume"])
+	_apply_bus_volume("SFX", audio["sfx_volume"])
+	_apply_bus_volume("Music", audio["music_volume"])
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), audio["muted"])
 
 func _ready():
 	if !FileAccess.file_exists(SETTINGS_FILE_PATH):
@@ -22,9 +33,10 @@ func _ready():
 		#config.set_value("video", "fullscreen", true)
 		#config.set_value("video", "screen_shake", false)
 		
-		config.set_value("audio", "master_volume", 0.1)
-		config.set_value("audio", "sfx_volume", 0.1)
-		config.set_value("audio", "music_volume", 0.1)
+		config.set_value("audio", "master_volume", 0.5)
+		config.set_value("audio", "sfx_volume", 0.5)
+		config.set_value("audio", "music_volume", 0.5)
+		
 		config.set_value("audio", "muted", false)
 		
 		config.set_value("video", "window_mode", DEFAULT_WINDOW_MODE)
@@ -58,15 +70,21 @@ func save_audio_setting(key: String, value):
 	config.save(SETTINGS_FILE_PATH)
 	
 func load_audio_settings():
-	var audio_settings = {}
-	for key in config.get_section_keys("audio"):
-		audio_settings[key] = config.get_value("audio", key)
-		
-	if !"muted" in audio_settings:
-		audio_settings["muted"] = false
-		config.set_value("audio", "muted", false)
-		config.save(SETTINGS_FILE_PATH)
-	return audio_settings
+	return {
+		master_volume = float(config.get_value("audio", "master_volume", 0.5)),
+		sfx_volume = float(config.get_value("audio", "sfx_volume",    0.5)),
+		music_volume = float(config.get_value("audio", "music_volume",  0.5)),
+		muted = bool(config.get_value("audio", "muted", false))
+	}
+	#var audio_settings = {}
+	#for key in config.get_section_keys("audio"):
+		#audio_settings[key] = config.get_value("audio", key)
+		#
+	#if !"muted" in audio_settings:
+		#audio_settings["muted"] = false
+		#config.set_value("audio", "muted", false)
+		#config.save(SETTINGS_FILE_PATH)
+	#return audio_settings
 	
 func save_keybinding(action: StringName, event: InputEvent):
 	var event_str
@@ -109,13 +127,21 @@ func apply_window_mode(mode: String) -> void:
 		"windowed":
 			var screen : Vector2i = DisplayServer.screen_get_size()
 			var size : Vector2i = _calc_window_size(screen, WINDOWED_SCALE)
+			_center_window_safe(size)
 			
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-			DisplayServer.window_set_size(size)
-			
-			var pos := (screen - size) / 2
-			DisplayServer.window_set_position(pos)
-			
+func _center_window_safe(size: Vector2i) -> void:
+	var screen_id := DisplayServer.window_get_current_screen()
+	var work_rect : Rect2i = DisplayServer.screen_get_usable_rect(screen_id)
+	
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	DisplayServer.window_set_size(size)
+	
+	await get_tree().process_frame
+	var outer : Vector2i = DisplayServer.window_get_size_with_decorations()
+	
+	var pos: Vector2i = work_rect.position + (work_rect.size - outer) / 2
+	DisplayServer.window_set_position(pos)
+	
 func _calc_window_size(screen: Vector2i, scale: float) -> Vector2i:
 	var w := int(screen.x * scale)
 	var h := int(w * ASPECT.y / ASPECT.x)

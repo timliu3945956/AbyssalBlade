@@ -4,7 +4,7 @@ var can_transition: bool = false
 
 func enter():
 	super.enter()
-	await get_tree().create_timer(6).timeout
+	await TimeWait.wait_sec(6)#await get_tree().create_timer(6).timeout
 	move_boss_to_center()
 	animation_player.play("walk")
 	await animation_player.animation_finished

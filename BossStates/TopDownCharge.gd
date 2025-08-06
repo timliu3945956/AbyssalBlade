@@ -10,7 +10,7 @@ func enter() -> void:
 	owner.velocity = Vector2.ZERO
 	owner.choose_top_down = randi_range(1, 2)
 	animation_player.play("mini_enrage")
-	await get_tree().create_timer(0.40).timeout
+	await TimeWait.wait_sec(0.40)#await get_tree().create_timer(0.40).timeout
 	match owner.choose_top_down:
 		1:
 			owner.smoke_top_1.play("smoke")

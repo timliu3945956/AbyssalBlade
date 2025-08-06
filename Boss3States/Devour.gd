@@ -21,12 +21,12 @@ func enter():
 	owner.orb_buff_vfx()
 	await spawn_orbs()
 	
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	owner.devour_meter.visible = false
 	dust_tween = get_tree().create_tween()
 	dust_tween.tween_property(owner.dust_anim, "modulate:a", 1, 0.5)
-	await get_tree().create_timer(0.5).timeout
+	await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 	can_transition = true
 	
 func spawn_orbs():
@@ -57,9 +57,9 @@ func spawn_orbs():
 				spawn_index = (spawn_index + 1) % spawn_order.size()
 				
 			print("spawned", orb_count, "orbs in repetition #", r)
-			await get_tree().create_timer(1.5).timeout
+			await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 			
-		await get_tree().create_timer(4).timeout
+		await TimeWait.wait_sec(4)#await get_tree().create_timer(4).timeout
 		
 func get_boss_position(index):
 	var offset_distance = 140
@@ -69,7 +69,7 @@ func get_boss_position(index):
 func transition():
 	if can_transition:
 		can_transition = false
-		get_parent().change_state("LoomingHavoc")
+		get_parent().change_state("EngulfingCurse")
 		#
 		#can_transition = true
 	

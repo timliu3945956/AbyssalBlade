@@ -1,4 +1,4 @@
-[gd_scene load_steps=873 format=3 uid="uid://emv6i8lfbh72"]
+[gd_scene load_steps=890 format=3 uid="uid://emv6i8lfbh72"]
 
 [ext_resource type="Script" path="res://Characters/boss_3.gd" id="1_ciqut"]
 [ext_resource type="Texture2D" uid="uid://8msgj57neetk" path="res://sprites/DepressionBoss/first iteration/depression_idle.png" id="2_0qk3u"]
@@ -57,15 +57,20 @@
 [ext_resource type="Texture2D" uid="uid://b0uugdjnvm32h" path="res://sprites/DepressionBoss/second iteration/swords/animation swords/swords_imbuement_windup.png" id="24_ugio2"]
 [ext_resource type="Script" path="res://Boss3States/Devour.gd" id="25_1vono"]
 [ext_resource type="Texture2D" uid="uid://4or2i08edf7c" path="res://sprites/DepressionBoss/second iteration/boss/depression_upattack.png" id="25_morvq"]
+[ext_resource type="Texture2D" uid="uid://obg3tqnh4gmp" path="res://sprites/DepressionBoss/second iteration/swords/idle swords/swords_dualcolor.png" id="30_5ovjc"]
 [ext_resource type="Texture2D" uid="uid://dbwdmdhonepv6" path="res://sprites/DepressionBoss/second iteration/boss/depression_summonorb.png" id="33_d7ei8"]
 [ext_resource type="Texture2D" uid="uid://w2feel1hek5j" path="res://sprites/DepressionBoss/second iteration/boss/depression_oppressiveattack.png" id="37_jltvx"]
 [ext_resource type="Texture2D" uid="uid://cbpwyu8tgggr3" path="res://Utilities/cast bar/devour_underlay.png" id="42_6iopl"]
+[ext_resource type="Texture2D" uid="uid://bwm867amu0teh" path="res://sprites/DepressionBoss/barrage symbols/red_In.png" id="42_xt1ll"]
+[ext_resource type="Texture2D" uid="uid://nmyurf4w7hu1" path="res://sprites/DepressionBoss/barrage symbols/red_Out.png" id="43_2lqyk"]
 [ext_resource type="Texture2D" uid="uid://cx1ne4c74nkxs" path="res://Utilities/cast bar/devour_border.png" id="43_8gvs3"]
 [ext_resource type="Texture2D" uid="uid://bqg5oqvjydjid" path="res://sprites/DepressionBoss/boss_shadow/depression_shadow_prepareprotean.png" id="43_qxsbk"]
+[ext_resource type="Texture2D" uid="uid://8e4mbsi1t0ty" path="res://sprites/DepressionBoss/barrage symbols/red_PLUS.png" id="44_3a33g"]
 [ext_resource type="Texture2D" uid="uid://bfl5mai1an67p" path="res://Utilities/cast bar/devour_white.png" id="44_3gpwm"]
 [ext_resource type="Script" path="res://Boss3States/LoomingHavoc.gd" id="44_askqi"]
 [ext_resource type="Texture2D" uid="uid://c5h50yrix2wo5" path="res://sprites/DepressionBoss/boss_shadow/depression_shadow_death.png" id="44_im4sv"]
 [ext_resource type="Texture2D" uid="uid://cxu3q4lbennsp" path="res://sprites/DepressionBoss/boss_shadow/depression_shadow_proteanattack.png" id="44_qf8h5"]
+[ext_resource type="Texture2D" uid="uid://8r38wvu7x81e" path="res://sprites/DepressionBoss/barrage symbols/red_X.png" id="45_3ish3"]
 [ext_resource type="Script" path="res://Boss3States/EngulfingCurse.gd" id="45_5mkgs"]
 [ext_resource type="Texture2D" uid="uid://d31kortil106u" path="res://sprites/DepressionBoss/boss_shadow/depression_shadow_summonorb.png" id="46_bew1t"]
 [ext_resource type="Script" path="res://Boss3States/BarrageOpposite.gd" id="46_tbfa3"]
@@ -3111,6 +3116,77 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_boaae"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(0, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2rn3"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(222, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo5v5"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(444, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq4qd"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(666, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptqlr"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(888, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt3hg"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(1110, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xgl8"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(1332, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rbib"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(1554, 0, 222, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t30qe"]
+atlas = ExtResource("30_5ovjc")
+region = Rect2(1776, 0, 222, 119)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q08ey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boaae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2rn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo5v5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq4qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptqlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt3hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xgl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rbib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t30qe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_c2743"]
 atlas = ExtResource("23_5iowd")
 region = Rect2(0, 0, 512, 512)
@@ -5679,7 +5755,7 @@ size = Vector2(26, 3)
 size = Vector2(28, 30)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jve01"]
-radius = 66.0681
+radius = 72.0069
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7cwp1"]
 blend_mode = 2
@@ -6145,21 +6221,21 @@ shader = ExtResource("6_k2hph")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 shader_parameter/contrast = 1.0
-shader_parameter/fade_alpha = 1.0
+shader_parameter/fade_alpha = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81uwu"]
 shader = ExtResource("6_k2hph")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 shader_parameter/contrast = 1.0
-shader_parameter/fade_alpha = 1.0
+shader_parameter/fade_alpha = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2srtj"]
 shader = ExtResource("6_k2hph")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 shader_parameter/contrast = 1.0
-shader_parameter/fade_alpha = 1.0
+shader_parameter/fade_alpha = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l2dej"]
 shader = ExtResource("6_k2hph")
@@ -6174,7 +6250,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/BarrageDown:visible")
+tracks/0/path = NodePath("Node2D/BarrageIn:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -6186,7 +6262,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/BarrageDown:self_modulate")
+tracks/1/path = NodePath("Node2D/BarrageIn:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -6198,7 +6274,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/BarrageUp:visible")
+tracks/2/path = NodePath("Node2D/BarrageOut:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -6210,7 +6286,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/BarrageUp:self_modulate")
+tracks/3/path = NodePath("Node2D/BarrageOut:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -6258,7 +6334,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Node2D/BarrageDown:material:shader_parameter/fade_alpha")
+tracks/7/path = NodePath("Node2D/BarrageIn:material:shader_parameter/fade_alpha")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -6270,7 +6346,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Node2D/BarrageUp:material:shader_parameter/fade_alpha")
+tracks/8/path = NodePath("Node2D/BarrageOut:material:shader_parameter/fade_alpha")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -6315,6 +6391,102 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node2D/BarragePlusRed:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node2D/BarragePlusRed:material:shader_parameter/fade_alpha")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node2D/BarrageInRed:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Node2D/BarrageInRed:material:shader_parameter/fade_alpha")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Node2D/BarrageOutRed:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Node2D/BarrageOutRed:material:shader_parameter/fade_alpha")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Node2D/BarrageXRed:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Node2D/BarrageXRed:material:shader_parameter/fade_alpha")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8g7p1"]
 resource_name = "barrage_+"
@@ -6357,127 +6529,26 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_5jcxq"]
-resource_name = "barrage_1"
-length = 6.00001
+[sub_resource type="Animation" id="Animation_idlv2"]
+resource_name = "barrage_+_red"
+length = 2.00001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/BarrageDown:visible")
+tracks/0/path = NodePath("SymbolChangeAudio:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/BarrageUp:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/BarragePlus:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/BarrageDown:material:shader_parameter/fade_alpha")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.333333, 1.66667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/BarrageUp:material:shader_parameter/fade_alpha")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 2, 2.33333, 3.66667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/BarragePlus:material:shader_parameter/fade_alpha")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 4, 4.33333, 5.66667, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Node2D/BlackSmokeSymbolAnim:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.333333, 5.66667, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SymbolChangeAudio:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, true]
-}
-
-[sub_resource type="Animation" id="Animation_3ntr3"]
-resource_name = "barrage_2"
-length = 6.00001
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/BarrageDown:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/BarrageUp:visible")
+tracks/1/path = NodePath("Node2D/BarragePlusRed:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -6489,74 +6560,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Node2D/BarrageDown:material:shader_parameter/fade_alpha")
+tracks/2/path = NodePath("Node2D/BarragePlusRed:material:shader_parameter/fade_alpha")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2, 2.33333, 3.66667, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node2D/BarrageUp:material:shader_parameter/fade_alpha")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.333333, 1.66667, 2),
+"times": PackedFloat32Array(0, 0.33333, 1.66667, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node2D/BlackSmokeSymbolAnim:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.333333, 5.66667, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Node2D/BarrageX:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 4, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Node2D/BarrageX:material:shader_parameter/fade_alpha")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 4, 4.33333, 5.66667, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SymbolChangeAudio:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, true]
 }
 
 [sub_resource type="Animation" id="Animation_yqce6"]
@@ -6566,7 +6577,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/BarrageDown:visible")
+tracks/0/path = NodePath("Node2D/BarrageIn:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -6578,7 +6589,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/BarrageDown:material:shader_parameter/fade_alpha")
+tracks/1/path = NodePath("Node2D/BarrageIn:material:shader_parameter/fade_alpha")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -6600,6 +6611,47 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_0csvp"]
+resource_name = "barrage_in_red"
+length = 2.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SymbolChangeAudio:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/BarrageInRed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/BarrageInRed:material:shader_parameter/fade_alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_kke7y"]
 resource_name = "barrage_out"
 length = 2.00001
@@ -6607,7 +6659,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D/BarrageUp:visible")
+tracks/0/path = NodePath("Node2D/BarrageOut:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -6619,7 +6671,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D/BarrageUp:material:shader_parameter/fade_alpha")
+tracks/1/path = NodePath("Node2D/BarrageOut:material:shader_parameter/fade_alpha")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -6639,6 +6691,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7gc88"]
+resource_name = "barrage_out_red"
+length = 2.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SymbolChangeAudio:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/BarrageOutRed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/BarrageOutRed:material:shader_parameter/fade_alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_luo67"]
@@ -6682,15 +6775,58 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_hhwjc"]
+resource_name = "barrage_x_red"
+length = 2.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SymbolChangeAudio:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/BarrageXRed:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/BarrageXRed:material:shader_parameter/fade_alpha")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x3h2l"]
 _data = {
 "RESET": SubResource("Animation_eo0rg"),
 "barrage_+": SubResource("Animation_8g7p1"),
-"barrage_1": SubResource("Animation_5jcxq"),
-"barrage_2": SubResource("Animation_3ntr3"),
+"barrage_+_red": SubResource("Animation_idlv2"),
 "barrage_in": SubResource("Animation_yqce6"),
+"barrage_in_red": SubResource("Animation_0csvp"),
 "barrage_out": SubResource("Animation_kke7y"),
-"barrage_x": SubResource("Animation_luo67")
+"barrage_out_red": SubResource("Animation_7gc88"),
+"barrage_x": SubResource("Animation_luo67"),
+"barrage_x_red": SubResource("Animation_hhwjc")
 }
 
 [sub_resource type="Gradient" id="Gradient_u4eql"]
@@ -8150,6 +8286,7 @@ height = 10
 
 [node name="Boss3" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 4129
 script = ExtResource("1_ciqut")
 
 [node name="CrownAuraBlack" type="AnimatedSprite2D" parent="."]
@@ -8346,7 +8483,6 @@ hframes = 3
 position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_7na3p")
 autoplay = "default"
-frame = 8
 
 [node name="WhiteSwords" type="AnimatedSprite2D" parent="SwordAnim"]
 position = Vector2(0, -20)
@@ -8369,6 +8505,11 @@ position = Vector2(0, -20)
 texture = ExtResource("7_iospe")
 hframes = 9
 
+[node name="DualColorSwords" type="AnimatedSprite2D" parent="SwordAnim"]
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_q08ey")
+autoplay = "default"
+
 [node name="BlackFireSpawn" type="AnimatedSprite2D" parent="SwordAnim"]
 position = Vector2(-22, -30)
 scale = Vector2(0.16, 0.16)
@@ -8389,6 +8530,7 @@ scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_vpf4p")
 frame = 64
 frame_progress = 1.0
+flip_h = true
 
 [node name="WhiteFireSpawn2" type="AnimatedSprite2D" parent="SwordAnim"]
 position = Vector2(22, -30)
@@ -8396,6 +8538,7 @@ scale = Vector2(0.16, 0.16)
 sprite_frames = SubResource("SpriteFrames_71tw0")
 frame = 64
 frame_progress = 1.0
+flip_h = true
 
 [node name="SwordAnimationPlayer" type="AnimationPlayer" parent="SwordAnim"]
 libraries = {
@@ -8431,8 +8574,10 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_icga5")
+debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_layer = 0
@@ -8450,35 +8595,65 @@ material = SubResource("CanvasItemMaterial_7cwp1")
 position = Vector2(0, -76)
 scale = Vector2(0.095, 0.095)
 sprite_frames = SubResource("SpriteFrames_eiajy")
+frame_progress = 0.450878
 
-[node name="BarrageDown" type="Sprite2D" parent="Node2D"]
+[node name="BarrageIn" type="Sprite2D" parent="Node2D"]
 visible = false
 z_index = 2
 material = SubResource("ShaderMaterial_gd3th")
 position = Vector2(0, -76)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_pw5yx")
 
-[node name="BarrageUp" type="Sprite2D" parent="Node2D"]
+[node name="BarrageOut" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_81uwu")
 position = Vector2(0, -76)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_s7f6o")
 
 [node name="BarragePlus" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_2srtj")
 position = Vector2(0, -76)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_rut3u")
 
 [node name="BarrageX" type="Sprite2D" parent="Node2D"]
 visible = false
 material = SubResource("ShaderMaterial_l2dej")
 position = Vector2(0, -76)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_kt5os")
+
+[node name="BarrageInRed" type="Sprite2D" parent="Node2D"]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_gd3th")
+position = Vector2(0, -76)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_xt1ll")
+
+[node name="BarrageOutRed" type="Sprite2D" parent="Node2D"]
+visible = false
+material = SubResource("ShaderMaterial_81uwu")
+position = Vector2(0, -76)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("43_2lqyk")
+
+[node name="BarragePlusRed" type="Sprite2D" parent="Node2D"]
+visible = false
+material = SubResource("ShaderMaterial_2srtj")
+position = Vector2(0, -76)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44_3a33g")
+
+[node name="BarrageXRed" type="Sprite2D" parent="Node2D"]
+visible = false
+material = SubResource("ShaderMaterial_l2dej")
+position = Vector2(0, -76)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_3ish3")
 
 [node name="BarrageSymbolAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -8658,17 +8833,17 @@ script = ExtResource("52_1iov2")
 
 [node name="BarrageAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("85_celn5")
-volume_db = -12.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="OppressiveAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("86_305fy")
-volume_db = -8.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="UnleashCrownAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("87_6t4jh")
-volume_db = -8.0
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="DeathGlassAudio" type="AudioStreamPlayer2D" parent="."]
@@ -8678,22 +8853,23 @@ bus = &"SFX"
 
 [node name="SymbolChangeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("89_qu004")
-volume_db = -14.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="InbumentAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("91_pq41f")
+volume_db = 14.0
 bus = &"SFX"
 
 [node name="DevourStartAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("86_5ful8")
-volume_db = -13.0
+volume_db = -3.0
 bus = &"SFX"
 
 [node name="KnockbackAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("93_bn5mn")
-volume_db = -5.0
+volume_db = 11.0
 bus = &"SFX"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
@@ -8718,13 +8894,14 @@ script = ExtResource("7_esmjn")
 shake_fade = 0.0
 
 [node name="Healthbar" parent="CanvasLayer/BossHealthbar" index="1"]
-max_value = 60000.0
+max_value = 61000.0
 
 [node name="HealthPercent" parent="CanvasLayer/BossHealthbar" index="2"]
 offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5

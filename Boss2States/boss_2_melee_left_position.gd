@@ -22,7 +22,7 @@ func enter():
 		animation_player.play("idle_left")
 	else:
 		animation_player.play("idle_right")
-	await get_tree().create_timer(0.5833).timeout
+	await TimeWait.wait_sec(0.5833)#await get_tree().create_timer(0.5833).timeout
 	
 	#if (owner.center_of_screen + Vector2(-50, 0)).x - owner.position.x > 0:
 		#animation_player.play("walk_right")

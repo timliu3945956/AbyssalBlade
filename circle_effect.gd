@@ -8,8 +8,10 @@ extends Area2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var animated_sprite_2d_2: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var timer: Timer = $Timer
+var boss
 
 func _ready():
+	boss.boss_died.connect(_on_boss_died)
 	animation_player.play("circle attack")
 	animated_sprite_2d.play("new_animation")
 	timer.start()
@@ -29,3 +31,6 @@ func _process(delta):
 
 func _on_timer_timeout() -> void:
 	animated_sprite_2d_2.play("new_animation")
+	
+func _on_boss_died():
+	queue_free()

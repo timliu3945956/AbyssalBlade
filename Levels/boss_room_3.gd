@@ -178,6 +178,8 @@ extends CenterContainer
 @onready var devour_circle_collision: CollisionPolygon2D = $Devour/DevourCircleArea2D/DevourCircleCollision
 @onready var devour_circle_animation: AnimationPlayer = $Devour/DevourCircleAnimation
 @onready var loop_timer: Timer = $ParallaxBackground/LoopTimer
+@onready var devour: Node2D = $Devour
+@onready var phase_transition_audio: AudioStreamPlayer2D = $PhaseTransitionAudio
 
 
 var oppressive_left: String
@@ -243,6 +245,7 @@ func _ready() -> void:
 		GlobalCount.paused = false
 		player.set_process(true)
 		player.set_physics_process(true)
+	GlobalCount.in_subtree_menu = false
 
 func _process(delta: float) -> void:
 	if GlobalCount.timer_active:
@@ -345,7 +348,7 @@ func ground_aura():
 	#aura_tween_2.tween_property(ground_aura_1, "modulate:a", 1.0, 0.5)
 	#light_tween.tween_property(ground_aura_2, "modulate:a", 1.0, 0.5)
 	
-	await get_tree().create_timer(0.93).timeout
+	await TimeWait.wait_sec(0.93)#await get_tree().create_timer(0.93).timeout
 	devour_circle_animation.play("circle_pulse")
 	devour_circle_collision.disabled = false
 	ground_aura_2.play("default")

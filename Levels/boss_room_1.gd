@@ -33,12 +33,34 @@ extends CenterContainer
 @onready var in_attack_3: AnimatedSprite2D = $"InOutAttack/Telegraph3,2/Sprite2D/AnimatedSprite2D"
 @onready var in_attack_4: AnimatedSprite2D = $"InOutAttack/Telegraph3,3/Sprite2D/AnimatedSprite2D"
 
+@onready var sword_drop_1_1: Sprite2D = $"SwordDrop1,1"
+@onready var sword_drop_1_2: Sprite2D = $"SwordDrop1,2"
+@onready var sword_drop_1_3: Sprite2D = $"SwordDrop1,3"
+@onready var sword_drop_1_4: Sprite2D = $"SwordDrop1,4"
+@onready var sword_drop_2_1: Sprite2D = $"SwordDrop2,1"
+@onready var sword_drop_2_2: Sprite2D = $"SwordDrop2,2"
+@onready var sword_drop_2_3: Sprite2D = $"SwordDrop2,3"
+@onready var sword_drop_2_4: Sprite2D = $"SwordDrop2,4"
+@onready var sword_drop_3_1: Sprite2D = $"SwordDrop3,1"
+@onready var sword_drop_3_2: Sprite2D = $"SwordDrop3,2"
+@onready var sword_drop_3_3: Sprite2D = $"SwordDrop3,3"
+@onready var sword_drop_3_4: Sprite2D = $"SwordDrop3,4"
+@onready var sword_drop_4_1: Sprite2D = $"SwordDrop4,1"
+@onready var sword_drop_4_2: Sprite2D = $"SwordDrop4,2"
+@onready var sword_drop_4_3: Sprite2D = $"SwordDrop4,3"
+@onready var sword_drop_4_4: Sprite2D = $"SwordDrop4,4"
+@onready var arrow_marker: Marker2D = $ArrowMarker
+
+
+@onready var in_out_attack: Area2D = $InOutAttack
+
 
 @onready var cutscene_animation_player: AnimationPlayer = $CutsceneAnimationPlayer
 @onready var cutscene_camera: Camera2D = $CutsceneCamera
 @onready var camera_2d: Camera2D = $Player/Camera2D
 
 @onready var static_outer_arena: CollisionPolygon2D = $StaticBody2D/CollisionPolygon2D
+@onready var phase_transition_audio: AudioStreamPlayer2D = $PhaseTransitionAudio
 
 
 func _ready():
@@ -60,6 +82,7 @@ func _ready():
 		player.set_process(true)
 		player.set_physics_process(true)
 		GlobalCount.paused = false
+	GlobalCount.in_subtree_menu = false
 	
 func _process(delta):
 	if GlobalCount.timer_active:

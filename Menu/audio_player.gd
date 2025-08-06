@@ -15,6 +15,7 @@ signal progress_changed(position_seconds: float)
 signal track_finished
 
 func _ready():
+	#ConfigFileHandler.apply_saved_audio()
 	#var audio_settings = ConfigFileHandler.load_audio_settings()
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(audio_settings.master_volume))
 	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(audio_settings.sfx_volume))

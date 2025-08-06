@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn382fny2ql5w"]
+
+[ext_resource type="Script" path="res://Menu/exit_panel.gd" id="1_je0rp"]
+[ext_resource type="Texture2D" uid="uid://bb52a47fukmpm" path="res://Utilities/menu/minibox.png" id="1_mfl08"]
+[ext_resource type="FontFile" uid="uid://calx8htg8hbrm" path="res://Utilities/Font/type_writer.ttf" id="2_w0cuu"]
+[ext_resource type="Script" path="res://Levels/button_release.gd" id="4_ootvj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0w6l4"]
+texture = ExtResource("1_mfl08")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcpoj"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5neq"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07q3q"]
+bg_color = Color(0, 0, 0, 0.313726)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rwkib"]
+
+[node name="ExitPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_je0rp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0w6l4")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -32.0
+offset_right = 27.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_w0cuu")
+theme_override_font_sizes/font_size = 9
+text = "Are you sure?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -8.0
+offset_right = 46.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="YesButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../NoButton")
+focus_neighbor_bottom = NodePath("../NoButton")
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_w0cuu")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxFlat_kcpoj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kcpoj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j5neq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_07q3q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rwkib")
+text = "Yes"
+script = ExtResource("4_ootvj")
+
+[node name="NoButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../YesButton")
+focus_neighbor_bottom = NodePath("../YesButton")
+theme_override_colors/font_hover_color = Color(0.60933, 0.60933, 0.60933, 1)
+theme_override_colors/font_pressed_color = Color(0.454524, 0.454524, 0.454524, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_w0cuu")
+theme_override_font_sizes/font_size = 9
+theme_override_styles/focus = SubResource("StyleBoxFlat_kcpoj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kcpoj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_j5neq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_07q3q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rwkib")
+text = "No"
+script = ExtResource("4_ootvj")
+
+[connection signal="mouse_exited" from="Panel/VBoxContainer/YesButton" to="Panel/VBoxContainer/YesButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Panel/VBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="mouse_exited" from="Panel/VBoxContainer/NoButton" to="Panel/VBoxContainer/NoButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="Panel/VBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

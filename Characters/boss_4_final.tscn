@@ -2429,6 +2429,7 @@ material = SubResource("CanvasItemMaterial_atl3d")
 position = Vector2(0, -49)
 scale = Vector2(0.315, 0.315)
 sprite_frames = SubResource("SpriteFrames_xbhqq")
+frame_progress = 0.990563
 speed_scale = 0.5
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -2639,28 +2640,28 @@ script = ExtResource("30_0tokx")
 
 [node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("40_fe371")
-volume_db = -20.0
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="KnockbackAudio" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -12)
 stream = ExtResource("41_ko7o3")
-volume_db = -10.0
+volume_db = 11.0
 bus = &"SFX"
 
 [node name="ConstantFireAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("35_sc4hd")
-volume_db = -15.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="OppressiveAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("43_ekpbi")
-volume_db = -8.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="SymbolChangeAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("48_i3ah7")
-volume_db = -14.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -2690,6 +2691,7 @@ offset_left = 60.0
 offset_top = 34.0
 offset_right = 84.0
 offset_bottom = 42.0
+theme_override_font_sizes/font_size = 9
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 5

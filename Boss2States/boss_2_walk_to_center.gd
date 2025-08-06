@@ -10,7 +10,7 @@ func enter():
 	#owner.direction = owner.center_of_screen - owner.position
 	animation_player.play("disappear")
 	owner.smoke.play("smoke")
-	await get_tree().create_timer(0.6).timeout
+	await TimeWait.wait_sec(0.6)#await get_tree().create_timer(0.6).timeout
 	
 	animation_player.play("appear")
 	owner.smoke.play("smoke")

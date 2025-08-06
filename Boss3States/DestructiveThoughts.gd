@@ -20,94 +20,94 @@ func enter():
 	pillar_spawn_2(owner.center_of_screen + Vector2(59, 59))
 	pillar_spawn_3(owner.center_of_screen + Vector2(59, -59))
 	pillar_spawn_4(owner.center_of_screen + Vector2(-59, 59))
-	await get_tree().create_timer(3).timeout
+	await TimeWait.wait_sec(3)#await get_tree().create_timer(3).timeout
 	
 	owner.protean_animation_player.play("protean_bait")
 	owner.protean_follow_timer.start()
-	await get_tree().create_timer(3.5).timeout
+	await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
 	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	owner.protean_animation_player.play("protean_bait")
 	owner.protean_follow_timer.start()
-	await get_tree().create_timer(3.5).timeout
+	await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
 	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	owner.protean_animation_player.play("protean_bait")
 	owner.protean_follow_timer.start()
-	await get_tree().create_timer(3.5).timeout
+	await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
 	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	owner.protean_animation_player.play("protean_bait")
 	owner.protean_follow_timer.start()
-	await get_tree().create_timer(3.5).timeout
+	await TimeWait.wait_sec(3.5)#await get_tree().create_timer(3.5).timeout
 	animation_player.play("barrage")
 	await owner.protean_animation_player.animation_finished # 4 seconds / 48 frames
 	owner.oppressive_audio.play()
 	owner.protean_animation_player.play("protean_hit")
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	
 	#await for testing if works
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	
 
 	can_transition = true
 	
 func pillar_spawn(pillar_position: Vector2):
-	var pillar = DestructivePillar.instantiate()
-	pillar.position = pillar_position
-	pillar.player = owner.player
+	owner.pillar = DestructivePillar.instantiate()
+	owner.pillar.position = pillar_position
+	owner.pillar.player = owner.player
 	if pick_random_timer == 1:
-		pillar.timer_set = 15.0
+		owner.pillar.timer_set = 15.0
 	else:
-		pillar.timer_set = 25.0
-	pillar.collision_set = false #true
-	get_parent().get_parent().get_parent().add_child(pillar)
+		owner.pillar.timer_set = 25.0
+	owner.pillar.collision_set = false #true
+	get_parent().get_parent().get_parent().add_child(owner.pillar)
 	
 func pillar_spawn_2(pillar_position: Vector2):
-	var pillar_2 = DestructivePillar2.instantiate()
-	pillar_2.position = pillar_position
-	pillar_2.player = owner.player
+	owner.pillar_2 = DestructivePillar2.instantiate()
+	owner.pillar_2.position = pillar_position
+	owner.pillar_2.player = owner.player
 	if pick_random_timer == 1:
-		pillar_2.timer_set = 15.0
+		owner.pillar_2.timer_set = 15.0
 	else:
-		pillar_2.timer_set = 25.0
-	pillar_2.collision_set = false #true
-	get_parent().get_parent().get_parent().add_child(pillar_2)
+		owner.pillar_2.timer_set = 25.0
+	owner.pillar_2.collision_set = false #true
+	get_parent().get_parent().get_parent().add_child(owner.pillar_2)
 	
 func pillar_spawn_3(pillar_position: Vector2):
-	var pillar_3 = DestructivePillar3.instantiate()
-	pillar_3.position = pillar_position
-	pillar_3.player = owner.player
+	owner.pillar_3 = DestructivePillar3.instantiate()
+	owner.pillar_3.position = pillar_position
+	owner.pillar_3.player = owner.player
 	if pick_random_timer == 1:
-		pillar_3.timer_set = 25.0
+		owner.pillar_3.timer_set = 25.0
 	else:
-		pillar_3.timer_set = 15.0
-	pillar_3.collision_set = false #true
-	get_parent().get_parent().get_parent().add_child(pillar_3)
+		owner.pillar_3.timer_set = 15.0
+	owner.pillar_3.collision_set = false #true
+	get_parent().get_parent().get_parent().add_child(owner.pillar_3)
 	
 func pillar_spawn_4(pillar_position: Vector2):
-	var pillar_4 = DestructivePillar4.instantiate()
-	pillar_4.position = pillar_position
-	pillar_4.player = owner.player
+	owner.pillar_4 = DestructivePillar4.instantiate()
+	owner.pillar_4.position = pillar_position
+	owner.pillar_4.player = owner.player
 	if pick_random_timer == 1:
-		pillar_4.timer_set = 25.0
+		owner.pillar_4.timer_set = 25.0
 	else:
-		pillar_4.timer_set = 15.0
-	pillar_4.collision_set = false #true
-	get_parent().get_parent().get_parent().add_child(pillar_4)
+		owner.pillar_4.timer_set = 15.0
+	owner.pillar_4.collision_set = false #true
+	get_parent().get_parent().get_parent().add_child(owner.pillar_4)
 
 func transition():
 	if can_transition:

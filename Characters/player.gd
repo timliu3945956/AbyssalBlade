@@ -173,6 +173,8 @@ var last_input_was_mouse: bool = true
 @onready var mana_damage_bar: ProgressBar = $CanvasLayer/Manabar/ManaDamageBar
 @onready var transform_fire_bar: GPUParticles2D = $CanvasLayer/TransformFireBar
 @onready var transform_fire_ball: GPUParticles2D = $CanvasLayer/TransformFireBar/TransformFireBall
+@onready var pause: Control = $CanvasLayer/Pause
+
 
 #@onready var time: Label = $CanvasLayer/Time
 @onready var time: Label = $CanvasLayer/CenterContainer/Time
@@ -221,14 +223,16 @@ var debuffs = preload("res://Other/DebuffBar.tscn")
 var debuff_bar
 
 var input_enabled := true
-
-
+var deviceId
+var movement_input
 #@onready var fill_style : StyleBoxTexture = manabar.get("theme_override_styles/fill")
 #var fill_grad : Gradient = fill_style.gradient
 const FULL_LEFT : Color = Color("#3c48fc")
 const FULL_RIGHT : Color = Color("#0077ff")
 const WHITE_FILL := preload("res://UI/manabar_fill_white_stylebox.tres")
 const BLUE_FILL := preload("res://UI/manabar_fill_blue_stylebox.tres")
+
+var attack_tutorial_popup = preload("res://Menu/AttackTutorialPopup.tscn")
 
 func _ready():
 	# activate when doing tether for boss 5
@@ -320,6 +324,7 @@ func _ready():
 	else:
 		dash_restore_time = 1
 		abyss_mode_chain.visible = false
+	GlobalCount.player_dead = false
 	
 func _on_mana_changed(value: float) -> void:
 	if value >= manabar.max_value:
@@ -332,16 +337,18 @@ func play_with_random_pitch(player : AudioStreamPlayer2D, min_pitch: float = 0.9
 	player.play()
 	
 func _input(event):
-	if event.is_action_pressed("attack") and !GlobalCount.paused:
-		attack_buffer = ATTACK_BUFFER_TIME
-	else:
-		attack_buffer = 0.0
-		
-	if event is InputEventJoypadButton:
-		print("BUTTON  :", event.device, " id:", event.button_index, " pressed:", event.pressed)
-	elif event is InputEventJoypadMotion:
-		if abs(event.axis_value) > 0.05:           # ignore tiny jitters
-			print("AXIS    :", event.device, " axis:", event.axis, " value:", event.axis_value)
+	#if event.is_action_pressed("attack") and !GlobalCount.paused:
+		#attack_buffer = ATTACK_BUFFER_TIME
+	#else:
+		#attack_buffer = 0.0
+	pass
+	#if event is InputEventJoypadButton:
+		#print("BUTTON  :", event.device, " id:", event.button_index, " pressed:", event.pressed)
+	#elif event is InputEventJoypadMotion:
+		#if abs(event.axis_value) > 0.05:           # ignore tiny jitters
+			#print("AXIS    :", event.device, " axis:", event.axis, " value:", event.axis_value)
+			
+
 	
 func _process(delta):
 	attack_buffer = max(attack_buffer - delta, 0.0)
@@ -355,50 +362,39 @@ func _process(delta):
 		time.visible = true
 		time.text = time_string
 	
-	var hold_attack = InputManager.GetActionPressed("attack") #Input.is_action_pressed("attack")
+	var hold_attack = InputManager.GetActionPressed("attack")
 	var want_attack = hold_attack or attack_buffer > 0.0
-	if state == MOVE and want_attack and !GlobalCount.paused and attack_cooldown.is_stopped():
+	# Included right mouse button / right trigger button for surge attacks
+	if state == MOVE and want_attack and !GlobalCount.paused and attack_cooldown.is_stopped() or (InputManager.GetActionPressed("heavyattack") and transformed and state == MOVE and !GlobalCount.paused):
 		_start_attack()
 		attack_buffer = 0.0
+		if GlobalCount.tutorial_popup:
+			GlobalCount.tutorial_popup = false
+			spawn_tutorial_popup()
 		
 func _physics_process(delta):
+	#deviceId = SteamControllerInput.get_controllers()
 	if !input_enabled:
 		return
 	input_direction = InputManager.GetMovementVector()
 	input_direction = input_direction.normalized()
-	#if InputManager.controllerManager.activeController == -1:
-		#input_direction = Vector2(
-			#Input.get_action_strength("right") - Input.get_action_strength("left"),
-			#Input.get_action_strength("down") - Input.get_action_strength("up")
-		#)
-		#input_direction = input_direction.normalized()
-	##else:
-	#if InputManager.controllerManager.activeController != -1:
-		#input_direction = Input.get_vector("left", "right", "up", "down")
-		#input_direction = input_direction.normalized()
-		#if input_direction.length() > 0:
-			#input_direction = input_direction.normalized()
-	 #Reads right analog stick input
-	var right_stick_input = Vector2(
-		Input.get_joy_axis(0, 2),
-		Input.get_joy_axis(0, 3)
-	)
-	if InputManager.activeInputSource == 1:
-		controller_aim_direction = right_stick_input
+	
+	var right_stick = InputManager.controllerManager.GetControllerStickInput(-1, false)
+	#var pad := SteamControllerInput.get_primary_pad()
+	#var right_stick = SteamControllerInput.get_aim_vector(pad)
+	
+	
+	if InputManager.activeInputSource == InputManager.InputSource.CONTROLLER:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		if controller_aim_direction.length() >= 0.2:
-			controller_aim_direction = right_stick_input.normalized()
-			
-			last_direction_input = controller_aim_direction
-			cursor_aim.rotation = global_position.angle_to_point(controller_aim_direction + global_position)
-		else:
-			controller_aim_direction = last_direction_input
-			cursor_aim.rotation = global_position.angle_to_point(controller_aim_direction + global_position)
+		if right_stick != Vector2.ZERO:
+			last_direction_input = right_stick
+		controller_aim_direction = last_direction_input
+		cursor_aim.rotation = global_position.angle_to_point(global_position + controller_aim_direction)
 	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		controller_aim_direction = (get_global_mouse_position() - global_position).normalized()
 		cursor_aim.rotation = cursor_aim.global_position.angle_to_point(get_global_mouse_position())
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			
+		
 	if InputManager.GetActionJustPressed("transform") and mana >= 100 and !transformed and !GlobalCount.paused and !GlobalCount.abyss_mode:
 		buffered_transform_input = true
 	
@@ -501,7 +497,7 @@ func move_state(delta):
 	if knockback_time_left > 0:
 		state = KNOCKBACK
 	else:
-		if InputManager.GetActionJustPressed("dash") and can_dash and !GlobalCount.paused:
+		if InputManager.GetActionJustPressed("dash") and can_dash and !GlobalCount.paused: 
 		#and dash_meter.value >= 100:
 			dash_time_left = dash_duration
 			state = DASH
@@ -521,40 +517,11 @@ func move_state(delta):
 					#dash_restore_timer.start()
 				
 			count_dash_gauge()
-		
-		#elif attack_pressed and !attack_busy and attack_cooldown.is_stopped() and !GlobalCount.paused:
-			#_start_attack()
-		#attack_pressed = false
-		
-		#elif Input.is_action_pressed("attack") and not attack_busy and !GlobalCount.paused:
-			#if Input.is_action_pressed("heavyattack"):
-				#pass
-			#else:
-				#_start_attack()
-			#animation_tree.set("parameters/Attack/Attack/blend_position", controller_aim_direction)
-			#animation_tree.set("parameters/Attack2/Attack2/blend_position", controller_aim_direction)
-			#animation_tree.set("parameters/Idle/blend_position", controller_aim_direction)
-			#if attack_step == 1:
-				#attack_step = 2
-			#else:
-				#attack_step = 1
-			#attack_reset.stop()
-			#attack_reset.start()
-			#state = ATTACK
-			#swing.play()
-			#can_attack = false
-			#if !transformed:
-				##can_attack = false
-				##attack_cooldown.start()
-				#pass
-			#else:
-				#attack_cooldown.stop()
-				#
-				#count_dash_gauge()
-			#return
-			#GlobalCount.slash_count += 1
 			
 		if InputManager.GetActionPressed("heavyattack") and !transformed and !GlobalCount.paused:
+			if GlobalCount.tutorial_popup:
+				GlobalCount.tutorial_popup = false
+				spawn_tutorial_popup()
 			animation_tree.set("parameters/HeavyAttack/blend_position", controller_aim_direction)
 			animation_tree.set("parameters/Idle/blend_position", controller_aim_direction)
 			state = HEAVYATTACK
@@ -581,10 +548,7 @@ func dash_state(delta):
 	if dash_time_left > 0:
 		dash_time_left -= delta
 		
-		var new_input = Vector2(
-			Input.get_action_strength("right") - Input.get_action_strength("left"),
-			Input.get_action_strength("down") - Input.get_action_strength("up")
-		).normalized()
+		var new_input = InputManager.GetMovementVector().normalized()
 		
 		if new_input != Vector2.ZERO:
 			dash_vector = new_input
@@ -825,7 +789,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	#print(anim_name)
 	if anim_name.begins_with("attack"):
 		var dur = Time.get_ticks_msec() - swing_start
-		print("Swing length (ms): ", dur)
+		#print("Swing length (ms): ", dur)
 		attack_busy = false
 		if InputManager.GetActionJustPressed("dash") and can_dash and !GlobalCount.paused:
 			state = DASH
@@ -833,35 +797,29 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			
 		state = MOVE
 		return
-		#if Input.is_action_pressed("attack") and attack_cooldown.is_stopped() and !GlobalCount.paused:
-			#_start_attack()
-			#return
-			#
-		#
-		#attack_busy = false
-		#state = MOVE
-		#return
 	if anim_name.begins_with("heavy"):
 		move_speed = 85
 		state = MOVE
 		return
 		
-	#if anim_name.begins_with("charge"):
-		#if InputManager.GetActionJustPressed("dash") and can_dash and !GlobalCount.paused:
-			#state = DASH
-			#return
-		
 	if anim_name == "transform":
 		transform_timer()
-	
-	#if Input.is_action_just_pressed("dash") and can_dash and !GlobalCount.paused:
-			#state = DASH
-			#return
 		
 	state = MOVE
 	
 func transform_move_fire_bar():
 	transform_fire_bar.position = Vector2(manabar.position.x + 144.945, manabar.position.y + 2)
+	GlobalCount.surge_count += 1
+	Global.player_data_slots[Global.current_slot_index].surge_count += 1
+	Global.save_data(Global.current_slot_index)
+	
+	if Global.player_data_slots[Global.current_slot_index].surge_count >= 100:
+		var achievement = Steam.getAchievement("Surge100")
+		if achievement.ret && !achievement.achieved:
+			Steam.setAchievement("Surge100")
+			Steam.storeStats()
+		SteamGlobal._check_completionist()
+	
 
 func transform_timer():
 	is_transforming = false
@@ -890,8 +848,6 @@ func transform_timer():
 	
 	var mana_bar_fire_tween = get_tree().create_tween()
 	mana_bar_fire_tween.tween_property(mana_bar_fire.process_material, "color:a", 0, 5).set_trans(Tween.TRANS_LINEAR)
-	
-	GlobalCount.surge_count += 1
 
 func get_damage_amount() -> int:
 	return damage_amount
@@ -935,14 +891,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		death = true
 		death_audio.play()
 		#GlobalCount.slow_down_game()
-		flash()
 		
-		HitStopManager.hit_stop_short()
-		GlobalCount.camera.apply_shake(5, 20.0)
-		state_machine.travel("death")
-		var animation_length = animation_player.get_animation("death").length
-		
-		await get_tree().create_timer(animation_length).timeout
 		GlobalCount.death_count += 1
 		Global.player_data_slots[Global.current_slot_index].deaths += 1
 		if Global.player_data_slots[Global.current_slot_index].deaths >= 1:
@@ -960,7 +909,22 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			if achievement.ret && !achievement.achieved:
 				Steam.setAchievement("Die200")
 				Steam.storeStats()
+		SteamGlobal._check_completionist()
 		Global.save_data(Global.current_slot_index)
+		
+		flash()
+		GlobalCount.in_subtree_menu = false
+		pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
+		HitStopManager.hit_stop_short()
+		GlobalCount.camera.apply_shake(5, 20.0)
+		state_machine.travel("death")
+		var animation_length = animation_player.get_animation("death").length
+		
+		await get_tree().create_timer(animation_length).timeout
+		
 		
 		if is_instance_valid(sprite):
 			sprite.queue_free()
@@ -983,14 +947,7 @@ func _on_hurtbox_slash_area_entered(area: Area2D) -> void:
 	if health <= 0:
 		death = true
 		death_audio.play()
-		#GlobalCount.slow_down_game()
-		flash()
 		
-		HitStopManager.hit_stop_short()
-		GlobalCount.camera.apply_shake(5, 20.0)
-		var animation_length = animation_player.get_animation("death").length
-		
-		await get_tree().create_timer(animation_length).timeout
 		GlobalCount.death_count += 1
 		Global.player_data_slots[Global.current_slot_index].deaths += 1
 		if Global.player_data_slots[Global.current_slot_index].deaths >= 1:
@@ -1008,7 +965,20 @@ func _on_hurtbox_slash_area_entered(area: Area2D) -> void:
 			if achievement.ret && !achievement.achieved:
 				Steam.setAchievement("Die200")
 				Steam.storeStats()
+		SteamGlobal._check_completionist()
 		Global.save_data(Global.current_slot_index)
+		
+		#GlobalCount.slow_down_game()
+		flash()
+		GlobalCount.in_subtree_menu = false
+		pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		HitStopManager.hit_stop_short()
+		GlobalCount.camera.apply_shake(5, 20.0)
+		var animation_length = animation_player.get_animation("death").length
+		
+		await get_tree().create_timer(animation_length).timeout
 		
 		if is_instance_valid(sprite):
 			sprite.queue_free()
@@ -1031,16 +1001,7 @@ func kill_player():
 	if health <= 0:
 		death = true
 		death_audio.play()
-		#GlobalCount.slow_down_game()
-		flash()
 		
-		HitStopManager.hit_stop_short()
-		GlobalCount.camera.apply_shake(5, 20.0)
-		
-		state_machine.travel("death")
-		var animation_length = animation_player.get_animation("death").length
-		
-		await get_tree().create_timer(animation_length).timeout
 		GlobalCount.death_count += 1
 		Global.player_data_slots[Global.current_slot_index].deaths += 1
 		if Global.player_data_slots[Global.current_slot_index].deaths >= 1:
@@ -1058,7 +1019,24 @@ func kill_player():
 			if achievement.ret && !achievement.achieved:
 				Steam.setAchievement("Die200")
 				Steam.storeStats()
+		SteamGlobal._check_completionist()
 		Global.save_data(Global.current_slot_index)
+		
+		#GlobalCount.slow_down_game()
+		flash()
+		GlobalCount.in_subtree_menu = false
+		pause.visible = false
+		GlobalCount.paused = false
+		GlobalCount.player_dead = true
+		
+		HitStopManager.hit_stop_short()
+		GlobalCount.camera.apply_shake(5, 20.0)
+		
+		state_machine.travel("death")
+		var animation_length = animation_player.get_animation("death").length
+		
+		await get_tree().create_timer(animation_length).timeout
+		
 		
 		if is_instance_valid(sprite):
 			sprite.queue_free()
@@ -1078,7 +1056,8 @@ func _on_dash_cooldown_timeout() -> void:
 func _on_attack_cooldown_timeout() -> void:
 	can_attack = true
 	var want_again = InputManager.GetActionPressed("attack") or attack_buffer > 0.0
-	if want_again and state == MOVE and !GlobalCount.paused:
+	# Included right mouse button / right trigger button for surge attacks
+	if want_again and state == MOVE and !GlobalCount.paused or (InputManager.GetActionPressed("heavyattack") and transformed and state == MOVE and !GlobalCount.paused):
 		_start_attack()
 		attack_buffer = 0.0
 	
@@ -1098,9 +1077,6 @@ func restore_dash():
 			#
 	#if dash_gauge == max_dash_gauge:
 		#dash_restore_timer.stop()
-		
-	
-
 
 func _on_flash_timer_timeout() -> void:
 	if is_instance_valid(sprite):
@@ -1261,8 +1237,9 @@ func _on_right_oppressive_area_entered(area: Area2D) -> void:
 	oppressive_color = boss_3.right_color
 
 func _on_orb_collected():
+	await TimeWait.wait_sec(0.0833)
+	#await get_tree().process_frame
 	orb_buff_vfx()
-	get_tree().create_timer(0.2).timeout
 	orb_buff = true
 	
 	
@@ -1277,10 +1254,12 @@ func orb_buff_vfx():
 	first_gold_vfx.play("default")
 
 func orb_buff_vfx_off():
+	
 	var first_vfx = get_tree().create_tween()
 	first_vfx.tween_property(first_gold_vfx, "modulate:a", 0, 0.2)
 	var second_vfx = get_tree().create_tween()
 	second_vfx.tween_property(second_gold_vfx, "modulate:a", 0, 0.2)
+	
 	
 func _on_gold_orb_vfx_timer_timeout() -> void:
 	second_gold_vfx.play("default")
@@ -1359,3 +1338,8 @@ func _on_orb_absorb_hurtbox_area_entered(area: Area2D) -> void:
 	orb_soak_audio.play()
 	get_tree().create_timer(0.2).timeout
 	orb_buff = true
+	
+	
+func spawn_tutorial_popup() -> void:
+	var popup = attack_tutorial_popup.instantiate()
+	canvas_layer.add_child(popup)

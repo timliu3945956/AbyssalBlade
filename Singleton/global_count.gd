@@ -36,7 +36,7 @@ var from_stage_select_enter: bool = true
 var paused: bool = false
 var first_time_play: bool = false
 
-var boss_4_final_health: float = 100 #testing hp
+var boss_4_final_health: float = 12500 #testing hp
 var boss_4_final_player_mana: int = 10
 
 var ominous_wind_music = preload("res://audio/sfx/dialogue/ominous wind sfx.wav")
@@ -45,6 +45,10 @@ var npc_talk = preload("res://audio/sfx/dialogue/npc dialogue.wav")
 var show_adjust_control: bool = false
 
 var abyss_mode: bool = false
+var demo_done: bool = false
+var player_dead: bool = false
+
+var tutorial_popup: bool = false
 #func _ready() -> void:
 
 func reset_count():

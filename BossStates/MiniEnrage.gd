@@ -6,11 +6,8 @@ var can_transition: bool = false
 func enter():
 	super.enter()
 	owner.velocity = Vector2.ZERO
-	#await get_tree().create_timer(1).timeout
 	animation_player.play("mini_enrage")
-	#await get_tree().create_timer(0.5).timeout
-	#shout_mini_enrage.play("shout")
-	await get_tree().create_timer(0.5833).timeout
+	await TimeWait.wait_sec(0.5833)#await get_tree().create_timer(0.5833).timeout
 	owner.enrage_background.play("background_change")
 	
 	owner.enrage_fire.emitting = true
@@ -19,8 +16,7 @@ func enter():
 	#modify collision shape of slash here or in animationplayer
 	await owner.enrage_background.animation_finished
 	animation_player.play("idle_right")
-	await get_tree().create_timer(2).timeout #originally 1 second
-	#await animation_player.animation_finished
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout #originally 1 second
 	can_transition = true
 	
 func transition():

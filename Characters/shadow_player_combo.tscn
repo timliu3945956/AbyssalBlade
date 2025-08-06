@@ -2300,12 +2300,12 @@ frame_progress = 1.0
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_8cw82")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="jump_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_ig2cl")
-volume_db = -10.0
+volume_db = 3.0
 bus = &"SFX"
 
 [node name="ChangeSpriteTimer" type="Timer" parent="."]

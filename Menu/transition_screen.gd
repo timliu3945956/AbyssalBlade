@@ -44,6 +44,12 @@ func _on_animation_finished(anim_name):
 		await get_tree().create_timer(2).timeout
 		on_transition_finished.emit()
 		animation_player.play("fade_to_normal")
+	elif anim_name == "fade_to_black_credits":
+		on_transition_finished.emit()
+		animation_player.play("fade_to_main_menu")
+	elif anim_name == "fade_black_splash":
+		on_transition_finished.emit()
+		animation_player.play("fade_to_splash")
 	
 func transition():
 	color_rect.visible = true
@@ -68,3 +74,11 @@ func transition_end_game():
 func transition_main_menu():
 	color_rect.visible = true
 	animation_player.play("fade_to_black_main_menu")
+	
+func transition_credits():
+	color_rect.visible = true
+	animation_player.play("fade_to_black_credits")
+	
+func transition_splash():
+	color_rect.visible = true
+	animation_player.play("fade_black_splash")

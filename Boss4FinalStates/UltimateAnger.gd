@@ -42,7 +42,7 @@ func enter():
 		#player.beam_circle_meteor()
 		#owner.boss_room_animation.play("meteor")
 		owner.attack_meter_animation.play("meteor")
-		await get_tree().create_timer(2.4988).timeout
+		await TimeWait.wait_sec(2.4988)#await get_tree().create_timer(2.4988).timeout
 		animation_player.play("attack")
 		if player.global_position.x - owner.global_position.x > 0:
 			owner.sprite.flip_h = false
@@ -55,7 +55,7 @@ func enter():
 	
 	await owner.boss_1_animation.animation_finished
 	owner.attack_meter_animation.play("knockback")
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	if player.global_position.x - owner.global_position.x > 0:
 		owner.sprite.flip_h = false
 	else:
@@ -66,7 +66,7 @@ func enter():
 	owner.knockback_effect_anger.play("knockback_effect")
 	owner.knockback_audio.play()
 	apply_knockback()
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	can_transition = true
 	
 func apply_knockback():

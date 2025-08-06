@@ -34,7 +34,7 @@ func enter():
 	animation_player.play("jump")
 	await animation_player.animation_finished
 	owner.boss_attack_animation.play("chain_impact")
-	await get_tree().create_timer(2.8333).timeout
+	await TimeWait.wait_sec(2.8333)#await get_tree().create_timer(2.8333).timeout
 	owner.position = owner.center_of_screen + Vector2(100, 0)
 	if owner.center_of_screen.x - owner.position.x > 0:
 		owner.sprite.flip_h = false
@@ -43,17 +43,6 @@ func enter():
 	animation_player.play("slamdown")
 	await animation_player.animation_finished
 	
-	#animation_player.play("jump")
-	#await animation_player.animation_finished
-	
-	#start_triangle_mechanic()
-	#await get_tree().create_timer(0.9166).timeout #0.4167
-	#if owner.center_of_screen.x - owner.position.x > 0:
-		#owner.sprite.flip_h = false
-	#else:
-		#owner.sprite.flip_h = true
-	#animation_player.play("slamdown")
-	#await animation_player.animation_finished
 	if owner.boss_death == false:
 		can_transition = true
 	
@@ -70,7 +59,7 @@ func start_triangle_mechanic():
 	activate_triangles(first)
 	await get_tree().create_timer(HIT_DURATION + 0.5).timeout
 	owner.camera_shake()
-	chain_tiles_audio.play()
+	owner.chain_tiles_audio.play()
 	activate_triangles(second)
 	await get_tree().create_timer(HIT_DURATION).timeout
 	owner.camera_shake()

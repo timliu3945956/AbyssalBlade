@@ -1242,7 +1242,7 @@ frame_progress = 1.0
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_pwyl8")
-volume_db = -5.0
+volume_db = 10.0
 bus = &"SFX"
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

@@ -10,7 +10,7 @@ func enter():
 	await owner.attack_meter_animation.animation_finished
 	owner.state_machine.travel("charge_hope_finish")
 	owner.boss_room.spawn_gold_clone()
-	await get_tree().create_timer(1).timeout
+	await TimeWait.wait_sec(1)#await get_tree().create_timer(1).timeout
 	owner.gold_count += 1
 	can_transition = true
 	

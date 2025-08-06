@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://b4bc0yh2repwy"]
+[gd_scene load_steps=99 format=3 uid="uid://b4bc0yh2repwy"]
 
 [ext_resource type="Script" path="res://Menu/LobbyScene/lobby_scene.gd" id="1_qi8dg"]
 [ext_resource type="PackedScene" uid="uid://cubcpgdntlnmq" path="res://Characters/player.tscn" id="1_xk7iv"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bitk3i3ad6q14" path="res://sprites/character/Walk/walk_down.png" id="28_h1kr6"]
 [ext_resource type="AudioStream" uid="uid://ckpbcn4ih0yiy" path="res://audio/sfx/Boss0/spawn_shadow.wav" id="31_g2xbx"]
 [ext_resource type="AudioStream" uid="uid://bkuajqi0av64h" path="res://audio/music/FLEETING HOPE.wav" id="33_vehvu"]
+[ext_resource type="AudioStream" uid="uid://vpcl07uot6n2" path="res://audio/music/ACCEPTANCE.wav" id="34_j176i"]
 [ext_resource type="PackedScene" uid="uid://joxup503vv0s" path="res://Menu/LobbyScene/LobbyDenial.tscn" id="34_xmpiq"]
 [ext_resource type="PackedScene" uid="uid://b47ajf8g50pym" path="res://Menu/LobbyScene/LobbyAnger.tscn" id="35_74vvt"]
 [ext_resource type="PackedScene" uid="uid://8gb0e5vpq4uk" path="res://Menu/LobbyScene/LobbyBargain.tscn" id="36_b2tkc"]
@@ -1249,7 +1250,7 @@ texture = SubResource("GradientTexture2D_vfibk")
 
 [node name="MiddleLight3" type="PointLight2D" parent="."]
 position = Vector2(241, 27)
-range_z_max = 0
+range_z_max = -1
 range_layer_min = -1
 texture = SubResource("GradientTexture2D_8nu7x")
 
@@ -1348,11 +1349,16 @@ vframes = 4
 
 [node name="SpawnShadowAudio" type="AudioStreamPlayer2D" parent="Sprite2D"]
 stream = ExtResource("31_g2xbx")
-volume_db = -10.0
+volume_db = 12.0
 bus = &"SFX"
 
 [node name="LobbyMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("33_vehvu")
+bus = &"Music"
+
+[node name="FinishGameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("34_j176i")
+volume_db = -20.0
 bus = &"Music"
 
 [node name="LobbyDenial" parent="." instance=ExtResource("34_xmpiq")]

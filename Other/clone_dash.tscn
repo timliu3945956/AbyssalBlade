@@ -768,5 +768,5 @@ libraries = {
 [node name="dash" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -8)
 stream = ExtResource("8_fbhm6")
-volume_db = 3.0
+volume_db = 16.0
 bus = &"SFX"

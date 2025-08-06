@@ -32,29 +32,14 @@ func enter():
 	#await get_tree().create_timer(2.1658).timeout
 	
 	while alternate_count < 8 and owner.boss_death == false:
-		#if alternate_count == 2 or alternate_count == 5:
-			#match owner.choose_top_down:
-				#1:
-					#owner.smoke_top_1.play("smoke")
-					#owner.smoke_top_2.play("smoke")
-					#owner.spawn_shadow_audio.play()
-					#owner.top_bottom_animation_player.play("top_charge")
-				#2:
-					#owner.smoke_bottom_1.play("smoke")
-					#owner.smoke_bottom_2.play("smoke")
-					#owner.spawn_shadow_audio.play()
-					#owner.top_bottom_animation_player.play("bottom_charge")
-					
-					
-					
 		if alternate_count == 3 or alternate_count == 6:
-			await get_tree().create_timer(0.4998).timeout
+			await TimeWait.wait_sec(0.4998)#await get_tree().create_timer(0.4998).timeout
 			match choose_in_out:
 				1:
 					owner.in_out_animation_player.play("attack_in")
 				2:
 					owner.in_out_animation_player.play("attack_out")
-			await get_tree().create_timer(1.8326).timeout #1.8326 total await time
+			await TimeWait.wait_sec(1.8326)#await get_tree().create_timer(1.8326).timeout #1.8326 total await time
 			#match owner.choose_top_down:
 				#1:
 					#owner.top_bottom_animation_player.play("top_attack")
@@ -62,7 +47,7 @@ func enter():
 					#owner.top_bottom_animation_player.play("bottom_attack")
 			choose_in_out = randi_range(1, 2)
 			owner.choose_top_down = randi_range(1, 2)
-			await get_tree().create_timer(0.6664).timeout
+			await TimeWait.wait_sec(0.6664)#await get_tree().create_timer(0.6664).timeout
 		#if alternate_count != 3 and alternate_count != 6:
 			#if alternate_count == 0:
 				#await get_tree().create_timer(3-0.1666).timeout
@@ -71,7 +56,7 @@ func enter():
 		if alternate_count != 7 and alternate_count != 6:
 			#if alternate_count == 0:
 			
-			await get_tree().create_timer(2.9988).timeout
+			await TimeWait.wait_sec(2.9988)#await get_tree().create_timer(2.9988).timeout
 				#await get_tree().create_timer(2.9988-0.1666).timeout
 			#else:
 			
@@ -81,21 +66,8 @@ func enter():
 		var smoke_finish_tween = get_tree().create_tween()
 		smoke_finish_tween.tween_property(owner.alternate_smoke, "modulate:a", 0, 0.5)
 		
-		#await animation_player.animation_finished
-		#animation_player.play("idle_right")
-		#await get_tree().create_timer(1).timeout
-		#player.beam_circle_meteor()
-		#owner.boss_room_animation.play("meteor")
-		#await get_tree().create_timer(2.6668).timeout
-		#animation_player.play("alternate_slam")
-		#await get_tree().create_timer(0.3332).timeout
-		#owner.beam_circle()
-		#
-		#owner.meteor.closest_square_position(player.position)
-		#await get_tree().create_timer(1.4004).timeout
-		#animation_player.play("idle_right")
-		await get_tree().create_timer(0.9996).timeout
-		await get_tree().create_timer(0.5).timeout
+		await TimeWait.wait_sec(0.9996)#await get_tree().create_timer(0.9996).timeout
+		await TimeWait.wait_sec(0.5)#await get_tree().create_timer(0.5).timeout
 		
 		can_transition = true
 	

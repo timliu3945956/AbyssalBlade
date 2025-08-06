@@ -17,7 +17,8 @@ func enter():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(owner.black_smoke_symbol_anim, "self_modulate:a", 1, 0.3)
-	owner.attack_meter_animation.play("barrage")
+	owner.attack_meter_animation.play("oppressive_barrage")
+	
 	if barrage_random_1 == 1:
 		owner.barrage_symbol_animation.play("barrage_in")
 	else:
@@ -39,80 +40,93 @@ func enter():
 			owner.barrage_symbol_animation.play("barrage_x")
 		else:
 			owner.barrage_symbol_animation.play("barrage_+")
-	await get_tree().create_timer(1.5).timeout
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	tween = get_tree().create_tween()
 	tween.tween_property(owner.black_smoke_symbol_anim, "self_modulate:a", 0, 0.5)
 	var white_sword_tween = get_tree().create_tween()
 	var black_sword_tween = get_tree().create_tween()
+	var dual_sword_tween = get_tree().create_tween()
 	#red_sword_tween.tween_property(owner.red_swords, "modulate:a", 1, 0.5)
 	white_sword_tween.tween_property(owner.white_swords, "modulate:a", 0, 0.5)
 	black_sword_tween.tween_property(owner.black_swords, "modulate:a", 0, 0.5)
+	dual_sword_tween.tween_property(owner.dual_color_swords, "modulate:a", 0, 0.5)
 	
 	animation_player.play("barrage")
 	await owner.barrage_symbol_animation.animation_finished
 	owner.barrage_audio.play()
 	
 	if barrage_random_1 == 1:
-		if owner.crown_color == "white":
-			owner.boss_room_animation.play("barrage_black_in")
-		else:
-			owner.boss_room_animation.play("barrage_white_in")
+		#if owner.crown_color == "white":
+		owner.boss_room_animation.play("barrage_white_in")
+		owner.boss_room_animation2.play("barrage_black_out")
+		#else:
+			#owner.boss_room_animation.play("barrage_white_in")
 	else:
-		if owner.crown_color == "white":
-			owner.boss_room_animation.play("barrage_black_out")
-		else:
-			owner.boss_room_animation.play("barrage_white_out")
-	await get_tree().create_timer(1.5).timeout
+		#if owner.crown_color == "white":
+		
+		owner.boss_room_animation.play("barrage_white_out")
+		#else:
+		owner.boss_room_animation2.play("barrage_black_in")
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	animation_player.play("barrage")
 	#await get_tree().create_timer(0.5).timeout
 	await owner.boss_room_animation.animation_finished
+	await owner.boss_room_animation2.animation_finished
 	
 	owner.barrage_audio.play()
 	if barrage_random_2 == 1:
-		if owner.crown_color == "white":
-			owner.boss_room_animation.play("barrage_black_in")
-		else:
-			owner.boss_room_animation.play("barrage_white_in")
+		#if owner.crown_color == "white":
+		owner.boss_room_animation.play("barrage_white_in")
+		owner.boss_room_animation2.play("barrage_black_out")
+		#else:
+			#owner.boss_room_animation.play("barrage_white_in")
 	else:
-		if owner.crown_color == "white":
-			owner.boss_room_animation.play("barrage_black_out")
-		else:
-			owner.boss_room_animation.play("barrage_white_out")
-	await get_tree().create_timer(1.5).timeout
+		#if owner.crown_color == "white":
+		owner.boss_room_animation.play("barrage_white_out")
+		#else:
+		owner.boss_room_animation2.play("barrage_black_in")
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	animation_player.play("barrage")
 	await owner.boss_room_animation.animation_finished
+	await owner.boss_room_animation2.animation_finished
 	
 	owner.barrage_audio.play()
 	if owner.barrage_third_pick == 1:
 		if owner.barrage_count % 2 == 0:
-			if owner.crown_color == "white":
-				owner.boss_room_animation.play("barrage_black_+")
-			else:
-				owner.boss_room_animation.play("barrage_white_+")
+			#if owner.crown_color == "white":
+			owner.boss_room_animation.play("barrage_white_+")
+			#else:
+			owner.boss_room_animation2.play("barrage_black_x")
 		else:
-			if owner.crown_color == "white":
-				owner.boss_room_animation.play("barrage_black_x")
-			else:
-				owner.boss_room_animation.play("barrage_white_x")
+			#if owner.crown_color == "white":
+			owner.boss_room_animation.play("barrage_white_x")
+			#else:
+			owner.boss_room_animation2.play("barrage_black_+")
 	else:
 		if owner.barrage_count % 2 == 0:
-			if owner.crown_color == "white":
-				owner.boss_room_animation.play("barrage_black_x")
-			else:
-				owner.boss_room_animation.play("barrage_white_x")
+			#if owner.crown_color == "white":
+			owner.boss_room_animation.play("barrage_white_x")
+			#else:
+			owner.boss_room_animation2.play("barrage_black_+")
 		else:
-			if owner.crown_color == "white":
-				owner.boss_room_animation.play("barrage_black_+")
-			else:
-				owner.boss_room_animation.play("barrage_white_+")
-	await get_tree().create_timer(1.5).timeout
+			#if owner.crown_color == "white":
+			owner.boss_room_animation.play("barrage_white_+")
+			#else:
+			owner.boss_room_animation2.play("barrage_black_x")
+	await TimeWait.wait_sec(1.5)#await get_tree().create_timer(1.5).timeout
 	
 	owner.barrage_count += 1
+	owner.oppressive_barrage_count += 1
 	can_transition = true
 	
 func transition():
 	if can_transition:
 		can_transition = false
-		get_parent().change_state("WreakHavoc")
+		if owner.oppressive_barrage_count == 4:
+			get_parent().change_state("LoomingHavoc")
+		elif owner.oppressive_barrage_count == 2:
+			get_parent().change_state("ExistentialCrisis")
+		else:
+			get_parent().change_state("EngulfingCurse")

@@ -13,10 +13,10 @@ func enter():
 		animation_player.play("idle_left")
 	owner.darkness_balance_vfx_spawn()
 	owner.vfx_timer.start()
-	await get_tree().create_timer(10).timeout
+	await TimeWait.wait_sec(10)#await get_tree().create_timer(10).timeout
 	
 	owner.morph_animation.play("flash")
-	await get_tree().create_timer(2).timeout
+	await TimeWait.wait_sec(2)#await get_tree().create_timer(2).timeout
 	
 	#owner.paused = false
 	
